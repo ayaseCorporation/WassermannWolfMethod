@@ -89,3 +89,11 @@ with suitable file permissions.
 
 ## Execution example on Raspberry Pi
 
+A movie that shows demonstration of execution 'demonstration.nb' file on Mathematica bundled with Raspberry Pi OS will soon be aploaded.
+
+<img src="demoMovieSnapShot1.jpg" alt="demoMovieSnapShot2" style="zoom:50%;" />
+
+<img src="demoMovieSnapShot2.jpg" alt="demoMovieSnapShot2" style="zoom:50%;" />
+
+You can see the solver can work well on a Raspberry Pi.
+
