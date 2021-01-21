@@ -1,0 +1,7 @@
+#/bin/bash
+#	for Raspberry Pi OS
+packagepath=/usr/share/Mathematica/Applications/
+packagename=AplanaticSinglet
+mkdir -p $packagepath
+cp -r $packagename $packagepath
+chmod -R 0755 $packagepath/$packagename

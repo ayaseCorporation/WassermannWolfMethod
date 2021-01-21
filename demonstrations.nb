@@ -1,0 +1,2492 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    105053,       2484]
+NotebookOptionsPosition[     90996,       2258]
+NotebookOutlinePosition[     92040,       2290]
+CellTagsIndexPosition[     91997,       2287]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Demonstrations", "Title",
+ CellChangeTimes->{{3.802407658960683*^9, 3.802407662760621*^9}, {
+  3.802744601028328*^9, 
+  3.8027446048387957`*^9}},ExpressionUUID->"bacbc586-8e80-4c27-b04f-\
+73f3025e59c7"],
+
+Cell["\<\
+Takatoshi Yamada @Ayase corporation
+e-mail: takatoshi.yamada@ayasecorporation.com
+web cite: https://www.ayasecorporation.com\
+\>", "Author",
+ CellChangeTimes->{{3.8174322999097977`*^9, 3.817432300562891*^9}, 
+   3.818716571670223*^9},ExpressionUUID->"eb63109c-673d-4fe5-9a0f-\
+51cb443ae31e"],
+
+Cell[CellGroupData[{
+
+Cell["read some packages", "Chapter",
+ CellChangeTimes->{{3.804544147916966*^9, 3.8045441527400846`*^9}, {
+  3.804545630084955*^9, 
+  3.804545631479508*^9}},ExpressionUUID->"3495f456-5c95-4060-a895-\
+07f7120f6cbf"],
+
+Cell[CellGroupData[{
+
+Cell["these packages should be placed on the paths in $Path", "Outline2",
+ CellChangeTimes->{{3.804546944166445*^9, 
+  3.8045469673048277`*^9}},ExpressionUUID->"55368951-a605-4cfc-bf7c-\
+ad5126ab8b12"],
+
+Cell["\<\
+for example, default directory is \
+\[OpenCurlyDoubleQuote]/usr/share/Mathematica/Applications\
+\[CloseCurlyDoubleQuote] for Raspberry Pi OS.
+Please check files inside the directory.\
+\>", "Text",
+ CellChangeTimes->{{3.8045469763520317`*^9, 3.804547094569644*^9}, {
+  3.8106786123609324`*^9, 3.810678664606484*^9}, {3.813035615815463*^9, 
+  3.8130357597942047`*^9}},ExpressionUUID->"250211fb-bb7e-432d-bf9a-\
+be20f52aabae"],
+
+Cell["\<\
+And move cursor in white background boxed texts bellow and click inside ( can \
+you see the cursor changes to I-beam shape and blinks?), and input \
+shift-return to execute texts inside the box.\
+\>", "Text",
+ CellChangeTimes->{{3.8045469763520317`*^9, 3.804547094569644*^9}, {
+  3.8106786123609324`*^9, 3.810678664606484*^9}, {3.813035615815463*^9, 
+  3.813035730386931*^9}, {3.813035763068315*^9, 
+  3.813035865578875*^9}},ExpressionUUID->"1a994e56-2793-4340-9254-\
+c41df0a81922"],
+
+Cell[BoxData[{
+ RowBox[{"<<", "\"\<AplanaticSinglet`BiasphericAplanatSolver`\>\""}], "\n", 
+ RowBox[{"<<", "\"\<AplanaticSinglet`RayTrace2D`\>\""}], "\n", 
+ RowBox[{"<<", "\"\<AplanaticSinglet`GoldenSectionSearch`\>\""}], "\n", 
+ RowBox[{"<<", 
+  "\"\<AplanaticSinglet`AsphericalFittingForInterpolated`\>\""}], "\n", 
+ RowBox[{"<<", 
+  "\"\<AplanaticSinglet`BiasphericAplanatZemaxOutput`\>\""}]}], "Input",
+ CellChangeTimes->{{3.802464929122532*^9, 3.8024649311330643`*^9}, {
+   3.802649328809033*^9, 3.8026493302723227`*^9}, {3.802745370652904*^9, 
+   3.80274537403329*^9}, {3.804282019663533*^9, 3.8042820216577053`*^9}, {
+   3.804544172992228*^9, 3.8045441778610783`*^9}, 3.804544222647386*^9, {
+   3.8184620233569927`*^9, 
+   3.818462036709033*^9}},ExpressionUUID->"4c75c8d2-4311-4ce2-9175-\
+9778cda3d320"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["read in a catalog to create medium objects", "Outline2",
+ CellChangeTimes->{{3.80454417919018*^9, 
+  3.804544216910671*^9}},ExpressionUUID->"ac2ed552-8144-45b6-a0fd-\
+50e355b0a32c"],
+
+Cell["\<\
+read from a file with Zemax AGF format. It has definitions of refractive \
+indices of several materials.\
+\>", "Text",
+ CellChangeTimes->{{3.804547858557*^9, 3.804547893250965*^9}, {
+  3.813035893726132*^9, 
+  3.813035918826027*^9}},ExpressionUUID->"8e4df313-4b24-402f-82ca-\
+9dcba5d669fa"],
+
+Cell[BoxData[
+ RowBox[{"createMediumsFromAGFFile", "[", 
+  RowBox[{
+  "FindFile", "[", "\"\<AplanaticSinglet/SCHOTTextracted.AGF\>\"", "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.8045457954361477`*^9, 3.804545806165*^9}, {
+  3.818462930335487*^9, 
+  3.818462931871255*^9}},ExpressionUUID->"c7da1a22-44d5-4232-84ab-\
+a65c242d7ac2"],
+
+Cell["create a medium object named \[OpenCurlyDoubleQuote]N-BK7\
+\[CloseCurlyDoubleQuote].", "Text",
+ CellChangeTimes->{{3.804547858557*^9, 3.804547893250965*^9}, {
+  3.813035893726132*^9, 3.813035918826027*^9}, {3.813035965987178*^9, 
+  3.8130359933912783`*^9}},ExpressionUUID->"1c1e48e0-9255-49b6-a5d8-\
+acb8825498e2"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"bk7", "=", 
+   RowBox[{"mediumCatalog", "[", "\"\<N-BK7\>\"", "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.8045458109472733`*^9, 3.804545821019767*^9}, {
+  3.804545877815886*^9, 3.804545879672298*^9}},
+ CellLabel->"In[8]:=",ExpressionUUID->"04098fac-7e41-45bd-8705-5b2366875032"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["enumerate design parameters of the solver", "Outline2",
+ CellChangeTimes->{{3.804544237297908*^9, 
+  3.8045442667250137`*^9}},ExpressionUUID->"fc377739-be28-462c-a628-\
+a483398720f7"],
+
+Cell[BoxData["biasphericAplanatParameterSymbols"], "Input",
+ CellChangeTimes->{{3.802464929122532*^9, 3.8024649311330643`*^9}, {
+   3.802649328809033*^9, 3.8026493302723227`*^9}, {3.802745370652904*^9, 
+   3.80274537403329*^9}, {3.804282019663533*^9, 3.8042820216577053`*^9}, 
+   3.804544172992228*^9},
+ CellLabel->"In[9]:=",ExpressionUUID->"9e174ce8-b6f6-4251-a672-01f8c58a1b47"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["You can find short descriptions about symbols above, e.g.,", "Outline2",
+ CellChangeTimes->{{3.810678740806473*^9, 3.8106787707976294`*^9}, {
+  3.8106788474320707`*^9, 
+  3.810678907553177*^9}},ExpressionUUID->"dcd36c51-b0e4-4174-abf8-\
+d362e8ee2140"],
+
+Cell[BoxData[
+ RowBox[{"?", "designWavelength"}]], "Input",
+ CellChangeTimes->{{3.810678781904352*^9, 3.81067881069341*^9}},
+ CellLabel->"In[10]:=",ExpressionUUID->"babd79ff-56d8-45c4-8026-33cdd9e3e741"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["infinite conjugate", "Chapter",
+ CellChangeTimes->{{3.802726488369731*^9, 3.802726493043899*^9}, {
+  3.8027303712708397`*^9, 
+  3.802730374044735*^9}},ExpressionUUID->"3564decf-b85e-4da9-a80c-\
+1e614f308499"],
+
+Cell[CellGroupData[{
+
+Cell["perform first numerical integral", "Outline1",
+ CellChangeTimes->{{3.8045432803685904`*^9, 
+  3.8045432899626837`*^9}},ExpressionUUID->"740f11db-bca9-4e08-90c2-\
+41aecc90beed"],
+
+Cell[CellGroupData[{
+
+Cell["set lens design parameters", "Outline2",
+ CellChangeTimes->{{3.8045426670655746`*^9, 3.8045426782383413`*^9}, {
+  3.8045427271737843`*^9, 
+  3.804542729537895*^9}},ExpressionUUID->"593326b7-a4a8-4e64-ab65-\
+80cefa1c2665"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"parms", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"designWavelength", "\[Rule]", "0.00064"}], ",", 
+     RowBox[{"numericalApertureTarget", "\[Rule]", "0.6"}], ",", 
+     RowBox[{"lensMediumSymbol", "\[Rule]", "bk7"}], ",", 
+     RowBox[{"lensMediumThickness", "\[Rule]", "2."}], ",", 
+     RowBox[{"mechanicalImageDistance", "\[Rule]", "1.8"}], ",", 
+     RowBox[{"focalLength", "\[Rule]", "3."}]}], "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.802662809297719*^9, 3.8026628237883787`*^9}, {
+   3.802662938653576*^9, 3.8026630029373913`*^9}, {3.802663048826034*^9, 
+   3.8026631065942993`*^9}, {3.802726531896865*^9, 3.802726571644683*^9}, {
+   3.802734227454708*^9, 3.802734269865632*^9}, 3.803082449734329*^9},
+ CellLabel->"In[11]:=",ExpressionUUID->"a4ae5998-563c-4d0d-add8-19faa2f2b6b7"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["fill and enumerate paraxial parameters", "Outline2",
+ CellChangeTimes->{{3.8045426670655746`*^9, 3.8045426782383413`*^9}, {
+  3.804542717702962*^9, 3.8045427366816177`*^9}, {3.804543191188005*^9, 
+  3.8045432021778393`*^9}},ExpressionUUID->"f652e387-30bc-4b45-89e8-\
+04c07279cb2b"],
+
+Cell[BoxData[
+ RowBox[{"bp", "=", 
+  RowBox[{"setupBiasphericAplanatParameters", "[", "parms", "]"}]}]], "Input",\
+
+ CellChangeTimes->{{3.8024028961038303`*^9, 3.802402971693659*^9}, {
+   3.8024030312855597`*^9, 3.802403048666213*^9}, {3.802403110363926*^9, 
+   3.802403119948415*^9}, {3.802465506409964*^9, 3.802465540148797*^9}, {
+   3.802466298570651*^9, 3.802466302538443*^9}, {3.8024663438519173`*^9, 
+   3.802466345189536*^9}, {3.802469005541379*^9, 3.802469007754079*^9}, 
+   3.8024690440383463`*^9, {3.8024690791970377`*^9, 3.802469082704455*^9}, 
+   3.802469116172703*^9, {3.802469193574894*^9, 3.802469217414486*^9}, {
+   3.80247258188396*^9, 3.802472601480641*^9}, {3.8024726504627666`*^9, 
+   3.8024726521261873`*^9}, {3.8024933566973667`*^9, 3.802493370432547*^9}, 
+   3.802562666872698*^9, 3.803174216121873*^9, 3.804542699444154*^9, 
+   3.804542739033738*^9, 3.808443213646838*^9, 3.8106797105473843`*^9},
+ CellLabel->"In[42]:=",ExpressionUUID->"a8a4430c-bbbb-41cd-b303-05a0d5c80e70"],
+
+Cell["\<\
+extra paraxial values,e.g., Coddington shape factor, surface surface \
+curvatures, etc... are calculated and added with input parameters. Some \
+values in extra parameters are needed for the solver and further evaluations. \
+And you can specify extra paraxial parameters in the input parameters, e.g., \
+coddingtonShapeFactor instead of paraxialWorkingDistance.\
+\>", "Text",
+ CellChangeTimes->{{3.804547129875592*^9, 3.804547350442885*^9}, {
+   3.804548640557416*^9, 3.8045487634741907`*^9}, {3.8106798118225117`*^9, 
+   3.810679857397881*^9}, {3.8106798996863422`*^9, 3.810679920037546*^9}, 
+   3.810679950975884*^9, {3.810680006428582*^9, 3.810680049009613*^9}, {
+   3.8106810192441063`*^9, 
+   3.810681111933844*^9}},ExpressionUUID->"16be4792-d2bd-4255-9cb8-\
+e06303a0b6f3"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+perform numerical integral and obtain the result containing interpolation \
+functions of aspherical surfaces\
+\>", "Outline2",
+ CellChangeTimes->{{3.804543372228541*^9, 3.804543410755252*^9}, {
+  3.80454428923666*^9, 
+  3.804544322400633*^9}},ExpressionUUID->"014b6172-d837-4016-a25b-\
+72c834ca341f"],
+
+Cell[BoxData[
+ RowBox[{"result", "=", 
+  RowBox[{"biasphericAplanatSolve", "[", "bp", "]"}]}]], "Input",
+ CellChangeTimes->{{3.8024028961038303`*^9, 3.802402971693659*^9}, {
+   3.8024030312855597`*^9, 3.802403048666213*^9}, {3.802403110363926*^9, 
+   3.802403119948415*^9}, {3.802465506409964*^9, 3.802465540148797*^9}, {
+   3.802466298570651*^9, 3.802466302538443*^9}, {3.8024663438519173`*^9, 
+   3.802466345189536*^9}, {3.802469005541379*^9, 3.802469007754079*^9}, 
+   3.8024690440383463`*^9, {3.8024690791970377`*^9, 3.802469082704455*^9}, 
+   3.802469116172703*^9, {3.802469193574894*^9, 3.802469217414486*^9}, {
+   3.80247258188396*^9, 3.802472601480641*^9}, {3.8024726504627666`*^9, 
+   3.8024726521261873`*^9}, {3.8024933566973667`*^9, 3.802493370432547*^9}, 
+   3.802562666872698*^9, 3.803174216121873*^9, 3.804542699444154*^9},
+ CellLabel->"In[13]:=",ExpressionUUID->"4768b5da-eed7-4323-a3f0-7560403b3d82"],
+
+Cell["\<\
+Please note that the results include \[OpenCurlyQuote]numericalAperture\
+\[CloseCurlyQuote] parameter other than \
+\[OpenCurlyQuote]numericalApertureTarget\[CloseCurlyQuote]. If the solver has \
+reached the target numerical aperture, the solver returns numericalAperture \
+== numericalApertureTarget but could not reach the target, numericalAperture \
+< numericalApertureTarget.\
+\>", "Text",
+ CellChangeTimes->{{3.804547435360817*^9, 3.804547596965571*^9}, {
+  3.8045476387831*^9, 
+  3.804547712832357*^9}},ExpressionUUID->"8973e51f-931d-47e0-a35f-\
+509f7ad6365d"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["trace rays and draw shape for resulting lens", "Outline2",
+ CellChangeTimes->{{3.804543458933546*^9, 3.804543496391654*^9}, {
+  3.80454433107452*^9, 
+  3.804544334674758*^9}},ExpressionUUID->"e3c00f47-ef32-463e-856a-\
+6b517840319d"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"setOpticsFor2DRayTrace", "[", 
+   RowBox[{"op", ",", "result"}], "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"rs", "=", 
+   RowBox[{"Map", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"traceRay", "[", "op", "]"}], "[", 
+       RowBox[{"#", ",", 
+        RowBox[{"designWavelength", "/.", "result"}]}], "]"}], "&"}], ",", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"raySet", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"h", ",", 
+           RowBox[{"-", "0.3"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "1"}], "}"}]}], "]"}], ",", 
+       RowBox[{"Evaluate", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"h", ",", 
+           RowBox[{
+            RowBox[{"-", "numericalAperture"}], "*", "focalLength"}], ",", 
+           RowBox[{"numericalAperture", "*", "focalLength"}], ",", 
+           RowBox[{"numericalAperture", "*", 
+            RowBox[{"focalLength", "/", "128"}]}]}], "}"}], "/.", "result"}], 
+        "]"}]}], "]"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{"Show", "[", 
+  RowBox[{
+   RowBox[{"rayCongruenceGraphics", "[", 
+    RowBox[{"rs", ",", 
+     RowBox[{"removeLast", "\[Rule]", "True"}], ",", 
+     RowBox[{"rayCount", "\[Rule]", "16"}]}], "]"}], ",", 
+   RowBox[{"opticsGraphics", "[", 
+    RowBox[{"op", ",", 
+     RowBox[{"hideUselessSurface", "\[Rule]", "True"}]}], "]"}], ",", 
+   RowBox[{"Axes", "\[Rule]", "True"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "Medium"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.802561036890874*^9, 3.802561046338497*^9}, 
+   3.802561557729261*^9, 3.8025616835473013`*^9, 3.802573430110076*^9, {
+   3.802649209827622*^9, 3.802649222956531*^9}, {3.8026500110689297`*^9, 
+   3.802650012540464*^9}, {3.802650074733077*^9, 3.802650078296258*^9}, 
+   3.8030048906681147`*^9, 3.803174220582797*^9, 3.808442566162052*^9, 
+   3.808443587624991*^9},
+ CellLabel->"In[14]:=",ExpressionUUID->"b773d387-32bf-4f19-b4b3-baf0f5ae8fc3"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["evaluations", "Outline1",
+ CellChangeTimes->{{3.804543506193576*^9, 
+  3.8045435100603523`*^9}},ExpressionUUID->"024bfaf0-37a3-4a61-8590-\
+80b12e45e7b0"],
+
+Cell[CellGroupData[{
+
+Cell["draw longitudinal aberration with the range +/- 1um", "Outline2",
+ CellChangeTimes->{{3.804543521616084*^9, 3.8045435464541273`*^9}, {
+  3.804544368606093*^9, 3.8045443937945766`*^9}, {3.8200992179811983`*^9, 
+  3.820099224194109*^9}},ExpressionUUID->"aefc2bc4-1719-4872-857f-\
+23aa4f1bb0c9"],
+
+Cell[BoxData[
+ RowBox[{"With", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"o", "=", 
+      RowBox[{
+       RowBox[{"lensMediumThickness", "+", "mechanicalImageDistance"}], "/.", 
+       "result"}]}], ",", 
+     RowBox[{"halfwidth", "=", 
+      RowBox[{"-", "0.001"}]}]}], "}"}], ",", 
+   RowBox[{"ListLinePlot", "[", 
+    RowBox[{
+     RowBox[{"Map", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"#", "-", 
+          RowBox[{"{", 
+           RowBox[{"o", ",", "0"}], "}"}]}], ")"}], "&"}], ",", 
+       RowBox[{"longitudinalSphericalAberration", "[", 
+        RowBox[{"rs", ",", "op"}], "]"}]}], "]"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "halfwidth"}], ",", "halfwidth"}], "}"}], ",", "All"}],
+        "}"}]}]}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.802661477613614*^9, 3.802661481944735*^9}, {
+  3.802661581700254*^9, 3.802661588956521*^9}, {3.8026616380631227`*^9, 
+  3.8026616413023033`*^9}, {3.802661675618143*^9, 3.802661730485537*^9}, {
+  3.8026631693166037`*^9, 3.802663187101768*^9}, {3.80266431749046*^9, 
+  3.8026643394363613`*^9}, {3.803004910062228*^9, 3.8030049147983427`*^9}, {
+  3.804544346950397*^9, 3.8045443628807592`*^9}, {3.8045445124905643`*^9, 
+  3.804544517011644*^9}, {3.804544592265265*^9, 3.804544617678357*^9}},
+ CellLabel->"In[17]:=",ExpressionUUID->"dfb81d3c-0242-44d2-8b0e-97c212843d1b"],
+
+Cell["\<\
+staggered line shape came from interpolation steps in numerical integration. \
+You can suppress it by adding options for NDSolve to reduce the step pitch. \
+Refer a description bellow in \[OpenCurlyDoubleQuote]you can add options for \
+NDSolve in the first design parameters\[CloseCurlyDoubleQuote] .\
+\>", "Text",
+ CellChangeTimes->{{3.804548810437929*^9, 3.804548831056058*^9}, {
+  3.8045488757871647`*^9, 3.8045489562245417`*^9}, {3.804548988806059*^9, 
+  3.80454911709132*^9}, {3.804549156634811*^9, 
+  3.804549242854569*^9}},ExpressionUUID->"13d05df2-30dd-434d-a48a-\
+a8d9e0b94082"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["draw OSC also with the range +/- 1um", "Outline2",
+ CellChangeTimes->{{3.804543562456628*^9, 3.804543584164721*^9}, {
+  3.804544433863806*^9, 3.8045444371896152`*^9}, {3.8200992267862663`*^9, 
+  3.820099227598909*^9}},ExpressionUUID->"a2cb66b5-6a2f-498d-9f99-\
+204fc6f0891f"],
+
+Cell[BoxData[
+ RowBox[{"With", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"f", "=", 
+      RowBox[{"focalLength", "/.", "result"}]}], ",", 
+     RowBox[{"halfwidth", "=", 
+      RowBox[{"-", "0.001"}]}]}], "}"}], ",", 
+   RowBox[{"ListLinePlot", "[", 
+    RowBox[{
+     RowBox[{"Select", "[", 
+      RowBox[{
+       RowBox[{"Map", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"oscValueReversed", "[", 
+           RowBox[{"#", ",", "f"}], "]"}], "&"}], ",", "rs"}], "]"}], ",", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"#", "[", 
+          RowBox[{"[", 
+           RowBox[{"-", "1"}], "]"}], "]"}], "\[GreaterEqual]", "0"}], 
+        "&"}]}], "]"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "halfwidth"}], ",", "halfwidth"}], "}"}], ",", "All"}],
+        "}"}]}]}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.802663720553502*^9, 3.802663831985589*^9}, {
+   3.802663917849958*^9, 3.802663991410904*^9}, {3.802664034006493*^9, 
+   3.802664048890761*^9}, {3.8026643620489264`*^9, 3.802664365062904*^9}, {
+   3.802664440544999*^9, 3.802664440676655*^9}, {3.802726592918989*^9, 
+   3.802726622358799*^9}, {3.803004920141593*^9, 3.803004933867437*^9}, 
+   3.804544443390127*^9, {3.804544626522471*^9, 3.804544633242196*^9}},
+ CellLabel->"In[18]:=",ExpressionUUID->"4392c2d5-4b6d-4811-b3c2-82f9fb33c92d"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["draw optical path difference with the range +/- 1nm", "Outline2",
+ CellChangeTimes->{{3.804543589129017*^9, 3.804543596698442*^9}, {
+  3.8045444507121153`*^9, 3.804544451794588*^9}, {3.8045446378450937`*^9, 
+  3.8045446449549*^9}},ExpressionUUID->"c34cfa41-7343-44ff-812c-a7688f01c595"],
+
+Cell[BoxData[
+ RowBox[{"With", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"halfwidth", "=", "0.000001"}], "}"}], ",", 
+   RowBox[{"ListLinePlot", "[", 
+    RowBox[{
+     RowBox[{"opticalPathDifference", "[", 
+      RowBox[{"rs", ",", "op"}], "]"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "halfwidth"}], ",", "halfwidth"}], "}"}]}]}], "]"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.802661856643248*^9, 3.802661862380897*^9}, {
+  3.802661965141198*^9, 3.8026619701804333`*^9}, {3.8026631478395433`*^9, 
+  3.802663150257286*^9}, {3.804544457375786*^9, 3.804544501150001*^9}, {
+  3.8045446488595037`*^9, 3.804544652312261*^9}},
+ CellLabel->"In[19]:=",ExpressionUUID->"3e5a0b37-e518-46a1-b970-36854f694837"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+you can add options for NDSolve in the first design parameters\
+\>", "Outline1",
+ CellChangeTimes->{{3.8045464381304197`*^9, 
+  3.804546497902207*^9}},ExpressionUUID->"60a160d4-36df-468a-b54d-\
+b6aec397bd61"],
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "NDSolve", "]"}]], "Input",
+ CellChangeTimes->{{3.804546510887981*^9, 3.804546521988945*^9}},
+ CellLabel->"In[20]:=",ExpressionUUID->"f1ed4057-bcdc-4c32-a630-bd03d27c9e73"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"parms", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"designWavelength", "\[Rule]", "0.00064"}], ",", 
+     RowBox[{"numericalApertureTarget", "\[Rule]", "0.6"}], ",", 
+     RowBox[{"lensMediumSymbol", "\[Rule]", "bk7"}], ",", 
+     RowBox[{"lensMediumThickness", "\[Rule]", "2."}], ",", 
+     RowBox[{"mechanicalImageDistance", "\[Rule]", "1.8"}], ",", 
+     RowBox[{"focalLength", "\[Rule]", "3."}], ",", 
+     RowBox[{"MaxStepSize", "\[Rule]", "0.003"}]}], "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.802662809297719*^9, 3.8026628237883787`*^9}, {
+   3.802662938653576*^9, 3.8026630029373913`*^9}, {3.802663048826034*^9, 
+   3.8026631065942993`*^9}, {3.802726531896865*^9, 3.802726571644683*^9}, {
+   3.802734227454708*^9, 3.802734269865632*^9}, 3.803082449734329*^9, {
+   3.804546556583125*^9, 3.804546622092257*^9}, {3.804546653525341*^9, 
+   3.804546673125379*^9}, {3.804546722097486*^9, 3.8045467239408493`*^9}},
+ CellLabel->"In[21]:=",ExpressionUUID->"37c18e25-6a35-4ac0-a9b9-45be2c99f48d"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["optimizing decenter tolerance", "Outline1",
+ CellChangeTimes->{{3.804543611685955*^9, 3.8045436547716*^9}, {
+  3.804543692540975*^9, 
+  3.804543694733715*^9}},ExpressionUUID->"62f30080-a3cd-4a0f-a16f-\
+b0432b82bff6"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+preparation for evaluation function with single control variable W.D.\
+\>", "Outline2",
+ CellChangeTimes->{{3.804543701262104*^9, 3.80454372501007*^9}, {
+  3.804543945444434*^9, 3.8045439845724497`*^9}, {3.804544673925239*^9, 
+  3.804544674902616*^9}},ExpressionUUID->"09c78383-5b2c-4133-963e-\
+9a11840163ad"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"decoptim", "[", "mid_", "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"parms", ",", "bp", ",", "result", ",", "op", ",", "rs"}], "}"}],
+     ",", 
+    RowBox[{
+     RowBox[{"parms", "=", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"designWavelength", "\[Rule]", "0.00064"}], ",", 
+        RowBox[{"numericalApertureTarget", "\[Rule]", "0.6"}], ",", 
+        RowBox[{"lensMediumSymbol", "\[Rule]", "bk7"}], ",", 
+        RowBox[{"lensMediumThickness", "\[Rule]", "2."}], ",", 
+        RowBox[{"mechanicalImageDistance", "\[Rule]", "mid"}], ",", 
+        RowBox[{"focalLength", "\[Rule]", "3."}]}], "}"}]}], ";", "\n", 
+     RowBox[{"bp", "=", 
+      RowBox[{"setupBiasphericAplanatParameters", "[", "parms", "]"}]}], ";", 
+     "\n", 
+     RowBox[{"result", "=", 
+      RowBox[{"biasphericAplanatSolve", "[", "bp", "]"}]}], ";", "\n", 
+     RowBox[{"setOpticsFor2DRayTrace", "[", 
+      RowBox[{"op", ",", "result", ",", 
+       RowBox[{"decenterBetweenAspherics", "\[Rule]", "0.005"}]}], "]"}], ";",
+      "\n", 
+     RowBox[{"rs", "=", 
+      RowBox[{"Map", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"traceRay", "[", "op", "]"}], "[", 
+          RowBox[{"#", ",", 
+           RowBox[{"designWavelength", "/.", "result"}]}], "]"}], "&"}], ",", 
+        
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"raySet", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"h", ",", 
+              RowBox[{"-", "0.3"}]}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"0", ",", "1"}], "}"}]}], "]"}], ",", 
+          RowBox[{"Evaluate", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"h", ",", 
+              RowBox[{
+               RowBox[{"-", "numericalAperture"}], "*", "focalLength"}], ",", 
+              
+              RowBox[{"numericalAperture", "*", "focalLength"}], ",", 
+              RowBox[{"numericalAperture", "*", 
+               RowBox[{"focalLength", "/", "128"}]}]}], "}"}], "/.", 
+            "result"}], "]"}]}], "]"}]}], "]"}]}], ";", "\n", 
+     RowBox[{
+      RowBox[{"RootMeanSquare", "[", 
+       RowBox[{"Map", "[", 
+        RowBox[{"Last", ",", 
+         RowBox[{"opticalPathDifference", "[", 
+          RowBox[{"rs", ",", "op"}], "]"}]}], "]"}], "]"}], "/", 
+      RowBox[{"(", 
+       RowBox[{"designWavelength", "/.", "result"}], ")"}]}]}]}], 
+   "\[IndentingNewLine]", "]"}]}]], "Input",
+ CellChangeTimes->{{3.802662809297719*^9, 3.8026628237883787`*^9}, {
+  3.802662938653576*^9, 3.8026630029373913`*^9}, {3.802663048826034*^9, 
+  3.8026631065942993`*^9}, {3.802726531896865*^9, 3.802726571644683*^9}, {
+  3.802730619683182*^9, 3.802730731080948*^9}, {3.803082448531658*^9, 
+  3.8030824636299562`*^9}},
+ CellLabel->"In[22]:=",ExpressionUUID->"221c173f-660d-437f-9dd7-b1f6e484c9e0"],
+
+Cell["\<\
+The function receive W.D. value, fix the surface shapes, build optics object, \
+trace ray congruence and calculate RMS value of optical path differences.\
+\>", "Text",
+ CellChangeTimes->{{3.804549265787842*^9, 
+  3.804549377216723*^9}},ExpressionUUID->"a2511655-a5b8-46d1-b54a-\
+82d2913aa862"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["try to find evaluation value and confirm the function works", "Outline2",
+ CellChangeTimes->{{3.8045439927994137`*^9, 3.804544009817916*^9}, {
+  3.8045447541721573`*^9, 
+  3.8045447868797293`*^9}},ExpressionUUID->"be75f146-be6d-4e24-9d8f-\
+92e6162009a4"],
+
+Cell[BoxData[
+ RowBox[{"decoptim", "[", "1.86", "]"}]], "Input",
+ CellChangeTimes->{{3.802730747089591*^9, 3.802730765541275*^9}, {
+  3.802730800460602*^9, 3.802730800685161*^9}, {3.8027308780654507`*^9, 
+  3.802730879031207*^9}},
+ CellLabel->"In[23]:=",ExpressionUUID->"e4f754e8-2b07-45a2-bf97-6a454e4c93da"],
+
+Cell["It can work.", "Text",
+ CellChangeTimes->{{3.8045493866937723`*^9, 
+  3.804549401640608*^9}},ExpressionUUID->"4c06e442-e770-4e8d-9076-\
+7e52a61b32fc"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["search minimum", "Outline2",
+ CellChangeTimes->{{3.8045440232997017`*^9, 3.804544049936508*^9}, {
+   3.804544796038622*^9, 3.804544806274686*^9}, {3.804544844461063*^9, 
+   3.804544936036957*^9}, 
+   3.80454941915949*^9},ExpressionUUID->"07b78f71-a519-4635-9410-\
+8409914fceb7"],
+
+Cell["\<\
+ using simple golden section search algorithm with W.D. span between 1.8 and \
+1.9mm to get W.D. value for minimum and its evaluation value. It takes some \
+minutes on Raspberry Pi.\
+\>", "Text",
+ CellChangeTimes->{{3.8045494462616167`*^9, 3.804549453909398*^9}, {
+  3.810678989230698*^9, 
+  3.810679002370759*^9}},ExpressionUUID->"59113a31-af24-4c42-99c3-\
+8b8369719278"],
+
+Cell[BoxData[
+ RowBox[{"decresult", "=", 
+  RowBox[{"goldenSectionSearch", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"decoptim", "[", "#", "]"}], "&"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"1.8", ",", "1.9"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.8027307062719183`*^9, 3.802730735952194*^9}, {
+  3.802730890305677*^9, 3.8027308909229517`*^9}, {3.802730937320157*^9, 
+  3.80273094589118*^9}},
+ CellLabel->"In[24]:=",ExpressionUUID->"cc0f5bf8-f183-4b11-9485-6d2a7ef1b32d"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["setup optics for resulted parameters", "Outline2",
+ CellChangeTimes->{{3.8045440741722*^9, 3.804544124704636*^9}, {
+  3.8045449839401608`*^9, 
+  3.804545022730276*^9}},ExpressionUUID->"9edca2a0-1442-4d41-8c9f-\
+bb5dba1b9c6e"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"parms", "=", 
+   RowBox[{"With", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"wd", "=", 
+       RowBox[{"decresult", "[", 
+        RowBox[{"[", "1", "]"}], "]"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"designWavelength", "\[Rule]", "0.00064"}], ",", 
+       RowBox[{"numericalApertureTarget", "\[Rule]", "0.6"}], ",", 
+       RowBox[{"lensMediumSymbol", "\[Rule]", "bk7"}], ",", 
+       RowBox[{"lensMediumThickness", "\[Rule]", "2."}], ",", 
+       RowBox[{"mechanicalImageDistance", "\[Rule]", "wd"}], ",", 
+       RowBox[{"focalLength", "\[Rule]", "3."}]}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"bp", "=", 
+   RowBox[{"setupBiasphericAplanatParameters", "[", "parms", "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"result", "=", 
+   RowBox[{"biasphericAplanatSolve", "[", "bp", "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.802662809297719*^9, 3.8026628237883787`*^9}, {
+   3.802662938653576*^9, 3.8026630029373913`*^9}, {3.802663048826034*^9, 
+   3.8026631065942993`*^9}, {3.802726531896865*^9, 3.802726571644683*^9}, {
+   3.802730953755083*^9, 3.80273095489041*^9}, 3.8030824485346813`*^9, 
+   3.803174266688445*^9, {3.8045449561631002`*^9, 3.804544990195826*^9}, 
+   3.804545035641718*^9},
+ CellLabel->"In[25]:=",ExpressionUUID->"367868cb-aefe-4589-8634-26c017a7088c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[" and draw lens again with maximum tolerance for W.D.", "Outline2",ExpressionUUID->"7838621d-8921-47c6-bc72-b1db8dbdfffb"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"setOpticsFor2DRayTrace", "[", 
+   RowBox[{"op", ",", "result"}], "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"rs", "=", 
+   RowBox[{"Map", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"traceRay", "[", "op", "]"}], "[", 
+       RowBox[{"#", ",", 
+        RowBox[{"designWavelength", "/.", "result"}]}], "]"}], "&"}], ",", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"raySet", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"h", ",", 
+           RowBox[{"-", "0.3"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "1"}], "}"}]}], "]"}], ",", 
+       RowBox[{"Evaluate", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"h", ",", 
+           RowBox[{
+            RowBox[{"-", "numericalAperture"}], "*", "focalLength"}], ",", 
+           RowBox[{"numericalAperture", "*", "focalLength"}], ",", 
+           RowBox[{"numericalAperture", "*", 
+            RowBox[{"focalLength", "/", "128"}]}]}], "}"}], "/.", "result"}], 
+        "]"}]}], "]"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{"Show", "[", 
+  RowBox[{
+   RowBox[{"rayCongruenceGraphics", "[", 
+    RowBox[{"rs", ",", 
+     RowBox[{"removeLast", "\[Rule]", "True"}], ",", 
+     RowBox[{"rayCount", "\[Rule]", "20"}]}], "]"}], ",", 
+   RowBox[{"opticsGraphics", "[", 
+    RowBox[{"op", ",", 
+     RowBox[{"hideUselessSurface", "\[Rule]", "True"}]}], "]"}], ",", 
+   RowBox[{"Axes", "\[Rule]", "True"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "Medium"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.802561036890874*^9, 3.802561046338497*^9}, 
+   3.802561557729261*^9, 3.8025616835473013`*^9, 3.802573430110076*^9, {
+   3.802649209827622*^9, 3.802649222956531*^9}, {3.8026500110689297`*^9, 
+   3.802650012540464*^9}, {3.802650074733077*^9, 3.802650078296258*^9}, 
+   3.802734331776071*^9, 3.8031742721540403`*^9, {3.808442608420054*^9, 
+   3.808442612918178*^9}},
+ CellLabel->"In[28]:=",ExpressionUUID->"33cc7bf3-25f7-4fcb-9a13-46049f8b18e6"],
+
+Cell["\<\
+If  you have an experience of lens design, you can find a lens shape more \
+natural comparing that of the first example.\
+\>", "Text",
+ CellChangeTimes->{{3.810679026369409*^9, 3.8106790904367657`*^9}, {
+  3.810679192882915*^9, 
+  3.81067926546782*^9}},ExpressionUUID->"5be9e81a-d34e-47fe-8c9a-\
+0860bc0b4716"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+resulted interpolation functions are fitted to aspherical formula\
+\>", "Outline1",
+ CellChangeTimes->{{3.80454505502059*^9, 3.804545073428524*^9}, {
+  3.80454948735426*^9, 
+  3.804549541064005*^9}},ExpressionUUID->"ce052702-894c-4ace-b26d-\
+9f8a0ca976e5"],
+
+Cell[CellGroupData[{
+
+Cell["find coefficients for the front surface", "Outline2",
+ CellChangeTimes->{{3.804545090985065*^9, 3.804545132920321*^9}, 
+   3.804545184311186*^9},ExpressionUUID->"439e9ba0-46b1-433d-a853-\
+0d13ce10bd04"],
+
+Cell["power series order up to 14th", "Text",
+ CellChangeTimes->{
+  3.8045451912066717`*^9},ExpressionUUID->"f2a517cd-54fc-4ec8-830e-\
+db6d1b069d31"],
+
+Cell[BoxData[
+ RowBox[{"fit1result", "=", 
+  RowBox[{"fitAsphericalFormula", "[", 
+   RowBox[{
+    RowBox[{"frontSurfaceShapeFunction", "/.", "result"}], ",", 
+    RowBox[{"frontSurfaceCurvature", "/.", "result"}], ",", "14", ",", 
+    RowBox[{"conicSuggestion", "\[Rule]", 
+     RowBox[{"-", "1."}]}]}], "]"}]}]], "Input",
+ CellChangeTimes->{
+  3.802731612700083*^9, {3.802731665069541*^9, 3.802731680325223*^9}, {
+   3.802731730931447*^9, 3.802731761427844*^9}, {3.802731859723213*^9, 
+   3.8027318822791*^9}},
+ CellLabel->"In[31]:=",ExpressionUUID->"027f1eee-658d-4da6-938a-b6da8515e30d"],
+
+Cell[CellGroupData[{
+
+Cell["plot residuals", "Outline4",
+ CellChangeTimes->{{3.804545143082405*^9, 3.804545151258665*^9}, {
+  3.804545246254694*^9, 
+  3.80454524737962*^9}},ExpressionUUID->"0e3e61c9-c8cf-4ae9-8d41-\
+496fabcdb0fd"],
+
+Cell[BoxData[
+ RowBox[{"Plot", "[", 
+  RowBox[{
+   RowBox[{"Evaluate", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"fitAsphericalFormula", "[", "fit1result", "]"}], "[", "y", 
+      "]"}], "-", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"frontSurfaceShapeFunction", "/.", "result"}], ")"}], "[", "y",
+       "]"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"y", ",", "0", ",", 
+     RowBox[{
+      RowBox[{"interpolationDomain", "[", 
+       RowBox[{"(", 
+        RowBox[{"frontSurfaceShapeFunction", "/.", "result"}], ")"}], "]"}], 
+      "[", 
+      RowBox[{"[", 
+       RowBox[{"-", "1"}], "]"}], "]"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.802731767445895*^9, 3.802731853206667*^9}, {
+  3.802731886047453*^9, 3.8027318872499647`*^9}},
+ CellLabel->"In[32]:=",ExpressionUUID->"346ad5e2-6f44-41bf-8d20-2952935108ad"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["attach result as a attribute", "Outline4",
+ CellChangeTimes->{{3.8045452623801413`*^9, 
+  3.804545293212606*^9}},ExpressionUUID->"0b53ca57-3dce-4654-bf58-\
+c6a051ee9fc0"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"attachAsphericalFormulaToSurface", "[", 
+   RowBox[{"op", ",", "1", ",", "fit1result"}], "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.802732083864037*^9, 3.802732104305263*^9}},
+ CellLabel->"In[33]:=",ExpressionUUID->"69c64173-aea7-44f0-b407-f0348a7bf8ac"],
+
+Cell["\<\
+The line above have a side effect for Zemax file generator (called in the \
+next section) that can find aspherical coefficients with other parameters.\
+\>", "Text",
+ CellChangeTimes->{{3.810679309436569*^9, 3.810679323607868*^9}, {
+  3.8106793752922773`*^9, 
+  3.810679504973528*^9}},ExpressionUUID->"e74cea6c-e80e-449c-ba1f-\
+ceb70794fe23"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["find coefficients for the back surface", "Outline2",
+ CellChangeTimes->{{3.804545090985065*^9, 3.804545132920321*^9}, 
+   3.804545184311186*^9, {3.804549606472417*^9, 
+   3.804549606933601*^9}},ExpressionUUID->"2bad81c9-5802-478d-b1d8-\
+ea7384a01cc3"],
+
+Cell[BoxData[
+ RowBox[{"fit2result", "=", 
+  RowBox[{"fitAsphericalFormula", "[", 
+   RowBox[{
+    RowBox[{"backSurfaceShapeFunction", "/.", "result"}], ",", 
+    RowBox[{"backSurfaceCurvature", "/.", "result"}], ",", "12"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.802731894550857*^9, 3.802731935446147*^9}},
+ CellLabel->"In[34]:=",ExpressionUUID->"cc35ddfa-e4e3-4229-a7fe-dc4d59cd0802"],
+
+Cell[BoxData[
+ RowBox[{"Plot", "[", 
+  RowBox[{
+   RowBox[{"Evaluate", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"fitAsphericalFormula", "[", "fit2result", "]"}], "[", "y", 
+      "]"}], "-", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"backSurfaceShapeFunction", "/.", "result"}], ")"}], "[", "y", 
+      "]"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"y", ",", "0", ",", 
+     RowBox[{
+      RowBox[{"interpolationDomain", "[", 
+       RowBox[{"(", 
+        RowBox[{"backSurfaceShapeFunction", "/.", "result"}], ")"}], "]"}], 
+      "[", 
+      RowBox[{"[", 
+       RowBox[{"-", "1"}], "]"}], "]"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.802731921764933*^9, 3.802731931361342*^9}},
+ CellLabel->"In[35]:=",ExpressionUUID->"feedc67f-7de2-44d2-8db9-9454944ad7af"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"attachAsphericalFormulaToSurface", "[", 
+   RowBox[{"op", ",", "3", ",", "fit2result"}], "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.80273211477947*^9, 3.802732116095841*^9}, 
+   3.802732342439581*^9},
+ CellLabel->"In[36]:=",ExpressionUUID->"5d2c617d-c13c-4f63-ab84-4ec46097b2d1"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["create strings with a readable format of Zemax", "Outline1",
+ CellChangeTimes->{{3.80454531820289*^9, 
+  3.8045453589692593`*^9}},ExpressionUUID->"c0779ab5-c044-4a10-8485-\
+d4273c46a28a"],
+
+Cell[BoxData[
+ RowBox[{"zmxStringFromSolvedBiasphericAplanat", "[", 
+  RowBox[{"op", ",", "result"}], "]"}]], "Input",
+ CellChangeTimes->{{3.802732124274851*^9, 3.802732134522723*^9}},
+ CellLabel->"In[37]:=",ExpressionUUID->"f791a04f-d58e-4371-afd4-d490f7514fec"],
+
+Cell["\<\
+You can copy the text and paste to .zmx file to replace the original lines in \
+the zmx file. The author could not build a Mathematica code to create zmx \
+file directly. Is there anyone who know how to create a new zmx file?\
+\>", "Text",
+ CellChangeTimes->{{3.8045496263742228`*^9, 3.8045496580641747`*^9}, {
+  3.804549688217709*^9, 3.804549888175685*^9}, {3.804549919913568*^9, 
+  3.804549970549849*^9}},ExpressionUUID->"4c97894a-1537-4663-9f40-\
+c5e3b50a950b"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["infinite with cover glass", "Chapter",
+ CellChangeTimes->{{3.802726488369731*^9, 3.802726493043899*^9}, {
+  3.802726687845092*^9, 
+  3.802726690939398*^9}},ExpressionUUID->"db258d29-88f9-44f1-ad0a-\
+1cbbc55ea4e4"],
+
+Cell[CellGroupData[{
+
+Cell["same manner as former example without cover glass", "Outline2",
+ CellChangeTimes->{{3.804545447835475*^9, 
+  3.80454550225012*^9}},ExpressionUUID->"fa9c35f0-7a87-42a0-95b8-\
+26df61275c24"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"parms", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"designWavelength", "\[Rule]", "0.00064"}], ",", 
+     RowBox[{"numericalApertureTarget", "\[Rule]", "0.6"}], ",", 
+     RowBox[{"lensMediumSymbol", "\[Rule]", "bk7"}], ",", 
+     RowBox[{"lensMediumThickness", "\[Rule]", "2."}], ",", 
+     RowBox[{"mechanicalImageDistance", "\[Rule]", "2.0"}], ",", 
+     RowBox[{"focalLength", "\[Rule]", "3."}], ",", 
+     RowBox[{"coverGlassThickness", "\[Rule]", "0.6"}], ",", 
+     RowBox[{"coverGlassMediumSymbol", "\[Rule]", "bk7"}]}], "}"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.802662809297719*^9, 3.8026628237883787`*^9}, {
+   3.802662938653576*^9, 3.8026630029373913`*^9}, {3.802663048826034*^9, 
+   3.8026631065942993`*^9}, {3.802726531896865*^9, 3.802726571644683*^9}, {
+   3.802726696352441*^9, 3.8027267281095943`*^9}, 3.803082448541134*^9, {
+   3.810680165221155*^9, 3.810680176505703*^9}},
+ CellLabel->"In[64]:=",ExpressionUUID->"eae835b5-7b16-4fa5-9a85-dfe1a4d79d96"],
+
+Cell["\<\
+The parameters are almost the same with the first example except cover glass \
+specifications, i.e., coverGlassThickness and coverGlassMediumSymbol.\
+\>", "Text",
+ CellChangeTimes->{{3.810679536117728*^9, 
+  3.810679626509782*^9}},ExpressionUUID->"d7a91639-263c-4b02-bc8d-\
+988b0e31cc1f"],
+
+Cell[BoxData[
+ RowBox[{"bp", "=", 
+  RowBox[{"setupBiasphericAplanatParameters", "[", "parms", "]"}]}]], "Input",\
+
+ CellChangeTimes->{{3.8024028961038303`*^9, 3.802402971693659*^9}, {
+   3.8024030312855597`*^9, 3.802403048666213*^9}, {3.802403110363926*^9, 
+   3.802403119948415*^9}, {3.802465506409964*^9, 3.802465540148797*^9}, {
+   3.802466298570651*^9, 3.802466302538443*^9}, {3.8024663438519173`*^9, 
+   3.802466345189536*^9}, {3.802469005541379*^9, 3.802469007754079*^9}, 
+   3.8024690440383463`*^9, {3.8024690791970377`*^9, 3.802469082704455*^9}, 
+   3.802469116172703*^9, {3.802469193574894*^9, 3.802469217414486*^9}, {
+   3.80247258188396*^9, 3.802472601480641*^9}, {3.8024726504627666`*^9, 
+   3.8024726521261873`*^9}, {3.8024933566973667`*^9, 3.802493370432547*^9}, 
+   3.802562666872698*^9, 3.803174285688424*^9, {3.810679661004318*^9, 
+   3.8106796634996023`*^9}},
+ CellLabel->"In[65]:=",ExpressionUUID->"c2918e00-df77-4ce0-b786-b9255acde0fc"],
+
+Cell[BoxData[
+ RowBox[{"result", "=", 
+  RowBox[{"biasphericAplanatSolve", "[", "bp", "]"}]}]], "Input",
+ CellChangeTimes->{{3.8024028961038303`*^9, 3.802402971693659*^9}, {
+   3.8024030312855597`*^9, 3.802403048666213*^9}, {3.802403110363926*^9, 
+   3.802403119948415*^9}, {3.802465506409964*^9, 3.802465540148797*^9}, {
+   3.802466298570651*^9, 3.802466302538443*^9}, {3.8024663438519173`*^9, 
+   3.802466345189536*^9}, {3.802469005541379*^9, 3.802469007754079*^9}, 
+   3.8024690440383463`*^9, {3.8024690791970377`*^9, 3.802469082704455*^9}, 
+   3.802469116172703*^9, {3.802469193574894*^9, 3.802469217414486*^9}, {
+   3.80247258188396*^9, 3.802472601480641*^9}, {3.8024726504627666`*^9, 
+   3.8024726521261873`*^9}, {3.8024933566973667`*^9, 3.802493370432547*^9}, 
+   3.802562666872698*^9, 3.803174285688424*^9, {3.810679661004318*^9, 
+   3.8106796634996023`*^9}},
+ CellLabel->"In[66]:=",ExpressionUUID->"aa0881eb-5a85-4b68-bf20-aa8f4733be69"],
+
+Cell["\<\
+In this example, you may meet an error message from NDSolve, it means the \
+solver can not find the full N.A. solution, i.e., 
+numericalAperture < numericalApertureTarget.
+It doesn\[CloseCurlyQuote]t mean that the solver ability is insufficient but \
+there is no mathematical solution for the given condition.\
+\>", "Text",
+ CellChangeTimes->{{3.8106802276516123`*^9, 3.810680416887856*^9}, {
+  3.810680447139475*^9, 3.810680454081946*^9}, {3.8106804883594313`*^9, 
+  3.810680513448255*^9}, {3.810680588633156*^9, 3.810680617499752*^9}, {
+  3.810680697704392*^9, 3.81068072001241*^9}, {3.810680860200118*^9, 
+  3.810680933100531*^9}, {3.810681331064516*^9, 
+  3.810681455963029*^9}},ExpressionUUID->"4b131a35-3bad-490d-b83f-\
+b4bf7b8dd69e"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"setOpticsFor2DRayTrace", "[", 
+   RowBox[{"op", ",", "result"}], "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"rs", "=", 
+   RowBox[{"Map", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"traceRay", "[", "op", "]"}], "[", 
+       RowBox[{"#", ",", 
+        RowBox[{"designWavelength", "/.", "result"}]}], "]"}], "&"}], ",", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"raySet", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"h", ",", 
+           RowBox[{"-", "0.3"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "1"}], "}"}]}], "]"}], ",", 
+       RowBox[{"Evaluate", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"h", ",", 
+           RowBox[{
+            RowBox[{"-", "numericalAperture"}], "*", "focalLength"}], ",", 
+           RowBox[{"numericalAperture", "*", "focalLength"}], ",", 
+           RowBox[{"numericalAperture", "*", 
+            RowBox[{"focalLength", "/", "128"}]}]}], "}"}], "/.", "result"}], 
+        "]"}]}], "]"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{"Show", "[", 
+  RowBox[{
+   RowBox[{"rayCongruenceGraphics", "[", 
+    RowBox[{"rs", ",", 
+     RowBox[{"removeLast", "\[Rule]", "True"}], ",", 
+     RowBox[{"rayCount", "\[Rule]", "20"}]}], "]"}], ",", 
+   RowBox[{"opticsGraphics", "[", 
+    RowBox[{"op", ",", 
+     RowBox[{"hideUselessSurface", "\[Rule]", "True"}]}], "]"}], ",", 
+   RowBox[{"Axes", "\[Rule]", "True"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "Medium"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.802561036890874*^9, 3.802561046338497*^9}, 
+   3.802561557729261*^9, 3.8025616835473013`*^9, 3.802573430110076*^9, {
+   3.802649209827622*^9, 3.802649222956531*^9}, {3.8026500110689297`*^9, 
+   3.802650012540464*^9}, {3.802650074733077*^9, 3.802650078296258*^9}, 
+   3.8027343519025993`*^9, 3.803174290505642*^9, {3.808442615877727*^9, 
+   3.808442620017084*^9}},
+ CellLabel->"In[67]:=",ExpressionUUID->"9f3ee6c3-7af6-45ce-aea4-0e18ce893325"],
+
+Cell[BoxData[
+ RowBox[{"With", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"o", "=", 
+     RowBox[{
+      RowBox[{"lensMediumThickness", "+", "mechanicalImageDistance"}], "/.", 
+      "result"}]}], "}"}], ",", 
+   RowBox[{"ListLinePlot", "[", 
+    RowBox[{
+     RowBox[{"Map", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"#", "-", 
+          RowBox[{"{", 
+           RowBox[{"o", ",", "0"}], "}"}]}], ")"}], "&"}], ",", 
+       RowBox[{"longitudinalSphericalAberration", "[", 
+        RowBox[{"rs", ",", "op"}], "]"}]}], "]"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", "Automatic"}]}], "]"}]}], "]"}]], "Input",\
+
+ CellChangeTimes->{{3.802661477613614*^9, 3.802661481944735*^9}, {
+  3.802661581700254*^9, 3.802661588956521*^9}, {3.8026616380631227`*^9, 
+  3.8026616413023033`*^9}, {3.802661675618143*^9, 3.802661730485537*^9}, {
+  3.8026631693166037`*^9, 3.802663187101768*^9}, {3.80266431749046*^9, 
+  3.8026643394363613`*^9}, {3.803005027694851*^9, 3.803005033656452*^9}},
+ CellLabel->"In[70]:=",ExpressionUUID->"195d8690-7c08-42c5-8b8b-cb2b44651e1b"],
+
+Cell[BoxData[
+ RowBox[{"With", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"f", "=", 
+     RowBox[{"focalLength", "/.", "result"}]}], "}"}], ",", 
+   RowBox[{"ListLinePlot", "[", 
+    RowBox[{
+     RowBox[{"Select", "[", 
+      RowBox[{
+       RowBox[{"Map", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"oscValueReversed", "[", 
+           RowBox[{"#", ",", "f"}], "]"}], "&"}], ",", "rs"}], "]"}], ",", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"#", "[", 
+          RowBox[{"[", 
+           RowBox[{"-", "1"}], "]"}], "]"}], "\[GreaterEqual]", "0"}], 
+        "&"}]}], "]"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", "Automatic"}]}], "]"}]}], "]"}]], "Input",\
+
+ CellChangeTimes->{{3.802663720553502*^9, 3.802663831985589*^9}, {
+  3.802663917849958*^9, 3.802663991410904*^9}, {3.802664034006493*^9, 
+  3.802664048890761*^9}, {3.8026643620489264`*^9, 3.802664365062904*^9}, {
+  3.802664440544999*^9, 3.802664440676655*^9}, {3.802726592918989*^9, 
+  3.802726622358799*^9}, {3.803005037538701*^9, 3.8030050431628523`*^9}},
+ CellLabel->"In[71]:=",ExpressionUUID->"a0f88044-117e-4d24-b744-863906bbe220"],
+
+Cell[BoxData[
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{
+   RowBox[{"opticalPathDifference", "[", 
+    RowBox[{"rs", ",", "op"}], "]"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.802661856643248*^9, 3.802661862380897*^9}, {
+  3.802661965141198*^9, 3.8026619701804333`*^9}, {3.8026631478395433`*^9, 
+  3.802663150257286*^9}},
+ CellLabel->"In[72]:=",ExpressionUUID->"9dce49e7-83f7-4fc8-ad10-f23898e81ce4"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["To find Full N.A.", "Outline2",
+ CellChangeTimes->{{3.810681510223784*^9, 
+  3.810681522181631*^9}},ExpressionUUID->"4d79db26-ccb2-471a-be69-\
+e7e0a1be8294"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"decoptimicg", "[", "mid_", "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"parms", ",", "bp", ",", "result", ",", "op", ",", "rs"}], "}"}],
+     ",", 
+    RowBox[{
+     RowBox[{"parms", "=", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"designWavelength", "\[Rule]", "0.00064"}], ",", 
+        RowBox[{"numericalApertureTarget", "\[Rule]", "0.6"}], ",", 
+        RowBox[{"lensMediumSymbol", "\[Rule]", "bk7"}], ",", 
+        RowBox[{"lensMediumThickness", "\[Rule]", "2."}], ",", 
+        RowBox[{"mechanicalImageDistance", "\[Rule]", "mid"}], ",", 
+        RowBox[{"focalLength", "\[Rule]", "3."}], ",", 
+        RowBox[{"coverGlassThickness", "\[Rule]", "0.6"}], ",", 
+        RowBox[{"coverGlassMediumSymbol", "\[Rule]", "bk7"}]}], "}"}]}], ";", 
+     "\n", 
+     RowBox[{"bp", "=", 
+      RowBox[{"setupBiasphericAplanatParameters", "[", "parms", "]"}]}], ";", 
+     "\n", 
+     RowBox[{"result", "=", 
+      RowBox[{"biasphericAplanatSolve", "[", "bp", "]"}]}], ";", "\n", 
+     RowBox[{"setOpticsFor2DRayTrace", "[", 
+      RowBox[{"op", ",", "result", ",", 
+       RowBox[{"decenterBetweenAspherics", "\[Rule]", "0.005"}]}], "]"}], ";",
+      "\n", 
+     RowBox[{"rs", "=", 
+      RowBox[{"Map", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"traceRay", "[", "op", "]"}], "[", 
+          RowBox[{"#", ",", 
+           RowBox[{"designWavelength", "/.", "result"}]}], "]"}], "&"}], ",", 
+        
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"raySet", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"h", ",", 
+              RowBox[{"-", "0.3"}]}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"0", ",", "1"}], "}"}]}], "]"}], ",", 
+          RowBox[{"Evaluate", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"h", ",", 
+              RowBox[{
+               RowBox[{"-", "numericalAperture"}], "*", "focalLength"}], ",", 
+              
+              RowBox[{"numericalAperture", "*", "focalLength"}], ",", 
+              RowBox[{"numericalAperture", "*", 
+               RowBox[{"focalLength", "/", "128"}]}]}], "}"}], "/.", 
+            "result"}], "]"}]}], "]"}]}], "]"}]}], ";", "\n", 
+     RowBox[{
+      RowBox[{"RootMeanSquare", "[", 
+       RowBox[{"Map", "[", 
+        RowBox[{"Last", ",", 
+         RowBox[{"opticalPathDifference", "[", 
+          RowBox[{"rs", ",", "op"}], "]"}]}], "]"}], "]"}], "/", 
+      RowBox[{"(", 
+       RowBox[{"designWavelength", "/.", "result"}], ")"}]}]}]}], 
+   "\[IndentingNewLine]", "]"}]}]], "Input",
+ CellChangeTimes->{{3.802662809297719*^9, 3.8026628237883787`*^9}, {
+  3.802662938653576*^9, 3.8026630029373913`*^9}, {3.802663048826034*^9, 
+  3.8026631065942993`*^9}, {3.802726531896865*^9, 3.802726571644683*^9}, {
+  3.802730619683182*^9, 3.802730731080948*^9}, {3.802731000083893*^9, 
+  3.802731016373929*^9}, {3.8030824485472727`*^9, 3.8030824636392517`*^9}},
+ CellLabel->"In[73]:=",ExpressionUUID->"f7cff8ad-9151-4403-af09-39ec791f6717"],
+
+Cell[BoxData[
+ RowBox[{"decoptimicg", "[", "2.1", "]"}]], "Input",
+ CellChangeTimes->{{3.8027310215859127`*^9, 3.8027310607327023`*^9}},
+ CellLabel->"In[74]:=",ExpressionUUID->"943e1408-eaf4-476b-b737-12d1dcf7b283"],
+
+Cell[BoxData[
+ RowBox[{"goldenSectionSearch", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"decoptimicg", "[", "#", "]"}], "&"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2.05", ",", "2.15"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.8027310582692347`*^9, 3.80273107342387*^9}},
+ CellLabel->"In[75]:=",ExpressionUUID->"9995b6d2-72c8-4352-b442-14959bbc473b"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"parms", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"designWavelength", "\[Rule]", "0.00064"}], ",", 
+     RowBox[{"numericalApertureTarget", "\[Rule]", "0.6"}], ",", 
+     RowBox[{"lensMediumSymbol", "\[Rule]", "bk7"}], ",", 
+     RowBox[{"lensMediumThickness", "\[Rule]", "2."}], ",", 
+     RowBox[{"mechanicalImageDistance", "\[Rule]", 
+      RowBox[{"%", "[", 
+       RowBox[{"[", "1", "]"}], "]"}]}], ",", 
+     RowBox[{"focalLength", "\[Rule]", "3."}], ",", 
+     RowBox[{"coverGlassThickness", "\[Rule]", "0.6"}], ",", 
+     RowBox[{"coverGlassMediumSymbol", "\[Rule]", "bk7"}]}], "}"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"bp", "=", 
+   RowBox[{"setupBiasphericAplanatParameters", "[", "parms", "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"result", "=", 
+   RowBox[{"biasphericAplanatSolve", "[", "bp", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"setOpticsFor2DRayTrace", "[", 
+   RowBox[{"op", ",", "result", ",", 
+    RowBox[{"decenterBetweenAspherics", "\[Rule]", "0.005"}]}], "]"}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"rs", "=", 
+   RowBox[{"Map", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"traceRay", "[", "op", "]"}], "[", 
+       RowBox[{"#", ",", 
+        RowBox[{"designWavelength", "/.", "result"}]}], "]"}], "&"}], ",", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"raySet", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"h", ",", 
+           RowBox[{"-", "0.3"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "1"}], "}"}]}], "]"}], ",", 
+       RowBox[{"Evaluate", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"h", ",", 
+           RowBox[{
+            RowBox[{"-", "numericalAperture"}], "*", "focalLength"}], ",", 
+           RowBox[{"numericalAperture", "*", "focalLength"}], ",", 
+           RowBox[{"numericalAperture", "*", 
+            RowBox[{"focalLength", "/", "128"}]}]}], "}"}], "/.", "result"}], 
+        "]"}]}], "]"}]}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.80273111245028*^9, 3.802731115994361*^9}, {
+  3.80308244855059*^9, 3.803082463641412*^9}},
+ CellLabel->"In[76]:=",ExpressionUUID->"12bcc8d3-8d9e-48a5-95de-5174a132a4ce"],
+
+Cell[BoxData[
+ RowBox[{"Show", "[", 
+  RowBox[{
+   RowBox[{"rayCongruenceGraphics", "[", 
+    RowBox[{"rs", ",", 
+     RowBox[{"removeLast", "\[Rule]", "True"}], ",", 
+     RowBox[{"rayCount", "\[Rule]", "20"}]}], "]"}], ",", 
+   RowBox[{"opticsGraphics", "[", 
+    RowBox[{"op", ",", 
+     RowBox[{"hideUselessSurface", "\[Rule]", "True"}]}], "]"}], ",", 
+   RowBox[{"Axes", "\[Rule]", "True"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "Medium"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.808442623109805*^9, 3.808442627036332*^9}},
+ CellLabel->"In[81]:=",ExpressionUUID->"cd46a799-0f25-4b96-bc56-658b68b73225"],
+
+Cell["\<\
+Thus, you can get a full N.A. solution with maximum decenter tolerance.\
+\>", "Text",
+ CellChangeTimes->{{3.810681164935993*^9, 
+  3.8106812280009117`*^9}},ExpressionUUID->"2fcb12a2-456e-4383-af4b-\
+e1469ab47ee8"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["finite conjugate example", "Chapter",
+ CellChangeTimes->{{3.802726488369731*^9, 3.802726493043899*^9}, {
+  3.802726687845092*^9, 3.802726690939398*^9}, {3.802726751333968*^9, 
+  3.8027267520834846`*^9}, {3.8045455343488483`*^9, 
+  3.804545538161471*^9}},ExpressionUUID->"9bce1b14-22f2-40a9-833e-\
+6303c593c591"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"parms", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"designWavelength", "\[Rule]", "0.00064"}], ",", 
+     RowBox[{"numericalApertureTarget", "\[Rule]", "0.6"}], ",", 
+     RowBox[{"lensMediumSymbol", "\[Rule]", "bk7"}], ",", 
+     RowBox[{"lensMediumThickness", "\[Rule]", "2.2"}], ",", 
+     RowBox[{"mechanicalImageDistance", "\[Rule]", "2.15"}], ",", 
+     RowBox[{"lateralMagnification", "\[Rule]", 
+      RowBox[{"-", "0.2"}]}], ",", 
+     RowBox[{"mechanicalObjectImageDistance", "\[Rule]", "20"}]}], "}"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.802662809297719*^9, 3.8026628237883787`*^9}, {
+   3.802662938653576*^9, 3.8026630029373913`*^9}, {3.802663048826034*^9, 
+   3.8026631065942993`*^9}, {3.802726531896865*^9, 3.802726571644683*^9}, {
+   3.802726696352441*^9, 3.8027267281095943`*^9}, {3.802726758406798*^9, 
+   3.802726787026634*^9}, {3.802727794474533*^9, 3.8027278026739187`*^9}, {
+   3.8027313326741447`*^9, 3.802731375670575*^9}, 
+   3.8030824485531473`*^9},ExpressionUUID->"fba4120b-c8eb-461a-bc3f-\
+db0f8afe4688"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"bp", "=", 
+   RowBox[{"setupBiasphericAplanatParameters", "[", "parms", "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{"result", "=", 
+  RowBox[{"biasphericAplanatSolve", "[", "bp", "]"}]}]}], "Input",
+ CellChangeTimes->{{3.8024028961038303`*^9, 3.802402971693659*^9}, {
+   3.8024030312855597`*^9, 3.802403048666213*^9}, {3.802403110363926*^9, 
+   3.802403119948415*^9}, {3.802465506409964*^9, 3.802465540148797*^9}, {
+   3.802466298570651*^9, 3.802466302538443*^9}, {3.8024663438519173`*^9, 
+   3.802466345189536*^9}, {3.802469005541379*^9, 3.802469007754079*^9}, 
+   3.8024690440383463`*^9, {3.8024690791970377`*^9, 3.802469082704455*^9}, 
+   3.802469116172703*^9, {3.802469193574894*^9, 3.802469217414486*^9}, {
+   3.80247258188396*^9, 3.802472601480641*^9}, {3.8024726504627666`*^9, 
+   3.8024726521261873`*^9}, {3.8024933566973667`*^9, 3.802493370432547*^9}, 
+   3.802562666872698*^9, 
+   3.803174304536859*^9},ExpressionUUID->"95daaf84-3492-48b9-8ac1-\
+ec7fc3ff30b5"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"setOpticsFor2DRayTrace", "[", 
+   RowBox[{"op", ",", "result"}], "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"rs", "=", 
+   RowBox[{"With", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"os", "=", 
+        RowBox[{
+         RowBox[{"-", "mechanicalObjectDistance"}], "/.", "result"}]}], ",", 
+       RowBox[{"spn", "=", 
+        RowBox[{
+         RowBox[{"numericalAperture", "*", "lateralMagnification"}], "/.", 
+         "result"}]}]}], "}"}], ",", 
+     RowBox[{"Map", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"traceRay", "[", "op", "]"}], "[", 
+         RowBox[{"#", ",", 
+          RowBox[{"designWavelength", "/.", "result"}]}], "]"}], "&"}], ",", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"raySet", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"0", ",", "os"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"Sin", "[", "t", "]"}], ",", 
+             RowBox[{"Cos", "[", "t", "]"}]}], "}"}]}], "]"}], ",", 
+         RowBox[{"Evaluate", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"t", ",", 
+             RowBox[{"-", "spn"}], ",", "spn", ",", 
+             RowBox[{"spn", "/", "128"}]}], "}"}], "/.", "result"}], "]"}]}], 
+        "]"}]}], "]"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{"Show", "[", 
+  RowBox[{
+   RowBox[{"rayCongruenceGraphics", "[", 
+    RowBox[{"rs", ",", 
+     RowBox[{"removeLast", "\[Rule]", "True"}], ",", 
+     RowBox[{"rayCount", "\[Rule]", "16"}]}], "]"}], ",", 
+   RowBox[{"opticsGraphics", "[", 
+    RowBox[{"op", ",", 
+     RowBox[{"hideUselessSurface", "\[Rule]", "True"}]}], "]"}], ",", 
+   RowBox[{"Axes", "\[Rule]", "True"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "Large"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.802561036890874*^9, 3.802561046338497*^9}, 
+   3.802561557729261*^9, 3.8025616835473013`*^9, 3.802573430110076*^9, {
+   3.802649209827622*^9, 3.802649222956531*^9}, {3.8026500110689297`*^9, 
+   3.802650012540464*^9}, {3.802650074733077*^9, 3.802650078296258*^9}, 
+   3.802734371748211*^9, 3.803174309699346*^9, {3.80844262952314*^9, 
+   3.808442633640856*^9}},ExpressionUUID->"ffe91f0e-3de0-4381-92dd-\
+bd2b10761d41"],
+
+Cell[BoxData[
+ RowBox[{"With", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"o", "=", 
+     RowBox[{
+      RowBox[{"lensMediumThickness", "+", "mechanicalImageDistance"}], "/.", 
+      "result"}]}], "}"}], ",", 
+   RowBox[{"ListLinePlot", "[", 
+    RowBox[{
+     RowBox[{"Map", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"#", "-", 
+          RowBox[{"{", 
+           RowBox[{"o", ",", "0"}], "}"}]}], ")"}], "&"}], ",", 
+       RowBox[{"longitudinalSphericalAberration", "[", 
+        RowBox[{"rs", ",", "op"}], "]"}]}], "]"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", "Automatic"}]}], "]"}]}], "]"}]], "Input",\
+
+ CellChangeTimes->{{3.802661477613614*^9, 3.802661481944735*^9}, {
+  3.802661581700254*^9, 3.802661588956521*^9}, {3.8026616380631227`*^9, 
+  3.8026616413023033`*^9}, {3.802661675618143*^9, 3.802661730485537*^9}, {
+  3.8026631693166037`*^9, 3.802663187101768*^9}, {3.80266431749046*^9, 
+  3.8026643394363613`*^9}, {3.8030050796251783`*^9, 3.803005084732135*^9}},
+ CellLabel->
+  "In[315]:=",ExpressionUUID->"0e6c07f5-954b-46c9-847c-f57e826f0762"],
+
+Cell[BoxData[
+ RowBox[{"With", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"f", "=", 
+      RowBox[{"focalLength", "/.", "result"}]}], ",", 
+     RowBox[{"dop", "=", 
+      RowBox[{"paraxialDistanceBetweenObjectAndPrincipal", "/.", "result"}]}],
+      ",", 
+     RowBox[{"dpi", "=", 
+      RowBox[{
+      "paraxialDistanceBetweenPrincipalAndImage", "/.", "result"}]}]}], "}"}],
+    ",", 
+   RowBox[{"ListLinePlot", "[", 
+    RowBox[{
+     RowBox[{"Select", "[", 
+      RowBox[{
+       RowBox[{"offenceAgainstSineCondition", "[", 
+        RowBox[{"rs", ",", 
+         RowBox[{"{", 
+          RowBox[{"dop", ",", "dpi"}], "}"}]}], "]"}], ",", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"#", "[", 
+          RowBox[{"[", 
+           RowBox[{"-", "1"}], "]"}], "]"}], "\[GreaterEqual]", "0"}], 
+        "&"}]}], "]"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", "Automatic"}]}], "]"}]}], "]"}]], "Input",\
+
+ CellChangeTimes->{{3.802663720553502*^9, 3.802663831985589*^9}, {
+  3.802663917849958*^9, 3.802663991410904*^9}, {3.802664034006493*^9, 
+  3.802664048890761*^9}, {3.8026643620489264`*^9, 3.802664365062904*^9}, {
+  3.802664440544999*^9, 3.802664440676655*^9}, {3.802726592918989*^9, 
+  3.802726622358799*^9}, {3.80272696279873*^9, 3.802727026191906*^9}, {
+  3.803005093800681*^9, 3.80300510353006*^9}},
+ CellLabel->
+  "In[318]:=",ExpressionUUID->"8bf97d0b-85df-46bf-a3ca-c3d77ee1893b"],
+
+Cell[BoxData[
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{
+   RowBox[{"opticalPathDifference", "[", 
+    RowBox[{"rs", ",", "op"}], "]"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.802661856643248*^9, 3.802661862380897*^9}, {
+  3.802661965141198*^9, 3.8026619701804333`*^9}, {3.8026631478395433`*^9, 
+  3.802663150257286*^9}, {3.80272781843622*^9, 3.802727823778957*^9}, {
+  3.803005110269216*^9, 3.803005113588426*^9}},
+ CellLabel->
+  "In[320]:=",ExpressionUUID->"9032464a-73c9-4f88-bd60-07d4642ae88b"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["finite with cover glass in image space", "Chapter",
+ CellChangeTimes->{{3.802726488369731*^9, 3.802726493043899*^9}, {
+  3.802726687845092*^9, 3.802726690939398*^9}, {3.802726751333968*^9, 
+  3.8027267520834846`*^9}, {3.802727240303714*^9, 
+  3.802727252791106*^9}},ExpressionUUID->"bdce1f7a-aecc-4c72-ad40-\
+7a51ace37b4a"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"parms", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"designWavelength", "\[Rule]", "0.00064"}], ",", 
+     RowBox[{"numericalApertureTarget", "\[Rule]", "0.6"}], ",", 
+     RowBox[{"lensMediumSymbol", "\[Rule]", "bk7"}], ",", 
+     RowBox[{"lensMediumThickness", "\[Rule]", "3."}], ",", 
+     RowBox[{"mechanicalImageDistance", "\[Rule]", "2.0"}], ",", 
+     RowBox[{"lateralMagnification", "\[Rule]", 
+      RowBox[{"-", "0.2"}]}], ",", 
+     RowBox[{"mechanicalObjectImageDistance", "\[Rule]", "20"}], ",", 
+     RowBox[{"coverGlassMediumSymbol", "\[Rule]", "bk7"}], ",", 
+     RowBox[{"coverGlassThickness", "\[Rule]", "0.6"}]}], "}"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.802662809297719*^9, 3.8026628237883787`*^9}, {
+   3.802662938653576*^9, 3.8026630029373913`*^9}, {3.802663048826034*^9, 
+   3.8026631065942993`*^9}, {3.802726531896865*^9, 3.802726571644683*^9}, {
+   3.802726696352441*^9, 3.8027267281095943`*^9}, {3.802726758406798*^9, 
+   3.802726787026634*^9}, {3.8027272589790497`*^9, 3.802727286982294*^9}, 
+   3.803082448558154*^9},ExpressionUUID->"0bb76d81-3969-4f6d-bdf5-\
+ab3f41748652"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"bp", "=", 
+   RowBox[{"setupBiasphericAplanatParameters", "[", "parms", "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.8024028961038303`*^9, 3.802402971693659*^9}, {
+   3.8024030312855597`*^9, 3.802403048666213*^9}, {3.802403110363926*^9, 
+   3.802403119948415*^9}, {3.802465506409964*^9, 3.802465540148797*^9}, {
+   3.802466298570651*^9, 3.802466302538443*^9}, {3.8024663438519173`*^9, 
+   3.802466345189536*^9}, {3.802469005541379*^9, 3.802469007754079*^9}, 
+   3.8024690440383463`*^9, {3.8024690791970377`*^9, 3.802469082704455*^9}, 
+   3.802469116172703*^9, {3.802469193574894*^9, 3.802469217414486*^9}, {
+   3.80247258188396*^9, 3.802472601480641*^9}, {3.8024726504627666`*^9, 
+   3.8024726521261873`*^9}, {3.8024933566973667`*^9, 3.802493370432547*^9}, 
+   3.802562666872698*^9},
+ CellLabel->
+  "In[324]:=",ExpressionUUID->"70ab619e-64a9-4baa-b12a-ced03aac69df"],
+
+Cell[BoxData[
+ RowBox[{"result", "=", 
+  RowBox[{"biasphericAplanatSolve", "[", "bp", "]"}]}]], "Input",
+ CellChangeTimes->{{3.8024749562335863`*^9, 3.802474960303338*^9}, {
+   3.802474993030712*^9, 3.802474993929435*^9}, {3.802475389959963*^9, 
+   3.802475397844284*^9}, {3.8024933743601637`*^9, 3.80249337451613*^9}, {
+   3.8024947693573847`*^9, 3.8024947699633617`*^9}, {3.802552464987968*^9, 
+   3.802552472195608*^9}, {3.8025525088174963`*^9, 3.802552508881857*^9}, {
+   3.802552550455061*^9, 3.802552566900506*^9}, {3.802552615502922*^9, 
+   3.8025526462031593`*^9}, {3.802561550687337*^9, 3.80256155301455*^9}, 
+   3.802561631604712*^9, {3.802561779984407*^9, 3.80256179723851*^9}, 
+   3.802562648368477*^9, {3.802568391248456*^9, 3.8025683957930403`*^9}, {
+   3.802568429196652*^9, 3.802568465577532*^9}, {3.802568526556056*^9, 
+   3.802568539233897*^9}, {3.8025685756736526`*^9, 3.8025685926369743`*^9}, 
+   3.8027265044257603`*^9},
+ CellLabel->
+  "In[325]:=",ExpressionUUID->"8b22dec4-5cfe-427c-a22f-2c65ef051f89"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"setOpticsFor2DRayTrace", "[", 
+   RowBox[{"op", ",", "result"}], "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.802561036890874*^9, 3.802561046338497*^9}, 
+   3.802561557729261*^9, 3.8025616835473013`*^9, 3.802573430110076*^9, {
+   3.802649209827622*^9, 3.802649222956531*^9}, {3.8026500110689297`*^9, 
+   3.802650012540464*^9}, {3.802650074733077*^9, 3.802650078296258*^9}, 
+   3.802734389456202*^9},
+ CellLabel->
+  "In[326]:=",ExpressionUUID->"8a9620ab-67d9-4a1e-856b-33984414b3c5"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"rs", "=", 
+   RowBox[{"With", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"os", "=", 
+        RowBox[{
+         RowBox[{"-", "mechanicalObjectDistance"}], "/.", "result"}]}], ",", 
+       RowBox[{"spn", "=", 
+        RowBox[{
+         RowBox[{"numericalAperture", "*", "lateralMagnification"}], "/.", 
+         "result"}]}]}], "}"}], ",", 
+     RowBox[{"Map", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"traceRay", "[", "op", "]"}], "[", 
+         RowBox[{"#", ",", 
+          RowBox[{"designWavelength", "/.", "result"}]}], "]"}], "&"}], ",", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"raySet", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"0", ",", "os"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"Sin", "[", "t", "]"}], ",", 
+             RowBox[{"Cos", "[", "t", "]"}]}], "}"}]}], "]"}], ",", 
+         RowBox[{"Evaluate", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"t", ",", 
+             RowBox[{"-", "spn"}], ",", "spn", ",", 
+             RowBox[{"spn", "/", "128"}]}], "}"}], "/.", "result"}], "]"}]}], 
+        "]"}]}], "]"}]}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.8025613511725063`*^9, 3.802561376767507*^9}, {
+   3.8025615006244287`*^9, 3.802561502568904*^9}, {3.802561561238893*^9, 
+   3.802561562621828*^9}, {3.80257353427649*^9, 3.802573592383542*^9}, {
+   3.802573635616823*^9, 3.802573678410727*^9}, {3.802642753509259*^9, 
+   3.802642769122691*^9}, {3.8026441571651506`*^9, 3.802644188222295*^9}, {
+   3.8026442727818832`*^9, 3.802644351642558*^9}, {3.802647494210556*^9, 
+   3.802647512556836*^9}, {3.80266211436497*^9, 3.802662115218219*^9}, {
+   3.802662897150975*^9, 3.802662920291087*^9}, {3.8027268123387957`*^9, 
+   3.802726819380807*^9}, {3.802726849768435*^9, 3.802726950425703*^9}, 
+   3.8030824636456547`*^9},ExpressionUUID->"d6356663-bb9a-4ca7-a487-\
+58ad92cdfd04"],
+
+Cell[BoxData[
+ RowBox[{"Show", "[", 
+  RowBox[{
+   RowBox[{"rayCongruenceGraphics", "[", 
+    RowBox[{"rs", ",", 
+     RowBox[{"removeLast", "\[Rule]", "True"}], ",", 
+     RowBox[{"rayCount", "\[Rule]", "16"}]}], "]"}], ",", 
+   RowBox[{"opticsGraphics", "[", 
+    RowBox[{"op", ",", 
+     RowBox[{"hideUselessSurface", "\[Rule]", "True"}]}], "]"}], ",", 
+   RowBox[{"Axes", "\[Rule]", "True"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "Large"}]}], "]"}]], "Input",
+ CellChangeTimes->CompressedData["
+1:eJxTTMoPSmViYGAQA2IQzfOLLeV8yBtHjYRjqSBahfN6DoiWq7TOA9GfJGxr
+QbSPfz2YfqZwJuwKiB/WEwGi7Wq5Eq8C6YB8BzCdMf/GVBCtxTt5OohuOWKn
+9h1Ir/u0CUzv//TS/SeQZs9p9ADRfc/WhIFolS2/wbRAx8xMEH2v5wKYznvt
+IvgfSO/5tAJMV827oAei9VZtNgTRO/PLbEH0pNbTjiCaYaZKCIiuO70QTB9J
+2L+IIfSNo83us2DasCubjxFIe1WtA9NNDSclQfSZy9fB9AJHxRQQfcQoHEx7
+n2LnVwDS7AmSYHrx/CWrQbRq+nkw/WKaoPQKIP1SQw5MZ4b0KLInvHGM8NJU
+AtEAhLut2Q==
+  "],ExpressionUUID->"53d1d57c-a834-4890-90c0-eab4e7a821db"],
+
+Cell[BoxData[
+ RowBox[{"With", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"o", "=", 
+     RowBox[{
+      RowBox[{"lensMediumThickness", "+", "mechanicalImageDistance"}], "/.", 
+      "result"}]}], "}"}], ",", 
+   RowBox[{"ListLinePlot", "[", 
+    RowBox[{
+     RowBox[{"Map", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"#", "-", 
+          RowBox[{"{", 
+           RowBox[{"o", ",", "0"}], "}"}]}], ")"}], "&"}], ",", 
+       RowBox[{"longitudinalSphericalAberration", "[", 
+        RowBox[{"rs", ",", "op"}], "]"}]}], "]"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", "Automatic"}]}], "]"}]}], "]"}]], "Input",\
+
+ CellChangeTimes->{{3.802661477613614*^9, 3.802661481944735*^9}, {
+  3.802661581700254*^9, 3.802661588956521*^9}, {3.8026616380631227`*^9, 
+  3.8026616413023033`*^9}, {3.802661675618143*^9, 3.802661730485537*^9}, {
+  3.8026631693166037`*^9, 3.802663187101768*^9}, {3.80266431749046*^9, 
+  3.8026643394363613`*^9}, {3.8027277309437428`*^9, 3.802727737389803*^9}},
+ CellLabel->
+  "In[329]:=",ExpressionUUID->"71654aec-8111-4dd5-ba13-917f034145c7"],
+
+Cell[BoxData[
+ RowBox[{"With", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"f", "=", 
+      RowBox[{"focalLength", "/.", "result"}]}], ",", 
+     RowBox[{"dop", "=", 
+      RowBox[{"paraxialDistanceBetweenObjectAndPrincipal", "/.", "result"}]}],
+      ",", 
+     RowBox[{"dpi", "=", 
+      RowBox[{
+      "paraxialDistanceBetweenPrincipalAndImage", "/.", "result"}]}]}], "}"}],
+    ",", 
+   RowBox[{"ListLinePlot", "[", 
+    RowBox[{
+     RowBox[{"Select", "[", 
+      RowBox[{
+       RowBox[{"offenceAgainstSineCondition", "[", 
+        RowBox[{"rs", ",", 
+         RowBox[{"{", 
+          RowBox[{"dop", ",", "dpi"}], "}"}]}], "]"}], ",", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"#", "[", 
+          RowBox[{"[", 
+           RowBox[{"-", "1"}], "]"}], "]"}], "\[GreaterEqual]", "0"}], 
+        "&"}]}], "]"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", "Automatic"}]}], "]"}]}], "]"}]], "Input",\
+
+ CellChangeTimes->{{3.802663720553502*^9, 3.802663831985589*^9}, {
+  3.802663917849958*^9, 3.802663991410904*^9}, {3.802664034006493*^9, 
+  3.802664048890761*^9}, {3.8026643620489264`*^9, 3.802664365062904*^9}, {
+  3.802664440544999*^9, 3.802664440676655*^9}, {3.802726592918989*^9, 
+  3.802726622358799*^9}, {3.80272696279873*^9, 3.802727026191906*^9}, {
+  3.802727677935392*^9, 3.8027277241693497`*^9}},
+ CellLabel->
+  "In[330]:=",ExpressionUUID->"d327e188-d0e1-4971-9ef0-b22408e9bdc5"],
+
+Cell[BoxData[
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{
+   RowBox[{"opticalPathDifference", "[", 
+    RowBox[{"rs", ",", "op"}], "]"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.802661856643248*^9, 3.802661862380897*^9}, {
+  3.802661965141198*^9, 3.8026619701804333`*^9}, {3.8026631478395433`*^9, 
+  3.802663150257286*^9}},
+ CellLabel->
+  "In[331]:=",ExpressionUUID->"251197c5-e392-48a0-9f1e-304efe9d9de9"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["finite with cover glass in object space", "Chapter",
+ CellChangeTimes->{{3.802726488369731*^9, 3.802726493043899*^9}, {
+  3.802726687845092*^9, 3.802726690939398*^9}, {3.802726751333968*^9, 
+  3.8027267520834846`*^9}, {3.802727240303714*^9, 3.802727252791106*^9}, {
+  3.8027273101325293`*^9, 
+  3.8027273108753777`*^9}},ExpressionUUID->"39903c13-2ea1-489a-af04-\
+0d82bed095cf"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"parms", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"designWavelength", "\[Rule]", "0.00064"}], ",", 
+     RowBox[{"numericalApertureTarget", "\[Rule]", "0.6"}], ",", 
+     RowBox[{"lensMediumSymbol", "\[Rule]", "bk7"}], ",", 
+     RowBox[{"lensMediumThickness", "\[Rule]", "2."}], ",", 
+     RowBox[{"mechanicalImageDistance", "\[Rule]", "2.13"}], ",", 
+     RowBox[{"lateralMagnification", "\[Rule]", 
+      RowBox[{"-", "0.2"}]}], ",", 
+     RowBox[{"mechanicalObjectImageDistance", "\[Rule]", "20"}], ",", 
+     RowBox[{"objectSideCoverGlassMediumSymbol", "\[Rule]", "bk7"}], ",", 
+     RowBox[{"objectSideCoverGlassThickness", "\[Rule]", "2"}]}], "}"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.802662809297719*^9, 3.8026628237883787`*^9}, {
+   3.802662938653576*^9, 3.8026630029373913`*^9}, {3.802663048826034*^9, 
+   3.8026631065942993`*^9}, {3.802726531896865*^9, 3.802726571644683*^9}, {
+   3.802726696352441*^9, 3.8027267281095943`*^9}, {3.802726758406798*^9, 
+   3.802726787026634*^9}, {3.8027272589790497`*^9, 3.802727353740395*^9}, {
+   3.802727435843685*^9, 3.80272745540771*^9}, 3.802729324239743*^9, {
+   3.8027293543351917`*^9, 3.802729393708337*^9}, {3.8027295149439917`*^9, 
+   3.8027295307812243`*^9}, {3.803005175510376*^9, 3.803005226237052*^9}, 
+   3.8030824485633173`*^9},ExpressionUUID->"0b75500e-a981-4eba-abed-\
+e88156c25c45"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"bp", "=", 
+   RowBox[{"setupBiasphericAplanatParameters", "[", "parms", "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.8024028961038303`*^9, 3.802402971693659*^9}, {
+   3.8024030312855597`*^9, 3.802403048666213*^9}, {3.802403110363926*^9, 
+   3.802403119948415*^9}, {3.802465506409964*^9, 3.802465540148797*^9}, {
+   3.802466298570651*^9, 3.802466302538443*^9}, {3.8024663438519173`*^9, 
+   3.802466345189536*^9}, {3.802469005541379*^9, 3.802469007754079*^9}, 
+   3.8024690440383463`*^9, {3.8024690791970377`*^9, 3.802469082704455*^9}, 
+   3.802469116172703*^9, {3.802469193574894*^9, 3.802469217414486*^9}, {
+   3.80247258188396*^9, 3.802472601480641*^9}, {3.8024726504627666`*^9, 
+   3.8024726521261873`*^9}, {3.8024933566973667`*^9, 3.802493370432547*^9}, 
+   3.802562666872698*^9},
+ CellLabel->
+  "In[366]:=",ExpressionUUID->"14121a99-6171-4bb7-a7d8-387ff9eeca3b"],
+
+Cell[BoxData[
+ RowBox[{"result", "=", 
+  RowBox[{"biasphericAplanatSolve", "[", "bp", "]"}]}]], "Input",
+ CellChangeTimes->{{3.8024749562335863`*^9, 3.802474960303338*^9}, {
+   3.802474993030712*^9, 3.802474993929435*^9}, {3.802475389959963*^9, 
+   3.802475397844284*^9}, {3.8024933743601637`*^9, 3.80249337451613*^9}, {
+   3.8024947693573847`*^9, 3.8024947699633617`*^9}, {3.802552464987968*^9, 
+   3.802552472195608*^9}, {3.8025525088174963`*^9, 3.802552508881857*^9}, {
+   3.802552550455061*^9, 3.802552566900506*^9}, {3.802552615502922*^9, 
+   3.8025526462031593`*^9}, {3.802561550687337*^9, 3.80256155301455*^9}, 
+   3.802561631604712*^9, {3.802561779984407*^9, 3.80256179723851*^9}, 
+   3.802562648368477*^9, {3.802568391248456*^9, 3.8025683957930403`*^9}, {
+   3.802568429196652*^9, 3.802568465577532*^9}, {3.802568526556056*^9, 
+   3.802568539233897*^9}, {3.8025685756736526`*^9, 3.8025685926369743`*^9}, 
+   3.8027265044257603`*^9},
+ CellLabel->
+  "In[367]:=",ExpressionUUID->"b29b798d-7426-4c24-8a13-3121b4a75d88"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"setOpticsFor2DRayTrace", "[", 
+   RowBox[{"op", ",", "result"}], "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.802561036890874*^9, 3.802561046338497*^9}, 
+   3.802561557729261*^9, 3.8025616835473013`*^9, 3.802573430110076*^9, {
+   3.802649209827622*^9, 3.802649222956531*^9}, {3.8026500110689297`*^9, 
+   3.802650012540464*^9}, {3.802650074733077*^9, 3.802650078296258*^9}, 
+   3.802734403452365*^9},
+ CellLabel->
+  "In[368]:=",ExpressionUUID->"da2a7c86-8031-4e2d-8de7-4d6eb43ab3d4"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"rs", "=", 
+   RowBox[{"With", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"os", "=", 
+        RowBox[{
+         RowBox[{"-", "mechanicalObjectDistance"}], "/.", "result"}]}], ",", 
+       RowBox[{"spn", "=", 
+        RowBox[{
+         RowBox[{"numericalAperture", "*", "lateralMagnification"}], "/.", 
+         "result"}]}]}], "}"}], ",", 
+     RowBox[{"Map", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"traceRay", "[", "op", "]"}], "[", 
+         RowBox[{"#", ",", 
+          RowBox[{"designWavelength", "/.", "result"}]}], "]"}], "&"}], ",", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"raySet", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"0", ",", "os"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"Sin", "[", "t", "]"}], ",", 
+             RowBox[{"Cos", "[", "t", "]"}]}], "}"}]}], "]"}], ",", 
+         RowBox[{"Evaluate", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"t", ",", 
+             RowBox[{"-", "spn"}], ",", "spn", ",", 
+             RowBox[{"spn", "/", "128"}]}], "}"}], "/.", "result"}], "]"}]}], 
+        "]"}]}], "]"}]}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.8025613511725063`*^9, 3.802561376767507*^9}, {
+   3.8025615006244287`*^9, 3.802561502568904*^9}, {3.802561561238893*^9, 
+   3.802561562621828*^9}, {3.80257353427649*^9, 3.802573592383542*^9}, {
+   3.802573635616823*^9, 3.802573678410727*^9}, {3.802642753509259*^9, 
+   3.802642769122691*^9}, {3.8026441571651506`*^9, 3.802644188222295*^9}, {
+   3.8026442727818832`*^9, 3.802644351642558*^9}, {3.802647494210556*^9, 
+   3.802647512556836*^9}, {3.80266211436497*^9, 3.802662115218219*^9}, {
+   3.802662897150975*^9, 3.802662920291087*^9}, {3.8027268123387957`*^9, 
+   3.802726819380807*^9}, {3.802726849768435*^9, 3.802726950425703*^9}, 
+   3.803082463647951*^9},ExpressionUUID->"183d119f-2ac9-40d0-a817-\
+e77095fe164a"],
+
+Cell[BoxData[
+ RowBox[{"Show", "[", 
+  RowBox[{
+   RowBox[{"rayCongruenceGraphics", "[", 
+    RowBox[{"rs", ",", 
+     RowBox[{"removeLast", "\[Rule]", "True"}], ",", 
+     RowBox[{"rayCount", "\[Rule]", "16"}]}], "]"}], ",", 
+   RowBox[{"opticsGraphics", "[", 
+    RowBox[{"op", ",", 
+     RowBox[{"hideUselessSurface", "\[Rule]", "True"}]}], "]"}], ",", 
+   RowBox[{"Axes", "\[Rule]", "True"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "Large"}]}], "]"}]], "Input",
+ CellChangeTimes->CompressedData["
+1:eJxTTMoPSmViYGAQA2IQzfOLLeV8yBtHjYRjqSBahfN6DoiWq7TOA9GfJGxr
+QbSPfz2YfqZwJuwKiB/WEwGi7Wq5Eq8C6YB8BzCdMf/GVBCtxTt5OohuOWKn
+9h1Ir/u0CUzv//TS/SeQZs9p9ADRfc/WhIFolS2/wbRAx8xMEH2v5wKYznvt
+IvgfSO/5tAJMV827oAei9VZtNgTRO/PLbEH0pNbTjiCaYaZKCIiuO70QTB9J
+2L+IIfSNo83us2DasCubjxFIe1WtA9NNDSclQfSZy9fB9AJHxRQQfcQoHEx7
+n2LnVwDS7AmSYPqHzIZsRSDNlX0cTIv8LFBbAaQ/PqkF0wy2M5XYE4DuTJVU
+BtEAeKmt/Q==
+  "],ExpressionUUID->"4bd8ba3e-e1a8-4ae3-8c6b-dfef72756669"],
+
+Cell[BoxData[
+ RowBox[{"With", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"o", "=", 
+     RowBox[{
+      RowBox[{"lensMediumThickness", "+", "mechanicalImageDistance"}], "/.", 
+      "result"}]}], "}"}], ",", 
+   RowBox[{"ListLinePlot", "[", 
+    RowBox[{
+     RowBox[{"Map", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"#", "-", 
+          RowBox[{"{", 
+           RowBox[{"o", ",", "0"}], "}"}]}], ")"}], "&"}], ",", 
+       RowBox[{"longitudinalSphericalAberration", "[", 
+        RowBox[{"rs", ",", "op"}], "]"}]}], "]"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", "Automatic"}]}], "]"}]}], "]"}]], "Input",\
+
+ CellChangeTimes->{{3.802661477613614*^9, 3.802661481944735*^9}, {
+  3.802661581700254*^9, 3.802661588956521*^9}, {3.8026616380631227`*^9, 
+  3.8026616413023033`*^9}, {3.802661675618143*^9, 3.802661730485537*^9}, {
+  3.8026631693166037`*^9, 3.802663187101768*^9}, {3.80266431749046*^9, 
+  3.8026643394363613`*^9}, {3.803005241435339*^9, 3.803005246228424*^9}},
+ CellLabel->
+  "In[372]:=",ExpressionUUID->"17919996-6bf5-4f52-bf74-6a6eba866b8f"],
+
+Cell[BoxData[
+ RowBox[{"With", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"f", "=", 
+      RowBox[{"focalLength", "/.", "result"}]}], ",", 
+     RowBox[{"dop", "=", 
+      RowBox[{"paraxialDistanceBetweenObjectAndPrincipal", "/.", "result"}]}],
+      ",", 
+     RowBox[{"dpi", "=", 
+      RowBox[{
+      "paraxialDistanceBetweenPrincipalAndImage", "/.", "result"}]}]}], "}"}],
+    ",", 
+   RowBox[{"ListLinePlot", "[", 
+    RowBox[{
+     RowBox[{"Select", "[", 
+      RowBox[{
+       RowBox[{"offenceAgainstSineCondition", "[", 
+        RowBox[{"rs", ",", 
+         RowBox[{"{", 
+          RowBox[{"dop", ",", "dpi"}], "}"}]}], "]"}], ",", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"#", "[", 
+          RowBox[{"[", 
+           RowBox[{"-", "1"}], "]"}], "]"}], "\[GreaterEqual]", "0"}], 
+        "&"}]}], "]"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", "Automatic"}]}], "]"}]}], "]"}]], "Input",\
+
+ CellChangeTimes->{{3.802663720553502*^9, 3.802663831985589*^9}, {
+  3.802663917849958*^9, 3.802663991410904*^9}, {3.802664034006493*^9, 
+  3.802664048890761*^9}, {3.8026643620489264`*^9, 3.802664365062904*^9}, {
+  3.802664440544999*^9, 3.802664440676655*^9}, {3.802726592918989*^9, 
+  3.802726622358799*^9}, {3.80272696279873*^9, 3.802727026191906*^9}, {
+  3.803005250290454*^9, 3.8030052545199003`*^9}},
+ CellLabel->
+  "In[373]:=",ExpressionUUID->"646f6bf7-464c-45cc-8188-6504b4910d85"],
+
+Cell[BoxData[
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{
+   RowBox[{"opticalPathDifference", "[", 
+    RowBox[{"rs", ",", "op"}], "]"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.802661856643248*^9, 3.802661862380897*^9}, {
+  3.802661965141198*^9, 3.8026619701804333`*^9}, {3.8026631478395433`*^9, 
+  3.802663150257286*^9}},
+ CellLabel->
+  "In[374]:=",ExpressionUUID->"86746c53-e722-4feb-8288-2acc637ae925"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["finite with cover glass in both object and image space", "Chapter",
+ CellChangeTimes->{{3.802726488369731*^9, 3.802726493043899*^9}, {
+  3.802726687845092*^9, 3.802726690939398*^9}, {3.802726751333968*^9, 
+  3.8027267520834846`*^9}, {3.802727240303714*^9, 3.802727252791106*^9}, {
+  3.8027273101325293`*^9, 3.8027273108753777`*^9}, {3.80272748426224*^9, 
+  3.802727484588374*^9}, {3.802729750757236*^9, 
+  3.802729753737528*^9}},ExpressionUUID->"3a6787cb-3499-4e7c-a078-\
+306db65f32ba"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"parms", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"designWavelength", "\[Rule]", "0.00064"}], ",", 
+     RowBox[{"numericalApertureTarget", "\[Rule]", "0.6"}], ",", 
+     RowBox[{"lensMediumSymbol", "\[Rule]", "bk7"}], ",", 
+     RowBox[{"lensMediumThickness", "\[Rule]", "2.5"}], ",", 
+     RowBox[{"mechanicalImageDistance", "\[Rule]", "2.5"}], ",", 
+     RowBox[{"lateralMagnification", "\[Rule]", 
+      RowBox[{"-", "0.2"}]}], ",", 
+     RowBox[{"mechanicalObjectImageDistance", "\[Rule]", "23"}], ",", 
+     RowBox[{"coverGlassMediumSymbol", "\[Rule]", "bk7"}], ",", 
+     RowBox[{"coverGlassThickness", "\[Rule]", "0.6"}], ",", 
+     RowBox[{"objectSideCoverGlassMediumSymbol", "\[Rule]", "bk7"}], ",", 
+     RowBox[{"objectSideCoverGlassThickness", "\[Rule]", "3"}]}], "}"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.802662809297719*^9, 3.8026628237883787`*^9}, {
+   3.802662938653576*^9, 3.8026630029373913`*^9}, {3.802663048826034*^9, 
+   3.8026631065942993`*^9}, {3.802726531896865*^9, 3.802726571644683*^9}, {
+   3.802726696352441*^9, 3.8027267281095943`*^9}, {3.802726758406798*^9, 
+   3.802726787026634*^9}, {3.8027272589790497`*^9, 3.802727353740395*^9}, {
+   3.802727435843685*^9, 3.80272745540771*^9}, {3.8027274917674932`*^9, 
+   3.802727593241953*^9}, 
+   3.8030824485683193`*^9},ExpressionUUID->"f23fdbb3-294f-4588-a667-\
+eecf45a1deea"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"bp", "=", 
+   RowBox[{"setupBiasphericAplanatParameters", "[", "parms", "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.8024028961038303`*^9, 3.802402971693659*^9}, {
+   3.8024030312855597`*^9, 3.802403048666213*^9}, {3.802403110363926*^9, 
+   3.802403119948415*^9}, {3.802465506409964*^9, 3.802465540148797*^9}, {
+   3.802466298570651*^9, 3.802466302538443*^9}, {3.8024663438519173`*^9, 
+   3.802466345189536*^9}, {3.802469005541379*^9, 3.802469007754079*^9}, 
+   3.8024690440383463`*^9, {3.8024690791970377`*^9, 3.802469082704455*^9}, 
+   3.802469116172703*^9, {3.802469193574894*^9, 3.802469217414486*^9}, {
+   3.80247258188396*^9, 3.802472601480641*^9}, {3.8024726504627666`*^9, 
+   3.8024726521261873`*^9}, {3.8024933566973667`*^9, 3.802493370432547*^9}, 
+   3.802562666872698*^9},
+ CellLabel->
+  "In[376]:=",ExpressionUUID->"86d84730-6496-479b-ad0c-aec127598c41"],
+
+Cell[BoxData[
+ RowBox[{"result", "=", 
+  RowBox[{"biasphericAplanatSolve", "[", "bp", "]"}]}]], "Input",
+ CellChangeTimes->{{3.8024749562335863`*^9, 3.802474960303338*^9}, {
+   3.802474993030712*^9, 3.802474993929435*^9}, {3.802475389959963*^9, 
+   3.802475397844284*^9}, {3.8024933743601637`*^9, 3.80249337451613*^9}, {
+   3.8024947693573847`*^9, 3.8024947699633617`*^9}, {3.802552464987968*^9, 
+   3.802552472195608*^9}, {3.8025525088174963`*^9, 3.802552508881857*^9}, {
+   3.802552550455061*^9, 3.802552566900506*^9}, {3.802552615502922*^9, 
+   3.8025526462031593`*^9}, {3.802561550687337*^9, 3.80256155301455*^9}, 
+   3.802561631604712*^9, {3.802561779984407*^9, 3.80256179723851*^9}, 
+   3.802562648368477*^9, {3.802568391248456*^9, 3.8025683957930403`*^9}, {
+   3.802568429196652*^9, 3.802568465577532*^9}, {3.802568526556056*^9, 
+   3.802568539233897*^9}, {3.8025685756736526`*^9, 3.8025685926369743`*^9}, 
+   3.8027265044257603`*^9},
+ CellLabel->
+  "In[377]:=",ExpressionUUID->"0373e45f-5bd2-463a-99f6-31b9d317f1d3"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"setOpticsFor2DRayTrace", "[", 
+   RowBox[{"op", ",", "result"}], "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.802561036890874*^9, 3.802561046338497*^9}, 
+   3.802561557729261*^9, 3.8025616835473013`*^9, 3.802573430110076*^9, {
+   3.802649209827622*^9, 3.802649222956531*^9}, {3.8026500110689297`*^9, 
+   3.802650012540464*^9}, {3.802650074733077*^9, 3.802650078296258*^9}, 
+   3.8027344151408043`*^9},
+ CellLabel->
+  "In[378]:=",ExpressionUUID->"83357db9-5abb-4b93-9bf2-0c91305d50d8"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"rs", "=", 
+   RowBox[{"With", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"os", "=", 
+        RowBox[{
+         RowBox[{"-", "mechanicalObjectDistance"}], "/.", "result"}]}], ",", 
+       RowBox[{"spn", "=", 
+        RowBox[{
+         RowBox[{"numericalAperture", "*", "lateralMagnification"}], "/.", 
+         "result"}]}]}], "}"}], ",", 
+     RowBox[{"Map", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"traceRay", "[", "op", "]"}], "[", 
+         RowBox[{"#", ",", 
+          RowBox[{"designWavelength", "/.", "result"}]}], "]"}], "&"}], ",", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"raySet", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"0", ",", "os"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"Sin", "[", "t", "]"}], ",", 
+             RowBox[{"Cos", "[", "t", "]"}]}], "}"}]}], "]"}], ",", 
+         RowBox[{"Evaluate", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"t", ",", 
+             RowBox[{"-", "spn"}], ",", "spn", ",", 
+             RowBox[{"spn", "/", "128"}]}], "}"}], "/.", "result"}], "]"}]}], 
+        "]"}]}], "]"}]}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.8025613511725063`*^9, 3.802561376767507*^9}, {
+   3.8025615006244287`*^9, 3.802561502568904*^9}, {3.802561561238893*^9, 
+   3.802561562621828*^9}, {3.80257353427649*^9, 3.802573592383542*^9}, {
+   3.802573635616823*^9, 3.802573678410727*^9}, {3.802642753509259*^9, 
+   3.802642769122691*^9}, {3.8026441571651506`*^9, 3.802644188222295*^9}, {
+   3.8026442727818832`*^9, 3.802644351642558*^9}, {3.802647494210556*^9, 
+   3.802647512556836*^9}, {3.80266211436497*^9, 3.802662115218219*^9}, {
+   3.802662897150975*^9, 3.802662920291087*^9}, {3.8027268123387957`*^9, 
+   3.802726819380807*^9}, {3.802726849768435*^9, 3.802726950425703*^9}, 
+   3.8030824636504107`*^9},ExpressionUUID->"83436180-f7e8-4a6c-b5ad-\
+128ecccc45d2"],
+
+Cell[BoxData[
+ RowBox[{"Show", "[", 
+  RowBox[{
+   RowBox[{"rayCongruenceGraphics", "[", 
+    RowBox[{"rs", ",", 
+     RowBox[{"removeLast", "\[Rule]", "True"}], ",", 
+     RowBox[{"rayCount", "\[Rule]", "20"}]}], "]"}], ",", 
+   RowBox[{"opticsGraphics", "[", 
+    RowBox[{"op", ",", 
+     RowBox[{"hideUselessSurface", "\[Rule]", "True"}]}], "]"}], ",", 
+   RowBox[{"Axes", "\[Rule]", "True"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "Large"}]}], "]"}]], "Input",
+ CellChangeTimes->CompressedData["
+1:eJxTTMoPSmViYGAQBWIQzfOLLeV8yBtHjYRjqSBahfN6DoiWq7TOA9GfJGxr
+QbSPfz2YfqZwJuwKiB/WEwGi7Wq5Eq8C6YB8BzCdMf/GVBCtxTt5OohuOWKn
+9h1Ir/u0CUzv//TS/SeQZs9p9ADRfc/WhIFolS2/wbRAx8xMEH2v5wKYznvt
+IvgfSO/5tAJMV827oAei9VZtNgTRO/PLbEH0pNbTjiCaYaZKCIiuO70QTB9J
+2L+IIfSNo83us2DasCubjxFIe1WtA9NNDSclQfSZy9fB9AJHxRQQfcQoHEx7
+n2LnVwDS7AmSYLppduQsEK204jSYbmbLU2ZPeOPocvcBmAYAtOOnHw==
+  
+  "],ExpressionUUID->"343d59a4-9b72-4551-bbb7-9f9c5623cb1a"],
+
+Cell[BoxData[
+ RowBox[{"With", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"o", "=", 
+     RowBox[{
+      RowBox[{"lensMediumThickness", "+", "mechanicalImageDistance"}], "/.", 
+      "result"}]}], "}"}], ",", 
+   RowBox[{"ListLinePlot", "[", 
+    RowBox[{
+     RowBox[{"Map", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"#", "-", 
+          RowBox[{"{", 
+           RowBox[{"o", ",", "0"}], "}"}]}], ")"}], "&"}], ",", 
+       RowBox[{"longitudinalSphericalAberration", "[", 
+        RowBox[{"rs", ",", "op"}], "]"}]}], "]"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", "Automatic"}]}], "]"}]}], "]"}]], "Input",\
+
+ CellChangeTimes->{{3.802661477613614*^9, 3.802661481944735*^9}, {
+  3.802661581700254*^9, 3.802661588956521*^9}, {3.8026616380631227`*^9, 
+  3.8026616413023033`*^9}, {3.802661675618143*^9, 3.802661730485537*^9}, {
+  3.8026631693166037`*^9, 3.802663187101768*^9}, {3.80266431749046*^9, 
+  3.8026643394363613`*^9}, {3.803005274354855*^9, 3.80300527914571*^9}},
+ CellLabel->
+  "In[382]:=",ExpressionUUID->"edf3704b-3027-4901-a427-c6de046a8471"],
+
+Cell[BoxData[
+ RowBox[{"With", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"f", "=", 
+      RowBox[{"focalLength", "/.", "result"}]}], ",", 
+     RowBox[{"dop", "=", 
+      RowBox[{"paraxialDistanceBetweenObjectAndPrincipal", "/.", "result"}]}],
+      ",", 
+     RowBox[{"dpi", "=", 
+      RowBox[{
+      "paraxialDistanceBetweenPrincipalAndImage", "/.", "result"}]}]}], "}"}],
+    ",", 
+   RowBox[{"ListLinePlot", "[", 
+    RowBox[{
+     RowBox[{"Select", "[", 
+      RowBox[{
+       RowBox[{"offenceAgainstSineCondition", "[", 
+        RowBox[{"rs", ",", 
+         RowBox[{"{", 
+          RowBox[{"dop", ",", "dpi"}], "}"}]}], "]"}], ",", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"#", "[", 
+          RowBox[{"[", 
+           RowBox[{"-", "1"}], "]"}], "]"}], "\[GreaterEqual]", "0"}], 
+        "&"}]}], "]"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", "Automatic"}]}], "]"}]}], "]"}]], "Input",\
+
+ CellChangeTimes->{{3.802663720553502*^9, 3.802663831985589*^9}, {
+  3.802663917849958*^9, 3.802663991410904*^9}, {3.802664034006493*^9, 
+  3.802664048890761*^9}, {3.8026643620489264`*^9, 3.802664365062904*^9}, {
+  3.802664440544999*^9, 3.802664440676655*^9}, {3.802726592918989*^9, 
+  3.802726622358799*^9}, {3.80272696279873*^9, 3.802727026191906*^9}, {
+  3.8030052848166647`*^9, 3.8030052895527573`*^9}},
+ CellLabel->
+  "In[383]:=",ExpressionUUID->"40570c31-f0ba-47a4-a570-c7cca96b1291"],
+
+Cell[BoxData[
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{
+   RowBox[{"opticalPathDifference", "[", 
+    RowBox[{"rs", ",", "op"}], "]"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.802661856643248*^9, 3.802661862380897*^9}, {
+  3.802661965141198*^9, 3.8026619701804333`*^9}, {3.8026631478395433`*^9, 
+  3.802663150257286*^9}},
+ CellLabel->
+  "In[384]:=",ExpressionUUID->"4c89e59b-729c-40b3-af3f-23616bceb768"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{808, 847},
+WindowMargins->{{177, Automatic}, {Automatic, 0}},
+TaggingRules->{ScrollPosition -> {0., 24.}, "NewCellStyle" -> "Text"},
+Background->RGBColor[0.923812, 0.916365, 0.929397],
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) \
+(2020\:5e746\:670822\:65e5)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> 
+     FrontEnd`FileName[{"Utility"}, "Outline.nb", CharacterEncoding -> 
+       "UTF-8"]]], 
+   Cell[
+    StyleData["Input"], Background -> GrayLevel[1]], 
+   Cell[
+    StyleData["Text"], MenuSortingValue -> 10000, Background -> 
+    RGBColor[0.7786526283665217, 0.7724269474326696, 0.7833218890669108]]}, 
+  Visible -> False, FrontEndVersion -> 
+  "12.1 for Mac OS X x86 (64-bit) (2020\:5e746\:670822\:65e5)", 
+  StyleDefinitions -> "PrivateStylesheetFormatting.nb"],
+ExpressionUUID->"e784f868-cdf4-404d-a8f7-278e19aeb652"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 208, 4, 98, "Title",ExpressionUUID->"bacbc586-8e80-4c27-b04f-73f3025e59c7"],
+Cell[791, 28, 301, 7, 83, "Author",ExpressionUUID->"eb63109c-673d-4fe5-9a0f-51cb443ae31e"],
+Cell[CellGroupData[{
+Cell[1117, 39, 214, 4, 69, "Chapter",ExpressionUUID->"3495f456-5c95-4060-a895-07f7120f6cbf"],
+Cell[CellGroupData[{
+Cell[1356, 47, 201, 3, 35, "Outline2",ExpressionUUID->"55368951-a605-4cfc-bf7c-ad5126ab8b12"],
+Cell[1560, 52, 433, 9, 74, "Text",ExpressionUUID->"250211fb-bb7e-432d-bf9a-be20f52aabae"],
+Cell[1996, 63, 492, 9, 74, "Text",ExpressionUUID->"1a994e56-2793-4340-9254-c41df0a81922"],
+Cell[2491, 74, 810, 14, 131, "Input",ExpressionUUID->"4c75c8d2-4311-4ce2-9175-9778cda3d320"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3338, 93, 187, 3, 35, "Outline2",ExpressionUUID->"ac2ed552-8144-45b6-a0fd-50e355b0a32c"],
+Cell[3528, 98, 300, 7, 51, "Text",ExpressionUUID->"8e4df313-4b24-402f-82ca-9dcba5d669fa"],
+Cell[3831, 107, 335, 8, 46, "Input",ExpressionUUID->"c7da1a22-44d5-4232-84ab-a65c242d7ac2"],
+Cell[4169, 117, 320, 5, 51, "Text",ExpressionUUID->"1c1e48e0-9255-49b6-a5d8-acb8825498e2"],
+Cell[4492, 124, 317, 6, 46, "Input",ExpressionUUID->"04098fac-7e41-45bd-8705-5b2366875032"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4846, 135, 189, 3, 35, "Outline2",ExpressionUUID->"fc377739-be28-462c-a628-a483398720f7"],
+Cell[5038, 140, 380, 5, 46, "Input",ExpressionUUID->"9e174ce8-b6f6-4251-a672-01f8c58a1b47"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5455, 150, 257, 4, 35, "Outline2",ExpressionUUID->"dcd36c51-b0e4-4174-abf8-d362e8ee2140"],
+Cell[5715, 156, 203, 3, 46, "Input",ExpressionUUID->"babd79ff-56d8-45c4-8026-33cdd9e3e741"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5967, 165, 214, 4, 69, "Chapter",ExpressionUUID->"3564decf-b85e-4da9-a80c-1e614f308499"],
+Cell[CellGroupData[{
+Cell[6206, 173, 182, 3, 38, "Outline1",ExpressionUUID->"740f11db-bca9-4e08-90c2-41aecc90beed"],
+Cell[CellGroupData[{
+Cell[6413, 180, 227, 4, 35, "Outline2",ExpressionUUID->"593326b7-a4a8-4e64-ab65-80cefa1c2665"],
+Cell[6643, 186, 837, 15, 89, "Input",ExpressionUUID->"a4ae5998-563c-4d0d-add8-19faa2f2b6b7"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7517, 206, 287, 4, 35, "Outline2",ExpressionUUID->"f652e387-30bc-4b45-89e8-04c07279cb2b"],
+Cell[7807, 212, 999, 15, 46, "Input",ExpressionUUID->"a8a4430c-bbbb-41cd-b303-05a0d5c80e70"],
+Cell[8809, 229, 788, 13, 120, "Text",ExpressionUUID->"16be4792-d2bd-4255-9cb8-e06303a0b6f3"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9634, 247, 310, 7, 55, "Outline2",ExpressionUUID->"014b6172-d837-4016-a25b-72c834ca341f"],
+Cell[9947, 256, 916, 13, 46, "Input",ExpressionUUID->"4768b5da-eed7-4323-a3f0-7560403b3d82"],
+Cell[10866, 271, 575, 11, 120, "Text",ExpressionUUID->"8973e51f-931d-47e0-a35f-509f7ad6365d"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11478, 287, 238, 4, 35, "Outline2",ExpressionUUID->"e3c00f47-ef32-463e-856a-6b517840319d"],
+Cell[11719, 293, 2002, 49, 173, "Input",ExpressionUUID->"b773d387-32bf-4f19-b4b3-baf0f5ae8fc3"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13770, 348, 159, 3, 38, "Outline1",ExpressionUUID->"024bfaf0-37a3-4a61-8590-80b12e45e7b0"],
+Cell[CellGroupData[{
+Cell[13954, 355, 298, 4, 35, "Outline2",ExpressionUUID->"aefc2bc4-1719-4872-857f-23aa4f1bb0c9"],
+Cell[14255, 361, 1484, 36, 89, "Input",ExpressionUUID->"dfb81d3c-0242-44d2-8b0e-97c212843d1b"],
+Cell[15742, 399, 597, 10, 97, "Text",ExpressionUUID->"13d05df2-30dd-434d-a48a-a8d9e0b94082"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16376, 414, 281, 4, 35, "Outline2",ExpressionUUID->"a2cb66b5-6a2f-498d-9f99-204fc6f0891f"],
+Cell[16660, 420, 1444, 37, 89, "Input",ExpressionUUID->"4392c2d5-4b6d-4811-b3c2-82f9fb33c92d"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18141, 462, 292, 3, 35, "Outline2",ExpressionUUID->"c34cfa41-7343-44ff-812c-a7688f01c595"],
+Cell[18436, 467, 771, 18, 68, "Input",ExpressionUUID->"3e5a0b37-e518-46a1-b970-36854f694837"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19256, 491, 218, 5, 38, "Outline1",ExpressionUUID->"60a160d4-36df-468a-b54d-b6aec397bd61"],
+Cell[19477, 498, 211, 3, 46, "Input",ExpressionUUID->"f1ed4057-bcdc-4c32-a630-bd03d27c9e73"],
+Cell[19691, 503, 1041, 18, 89, "Input",ExpressionUUID->"37c18e25-6a35-4ac0-a9b9-45be2c99f48d"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20769, 526, 222, 4, 38, "Outline1",ExpressionUUID->"62f30080-a3cd-4a0f-a16f-b0432b82bff6"],
+Cell[CellGroupData[{
+Cell[21016, 534, 319, 6, 35, "Outline2",ExpressionUUID->"09c78383-5b2c-4133-963e-9a11840163ad"],
+Cell[21338, 542, 2900, 70, 320, "Input",ExpressionUUID->"221c173f-660d-437f-9dd7-b1f6e484c9e0"],
+Cell[24241, 614, 303, 6, 74, "Text",ExpressionUUID->"a2511655-a5b8-46d1-b54a-82d2913aa862"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[24581, 625, 260, 4, 35, "Outline2",ExpressionUUID->"be75f146-be6d-4e24-9d8f-92e6162009a4"],
+Cell[24844, 631, 309, 5, 46, "Input",ExpressionUUID->"e4f754e8-2b07-45a2-bf97-6a454e4c93da"],
+Cell[25156, 638, 156, 3, 51, "Text",ExpressionUUID->"4c06e442-e770-4e8d-9076-7e52a61b32fc"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[25349, 646, 284, 5, 35, "Outline2",ExpressionUUID->"07b78f71-a519-4635-9410-8409914fceb7"],
+Cell[25636, 653, 382, 8, 74, "Text",ExpressionUUID->"59113a31-af24-4c42-99c3-8b8369719278"],
+Cell[26021, 663, 486, 11, 46, "Input",ExpressionUUID->"cc0f5bf8-f183-4b11-9485-6d2a7ef1b32d"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[26544, 679, 231, 4, 35, "Outline2",ExpressionUUID->"9edca2a0-1442-4d41-8c9f-bb5dba1b9c6e"],
+Cell[26778, 685, 1365, 31, 131, "Input",ExpressionUUID->"367868cb-aefe-4589-8634-26c017a7088c"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[28180, 721, 127, 0, 35, "Outline2",ExpressionUUID->"7838621d-8921-47c6-bc72-b1db8dbdfffb"],
+Cell[28310, 723, 2004, 49, 173, "Input",ExpressionUUID->"33cc7bf3-25f7-4fcb-9a13-46049f8b18e6"],
+Cell[30317, 774, 320, 7, 74, "Text",ExpressionUUID->"5be9e81a-d34e-47fe-8c9a-0860bc0b4716"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[30686, 787, 266, 6, 38, "Outline1",ExpressionUUID->"ce052702-894c-4ace-b26d-9f8a0ca976e5"],
+Cell[CellGroupData[{
+Cell[30977, 797, 208, 3, 35, "Outline2",ExpressionUUID->"439e9ba0-46b1-433d-a853-0d13ce10bd04"],
+Cell[31188, 802, 149, 3, 51, "Text",ExpressionUUID->"f2a517cd-54fc-4ec8-830e-db6d1b069d31"],
+Cell[31340, 807, 591, 12, 68, "Input",ExpressionUUID->"027f1eee-658d-4da6-938a-b6da8515e30d"],
+Cell[CellGroupData[{
+Cell[31956, 823, 208, 4, 29, "Outline4",ExpressionUUID->"0e3e61c9-c8cf-4ae9-8d41-496fabcdb0fd"],
+Cell[32167, 829, 842, 23, 110, "Input",ExpressionUUID->"346ad5e2-6f44-41bf-8d20-2952935108ad"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[33046, 857, 176, 3, 29, "Outline4",ExpressionUUID->"0b53ca57-3dce-4654-bf58-c6a051ee9fc0"],
+Cell[33225, 862, 292, 5, 46, "Input",ExpressionUUID->"69c64173-aea7-44f0-b407-f0348a7bf8ac"],
+Cell[33520, 869, 351, 7, 74, "Text",ExpressionUUID->"e74cea6c-e80e-449c-ba1f-ceb70794fe23"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[33920, 882, 257, 4, 35, "Outline2",ExpressionUUID->"2bad81c9-5802-478d-b1d8-ea7384a01cc3"],
+Cell[34180, 888, 393, 8, 68, "Input",ExpressionUUID->"cc35ddfa-e4e3-4229-a7fe-dc4d59cd0802"],
+Cell[34576, 898, 789, 22, 110, "Input",ExpressionUUID->"feedc67f-7de2-44d2-8db9-9454944ad7af"],
+Cell[35368, 922, 317, 6, 46, "Input",ExpressionUUID->"5d2c617d-c13c-4f63-ab84-4ec46097b2d1"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[35734, 934, 193, 3, 38, "Outline1",ExpressionUUID->"c0779ab5-c044-4a10-8485-d4273c46a28a"],
+Cell[35930, 939, 263, 4, 46, "Input",ExpressionUUID->"f791a04f-d58e-4371-afd4-d490f7514fec"],
+Cell[36196, 945, 474, 8, 97, "Text",ExpressionUUID->"4c97894a-1537-4663-9f40-c5e3b50a950b"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[36719, 959, 219, 4, 58, "Chapter",ExpressionUUID->"db258d29-88f9-44f1-ad0a-1cbbc55ea4e4"],
+Cell[CellGroupData[{
+Cell[36963, 967, 194, 3, 35, "Outline2",ExpressionUUID->"fa9c35f0-7a87-42a0-95b8-26df61275c24"],
+Cell[37160, 972, 1019, 19, 89, "Input",ExpressionUUID->"eae835b5-7b16-4fa5-9a85-dfe1a4d79d96"],
+Cell[38182, 993, 298, 6, 74, "Text",ExpressionUUID->"d7a91639-263c-4b02-bc8d-988b0e31cc1f"],
+Cell[38483, 1001, 957, 15, 46, "Input",ExpressionUUID->"c2918e00-df77-4ce0-b786-b9255acde0fc"],
+Cell[39443, 1018, 946, 14, 46, "Input",ExpressionUUID->"aa0881eb-5a85-4b68-bf20-aa8f4733be69"],
+Cell[40392, 1034, 750, 13, 143, "Text",ExpressionUUID->"4b131a35-3bad-490d-b83f-b4bf7b8dd69e"],
+Cell[41145, 1049, 2004, 49, 173, "Input",ExpressionUUID->"9f3ee6c3-7af6-45ce-aea4-0e18ce893325"],
+Cell[43152, 1100, 1089, 26, 89, "Input",ExpressionUUID->"195d8690-7c08-42c5-8b8b-cb2b44651e1b"],
+Cell[44244, 1128, 1127, 28, 89, "Input",ExpressionUUID->"a0f88044-117e-4d24-b744-863906bbe220"],
+Cell[45374, 1158, 451, 9, 46, "Input",ExpressionUUID->"9dce49e7-83f7-4fc8-ad10-f23898e81ce4"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[45862, 1172, 163, 3, 35, "Outline2",ExpressionUUID->"4d79db26-ccb2-471a-be69-e7e0a1be8294"],
+Cell[46028, 1177, 3090, 73, 299, "Input",ExpressionUUID->"f7cff8ad-9151-4403-af09-39ec791f6717"],
+Cell[49121, 1252, 215, 3, 46, "Input",ExpressionUUID->"943e1408-eaf4-476b-b737-12d1dcf7b283"],
+Cell[49339, 1257, 355, 8, 46, "Input",ExpressionUUID->"9995b6d2-72c8-4352-b442-14959bbc473b"],
+Cell[49697, 1267, 2216, 58, 236, "Input",ExpressionUUID->"12bcc8d3-8d9e-48a5-95de-5174a132a4ce"],
+Cell[51916, 1327, 613, 13, 68, "Input",ExpressionUUID->"cd46a799-0f25-4b96-bc56-658b68b73225"],
+Cell[52532, 1342, 223, 5, 51, "Text",ExpressionUUID->"2fcb12a2-456e-4383-af4b-e1469ab47ee8"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[52804, 1353, 317, 5, 58, "Chapter",ExpressionUUID->"9bce1b14-22f2-40a9-833e-6303c593c591"],
+Cell[53124, 1360, 1081, 21, 89, "Input",ExpressionUUID->"fba4120b-c8eb-461a-bc3f-db0f8afe4688"],
+Cell[54208, 1383, 997, 18, 68, "Input",ExpressionUUID->"95daaf84-3492-48b9-8ac1-ec7fc3ff30b5"],
+Cell[55208, 1403, 2266, 58, 194, "Input",ExpressionUUID->"ffe91f0e-3de0-4381-92dd-bd2b10761d41"],
+Cell[57477, 1463, 1095, 27, 89, "Input",ExpressionUUID->"0e6c07f5-954b-46c9-847c-f57e826f0762"],
+Cell[58575, 1492, 1412, 37, 131, "Input",ExpressionUUID->"8bf97d0b-85df-46bf-a3ca-c3d77ee1893b"],
+Cell[59990, 1531, 549, 11, 46, "Input",ExpressionUUID->"9032464a-73c9-4f88-bd60-07d4642ae88b"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[60576, 1547, 329, 5, 58, "Chapter",ExpressionUUID->"bdce1f7a-aecc-4c72-ad40-7a51ace37b4a"],
+Cell[60908, 1554, 1152, 22, 110, "Input",ExpressionUUID->"0bb76d81-3969-4f6d-bdf5-ab3f41748652"],
+Cell[62063, 1578, 907, 16, 46, "Input",ExpressionUUID->"70ab619e-64a9-4baa-b12a-ced03aac69df"],
+Cell[62973, 1596, 1024, 16, 46, "Input",ExpressionUUID->"8b22dec4-5cfe-427c-a22f-2c65ef051f89"],
+Cell[64000, 1614, 518, 10, 46, "Input",ExpressionUUID->"8a9620ab-67d9-4a1e-856b-33984414b3c5"],
+Cell[64521, 1626, 2009, 48, 131, "Input",ExpressionUUID->"d6356663-bb9a-4ca7-a487-58ad92cdfd04"],
+Cell[66533, 1676, 944, 20, 68, "Input",ExpressionUUID->"53d1d57c-a834-4890-90c0-eab4e7a821db"],
+Cell[67480, 1698, 1095, 27, 89, "Input",ExpressionUUID->"71654aec-8111-4dd5-ba13-917f034145c7"],
+Cell[68578, 1727, 1415, 37, 131, "Input",ExpressionUUID->"d327e188-d0e1-4971-9ef0-b22408e9bdc5"],
+Cell[69996, 1766, 455, 10, 46, "Input",ExpressionUUID->"251197c5-e392-48a0-9f1e-304efe9d9de9"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[70488, 1781, 383, 6, 58, "Chapter",ExpressionUUID->"39903c13-2ea1-489a-af04-0d82bed095cf"],
+Cell[70874, 1789, 1396, 25, 110, "Input",ExpressionUUID->"0b75500e-a981-4eba-abed-e88156c25c45"],
+Cell[72273, 1816, 907, 16, 46, "Input",ExpressionUUID->"14121a99-6171-4bb7-a7d8-387ff9eeca3b"],
+Cell[73183, 1834, 1024, 16, 46, "Input",ExpressionUUID->"b29b798d-7426-4c24-8a13-3121b4a75d88"],
+Cell[74210, 1852, 518, 10, 46, "Input",ExpressionUUID->"da2a7c86-8031-4e2d-8de7-4d6eb43ab3d4"],
+Cell[74731, 1864, 2007, 48, 131, "Input",ExpressionUUID->"183d119f-2ac9-40d0-a817-e77095fe164a"],
+Cell[76741, 1914, 944, 20, 68, "Input",ExpressionUUID->"4bd8ba3e-e1a8-4ae3-8c6b-dfef72756669"],
+Cell[77688, 1936, 1093, 27, 89, "Input",ExpressionUUID->"17919996-6bf5-4f52-bf74-6a6eba866b8f"],
+Cell[78784, 1965, 1415, 37, 131, "Input",ExpressionUUID->"646f6bf7-464c-45cc-8188-6504b4910d85"],
+Cell[80202, 2004, 455, 10, 46, "Input",ExpressionUUID->"86746c53-e722-4feb-8288-2acc637ae925"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[80694, 2019, 492, 7, 117, "Chapter",ExpressionUUID->"3a6787cb-3499-4e7c-a078-306db65f32ba"],
+Cell[81189, 2028, 1401, 26, 131, "Input",ExpressionUUID->"f23fdbb3-294f-4588-a667-eecf45a1deea"],
+Cell[82593, 2056, 907, 16, 46, "Input",ExpressionUUID->"86d84730-6496-479b-ad0c-aec127598c41"],
+Cell[83503, 2074, 1024, 16, 46, "Input",ExpressionUUID->"0373e45f-5bd2-463a-99f6-31b9d317f1d3"],
+Cell[84530, 2092, 520, 10, 46, "Input",ExpressionUUID->"83357db9-5abb-4b93-9bf2-0c91305d50d8"],
+Cell[85053, 2104, 2009, 48, 131, "Input",ExpressionUUID->"83436180-f7e8-4a6c-b5ad-128ecccc45d2"],
+Cell[87065, 2154, 930, 20, 68, "Input",ExpressionUUID->"343d59a4-9b72-4551-bbb7-9f9c5623cb1a"],
+Cell[87998, 2176, 1092, 27, 89, "Input",ExpressionUUID->"edf3704b-3027-4901-a427-c6de046a8471"],
+Cell[89093, 2205, 1417, 37, 131, "Input",ExpressionUUID->"40570c31-f0ba-47a4-a570-c7cca96b1291"],
+Cell[90513, 2244, 455, 10, 46, "Input",ExpressionUUID->"4c89e59b-729c-40b3-af3f-23616bceb768"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

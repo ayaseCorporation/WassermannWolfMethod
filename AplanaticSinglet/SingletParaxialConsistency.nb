@@ -1,0 +1,2734 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    105967,       2726]
+NotebookOptionsPosition[    100371,       2613]
+NotebookOutlinePosition[    100812,       2631]
+CellTagsIndexPosition[    100769,       2628]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Consistency check for paraxial parameters of singlet lenses", "Title",
+ InitializationCell->True,
+ CellChangeTimes->{{3.8023831654598923`*^9, 3.802383167775165*^9}, {
+  3.802383204868237*^9, 
+  3.80238326552754*^9}},ExpressionUUID->"5dfc27f7-bef6-4e7a-bc4c-\
+52539b55202a"],
+
+Cell["\<\
+Takatoshi Yamada@Ayase corporation
+e - mail : takatoshi.yamada@ayasecorporation.com
+web cite : https : // www.ayasecorporation.com\
+\>", "Author",
+ CellChangeTimes->{{3.817423896747398*^9, 3.8174239195219517`*^9}, {
+  3.817432313501543*^9, 
+  3.8174323135928183`*^9}},ExpressionUUID->"65e19b3d-47f1-4117-92e3-\
+c67c4d781956"],
+
+Cell[BoxData[
+ RowBox[{"BeginPackage", "[", 
+  "\"\<AplanaticSinglet`SingletParaxialConsistency`\>\"", "]"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{
+  3.802383283752234*^9, {3.802383463204217*^9, 3.802383471867609*^9}, {
+   3.802383625263214*^9, 3.802383628740561*^9}, 3.8184620085083838`*^9, {
+   3.818716617600054*^9, 
+   3.8187166332253428`*^9}},ExpressionUUID->"51f4c54a-ced6-47a9-b189-\
+4c45a2567079"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+  "SingletParaxialConsistencyVersion", "=", 
+   "\"\<ParaxialConsistency ver.0.1.A\>\""}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.802383510139627*^9, 3.802383520129418*^9}, {
+   3.802383585942749*^9, 3.802383588835627*^9}, {3.802383633497245*^9, 
+   3.802383635465641*^9}, {3.8023851223493567`*^9, 3.8023852499945717`*^9}, {
+   3.802385290056234*^9, 3.802385294735114*^9}, 
+   3.817424407591978*^9},ExpressionUUID->"5fb096fc-e1e4-434b-8751-\
+5c09f0d2b37b"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+  "SingletParaxialConsistencyDescription", "=", 
+   "\"\<SingletParaxialConsistency package for checking consisntency of \
+paraxial parameter list of singlet lens and fixing omitted paramters from the \
+list.\>\""}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.802383510139627*^9, 3.802383520129418*^9}, {
+  3.802383585942749*^9, 3.802383588835627*^9}, {3.802383633497245*^9, 
+  3.802383635465641*^9}, {3.8023851223493567`*^9, 3.8023852499945717`*^9}, {
+  3.802385290056234*^9, 3.802385294735114*^9}, {3.817424407591978*^9, 
+  3.817424409153755*^9}},ExpressionUUID->"ad727e36-5519-4a52-8da3-\
+a599c2d13e39"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SingletParaxialConsistencyUsage", "=", "\"\<\>\""}], 
+  ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.802383510139627*^9, 3.802383520129418*^9}, {
+  3.802383585942749*^9, 3.802383588835627*^9}, {3.802383633497245*^9, 
+  3.802383635465641*^9}, {3.8023851223493567`*^9, 3.8023852499945717`*^9}, {
+  3.802385290056234*^9, 3.802385294735114*^9}, {3.817424407591978*^9, 
+  3.817424409153755*^9}},ExpressionUUID->"c6660ebc-3787-487d-a027-\
+641441ed80c0"],
+
+Cell[CellGroupData[{
+
+Cell["Usage messages", "Section",
+ InitializationCell->True,
+ CellChangeTimes->{{3.80238348477192*^9, 
+  3.802383490745088*^9}},ExpressionUUID->"763447b7-1d30-4b33-a8ce-\
+0854c3b664a3"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"singletParaxialParameterSymbols", "::", "usage"}], "=", 
+   "\"\<singletParaxialParameterSymbols is a tag for a list of paraxial \
+parameter symbols.\>\""}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.802383592716895*^9, 3.80238360553086*^9}, {
+  3.802383646357554*^9, 3.8023836508454447`*^9}, {3.802383688961467*^9, 
+  3.802383704498683*^9}, {3.802397380047456*^9, 
+  3.8023973934365873`*^9}},ExpressionUUID->"7322f463-e56e-488a-8f42-\
+c5e2d65a8455"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"focalLength", "::", "usage"}], "=", 
+   "\"\<focalLength is one of paraxial parameters.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"lensMediumRefractiveIndex", "::", "usage"}], "=", 
+   "\"\<lensMediumRefractiveIndex is one of paraxial parameters.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"lensMediumThickness", "::", "usage"}], "=", 
+   "\"\<lensMediumThickness is one of paraxial parameters.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"coddingtonShapeFactor", "::", "usage"}], "=", 
+   "\"\<coddingtonShapeFactor is one of paraxial parameters.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"paraxialWorkingDistance", "::", "usage"}], "=", 
+   "\"\<paraxialWorkingDistance is one of paraxial parameters.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"paraxialObjectDistance", "::", "usage"}], "=", 
+   "\"\<paraxialObjectDistance is one of paraxial parameters.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"paraxialObjectImageDistance", "::", "usage"}], "=", 
+   "\"\<paraxialObjectImageDistance is one of paraxial parameters.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"lateralMagnification", "::", "usage"}], "=", 
+   "\"\<lateralMagnification is one of paraxial parameters and specifying \
+lateral magnification and should be LESS THAN ONE, i.e., reducing image. If \
+not specified, lateralMagnification = 0. If both lateralMagnification and \
+imageObjectDistance are specified, focalLength is ignored by the \
+solver.\>\""}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.802383722824861*^9, 3.802383887886505*^9}, {
+  3.802383940370543*^9, 3.802383962396593*^9}, {3.802384180558785*^9, 
+  3.8023842048623533`*^9}, {3.80239720857364*^9, 3.802397242121149*^9}, {
+  3.802404796380788*^9, 
+  3.802404814244103*^9}},ExpressionUUID->"cf5b433c-c10e-4c70-b7d9-\
+7e419577864e"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"frontSurfaceCurvature", "::", "usage"}], "=", 
+   "\"\<frontSurfaceCurvature is a result tag of biasphericAplanatSolver. The \
+rhs value is curvature value of the front surface (surface 1).\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"backSurfaceCurvature", "::", "usage"}], "=", 
+   "\"\<backSurfaceCurvature is a result tag of biasphericAplanatSolver. The \
+rhs value is curvature value of the back surface (surface 2).\>\""}], ";", 
+  RowBox[{
+   RowBox[{"conjugateInfiniteness", "::", "usage"}], "=", 
+   "\"\<conjugateInfiniteness is one of paraxial parameters for output and if \
+True, condition set is infinite.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"paraxialDistanceBetweenObjectAndPrincipal", "::", "usage"}], "=", 
+   "\"\<paraxialDistanceBetweenObjectAndPrincipal is one of paraxial \
+parameters specifying distance between object plane and principal plane in \
+object space. If conjugateInfiniteness is True, a rule expression including \
+this is not included.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"paraxialDistanceBetweenPrincipalAndImage", "::", "usage"}], "=", 
+   "\"\<paraxialDistanceBetweenPrincipalAndImage is one of paraxial \
+parameters specifying distance between principal plane and image plane in \
+image space. If conjugateInfiniteness is True, \
+paraxialDistanceBetweenPrincipalAndImage is equal to paraxialWorkingDistance.\
+\>\""}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.802383722824861*^9, 3.802383887886505*^9}, {
+   3.802383940370543*^9, 3.802383962396593*^9}, {3.802384180558785*^9, 
+   3.80238421340219*^9}, {3.802384281286437*^9, 3.8023843886000843`*^9}, 
+   3.802397144605033*^9, {3.802674682251622*^9, 3.802674699604471*^9}, {
+   3.802674744569846*^9, 
+   3.802674976006275*^9}},ExpressionUUID->"6dc1fa91-83af-4ff6-9893-\
+eeaac51c85c1"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"settleRemainedParaxialParameters", "::", "usage"}], "=", 
+   "\"\<settleRemainedParaxialParameters[parameterSet:{__Rule}] checks \
+consistency of parameter set and returns a list of key-value rule pairs of \
+omitted parameters.\>\""}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.802385340061367*^9, 
+  3.802385423594534*^9}},ExpressionUUID->"9221fbeb-2ada-4b17-9708-\
+7984c1fbdab8"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"paraxialThickessDifferenceFromMechanical", "::", "usage"}], "=", 
+   "\"\<paraxialDistanceFromMechanical[ncg_,dcg_] converts mechanical \
+thickness to paraxial with cover glass thickness dcg and refractive index \
+ncg.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"paraxialDistanceFromMechanical", "::", "usage"}], "=", 
+   "\"\<paraxialDistanceFromMechanical[ncg_,dcg_][m_] converts mechanical \
+distance m to paraxial with cover glass thickness dcg and refractive index \
+ncg.\>\""}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.802390666467597*^9, 3.802390727970971*^9}, {
+   3.8023908244651337`*^9, 3.8023908249038477`*^9}, {3.802399473032498*^9, 
+   3.802399473584157*^9}, {3.802400296260158*^9, 3.802400332014497*^9}, {
+   3.802400383382854*^9, 3.802400384856633*^9}, {3.802400494870522*^9, 
+   3.8024005366769867`*^9}, 
+   3.802400898706517*^9},ExpressionUUID->"b76c2b0f-8932-4b02-9d04-\
+4b2f5c622540"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"paraxialThickessDifferenceToMechanical", "::", "usage"}], "=", 
+   "\"\<paraxialDistanceToMechanical[ncg_,dcg_] converts paraxial thickness \
+to mechanical with cover glass thickness dcg and refractive index ncg.\>\""}],
+   ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"paraxialDistanceToMechanical", "::", "usage"}], "=", 
+   "\"\<paraxialDistanceFromMechanical[ncg_,dcg_][m_] converts paraxial \
+distance m to mechanical with cover glass thickness dcg and refractive index \
+ncg.\>\""}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.80239079092595*^9, 3.802390822237274*^9}, {
+  3.8024002988489437`*^9, 3.802400300829444*^9}, {3.802400340834405*^9, 
+  3.802400348991006*^9}, {3.802400387657467*^9, 3.802400391280526*^9}, {
+  3.802400541886446*^9, 3.802400558029542*^9}, {3.8024009041863956`*^9, 
+  3.8024009069432583`*^9}},ExpressionUUID->"793cfef8-ea59-4e93-82e8-\
+c8fa9b1f7ee4"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Private section declaration", "Section",
+ InitializationCell->True,
+ CellChangeTimes->{{3.80058139376401*^9, 
+  3.800581429921256*^9}},ExpressionUUID->"abe23904-8ac3-48c3-b5bb-\
+041ab8c8f7f9"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.8005813760366297`*^9, 
+  3.800581419447241*^9}},ExpressionUUID->"532fba33-c3e8-478e-9ceb-\
+9ef40304ff1a"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["private section", "Section",
+ InitializationCell->True,
+ CellChangeTimes->{{3.802386985930896*^9, 
+  3.802386990811246*^9}},ExpressionUUID->"43eee07c-da14-468f-a2d8-\
+e0b514e9e449"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"singletParaxialParameterSymbols", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "focalLength", ",", "lensMediumRefractiveIndex", ",", 
+     "lensMediumThickness", ",", "coddingtonShapeFactor", ",", 
+     "paraxialWorkingDistance", ",", "paraxialObjectDistance", ",", 
+     "paraxialObjectImageDistance", ",", "lateralMagnification", ",", 
+     "conjugateInfiniteness"}], "}"}]}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.802390609914156*^9, 3.802390649558805*^9}, {
+  3.802390736139526*^9, 3.802390770519503*^9}, {3.802397307664238*^9, 
+  3.8023973750093184`*^9}, {3.802464908149617*^9, 
+  3.8024649082938023`*^9}},ExpressionUUID->"8f219178-7639-4a16-aaf5-\
+4fa3f487f815"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"paraxialThickessDifferenceFromMechanical", "[", 
+    RowBox[{"ncg_", ",", "dcg_"}], "]"}], "=", 
+   RowBox[{"dcg", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"1.0", "/", "ncg"}], "-", "1.0"}], ")"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"paraxialDistanceFromMechanical", "[", 
+    RowBox[{"ncg_", ",", "dcg_"}], "]"}], "=", 
+   RowBox[{"Function", "[", 
+    RowBox[{
+     RowBox[{"{", "m", "}"}], ",", 
+     RowBox[{"m", "-", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"ncg", "-", "1.0"}], ")"}], "/", "ncg"}], "*", "dcg"}]}]}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"paraxialThicknessDifferenceToMechanical", "[", 
+    RowBox[{"ncg_", ",", "dcg_"}], "]"}], "=", 
+   RowBox[{"ncg", "*", 
+    RowBox[{"dcg", "/", 
+     RowBox[{"(", 
+      RowBox[{"ncg", "-", "1.0"}], ")"}]}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"paraxialDistanceToMechanical", "[", 
+    RowBox[{"ncg_", ",", "dcg_"}], "]"}], "=", 
+   RowBox[{"Function", "[", 
+    RowBox[{
+     RowBox[{"{", "mp", "}"}], ",", 
+     RowBox[{"mp", "+", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"ncg", "-", "1.0"}], ")"}], "/", "ncg"}], "*", "dcg"}]}]}], 
+    "]"}]}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.802390609914156*^9, 3.802390649558805*^9}, {
+   3.802390736139526*^9, 3.802390770519503*^9}, {3.802397307664238*^9, 
+   3.802397308800819*^9}, 3.802399473033381*^9, {3.802400401742049*^9, 
+   3.802400461886907*^9}, {3.802400586943132*^9, 3.8024005939396973`*^9}, {
+   3.802400627994705*^9, 3.802400634800972*^9}, {3.802400758554521*^9, 
+   3.802400878311988*^9}},
+ CellLabel->
+  "In[118]:=",ExpressionUUID->"f3ba6994-8075-4149-9fa3-55d43c774c5a"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"setEqualQ", "[", 
+   RowBox[{"a_List", ",", "b_List"}], "]"}], ":=", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"Sort", "[", "a", "]"}], "===", 
+    RowBox[{"Sort", "[", "b", "]"}]}], ")"}]}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.802390154937488*^9, 3.802390182183263*^9}},
+ CellLabel->
+  "In[122]:=",ExpressionUUID->"cb57ba05-ed12-4c00-8395-765666f8f28c"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", 
+   RowBox[{
+   "fParm", ",", "nParm", ",", "dParm", ",", "cParm", ",", "iParm", ",", 
+    "oParm", ",", "oiParm", ",", "bParm"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Options", "[", "settleRemainedParaxialParameters", "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"focalLength", "\[Rule]", "fParm"}], ",", 
+     RowBox[{"lensMediumRefractiveIndex", "\[Rule]", "nParm"}], ",", 
+     RowBox[{"lensMediumThickness", "\[Rule]", "dParm"}], ",", 
+     RowBox[{"coddingtonShapeFactor", "\[Rule]", "cParm"}], ",", 
+     RowBox[{"paraxialWorkingDistance", "\[Rule]", "iParm"}], ",", 
+     RowBox[{"paraxialObjectDistance", "\[Rule]", "oParm"}], ",", 
+     RowBox[{"paraxialObjectImageDistance", "\[Rule]", "oiParm"}], ",", 
+     RowBox[{"lateralMagnification", "\[Rule]", "bParm"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+  "settleRemainedParaxialParameters", "[", "parameterSet__Rule", "]"}], ":=", 
+  
+  RowBox[{"settleRemainedParaxialParameters", "[", 
+   RowBox[{"{", "parameterSet", "}"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"settleRemainedParaxialParameters", "[", 
+   RowBox[{"parameterSet", ":", 
+    RowBox[{"{", "__Rule", "}"}]}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "f", ",", "n", ",", "d", ",", "c", ",", "i", ",", "o", ",", "oi", ",", 
+      "\[Beta]", ",", "ret"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"f", "=", 
+      RowBox[{
+       RowBox[{"focalLength", "/.", "parameterSet"}], "/.", 
+       RowBox[{"Options", "[", "settleRemainedParaxialParameters", "]"}]}]}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"n", "=", 
+      RowBox[{
+       RowBox[{"lensMediumRefractiveIndex", "/.", "parameterSet"}], "/.", 
+       RowBox[{"Options", "[", "settleRemainedParaxialParameters", "]"}]}]}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"d", "=", 
+      RowBox[{
+       RowBox[{"lensMediumThickness", "/.", "parameterSet"}], "/.", 
+       RowBox[{"Options", "[", "settleRemainedParaxialParameters", "]"}]}]}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"c", "=", 
+      RowBox[{
+       RowBox[{"coddingtonShapeFactor", "/.", "parameterSet"}], "/.", 
+       RowBox[{"Options", "[", "settleRemainedParaxialParameters", "]"}]}]}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"i", "=", 
+      RowBox[{
+       RowBox[{"paraxialWorkingDistance", "/.", "parameterSet"}], "/.", 
+       RowBox[{"Options", "[", "settleRemainedParaxialParameters", "]"}]}]}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"o", "=", 
+      RowBox[{
+       RowBox[{"paraxialObjectDistance", "/.", "parameterSet"}], "/.", 
+       RowBox[{"Options", "[", "settleRemainedParaxialParameters", "]"}]}]}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"oi", "=", 
+      RowBox[{
+       RowBox[{"paraxialObjectImageDistance", "/.", "parameterSet"}], "/.", 
+       RowBox[{"Options", "[", "settleRemainedParaxialParameters", "]"}]}]}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"\[Beta]", "=", 
+      RowBox[{
+       RowBox[{"lateralMagnification", "/.", "parameterSet"}], "/.", 
+       RowBox[{"Options", "[", "settleRemainedParaxialParameters", "]"}]}]}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"infiniteParameterSetQ", "[", 
+        RowBox[{
+        "f", ",", "n", ",", "d", ",", "c", ",", "i", ",", "o", ",", "oi", ",",
+          "\[Beta]"}], "]"}], ",", 
+       RowBox[{"Return", "[", 
+        RowBox[{"settleRemainedParaxialParametersInfinite", "[", 
+         RowBox[{"d", ",", "n", ",", "f", ",", "i", ",", "c"}], "]"}], 
+        "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Check", "[", 
+      RowBox[{
+       RowBox[{"ret", "=", 
+        RowBox[{"tautologyCheck", "[", 
+         RowBox[{"d", ",", "i", ",", "o", ",", "oi"}], "]"}]}], ",", 
+       RowBox[{"Return", "[", "$Failed", "]"}]}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"!", " ", 
+        RowBox[{"NumericQ", "[", "i", "]"}]}], ",", 
+       RowBox[{"i", "=", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"paraxialWorkingDistance", "/.", "ret"}], "/.", 
+          "parameterSet"}], "/.", 
+         RowBox[{
+         "Options", "[", "settleRemainedParaxialParameters", "]"}]}]}]}], 
+      "]"}], ";", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"!", " ", 
+        RowBox[{"NumericQ", "[", "o", "]"}]}], ",", 
+       RowBox[{"o", "=", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"paraxialObjectDistance", "/.", "ret"}], "/.", 
+          "parameterSet"}], "/.", 
+         RowBox[{
+         "Options", "[", "settleRemainedParaxialParameters", "]"}]}]}]}], 
+      "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Flatten", "[", 
+      RowBox[{"{", 
+       RowBox[{"ret", ",", 
+        RowBox[{"settleRemainedParaxialParametersFinite", "[", 
+         RowBox[{
+         "d", ",", "n", ",", "f", ",", "i", ",", "c", ",", "o", ",", 
+          "\[Beta]"}], "]"}]}], "}"}], "]"}]}]}], "\[IndentingNewLine]", 
+   "]"}]}], "\[IndentingNewLine]"}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.802385452801661*^9, 3.802385457536875*^9}, {
+   3.802385492490594*^9, 3.8023856040930767`*^9}, {3.8023862523853493`*^9, 
+   3.802386270620967*^9}, {3.802389585600828*^9, 3.802389604148449*^9}, {
+   3.8023896530088177`*^9, 3.8023898117498093`*^9}, {3.8023904360882683`*^9, 
+   3.802390526594714*^9}, {3.802390565848948*^9, 3.8023906004640303`*^9}, {
+   3.802405471115089*^9, 3.802405542854638*^9}, {3.802405579160181*^9, 
+   3.8024055794851103`*^9}, 3.802406136988002*^9, {3.8024658826617193`*^9, 
+   3.802465915590138*^9}, {3.8024660117342167`*^9, 3.802466052415082*^9}, 
+   3.802466117026103*^9, {3.803011599046574*^9, 3.80301170320422*^9}, {
+   3.803011739339785*^9, 3.803011741037773*^9}, {3.8030732336165657`*^9, 
+   3.80307332035564*^9}, {3.803073408353778*^9, 3.803073499884845*^9}, 
+   3.8030776226174994`*^9, {3.803077685244253*^9, 3.803077687642367*^9}, 
+   3.803077719290247*^9, {3.80307775141894*^9, 3.803077782964591*^9}, {
+   3.803078357997752*^9, 3.803078361406232*^9}, {3.803078484843071*^9, 
+   3.803078487643796*^9}, {3.803079252360176*^9, 3.803079254452434*^9}, 
+   3.803082104084114*^9, {3.803085946381403*^9, 3.8030859779469433`*^9}, {
+   3.8030934114163857`*^9, 3.803093445868309*^9}, {3.803093495668367*^9, 
+   3.803093525575467*^9}, 
+   3.803099464046541*^9},ExpressionUUID->"689e73ad-62bc-49e4-9025-\
+eae062b00331"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "checkNumeric", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Attributes", "[", "checkNumeric", "]"}], "=", 
+   RowBox[{"{", "Listable", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"checkNumeric", "[", 
+   RowBox[{
+    RowBox[{"n_", "?", "NumericQ"}], ",", "_"}], "]"}], ":=", 
+  "Nothing"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"checkNumeric", "[", 
+   RowBox[{"n_", ",", "ret_"}], "]"}], ":=", "ret"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"absentParameter", "[", 
+    RowBox[{"d_", ",", "n_", ",", "f_", ",", "m_", ",", "cod_"}], "]"}], ":=", 
+   RowBox[{"checkNumeric", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"d", ",", "n", ",", "f", ",", "m", ",", "cod"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "lensMediumThickness", ",", "lensMediumSymbol", ",", "focalLength", ",",
+        "paraxialWorkingDistance", ",", "coddingtonShapeFactor"}], "}"}]}], 
+    "]"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{"for", " ", "finite", " ", "conjugate", " ", "case"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"absentParameter", "[", 
+   RowBox[{
+   "d_", ",", "n_", ",", "f_", ",", "mid_", ",", "cod_", ",", "mod_", ",", 
+    "oid_", ",", "beta_"}], "]"}], ":=", 
+  RowBox[{"checkNumeric", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "d", ",", "n", ",", "f", ",", "mid", ",", "cod", ",", "mod", ",", "oid", 
+      ",", "beta"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+     "lensMediumThickness", ",", "lensMediumSymbol", ",", "focalLength", ",", 
+      "paraxialWorkingDistance", ",", "coddingtonShapeFactor", ",", 
+      "paraxialObjectDistance", ",", "paraxialObjectImageDistance", ",", 
+      "lateralMagnification"}], "}"}]}], "]"}]}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.8021366951144323`*^9, 3.802136716251472*^9}, {
+   3.802136779219336*^9, 3.802136846022216*^9}, {3.8021369277442627`*^9, 
+   3.802136996043112*^9}, {3.802137176460993*^9, 3.802137178867796*^9}, {
+   3.802211005390567*^9, 3.8022110320071297`*^9}, {3.802211074747096*^9, 
+   3.802211126420573*^9}, {3.8023807753819523`*^9, 3.802380798207631*^9}, 
+   3.80238087547209*^9, 3.802381578607889*^9, {3.803011800900042*^9, 
+   3.8030118079990473`*^9}},
+ CellLabel->
+  "In[127]:=",ExpressionUUID->"fc31e929-a33e-4fdd-895b-014143c3142b"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"infiniteParameterSetQ", "[", 
+   RowBox[{
+   "d_", ",", "n_", ",", "f_", ",", "mid_", ",", "cod_", ",", "mod_", ",", 
+    "oid_", ",", "beta_"}], "]"}], ":=", 
+  RowBox[{"With", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"absents", "=", 
+      RowBox[{"absentParameter", "[", 
+       RowBox[{
+       "d", ",", "n", ",", "f", ",", "mid", ",", "cod", ",", "mod", ",", 
+        "oid", ",", "beta"}], "]"}]}], "}"}], ",", 
+    RowBox[{
+     RowBox[{"SubsetQ", "[", 
+      RowBox[{"absents", ",", 
+       RowBox[{"{", 
+        RowBox[{"oiParm", ",", "bParm"}], "}"}]}], "]"}], "||", 
+     RowBox[{"SubsetQ", "[", 
+      RowBox[{"absents", ",", 
+       RowBox[{"{", 
+        RowBox[{"oParm", ",", "bParm"}], "}"}]}], "]"}]}]}], "]"}]}]], "Input",\
+
+ InitializationCell->True,
+ CellChangeTimes->{{3.8023898229322977`*^9, 3.802389848840554*^9}, {
+   3.802389900625592*^9, 3.802389903202219*^9}, 3.802390190067698*^9, {
+   3.802390289487248*^9, 3.802390317117642*^9}, {3.802390357155836*^9, 
+   3.802390407591281*^9}, {3.8024056413170557`*^9, 3.8024056426436977`*^9}, 
+   3.80240580493824*^9, {3.8030116389217863`*^9, 
+   3.803011672420828*^9}},ExpressionUUID->"7e6dbfc7-777d-44ed-8502-\
+439ae7df4f4f"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"CSF", "[", 
+   RowBox[{"c1_", ",", "c2_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"c1", "+", "c2"}], ")"}], "/", 
+   RowBox[{"(", 
+    RowBox[{"c1", "-", "c2"}], ")"}]}]}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.801793004873167*^9, 3.801793005311542*^9}},
+ CellLabel->
+  "In[134]:=",ExpressionUUID->"8310a0d8-7f72-4176-ac52-b30a7f2c3fb9"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"frontParaxialCurvature", "[", 
+   RowBox[{
+    RowBox[{"d_", "?", "NumericQ"}], ",", 
+    RowBox[{"n_", "?", "NumericQ"}], ",", 
+    RowBox[{"f_", "?", "NumericQ"}], ",", 
+    RowBox[{"m_", "?", "NumericQ"}]}], "]"}], ":=", 
+  RowBox[{"n", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"f", "-", "m"}], ")"}], "/", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"n", "-", "1"}], ")"}], "d", "*", "f"}], 
+     ")"}]}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"backParaxialCurvature", "[", 
+   RowBox[{
+    RowBox[{"d_", "?", "NumericQ"}], ",", 
+    RowBox[{"n_", "?", "NumericQ"}], ",", 
+    RowBox[{"f_", "?", "NumericQ"}], ",", 
+    RowBox[{"m_", "?", "NumericQ"}]}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"n", 
+      RowBox[{"(", 
+       RowBox[{"f", "-", "m"}], ")"}]}], "-", "d"}], ")"}], "/", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"n", "-", "1"}], ")"}], "d", "*", "m"}], 
+    ")"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"paraxialWorkingDistance", "[", 
+   RowBox[{
+    RowBox[{"d_", "?", "NumericQ"}], ",", 
+    RowBox[{"n_", "?", "NumericQ"}], ",", 
+    RowBox[{"f_", "?", "NumericQ"}], ",", 
+    RowBox[{"cod_", "?", "NumericQ"}]}], "]"}], ":=", 
+  RowBox[{"With", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"smsq", "=", 
+      RowBox[{"n", "*", "f", "*", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"n", "*", "f"}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"cod", "^", "2"}], "-", "1"}], ")"}], "d"}]}], ")"}]}]}], 
+     "}"}], ",", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{"smsq", "<", "0.0"}], ",", 
+      RowBox[{"Message", "[", 
+       RowBox[{"setupBiasphericAplanatParameters", "::", "inconsistent"}], 
+       "]"}], ",", "0.0"}], "]"}]}], "]"}]}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.8017857950882053`*^9, 3.8017858759891157`*^9}, {
+  3.801785964773651*^9, 3.801785982900243*^9}, {3.80178603038729*^9, 
+  3.801786051737277*^9}, {3.8017860823512287`*^9, 3.801786189103722*^9}, {
+  3.801786247422656*^9, 3.80178627522393*^9}, {3.801792438021994*^9, 
+  3.801792440574847*^9}, {3.801794265006288*^9, 3.8017942678729*^9}},
+ CellLabel->
+  "In[135]:=",ExpressionUUID->"53b52dd6-6fde-4d8f-9a6a-d8377405c9be"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "checkNumeric", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Attributes", "[", "checkNumeric", "]"}], "=", 
+   RowBox[{"{", "Listable", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"checkNumeric", "[", 
+   RowBox[{
+    RowBox[{"n_", "?", "NumericQ"}], ",", "_"}], "]"}], ":=", 
+  "Nothing"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"checkNumeric", "[", 
+   RowBox[{"n_", ",", "ret_"}], "]"}], ":=", "ret"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"absentParameter", "[", 
+    RowBox[{"d_", ",", "n_", ",", "f_", ",", "m_", ",", "cod_"}], "]"}], ":=", 
+   RowBox[{"checkNumeric", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"d", ",", "n", ",", "f", ",", "m", ",", "cod"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "dParm", ",", "nParm", ",", "fParm", ",", "iParm", ",", "cParm"}], 
+      "}"}]}], "]"}]}], "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{"for", " ", "finite", " ", "conjugate", " ", "case"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"allParametersForFinite", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "dParm", ",", "nParm", ",", "fParm", ",", "iParm", ",", "cParm", ",", 
+     "oParm", ",", "oiParm", ",", "bParm"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"absentParameter", "[", 
+   RowBox[{
+   "d_", ",", "n_", ",", "f_", ",", "mid_", ",", "cod_", ",", "mod_", ",", 
+    "oid_", ",", "beta_"}], "]"}], ":=", 
+  RowBox[{"checkNumeric", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "d", ",", "n", ",", "f", ",", "mid", ",", "cod", ",", "mod", ",", "oid", 
+      ",", "beta"}], "}"}], ",", "allParametersForFinite"}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"containedParameter", "[", 
+   RowBox[{
+   "d_", ",", "n_", ",", "f_", ",", "mid_", ",", "cod_", ",", "mod_", ",", 
+    "oid_", ",", "beta_"}], "]"}], ":=", 
+  RowBox[{"Complement", "[", 
+   RowBox[{"allParametersForFinite", ",", 
+    RowBox[{"absentParameter", "[", 
+     RowBox[{
+     "d", ",", "n", ",", "f", ",", "mid", ",", "cod", ",", "mod", ",", "oid", 
+      ",", "beta"}], "]"}]}], "]"}]}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.80238610995645*^9, 3.802386124198916*^9}, {
+  3.802386298105213*^9, 3.802386364110848*^9}, {3.802387524004717*^9, 
+  3.802387667544602*^9}, {3.803011599051662*^9, 
+  3.803011672421739*^9}},ExpressionUUID->"5991b560-a55b-4c63-9d1e-\
+a3caabdd686b"],
+
+Cell[CellGroupData[{
+
+Cell["for infinite conjugate", "Subsection",
+ InitializationCell->True,
+ CellChangeTimes->{{3.80238700206386*^9, 
+  3.802387008676841*^9}},ExpressionUUID->"86c70224-fa62-431a-a6a2-\
+9a9f8a702a9f"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "curvaturesInfinite", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"curvaturesInfinite", "[", 
+   RowBox[{
+    RowBox[{"_", "?", "NumericQ"}], ",", 
+    RowBox[{"n_", "?", "NumericQ"}], ",", 
+    RowBox[{"f_", "?", "NumericQ"}], ",", 
+    RowBox[{"m_", "?", "NumericQ"}], ",", 
+    RowBox[{"cod_", "?", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"N", "[", "#", "]"}], "===", 
+        RowBox[{"-", "1.0"}]}], "&"}], ")"}]}]}], "]"}], ":=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"frontSurfaceCurvature", "\[Rule]", "0"}], ",", 
+    RowBox[{"backSurfaceCurvature", "\[Rule]", 
+     RowBox[{
+      RowBox[{"-", "1.0"}], "/", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"n", "-", "1"}], ")"}], "f"}], ")"}]}]}]}], 
+   "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"curvaturesInfinite", "[", 
+   RowBox[{
+    RowBox[{"_", "?", "NumericQ"}], ",", 
+    RowBox[{"n_", "?", "NumericQ"}], ",", 
+    RowBox[{"f_", "?", "NumericQ"}], ",", 
+    RowBox[{"m_", "?", "NumericQ"}], ",", 
+    RowBox[{"cod_", "?", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"N", "[", "#", "]"}], "===", "1.0"}], "&"}], ")"}]}]}], "]"}],
+   ":=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"frontSurfaceCurvature", "\[Rule]", 
+     RowBox[{"1.0", "/", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"n", "-", "1"}], ")"}], "f"}], ")"}]}]}], ",", 
+    RowBox[{"backSurfaceCurvature", "\[Rule]", "0"}]}], 
+   "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"curvaturesInfinite", "[", 
+   RowBox[{
+    RowBox[{"d_", "?", "NumericQ"}], ",", 
+    RowBox[{"n_", "?", "NumericQ"}], ",", 
+    RowBox[{"f_", "?", "NumericQ"}], ",", 
+    RowBox[{"m_", "?", "NumericQ"}], ",", "_"}], "]"}], ":=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"frontSurfaceCurvature", "->", 
+     RowBox[{"n", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"f", "-", "m"}], ")"}], "/", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"n", "-", "1"}], ")"}], "d", "*", "f"}], ")"}]}]}]}], ",", 
+    RowBox[{"backSurfaceCurvature", "->", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"n", 
+         RowBox[{"(", 
+          RowBox[{"f", "-", "m"}], ")"}]}], "-", "d"}], ")"}], "/", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"n", "-", "1"}], ")"}], "d", "*", "m"}], ")"}]}]}], ",", 
+    RowBox[{"conjugateInfiniteness", "\[Rule]", "True"}]}], "}"}]}]}], "Input",\
+
+ InitializationCell->True,
+ CellChangeTimes->{{3.802142516285912*^9, 3.80214264378237*^9}, {
+  3.8021426976464167`*^9, 3.802142785082448*^9}, {3.8021438621749773`*^9, 
+  3.8021438652098703`*^9}, {3.80220999683947*^9, 3.802210002907218*^9}, {
+  3.802381751209878*^9, 3.802381752422515*^9}, {3.802381892060761*^9, 
+  3.802381925374653*^9}, {3.802388092747582*^9, 3.802388094939506*^9}},
+ CellLabel->
+  "In[146]:=",ExpressionUUID->"b47f689e-46f7-4ac3-a5f8-f7db86cfa183"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"Clear", "[", "settleRemainedParaxialParametersInfinite", "]"}], 
+   ";", 
+   RowBox[{
+    RowBox[{"settleRemainedParaxialParametersInfinite", "[", 
+     RowBox[{"d_", ",", "n_", ",", "f_", ",", "m_", ",", "cod_"}], "]"}], ":=", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{"cod", "=!=", 
+       RowBox[{"-", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"d", "*", "f"}], "-", 
+          RowBox[{"n", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"f", "^", "2"}], "-", 
+              RowBox[{"m", "^", "2"}]}], ")"}], "/", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"n", "-", "1.0"}], ")"}], "d", "*", "f"}], ")"}]}]}]}],
+          ")"}]}]}], ",", 
+      RowBox[{
+       RowBox[{"Message", "[", 
+        RowBox[{"settleRemainedParaxialParameters", "::", "inconsistent"}], 
+        "]"}], ";", "$Failed"}], ",", 
+      RowBox[{"Flatten", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"curvaturesInfinite", "[", 
+          RowBox[{"d", ",", "n", ",", "f", ",", "m", ",", "cod"}], "]"}], ",", 
+         RowBox[{"paraxialWorkingDistance", "\[Rule]", "m"}]}], "}"}], 
+       "]"}]}], "]"}]}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"settleRemainedParaxialParametersInfinite", "[", 
+    RowBox[{"d_", ",", "n_", ",", "f_", ",", "m_", ",", "cod_"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"Message", "[", 
+       RowBox[{"settleRemainedParaxialParameters", "::", "notenough"}], "]"}],
+       ";", "$Failed"}], ")"}], "/;", 
+    RowBox[{
+     RowBox[{"Length", "[", 
+      RowBox[{"absentParameter", "[", 
+       RowBox[{"d", ",", "n", ",", "f", ",", "m", ",", "cod"}], "]"}], "]"}], 
+     "\[GreaterEqual]", "2"}]}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"settleRemainedParaxialParametersInfinite", "[", 
+    RowBox[{"d_", ",", "n_", ",", "f_", ",", "m_", ",", "cod_"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"Message", "[", 
+       RowBox[{
+        RowBox[{"settleRemainedParaxialParameters", "::", "compalsory"}], ",",
+         "lensMediumSymbol"}], "]"}], ";", "$Failed"}], ")"}], "/;", 
+    RowBox[{
+     RowBox[{"absentParameter", "[", 
+      RowBox[{"d", ",", "n", ",", "f", ",", "m", ",", "cod"}], "]"}], "===", 
+     RowBox[{"{", "nParm", "}"}]}]}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"settleRemainedParaxialParametersInfinite", "[", 
+    RowBox[{"d_", ",", "n_", ",", "f_", ",", "m_", ",", "cod_"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"Message", "[", 
+       RowBox[{"settleRemainedParaxialParameters", "::", "notenough"}], "]"}],
+       ";", "$Failed"}], ")"}], "/;", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"absentParameter", "[", 
+        RowBox[{"d", ",", "n", ",", "f", ",", "m", ",", "cod"}], "]"}], "===", 
+       RowBox[{"{", "dParm", "}"}]}], ")"}], "&&", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"Abs", "[", 
+        RowBox[{"N", "[", "cod", "]"}], "]"}], "===", "1.0"}], ")"}]}]}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"settleRemainedParaxialParametersInfinite", "[", 
+    RowBox[{"d_", ",", "n_", ",", "f_", ",", "m_", ",", "cod_"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"sd", ",", "ddep"}], "}"}], ",", 
+      RowBox[{
+       RowBox[{"sd", "=", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"cod", "+", "1.0"}], ")"}], "f"}], "-", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"cod", "-", "1.0"}], ")"}], "m"}]}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"ddep", "=", 
+        RowBox[{"n", "*", "sd", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"f", "-", "m"}], ")"}], "/", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"cod", "+", "1.0"}], ")"}], "f"}], ")"}]}]}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Flatten", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"curvaturesInfinite", "[", 
+           RowBox[{"ddep", ",", "n", ",", "f", ",", "m", ",", "cod"}], "]"}], 
+          ",", 
+          RowBox[{"paraxialWorkingDistance", "\[Rule]", "m"}], ",", 
+          RowBox[{"lensMediumThickness", "\[Rule]", "ddep"}]}], "}"}], 
+        "]"}]}]}], "\[IndentingNewLine]", "]"}], "/;", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"absentParameter", "[", 
+        RowBox[{"d", ",", "n", ",", "f", ",", "m", ",", "cod"}], "]"}], "===", 
+       RowBox[{"{", "dParm", "}"}]}], ")"}], "&&", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"Abs", "[", 
+        RowBox[{"N", "[", "cod", "]"}], "]"}], "=!=", "1.0"}], ")"}]}]}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"settleRemainedParaxialParametersInfinite", "[", 
+    RowBox[{"d_", ",", "n_", ",", "f_", ",", "m_", ",", "cod_"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"sd", ",", "fdep"}], "}"}], ",", 
+      RowBox[{
+       RowBox[{"sd", "=", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"cod", "+", "1.0"}], ")"}], "^", "2"}], 
+          RowBox[{"d", "^", "2"}]}], "+", 
+         RowBox[{"4", "n", "*", "m", "*", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"cod", 
+             RowBox[{"(", 
+              RowBox[{"cod", "+", "1.0"}], ")"}], "d"}], "+", 
+            RowBox[{"n", "*", "m"}]}], ")"}]}]}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"sd", "<", "0.0"}], ",", 
+         RowBox[{
+          RowBox[{"Message", "[", 
+           RowBox[{"settleRemainedParaxialParameters", "::", "inconsistent"}],
+            "]"}], ";", 
+          RowBox[{"Return", "[", "$Failed", "]"}]}]}], "]"}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"fdep", "=", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"N", "[", "cod", "]"}], "=!=", 
+           RowBox[{"-", "1.0"}]}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"Sqrt", "[", "sd", "]"}], "+", 
+             RowBox[{"2.0", "n", "*", "cod", "*", "m"}], "+", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"cod", "+", "1.0"}], ")"}], "d"}]}], ")"}], "/", 
+           RowBox[{"(", 
+            RowBox[{"2", "n", 
+             RowBox[{"(", 
+              RowBox[{"cod", "+", "1.0"}], ")"}]}], ")"}]}], ",", 
+          RowBox[{
+           RowBox[{"d", "/", "n"}], "+", "m"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Flatten", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"curvaturesInfinite", "[", 
+           RowBox[{"d", ",", "n", ",", "fdep", ",", "m", ",", "cod"}], "]"}], 
+          ",", 
+          RowBox[{"paraxialWorkingDistance", "\[Rule]", "m"}], ",", 
+          RowBox[{"focalLength", "\[Rule]", "fdep"}]}], "}"}], "]"}]}]}], 
+     "\[IndentingNewLine]", "]"}], "/;", 
+    RowBox[{
+     RowBox[{"absentParameter", "[", 
+      RowBox[{"d", ",", "n", ",", "f", ",", "m", ",", "cod"}], "]"}], "===", 
+     RowBox[{"{", "fParm", "}"}]}]}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"settleRemainedParaxialParametersInfinite", "[", 
+    RowBox[{"d_", ",", "n_", ",", "f_", ",", "m_", ",", "cod_"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"sm", ",", "mdep"}], "}"}], ",", 
+      RowBox[{
+       RowBox[{"sm", "=", 
+        RowBox[{"n", "*", "f", "*", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"n", "*", "f"}], "+", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"cod", "^", "2"}], "-", "1.0"}], ")"}], "d"}]}], 
+          ")"}]}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"sm", "<", "0.0"}], ",", 
+         RowBox[{
+          RowBox[{"Message", "[", 
+           RowBox[{"settleRemainedParaxialParameters", "::", "inconsistent"}],
+            "]"}], ";", 
+          RowBox[{"Return", "[", "$Failed", "]"}]}]}], "]"}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"mdep", "=", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"N", "[", "cod", "]"}], "=!=", "1.0"}], ",", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"n", "*", "cod", "*", "f"}], "-", 
+             RowBox[{"Sqrt", "[", "sm", "]"}]}], ")"}], "/", 
+           RowBox[{"(", 
+            RowBox[{"n", 
+             RowBox[{"(", 
+              RowBox[{"cod", "-", "1.0"}], ")"}]}], ")"}]}], ",", 
+          RowBox[{"f", "-", 
+           RowBox[{"d", "/", "n"}]}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Flatten", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"curvaturesInfinite", "[", 
+           RowBox[{"d", ",", "n", ",", "f", ",", "mdep", ",", "cod"}], "]"}], 
+          ",", 
+          RowBox[{"paraxialWorkingDistance", "\[Rule]", "mdep"}]}], "}"}], 
+        "]"}]}]}], "\[IndentingNewLine]", "]"}], "/;", 
+    RowBox[{
+     RowBox[{"absentParameter", "[", 
+      RowBox[{"d", ",", "n", ",", "f", ",", "m", ",", "cod"}], "]"}], "===", 
+     RowBox[{"{", "iParm", "}"}]}]}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"settleRemainedParaxialParametersInfinite", "[", 
+   RowBox[{"d_", ",", "n_", ",", "f_", ",", "m_", ",", "cod_"}], "]"}], ":=", 
+  
+  RowBox[{
+   RowBox[{"With", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"curvs", "=", 
+       RowBox[{"curvaturesInfinite", "[", 
+        RowBox[{"d", ",", "n", ",", "f", ",", "m", ",", "cod"}], "]"}]}], 
+      "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"Flatten", "[", 
+      RowBox[{"{", 
+       RowBox[{"curvs", ",", 
+        RowBox[{"paraxialWorkingDistance", "\[Rule]", "m"}], ",", 
+        RowBox[{"coddingtonShapeFactor", "\[Rule]", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"CSF", "[", 
+            RowBox[{"frontSurfaceCurvature", ",", "backSurfaceCurvature"}], 
+            "]"}], "/.", "curvs"}], ")"}]}]}], "}"}], "]"}]}], 
+    "\[IndentingNewLine]", "]"}], "/;", 
+   RowBox[{
+    RowBox[{"absentParameter", "[", 
+     RowBox[{"d", ",", "n", ",", "f", ",", "m", ",", "cod"}], "]"}], "===", 
+    RowBox[{"{", "cParm", "}"}]}]}]}], "\[IndentingNewLine]"}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{
+  3.802386438349963*^9, {3.802386474013246*^9, 3.802386487197082*^9}, {
+   3.802386543280631*^9, 3.8023865715418863`*^9}, {3.802386722801736*^9, 
+   3.802386844649004*^9}, {3.802388947101117*^9, 3.802389052770236*^9}, {
+   3.802389111204254*^9, 3.802389115917449*^9}, {3.8023891706067944`*^9, 
+   3.802389226821804*^9}, {3.80301159906466*^9, 
+   3.8030116389258966`*^9}},ExpressionUUID->"cd2cb97f-389b-49d1-81f6-\
+f15d84699151"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["for finite conjugate", "Subsection",
+ InitializationCell->True,
+ CellChangeTimes->{{3.802387017238483*^9, 
+  3.8023870216027517`*^9}},ExpressionUUID->"cb869cd6-3a78-4d8f-91a9-\
+41ba623d88de"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "numericCount", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Attributes", "[", "numericCount", "]"}], "=", 
+   RowBox[{"{", "Listable", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"numericCount", "[", "c_", "]"}], ":=", 
+  RowBox[{"1", "/;", 
+   RowBox[{"NumericQ", "[", "c", "]"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"numericCount", "[", "c_", "]"}], ":=", 
+  RowBox[{"0", "/;", 
+   RowBox[{"(", 
+    RowBox[{"!", " ", 
+     RowBox[{"NumericQ", "[", "c", "]"}]}], ")"}]}]}], "\[IndentingNewLine]", 
+
+ RowBox[{
+  RowBox[{
+   RowBox[{"boundingConditionCount", "[", 
+    RowBox[{"params", ":", 
+     RowBox[{"{", "__", "}"}]}], "]"}], ":=", 
+   RowBox[{"Apply", "[", 
+    RowBox[{"Plus", ",", 
+     RowBox[{"numericCount", "[", "params", "]"}]}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"additionalTermsOfPricipals", "[", 
+    RowBox[{
+    "d_", ",", "n_", ",", "c1_", ",", "c2_", ",", "mid_", ",", "mod_"}], 
+    "]"}], ":=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"paraxialDistanceBetweenObjectAndPrincipal", "\[Rule]", 
+      RowBox[{"mod", "-", 
+       RowBox[{"objectPrincipalPlanePosition", "[", 
+        RowBox[{"c1", ",", "c2", ",", "n", ",", "d"}], "]"}]}]}], ",", 
+     RowBox[{"paraxialDistanceBetweenPrincipalAndImage", "\[Rule]", 
+      RowBox[{"mid", "-", 
+       RowBox[{"imagePrincipalPlanePosition", "[", 
+        RowBox[{"c1", ",", "c2", ",", "n", ",", "d"}], "]"}]}]}]}], "}"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"settleRemainedParaxialParametersFinite", "[", 
+    RowBox[{
+    "d_", ",", "n_", ",", "f_", ",", "mid_", ",", "cod_", ",", "mod_", ",", 
+     "beta_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "nc", ",", "da", ",", "na", ",", "fa", ",", "ia", ",", "ca", ",", "oa", 
+       ",", "ba"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"nc", "=", 
+       RowBox[{"boundingConditionCount", "[", 
+        RowBox[{"{", 
+         RowBox[{"f", ",", "mid", ",", "cod", ",", "mod", ",", "beta"}], 
+         "}"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"nc", "\[LessEqual]", "2"}], ",", 
+        RowBox[{
+         RowBox[{"Message", "[", 
+          RowBox[{"settleRemainedParaxialParameters", "::", "notenough"}], 
+          "]"}], ";", 
+         RowBox[{"Return", "[", "$Failed", "]"}]}], ",", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"nc", ">=", "4"}], ",", 
+          RowBox[{
+           RowBox[{"Message", "[", 
+            RowBox[{"settleRemainedParaxialParameters", "::", "toomuch"}], 
+            "]"}], ";", 
+           RowBox[{"Return", "[", "$Failed", "]"}]}]}], "]"}]}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Flatten", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"conjugateInfiniteness", "\[Rule]", "False"}], ",", 
+         RowBox[{"fixRemainedParaxialParametersFinite", "[", 
+          RowBox[{
+          "d", ",", "n", ",", "f", ",", "mid", ",", "cod", ",", "mod", ",", 
+           "beta"}], "]"}]}], "}"}], "]"}]}]}], "\[IndentingNewLine]", 
+    "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"fixRemainedParaxialParametersFinite", "[", 
+    RowBox[{"d_", ",", "n_", ",", "_", ",", 
+     RowBox[{"mid_", "?", "NumericQ"}], ",", "_", ",", 
+     RowBox[{"mod_", "?", "NumericQ"}], ",", 
+     RowBox[{"beta_", "?", "NumericQ"}]}], "]"}], ":=", 
+   RowBox[{"With", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"c1", "=", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"beta", 
+            RowBox[{"(", 
+             RowBox[{"d", "+", 
+              RowBox[{"n", "*", "mod"}]}], ")"}]}], "+", 
+           RowBox[{"n", " ", "mid"}]}], ")"}], "/", 
+         RowBox[{"(", 
+          RowBox[{"beta", 
+           RowBox[{"(", 
+            RowBox[{"n", "-", "1.0"}], ")"}], "d", " ", "mod"}], ")"}]}]}], 
+       ",", 
+       RowBox[{"c2", "=", 
+        RowBox[{
+         RowBox[{"-", 
+          RowBox[{"(", 
+           RowBox[{"d", "+", 
+            RowBox[{"beta", " ", "n", " ", "mod"}], "+", 
+            RowBox[{"n", " ", "mid"}]}], ")"}]}], "/", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"n", "-", "1.0"}], ")"}], "d", " ", "mid"}], ")"}]}]}]}], 
+      "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"Flatten", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"frontSurfaceCurvature", "\[Rule]", "c1"}], ",", 
+        RowBox[{"backSurfaceCurvature", "\[Rule]", "c2"}], ",", 
+        RowBox[{"focalLength", "\[Rule]", 
+         RowBox[{
+          RowBox[{"-", "beta"}], " ", "n", " ", "mid", " ", 
+          RowBox[{"mod", "/", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"beta", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"beta", " ", "n", " ", "mod"}], "+", "d"}], ")"}]}], 
+             "+", 
+             RowBox[{"n", " ", "mid"}]}], ")"}]}]}]}], ",", 
+        RowBox[{"coddingtonShapeFactor", "\[Rule]", 
+         RowBox[{"CSF", "[", 
+          RowBox[{"c1", ",", "c2"}], "]"}]}], ",", 
+        RowBox[{"additionalTermsOfPricipals", "[", 
+         RowBox[{
+         "d", ",", "n", ",", "c1", ",", "c2", ",", "mid", ",", "mod"}], 
+         "]"}]}], "}"}], "]"}]}], "\[IndentingNewLine]", "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"fixRemainedParaxialParametersFinite", "[", 
+    RowBox[{"d_", ",", "n_", ",", 
+     RowBox[{"f_", "?", "NumericQ"}], ",", 
+     RowBox[{"mid_", "?", "NumericQ"}], ",", "_", ",", "_", ",", 
+     RowBox[{"beta_", "?", "NumericQ"}]}], "]"}], ":=", 
+   RowBox[{"With", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"c1", "=", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"1.0", "-", "beta"}], ")"}], "f", " ", "n"}], "-", " ", 
+           RowBox[{"n", " ", "mid"}]}], ")"}], "/", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"n", "-", "1.0"}], ")"}], "d", " ", "f"}], ")"}]}]}], ",", 
+       RowBox[{"c2", "=", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"1.0", "-", "beta"}], ")"}], "f", " ", "n"}], " ", "-", 
+           " ", 
+           RowBox[{"n", " ", "mid"}], " ", "-", " ", "d"}], ")"}], "/", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"n", "-", "1.0"}], ")"}], 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"beta", " ", "f"}], " ", "+", " ", "mid"}], ")"}], "d"}],
+           ")"}]}]}], ",", 
+       RowBox[{"mod", "=", 
+        RowBox[{
+         RowBox[{"-", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"beta", " ", "d", " ", "f"}], "+", 
+            RowBox[{"f", " ", "n", " ", "mid"}]}], ")"}]}], "/", 
+         RowBox[{"(", 
+          RowBox[{"beta", " ", "n", " ", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"beta", " ", "f"}], " ", "+", "mid"}], ")"}]}], 
+          ")"}]}]}]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"Flatten", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"frontSurfaceCurvature", "\[Rule]", "c1"}], ",", 
+        RowBox[{"backSurfaceCurvature", "\[Rule]", "c2"}], ",", 
+        RowBox[{"paraxialObjectDistance", "\[Rule]", "mod"}], ",", 
+        RowBox[{"coddingtonShapeFactor", "\[Rule]", 
+         RowBox[{"CSF", "[", 
+          RowBox[{"c1", ",", "c2"}], "]"}]}], ",", 
+        RowBox[{"additionalTermsOfPricipals", "[", 
+         RowBox[{
+         "d", ",", "n", ",", "c1", ",", "c2", ",", "mid", ",", "mod"}], 
+         "]"}]}], "}"}], "]"}]}], "\[IndentingNewLine]", "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"fixRemainedParaxialParametersFinite", "[", 
+    RowBox[{"d_", ",", "n_", ",", 
+     RowBox[{"f_", "?", "NumericQ"}], ",", "_", ",", "_", ",", 
+     RowBox[{"mod_", "?", "NumericQ"}], ",", 
+     RowBox[{"beta_", "?", "NumericQ"}]}], "]"}], ":=", 
+   RowBox[{"With", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"c1", "=", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"beta", " ", "d"}], " ", "+", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"1.0", "-", "beta"}], ")"}], "n", " ", "f"}], "+", 
+           RowBox[{"beta", " ", "n", " ", "mod"}]}], ")"}], "/", 
+         RowBox[{"(", 
+          RowBox[{"d", 
+           RowBox[{"(", 
+            RowBox[{"n", "-", "1.0"}], ")"}], 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"beta", " ", "f"}], " ", "+", "mod"}], ")"}], "d"}], 
+          ")"}]}]}], ",", 
+       RowBox[{"c2", "=", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"1.0", "-", "beta"}], ")"}], "f", " ", "n"}], " ", "-", 
+           " ", 
+           RowBox[{"n", " ", "mod"}], " ", "-", " ", "d"}], ")"}], "/", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"n", "-", "1.0"}], ")"}], 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"beta", " ", "f"}], " ", "+", " ", "mod"}], ")"}], "d"}],
+           ")"}]}]}], ",", 
+       RowBox[{"mid", "=", 
+        RowBox[{
+         RowBox[{"-", 
+          RowBox[{"(", 
+           RowBox[{"beta", " ", "f", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"beta", " ", "n", " ", "mod"}], "+", "d"}], ")"}]}], 
+           ")"}]}], "/", 
+         RowBox[{"(", 
+          RowBox[{"n", 
+           RowBox[{"(", 
+            RowBox[{"f", "+", 
+             RowBox[{"beta", " ", "mod"}]}], ")"}]}], ")"}]}]}]}], "}"}], ",",
+      "\[IndentingNewLine]", 
+     RowBox[{"Flatten", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"frontSurfaceCurvature", "\[Rule]", "c1"}], ",", 
+        RowBox[{"backSurfaceCurvature", "\[Rule]", "c2"}], ",", 
+        RowBox[{"paraxialWorkingDistance", "\[Rule]", "mid"}], ",", 
+        RowBox[{"coddingtonShapeFactor", "\[Rule]", 
+         RowBox[{"CSF", "[", 
+          RowBox[{"c1", ",", "c2"}], "]"}]}], ",", 
+        RowBox[{"additionalTermsOfPricipals", "[", 
+         RowBox[{
+         "d", ",", "n", ",", "c1", ",", "c2", ",", "mid", ",", "mod"}], 
+         "]"}]}], "}"}], "]"}]}], "\[IndentingNewLine]", "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"fixRemainedParaxialParametersFinite", "[", 
+    RowBox[{"d_", ",", "n_", ",", 
+     RowBox[{"f_", "?", "NumericQ"}], ",", "_", ",", 
+     RowBox[{"cod_", "?", "NumericQ"}], ",", "_", ",", 
+     RowBox[{"beta_", "?", "NumericQ"}]}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"s", ",", "sq", ",", "c1", ",", "c2", ",", "mid", ",", "mod"}], 
+      "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"s", "=", 
+       RowBox[{"n", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"cod", "^", "2"}], "-", "1.0"}], ")"}], "d"}], "+", 
+          RowBox[{"n", " ", "f"}]}], ")"}], "f"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"s", "<", "0.0"}], ",", 
+        RowBox[{
+         RowBox[{"Message", "[", 
+          RowBox[{"settleRemainedParaxialParameters", "::", "inconsistent"}], 
+          "]"}], ";", 
+         RowBox[{"Return", "[", "$Failed", "]"}]}]}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"sq", "=", 
+       RowBox[{"Sqrt", "[", "s", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"c1", "=", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"sq", "-", 
+          RowBox[{"n", " ", "f"}]}], ")"}], "/", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"cod", "-", "1.0"}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{"n", "-", "1.0"}], ")"}], "d", " ", "f"}], ")"}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"c2", "=", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"sq", "-", 
+          RowBox[{"n", " ", "f"}]}], ")"}], "/", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"cod", "+", "1.0"}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{"n", "-", "1.0"}], ")"}], "d", " ", "f"}], ")"}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"mod", "=", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"beta", " ", "sq"}], "+", 
+          RowBox[{"f", " ", "n", " ", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"beta", "-", "1.0"}], ")"}], "cod"}], "-", "1.0"}], 
+            ")"}]}]}], ")"}], "/", 
+        RowBox[{"(", 
+         RowBox[{"beta", 
+          RowBox[{"(", 
+           RowBox[{"cod", "+", "1.0"}], ")"}], "n"}], ")"}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"mid", "=", 
+       RowBox[{
+        RowBox[{"-", 
+         RowBox[{"(", 
+          RowBox[{"sq", "+", 
+           RowBox[{"n", " ", "f", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"beta", "-", "1.0"}], ")"}], "cod"}], " ", "-", 
+              "beta"}], ")"}]}]}], ")"}]}], "/", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"cod", "-", "1.0"}], ")"}], "n"}], ")"}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Flatten", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"frontSurfaceCurvature", "\[Rule]", "c1"}], ",", 
+         RowBox[{"backSurfaceCurvature", "\[Rule]", "c2"}], ",", 
+         RowBox[{"paraxialObjectDistance", "\[Rule]", "mod"}], ",", 
+         RowBox[{"paraxialWorkingDistance", "\[Rule]", "mid"}], ",", 
+         RowBox[{"additionalTermsOfPricipals", "[", 
+          RowBox[{
+          "d", ",", "n", ",", "c1", ",", "c2", ",", "mid", ",", "mod"}], 
+          "]"}]}], "}"}], "]"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"fixRemainedParaxialParametersFinite", "[", 
+    RowBox[{"d_", ",", "n_", ",", 
+     RowBox[{"f_", "?", "NumericQ"}], ",", 
+     RowBox[{"mid_", "?", "NumericQ"}], ",", 
+     RowBox[{"cod_", "?", "NumericQ"}], ",", "_", ",", "_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"s", ",", "sq", ",", "c1", ",", "c2", ",", "mod"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"s", "=", 
+       RowBox[{"n", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"cod", "^", "2"}], "-", "1.0"}], ")"}], "d"}], "+", 
+          RowBox[{"n", " ", "f"}]}], ")"}], "n", " ", "f"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"s", "<", "0.0"}], ",", 
+        RowBox[{
+         RowBox[{"Message", "[", 
+          RowBox[{"settleRemainedParaxialParameters", "::", "inconsistent"}], 
+          "]"}], ";", 
+         RowBox[{"Return", "[", "$Failed", "]"}]}]}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"sq", "=", 
+       RowBox[{"Sqrt", "[", "s", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"c1", "=", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"sq", "-", 
+          RowBox[{"n", " ", "f"}]}], ")"}], "/", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"cod", "-", "1.0"}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{"n", "-", "1.0"}], ")"}], "d", " ", "f"}], ")"}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"c2", "=", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"sq", "-", 
+          RowBox[{"n", " ", "f"}]}], ")"}], "/", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"cod", "+", "1.0"}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{"n", "-", "1.0"}], ")"}], "d", " ", "f"}], ")"}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"mod", "=", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"c2", "*", "d", 
+           RowBox[{"(", 
+            RowBox[{"n", "-", "1.0"}], ")"}], "mid"}], "+", "d", "+", 
+          RowBox[{"n", " ", "mid"}]}], ")"}], "/", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"n", "-", "1.0"}], ")"}], 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"c1", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"c2", " ", "d", 
+                 RowBox[{"(", 
+                  RowBox[{"n", "-", "1.0"}], ")"}], "mid"}], "+", "d", "+", 
+                RowBox[{"n", " ", "mid"}]}], ")"}]}], "-", 
+             RowBox[{"c2", " ", "n", " ", "mid"}]}], ")"}]}], "-", "n"}], 
+         ")"}]}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Flatten", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"frontSurfaceCurvature", "\[Rule]", "c1"}], ",", 
+         RowBox[{"backSurfaceCurvature", "\[Rule]", "c2"}], ",", 
+         RowBox[{"paraxialObjectDistance", "\[Rule]", "mod"}], ",", 
+         RowBox[{"lateralMagnification", "\[Rule]", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"cod", " ", "n", " ", 
+              RowBox[{"(", 
+               RowBox[{"f", "-", "mid"}], ")"}]}], "+", 
+             RowBox[{"n", " ", "mid"}], " ", "-", " ", "sq"}], ")"}], "/", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"cod", "-", "1.0"}], ")"}], "n", " ", "f"}], ")"}]}]}], 
+         ",", 
+         RowBox[{"additionalTermsOfPricipals", "[", 
+          RowBox[{
+          "d", ",", "n", ",", "c1", ",", "c2", ",", "mid", ",", "mod"}], 
+          "]"}]}], "}"}], "]"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"fixRemainedParaxialParametersFinite", "[", 
+    RowBox[{"d_", ",", "n_", ",", 
+     RowBox[{"f_", "?", "NumericQ"}], ",", 
+     RowBox[{"mid_", "?", "NumericQ"}], ",", "_", ",", 
+     RowBox[{"mod_", "?", "NumericQ"}], ",", "_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"s", ",", "sq", ",", "c1", ",", "c2"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"s", "=", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"d", " ", "f"}], ")"}], "^", "2"}], "+", 
+        RowBox[{"2.0", "d", " ", "f", " ", "n", " ", "mid", " ", "mod"}], "+", 
+        RowBox[{
+         RowBox[{"n", "^", "2"}], "mid", " ", "mod", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"mid", " ", "mod"}], "-", 
+           RowBox[{"4.0", 
+            RowBox[{"f", "^", "2"}]}]}], ")"}]}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"s", "<", "0.0"}], ",", 
+        RowBox[{
+         RowBox[{"Message", "[", 
+          RowBox[{"settleRemainedParaxialParameters", "::", "inconsistent"}], 
+          "]"}], ";", 
+         RowBox[{"Return", "[", "$Failed", "]"}]}]}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"sq", "=", 
+       RowBox[{"Sqrt", "[", "s", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"c1", "=", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"sq", "-", 
+          RowBox[{"d", " ", "f"}], "+", 
+          RowBox[{"n", " ", "mod", 
+           RowBox[{"(", 
+            RowBox[{"mid", "-", 
+             RowBox[{"2.0", "f"}]}], ")"}]}]}], ")"}], "/", 
+        RowBox[{"(", 
+         RowBox[{"2.0", "d", " ", "f", " ", 
+          RowBox[{"(", 
+           RowBox[{"n", "-", "1.0"}], ")"}], "mod"}], ")"}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"c2", "=", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"sq", "+", 
+          RowBox[{"d", " ", "f"}], " ", "+", " ", 
+          RowBox[{"2.0", " ", "f", " ", "n", " ", "mid"}], "-", 
+          RowBox[{"n", " ", "mod", " ", "mid"}]}], ")"}], "/", 
+        RowBox[{"(", 
+         RowBox[{"2.0", "d", " ", "f", " ", "mid", 
+          RowBox[{"(", 
+           RowBox[{"1.0", "-", "n"}], ")"}]}], ")"}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Flatten", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"frontSurfaceCurvature", "\[Rule]", "c1"}], ",", 
+         RowBox[{"backSurfaceCurvature", "\[Rule]", "c2"}], ",", 
+         RowBox[{"lateralMagnification", "\[Rule]", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"sq", "-", 
+             RowBox[{"f", " ", "d", " ", "f"}], " ", "-", " ", 
+             RowBox[{"n", " ", "mid", " ", "mod"}]}], ")"}], "/", 
+           RowBox[{"(", 
+            RowBox[{"2.0", " ", "f", " ", "n", " ", "mod"}], ")"}]}]}], ",", 
+         RowBox[{"coddingtonShapeFactor", "\[Rule]", 
+          RowBox[{"CSF", "[", 
+           RowBox[{"c1", ",", "c2"}], "]"}]}], ",", 
+         RowBox[{"additionalTermsOfPricipals", "[", 
+          RowBox[{
+          "d", ",", "n", ",", "c1", ",", "c2", ",", "mid", ",", "mod"}], 
+          "]"}]}], "}"}], "]"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"fixRemainedParaxialParametersFinite", "[", 
+    RowBox[{"d_", ",", "n_", ",", 
+     RowBox[{"f_", "?", "NumericQ"}], ",", "_", ",", 
+     RowBox[{"cod_", "?", "NumericQ"}], ",", "_", ",", 
+     RowBox[{"beta_", "?", "NumericQ"}]}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "s", ",", "sq", ",", "rc", ",", "rm", ",", "c1", ",", "c2", ",", "mod", 
+       ",", "mid"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"s", "=", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"cod", "^", "2"}], "-", "1.0"}], ")"}], "d"}], "+", 
+          RowBox[{"n", " ", "f"}]}], ")"}], "n", " ", "f"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"s", "<", "0.0"}], ",", 
+        RowBox[{
+         RowBox[{"Message", "[", 
+          RowBox[{"settleRemainedParaxialParameters", "::", "inconsistent"}], 
+          "]"}], ";", 
+         RowBox[{"Return", "[", "$Failed", "]"}]}]}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"sq", "=", 
+       RowBox[{"Sqrt", "[", "s", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"rc", "=", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"sq", "-", 
+          RowBox[{"n", " ", "f"}]}], ")"}], "/", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"n", "-", "1.0"}], ")"}], "d", " ", "f"}], ")"}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"rm", "=", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"cod", 
+              RowBox[{"(", 
+               RowBox[{"beta", "-", "1.0"}], ")"}]}], "-", "1.0"}], ")"}], 
+           "n", " ", "f"}], "+", 
+          RowBox[{"beta", "*", "sq"}]}], ")"}], "/", 
+        RowBox[{"(", 
+         RowBox[{"beta", " ", "n"}], ")"}]}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"c1", "=", 
+       RowBox[{"rc", "/", 
+        RowBox[{"(", 
+         RowBox[{"cod", "-", "1.0"}], ")"}]}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"c2", "=", 
+       RowBox[{"rc", "/", 
+        RowBox[{"(", 
+         RowBox[{"cod", "+", "1.0"}], ")"}]}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"mod", "=", 
+       RowBox[{"rm", "/", 
+        RowBox[{"(", 
+         RowBox[{"cod", "+", "1.0"}], ")"}]}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"mid", "=", 
+       RowBox[{"rm", "/", 
+        RowBox[{"(", 
+         RowBox[{"cod", "-", "1.0"}], ")"}]}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Flatten", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"frontSurfaceCurvature", "\[Rule]", "c1"}], ",", 
+         RowBox[{"backSurfaceCurvature", "\[Rule]", "c2"}], ",", 
+         RowBox[{"paraxialObjectDistance", "\[Rule]", "mod"}], ",", 
+         RowBox[{"paraxialWorkingDistance", "\[Rule]", "mid"}], ",", 
+         RowBox[{"additionalTermsOfPricipals", "[", 
+          RowBox[{
+          "d", ",", "n", ",", "c1", ",", "c2", ",", "mid", ",", "mod"}], 
+          "]"}]}], "}"}], "]"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fixRemainedParaxialParametersFinite", "[", "__", "]"}], ":=", 
+  RowBox[{"(", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Message", "[", 
+     RowBox[{"settleRemainedParaxialParameters", "::", "notimplemented"}], 
+     "]"}], ";", "$Failed"}], ")"}]}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{
+  3.802386873555629*^9, {3.802387097722561*^9, 3.802387161015546*^9}, {
+   3.802722466482112*^9, 3.802722580527608*^9}, {3.802722930504455*^9, 
+   3.802722980509255*^9}, {3.803011638927277*^9, 3.803011638927969*^9}, {
+   3.803072981193556*^9, 3.803073051935576*^9}, {3.803073131667019*^9, 
+   3.80307316687995*^9}, {3.803073527707171*^9, 3.803073534388891*^9}, {
+   3.803073692697571*^9, 3.803073748430348*^9}, {3.803073782062587*^9, 
+   3.8030738934831343`*^9}, {3.8030739415118027`*^9, 
+   3.8030740763113203`*^9}, {3.803074142113865*^9, 3.803074181713982*^9}, {
+   3.8030744622150373`*^9, 3.803074513884904*^9}, {3.803074558392166*^9, 
+   3.803074640957655*^9}, {3.803074703552356*^9, 3.803075039494763*^9}, 
+   3.8030750879152308`*^9, {3.803075143401865*^9, 3.803075179019681*^9}, {
+   3.803075220443359*^9, 3.803075367292075*^9}, {3.8030754195151033`*^9, 
+   3.8030754445223618`*^9}, {3.803075494158334*^9, 3.803075875227166*^9}, {
+   3.803075948938077*^9, 3.8030759527182217`*^9}, {3.803075998056546*^9, 
+   3.803076123022997*^9}, {3.803076171904838*^9, 3.8030762912700233`*^9}, {
+   3.803076708765398*^9, 3.80307693913382*^9}, {3.803076982290249*^9, 
+   3.8030772585156803`*^9}, {3.803077856442377*^9, 3.803077859095887*^9}, 
+   3.8030779256864843`*^9, {3.803077974670251*^9, 3.803077996394121*^9}, {
+   3.803078080399103*^9, 3.803078102504553*^9}, {3.803078138888105*^9, 
+   3.8030782236614532`*^9}, {3.80307827622305*^9, 3.803078310671247*^9}, 
+   3.803078401865727*^9, {3.803078457857237*^9, 3.803078479969408*^9}, 
+   3.8030785890209217`*^9, {3.803078680855773*^9, 3.8030786885935698`*^9}, {
+   3.8030787385930777`*^9, 3.8030791433694277`*^9}, {3.8030791751668987`*^9, 
+   3.8030791800010777`*^9}, {3.803081335191674*^9, 3.803081357805522*^9}, {
+   3.80308157031061*^9, 3.803081581763722*^9}, {3.803081947496724*^9, 
+   3.803081948068881*^9}, {3.803081987274054*^9, 3.803081988063719*^9}, {
+   3.803082038612083*^9, 3.803082058789933*^9}, {3.803085475621932*^9, 
+   3.803085482246889*^9}, 3.803099469042058*^9, {3.8038667027536097`*^9, 
+   3.803866719895722*^9}, 3.8038668090769253`*^9, 
+   3.80386715073954*^9},ExpressionUUID->"ee6e4aec-2584-4db7-9569-\
+3f7545b477a9"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"objectPrincipalPlanePosition", "[", 
+   RowBox[{"c1_", ",", "c2_", ",", "n_", ",", "d_"}], "]"}], ":=", 
+  RowBox[{"c2", "*", 
+   RowBox[{"d", "/", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"c1", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"c2", "*", "d", 
+          RowBox[{"(", 
+           RowBox[{"n", "-", "1"}], ")"}]}], "+", "n"}], ")"}]}], "-", 
+      RowBox[{"n", "*", "c2"}]}], ")"}]}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"imagePrincipalPlanePosition", "[", 
+   RowBox[{"c1_", ",", "c2_", ",", "n_", ",", "d_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"-", "c1"}], "*", 
+   RowBox[{"d", "/", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"c1", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"c2", "*", "d", 
+          RowBox[{"(", 
+           RowBox[{"n", "-", "1"}], ")"}]}], "+", "n"}], ")"}]}], "-", 
+      RowBox[{"n", "*", "c2"}]}], ")"}]}]}]}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{
+  3.802386873555629*^9, {3.802387097722561*^9, 3.802387161015546*^9}, {
+   3.802722466482112*^9, 3.802722580527608*^9}, {3.802722930504455*^9, 
+   3.802722980509255*^9}, {3.803011638927277*^9, 3.803011638927969*^9}, {
+   3.803072981193556*^9, 3.8030729832734833`*^9}, {3.80308587235463*^9, 
+   3.803085891458872*^9}, 
+   3.8038667949255657`*^9},ExpressionUUID->"d79327f7-ca5d-47f4-a70f-\
+c922c756281c"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"tautologyCheck", "[", 
+   RowBox[{
+    RowBox[{"d_", "?", "NumericQ"}], ",", 
+    RowBox[{"mid_", "?", "NumericQ"}], ",", 
+    RowBox[{"mod_", "?", "NumericQ"}], ",", 
+    RowBox[{"oid_", "?", "NumericQ"}]}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"{", "}"}], "/;", 
+   RowBox[{"oid", "\[Equal]", 
+    RowBox[{"d", "+", "mid", "+", "mod"}]}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"tautologyCheck", "[", 
+   RowBox[{
+    RowBox[{"d_", "?", "NumericQ"}], ",", 
+    RowBox[{"mid_", "?", "NumericQ"}], ",", 
+    RowBox[{"mod_", "?", "NumericQ"}], ",", 
+    RowBox[{"oid_", "?", "NumericQ"}]}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"Message", "[", 
+      RowBox[{"settleRemainedParaxialParameters", "::", "tautology"}], "]"}], 
+     ";", "$Failed"}], ")"}], "/;", 
+   RowBox[{"oid", "=!=", 
+    RowBox[{"d", "+", "mid", "+", "mod"}]}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"tautologyCheck", "[", 
+   RowBox[{
+    RowBox[{"_", "?", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"!", " ", 
+        RowBox[{"NumericQ", "[", "#", "]"}]}], "&"}], ")"}]}], ",", 
+    RowBox[{"mid_", "?", "NumericQ"}], ",", 
+    RowBox[{"mod_", "?", "NumericQ"}], ",", 
+    RowBox[{"oid_", "?", "NumericQ"}]}], "]"}], ":=", 
+  RowBox[{"{", 
+   RowBox[{"lensMediumThickness", "\[Rule]", 
+    RowBox[{"oid", "-", "mid", "-", "mod"}]}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"tautologyCheck", "[", 
+   RowBox[{
+    RowBox[{"d_", "?", "NumericQ"}], ",", 
+    RowBox[{"_", "?", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"!", " ", 
+        RowBox[{"NumericQ", "[", "#", "]"}]}], "&"}], ")"}]}], ",", 
+    RowBox[{"mod_", "?", "NumericQ"}], ",", 
+    RowBox[{"oid_", "?", "NumericQ"}]}], "]"}], ":=", 
+  RowBox[{"{", 
+   RowBox[{"paraxialWorkingDistance", "\[Rule]", 
+    RowBox[{"oid", "-", "d", "-", "mod"}]}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"tautologyCheck", "[", 
+   RowBox[{
+    RowBox[{"d_", "?", "NumericQ"}], ",", 
+    RowBox[{"mid_", "?", "NumericQ"}], ",", 
+    RowBox[{"_", "?", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"!", " ", 
+        RowBox[{"NumericQ", "[", "#", "]"}]}], "&"}], ")"}]}], ",", 
+    RowBox[{"oid_", "?", "NumericQ"}]}], "]"}], ":=", 
+  RowBox[{"{", 
+   RowBox[{"paraxialObjectDistance", "\[Rule]", 
+    RowBox[{"oid", "-", "d", "-", "mid"}]}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"tautologyCheck", "[", 
+   RowBox[{
+    RowBox[{"d_", "?", "NumericQ"}], ",", 
+    RowBox[{"mid_", "?", "NumericQ"}], ",", 
+    RowBox[{"mod_", "?", "NumericQ"}], ",", 
+    RowBox[{"_", "?", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"!", " ", 
+        RowBox[{"NumericQ", "[", "#", "]"}]}], "&"}], ")"}]}]}], "]"}], ":=", 
+  
+  RowBox[{"{", 
+   RowBox[{"paraxialObjectImageDistance", "\[Rule]", 
+    RowBox[{"mid", "+", "d", "+", "mod"}]}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"tautologyCheck", "[", "__", "]"}], ":=", 
+   RowBox[{"Sequence", "[", "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"tautologyParameterList", "=", 
+   RowBox[{"{", 
+    RowBox[{"dParm", ",", "iParm", ",", "oParm", ",", "oiParm"}], "}"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"tautologyParametersMatchQ", "[", 
+    RowBox[{
+    "d_", ",", "n_", ",", "f_", ",", "mid_", ",", "cod_", ",", "mod_", ",", 
+     "oid_", ",", "beta_"}], "]"}], ":=", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"Intersection", "[", 
+      RowBox[{
+       RowBox[{"absentParameter", "[", 
+        RowBox[{
+        "d", ",", "n", ",", "f", ",", "mid", ",", "cod", ",", "mod", ",", 
+         "oid", ",", "beta"}], "]"}], ",", "tautologyParameterList"}], "]"}], 
+     "===", 
+     RowBox[{"{", "}"}]}], ")"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"tooMuchConstraintsQ", "[", 
+   RowBox[{
+   "d_", ",", "n_", ",", "f_", ",", "mid_", ",", "cod_", ",", "mod_", ",", 
+    "oid_", ",", "beta_"}], "]"}], ":=", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"!", " ", 
+     RowBox[{"tautologyParametersMatchQ", "[", 
+      RowBox[{
+      "d", ",", "n", ",", "f", ",", "mid", ",", "cod", ",", "mod", ",", "oid",
+        ",", "beta"}], "]"}]}], " ", "&&", " ", 
+    RowBox[{"(", "False", ")"}]}], ")"}], 
+  RowBox[{"(*", "testing", "*)"}]}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{
+  3.802386873555629*^9, {3.802387097722561*^9, 3.802387161015546*^9}, {
+   3.802722466482112*^9, 3.802722549941887*^9}, {3.803000811063011*^9, 
+   3.803000959416947*^9}, {3.803000998737495*^9, 3.803001033420932*^9}, 
+   3.803001149544777*^9, {3.8030012037367992`*^9, 3.803001239299032*^9}, {
+   3.803001293087532*^9, 3.8030013391231003`*^9}, {3.803001391852384*^9, 
+   3.803001399760951*^9}, {3.803011623344295*^9, 3.8030116452875557`*^9}, {
+   3.8030724539551992`*^9, 3.8030724615259666`*^9}, {3.8030725201848087`*^9, 
+   3.8030725980612698`*^9}, {3.803072663377589*^9, 3.8030728715048943`*^9}, {
+   3.803073010141142*^9, 3.803073010297739*^9}, {3.8030735472827883`*^9, 
+   3.8030735521654053`*^9}, {3.803093626073783*^9, 3.8030936783643293`*^9}, {
+   3.803093782991308*^9, 
+   3.8030937854324493`*^9}},ExpressionUUID->"d27ba0c1-e563-40c7-a598-\
+71da2fc09b4b"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"mostProbableParameterList", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "nParm", ",", "dParm", ",", "iParm", ",", "bParm", ",", "oiParm"}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"settleRemainedParaxialForMostProbableParameters", "[", 
+   RowBox[{"d_", ",", "n_", ",", "mid_", ",", "oid_", ",", "beta_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"c1", ",", "c2", ",", "mod", ",", "f", ",", "cod"}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"mod", "=", 
+      RowBox[{"oid", "-", "d", "-", "mid"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"mod", "<", "0.0"}], ",", 
+       RowBox[{"Message", "[", 
+        RowBox[{
+         RowBox[{"settleRemainedParaxialParameters", "::", "meybepositive"}], 
+         ",", "paraxialObjectDistance"}], "]"}]}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"c1", "=", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"beta", "*", "d"}], "+", 
+         RowBox[{"n", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"beta", "*", "mod"}], "+", "mid"}], ")"}]}]}], ")"}], "/", 
+       RowBox[{"(", 
+        RowBox[{"beta", 
+         RowBox[{"(", 
+          RowBox[{"n", "-", "1.0"}], ")"}], "d", "*", "mod"}], ")"}]}]}], ";",
+      "\[IndentingNewLine]", 
+     RowBox[{"c2", "=", 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"(", 
+         RowBox[{"d", "+", 
+          RowBox[{"n", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"beta", "*", "mod"}], "+", "mid"}], ")"}]}]}], ")"}]}], 
+       "/", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"n", "-", "1.0"}], ")"}], "d", "*", "mid"}], ")"}]}]}], ";",
+      "\[IndentingNewLine]", 
+     RowBox[{"f", "=", 
+      RowBox[{
+       RowBox[{"-", "beta"}], "*", "n", "*", "mid", "*", 
+       RowBox[{"mod", "/", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"n", "*", "mid"}], "+", 
+          RowBox[{"beta", 
+           RowBox[{"(", 
+            RowBox[{"d", "+", 
+             RowBox[{"beta", "*", "n", "*", "mod"}]}], ")"}]}]}], ")"}]}]}]}],
+      ";", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"mod", "<", "0.0"}], ",", 
+       RowBox[{"Message", "[", 
+        RowBox[{
+         RowBox[{"settleRemainedParaxialParameters", "::", "meybepositive"}], 
+         ",", "focalLength"}], "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"cod", "=", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"c1", "+", "c2"}], ")"}], "/", 
+       RowBox[{"(", 
+        RowBox[{"c1", "-", "c2"}], ")"}]}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"frontSurfaceCurvature", "\[Rule]", "c1"}], ",", 
+       RowBox[{"backSurfaceCurvature", "\[Rule]", "c2"}], ",", 
+       RowBox[{"focalLength", "\[Rule]", "f"}], ",", 
+       RowBox[{"paraxialObjectDistance", "\[Rule]", "mod"}], ",", 
+       RowBox[{"coddingtonShapeFactor", "\[Rule]", "cod"}], ",", 
+       RowBox[{"paraxialDistanceBetweenObjectAndPrincipal", "\[Rule]", 
+        RowBox[{"mod", "-", 
+         RowBox[{"objectPrincipalPlanePosition", "[", 
+          RowBox[{"c1", ",", "c2", ",", "n", ",", "d"}], "]"}]}]}], ",", 
+       RowBox[{"paraxialDistanceBetweenPrincipalAndImage", "\[Rule]", 
+        RowBox[{"mid", "-", 
+         RowBox[{"imagePrincipalPlanePosition", "[", 
+          RowBox[{"c1", ",", "c2", ",", "n", ",", "d"}], "]"}]}]}], ",", 
+       RowBox[{"conjugateInfiniteness", "\[Rule]", "False"}]}], "}"}]}]}], 
+   "]"}]}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{
+  3.802386873555629*^9, {3.802387097722561*^9, 3.80238721865067*^9}, {
+   3.802387316292594*^9, 3.80238734150317*^9}, {3.802387406282126*^9, 
+   3.8023874079122334`*^9}, {3.8023874421593723`*^9, 3.80238745933794*^9}, {
+   3.802387655776403*^9, 3.802387701003581*^9}, {3.80238783214321*^9, 
+   3.8023878322919893`*^9}, {3.802388113257142*^9, 3.802388115831911*^9}, {
+   3.802388154398273*^9, 3.802388235319724*^9}, {3.802388423030875*^9, 
+   3.8023884545401363`*^9}, 3.802388494142229*^9, {3.802465955046575*^9, 
+   3.802465982720397*^9}, {3.8027226283286343`*^9, 3.802722646046297*^9}, {
+   3.8027226763642483`*^9, 3.802722707258103*^9}, {3.802722985918961*^9, 
+   3.802722990002479*^9}, {3.8029078456011066`*^9, 3.8029078483672543`*^9}, {
+   3.803008985226863*^9, 3.8030090660488777`*^9}, {3.803011614039361*^9, 
+   3.803011638936825*^9}, 3.803011672423191*^9, {3.8030813802462177`*^9, 
+   3.8030813930730963`*^9}, {3.803085871852426*^9, 3.803085890054542*^9}, 
+   3.803866794368054*^9},ExpressionUUID->"899334b4-7021-4306-8d9a-\
+3cf6da3afb14"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"fixedFocalLengthParameterList", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "nParm", ",", "dParm", ",", "fParm", ",", "bParm", ",", "oiParm"}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"settleRemainedParaxialForFixedFocalLength", "[", 
+    RowBox[{"d_", ",", "n_", ",", "f_", ",", "oid_", ",", "beta_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"sq", ",", "mid"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"sq", "=", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"oid", "-", "d"}], ")"}], "beta"}], ")"}], "^", "2"}], 
+        "+", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"beta", "^", "2"}], "-", "1.0"}], ")"}], "f"}], ")"}], 
+         "^", "2"}], "+", 
+        RowBox[{"2", "beta", "*", "f", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"oid", "-", "d"}], ")"}], 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"beta", "^", "2"}], "+", "1.0"}], ")"}]}], "+", 
+           RowBox[{"2.0", "beta", "*", 
+            RowBox[{"d", "/", "n"}]}]}], ")"}]}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"sq", "<", "0.0"}], ",", 
+        RowBox[{"Message", "[", 
+         RowBox[{
+          RowBox[{"settleRemainedParaxialParameters", "::", "inconsistent"}], 
+          ",", 
+          RowBox[{"Return", "[", "$Failed", "]"}]}], "]"}]}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"mid", "=", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"1", "-", 
+             RowBox[{"beta", "^", "2"}]}], ")"}], "f"}], "+", 
+          RowBox[{"beta", 
+           RowBox[{"(", 
+            RowBox[{"oid", "-", "d"}], ")"}]}], "+", 
+          RowBox[{"Sqrt", "[", "sq", "]"}]}], ")"}], "/", 
+        RowBox[{"(", 
+         RowBox[{"2", "beta"}], ")"}]}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"mid", "<", "0.0"}], ",", 
+        RowBox[{"Message", "[", 
+         RowBox[{
+          RowBox[{"settleRemainedParaxialParameters", "::", "meybepositive"}],
+           ",", "paraxialWorkingDistance"}], "]"}]}], "]"}], ";", 
+      RowBox[{"Flatten", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"paraxialWorkingDistance", "\[Rule]", "mid"}], ",", 
+         RowBox[{"settleRemainedParaxialForMostProbableParameters", "[", 
+          RowBox[{"d", ",", "n", ",", "mid", ",", "oid", ",", "beta"}], 
+          "]"}]}], "}"}], "]"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"lackOfOIAndWDParameterList", "=", 
+   RowBox[{"{", 
+    RowBox[{"nParm", ",", "dParm", ",", "fParm", ",", "bParm", ",", "oParm"}],
+     "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"settleRemainedParaxialForlackOfOIAndWD", "[", 
+    RowBox[{"d_", ",", "n_", ",", "f_", ",", "mod_", ",", "beta_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"mid", ",", "oid"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"mid", "=", 
+       RowBox[{
+        RowBox[{"-", 
+         RowBox[{"(", 
+          RowBox[{"beta", "*", "f", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"beta", "*", "n", "*", "mod"}], "+", "d"}], ")"}]}], 
+          ")"}]}], "/", 
+        RowBox[{"(", 
+         RowBox[{"n", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"beta", "*", "mod"}], "+", "f"}], ")"}]}], ")"}]}]}], ";",
+       "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"mid", "<", "0.0"}], ",", 
+        RowBox[{"Message", "[", 
+         RowBox[{
+          RowBox[{"settleRemainedParaxialParameters", "::", "meybepositive"}],
+           ",", "paraxialWorkingDistance"}], "]"}]}], "]"}], ";", 
+      RowBox[{"oid", "=", 
+       RowBox[{"d", "+", "mod", "+", "mid"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Flatten", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"paraxialWorkingDistance", "\[Rule]", "mid"}], ",", 
+         RowBox[{"paraxialObjectImageDistance", "\[Rule]", "oid"}], ",", 
+         RowBox[{"settleRemainedParaxialForMostProbableParameters", "[", 
+          RowBox[{"d", ",", "n", ",", "mid", ",", "oid", ",", "beta"}], 
+          "]"}]}], "}"}], "]"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"lackOfOIAndODParameterList", "=", 
+   RowBox[{"{", 
+    RowBox[{"nParm", ",", "dParm", ",", "fParm", ",", "bParm", ",", "iParm"}],
+     "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"settleRemainedParaxialForlackOfOIAndOD", "[", 
+   RowBox[{"d_", ",", "n_", ",", "f_", ",", "mid_", ",", "beta_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"mod", ",", "oid"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"mod", "=", 
+      RowBox[{
+       RowBox[{"-", "f"}], 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"n", "*", "mid"}], "+", 
+          RowBox[{"beta", "*", "d"}]}], ")"}], "/", 
+        RowBox[{"(", 
+         RowBox[{"beta", "*", "n", 
+          RowBox[{"(", 
+           RowBox[{"mid", "+", 
+            RowBox[{"beta", "*", "f"}]}], ")"}]}], ")"}]}]}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"mod", "<", "0.0"}], ",", 
+       RowBox[{"Message", "[", 
+        RowBox[{
+         RowBox[{"settleRemainedParaxialParameters", "::", "meybepositive"}], 
+         ",", "paraxialObjectDistance"}], "]"}]}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"oid", "=", 
+      RowBox[{"d", "+", "mod", "+", "mid"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Flatten", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"paraxialWorkingDistance", "\[Rule]", "mid"}], ",", 
+        RowBox[{"paraxialObjectImageDistance", "\[Rule]", "oid"}], ",", 
+        RowBox[{"settleRemainedParaxialForMostProbableParameters", "[", 
+         RowBox[{"d", ",", "n", ",", "mid", ",", "oid", ",", "beta"}], 
+         "]"}]}], "}"}], "]"}]}]}], "\[IndentingNewLine]", "]"}]}]}], "Input",\
+
+ InitializationCell->True,
+ CellChangeTimes->{
+  3.802386873555629*^9, {3.802387097722561*^9, 3.80238721865067*^9}, {
+   3.802387316292594*^9, 3.80238734150317*^9}, {3.802387406282126*^9, 
+   3.8023874079122334`*^9}, {3.8023874421593723`*^9, 3.80238745933794*^9}, {
+   3.802387655776403*^9, 3.802387701003581*^9}, {3.80238783214321*^9, 
+   3.8023878322919893`*^9}, {3.802388113257142*^9, 3.802388115831911*^9}, {
+   3.802388154398273*^9, 3.802388235319724*^9}, {3.802388423030875*^9, 
+   3.8023884545401363`*^9}, 3.802388494142229*^9, {3.802465955046575*^9, 
+   3.802465982720397*^9}, {3.8027226283286343`*^9, 3.802722646046297*^9}, {
+   3.8027226763642483`*^9, 3.802722707258103*^9}, {3.802722985918961*^9, 
+   3.802722990002479*^9}, {3.8029078456011066`*^9, 3.802908022679043*^9}, {
+   3.802908052740219*^9, 3.8029081393432283`*^9}, {3.802908194266005*^9, 
+   3.8029082133361387`*^9}, {3.802908457287822*^9, 3.802908462114325*^9}, {
+   3.802908579342367*^9, 3.802908583875649*^9}, {3.8029088364436073`*^9, 
+   3.802908895135425*^9}, 3.8029092142152033`*^9, {3.802926205184814*^9, 
+   3.802926210584474*^9}, {3.802926264843751*^9, 3.8029262670256*^9}, {
+   3.80300144335863*^9, 3.803001524447096*^9}, {3.8030015548999767`*^9, 
+   3.803001735420541*^9}, {3.803001789668619*^9, 3.803001864594142*^9}, {
+   3.803001934807536*^9, 3.803001935785891*^9}, {3.8030034327004213`*^9, 
+   3.8030035096391687`*^9}, {3.8030090732366877`*^9, 3.803009119857004*^9}, {
+   3.8030115990730257`*^9, 
+   3.803011672427495*^9}},ExpressionUUID->"6c9b5964-a740-4934-b195-\
+a5d1aa8f2197"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"settleRemainedParaxialParametersFinite", "[", 
+    RowBox[{
+    "d_", ",", "n_", ",", "f_", ",", "mid_", ",", "cod_", ",", "mod_", ",", 
+     "oid_", ",", "beta_"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{"oid", "===", 
+       RowBox[{"mod", "+", "d", "+", "mid"}]}], ",", 
+      RowBox[{"settleRemainedParaxialParametersFinite", "[", 
+       RowBox[{
+       "d", ",", "n", ",", "f", ",", "mid", ",", "cod", ",", "oParm", ",", 
+        "oid", ",", "beta"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"Message", "[", 
+        RowBox[{"settleRemainedParaxialParameters", "::", "tautoloy"}], "]"}],
+        ";", "$Failed"}]}], "]"}], "/;", 
+    RowBox[{"tautologyParametersMatchQ", "[", 
+     RowBox[{
+     "d", ",", "n", ",", "f", ",", "mid", ",", "cod", ",", "mod", ",", "oid", 
+      ",", "beta"}], "]"}]}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"settleRemainedParaxialParametersFinite", "[", 
+    RowBox[{"d_", ",", "n_", ",", "f_", ",", "m_", ",", "cod_"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"Message", "[", 
+       RowBox[{
+        RowBox[{"settleRemainedParaxialParameters", "::", "compalsory"}], ",",
+         "lensMediumSymbol"}], "]"}], ";", "$Failed"}], ")"}], "/;", 
+    RowBox[{
+     RowBox[{"absentParameter", "[", 
+      RowBox[{"d", ",", "n", ",", "f", ",", "m", ",", "cod"}], "]"}], "===", 
+     RowBox[{"{", "nParm", "}"}]}]}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"settleRemainedParaxialParametersFinite", "[", 
+    RowBox[{
+    "d_", ",", "n_", ",", "f_", ",", "mid_", ",", "cod_", ",", "mod_", ",", 
+     "oid_", ",", "beta_"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{"settleRemainedParaxialForMostProbableParameters", "[", 
+     RowBox[{"d", ",", "n", ",", "mid", ",", "oid", ",", "beta"}], "]"}], "/;", 
+    RowBox[{"setEqualQ", "[", 
+     RowBox[{
+      RowBox[{"containedParameter", "[", 
+       RowBox[{
+       "d", ",", "n", ",", "f", ",", "mid", ",", "cod", ",", "mod", ",", 
+        "oid", ",", "beta"}], "]"}], ",", "mostProbableParameterList"}], 
+     "]"}]}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"settleRemainedParaxialParametersFinite", "[", 
+    RowBox[{
+    "d_", ",", "n_", ",", "f_", ",", "mid_", ",", "cod_", ",", "mod_", ",", 
+     "oid_", ",", "beta_"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{"settleRemainedParaxialForFixedFocalLength", "[", 
+     RowBox[{"d", ",", "n", ",", "f", ",", "oid", ",", "beta"}], "]"}], "/;", 
+    
+    RowBox[{"setEqualQ", "[", 
+     RowBox[{
+      RowBox[{"containedParameter", "[", 
+       RowBox[{
+       "d", ",", "n", ",", "f", ",", "mid", ",", "cod", ",", "mod", ",", 
+        "oid", ",", "beta"}], "]"}], ",", "fixedFocalLengthParameterList"}], 
+     "]"}]}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"settleRemainedParaxialParametersFinite", "[", 
+    RowBox[{
+    "d_", ",", "n_", ",", "f_", ",", "mid_", ",", "cod_", ",", "mod_", ",", 
+     "oid_", ",", "beta_"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{"settleRemainedParaxialForlackOfOIAndWD", "[", 
+     RowBox[{"d", ",", "n", ",", "f", ",", "mod", ",", "beta"}], "]"}], "/;", 
+    
+    RowBox[{"setEqualQ", "[", 
+     RowBox[{
+      RowBox[{"containedParameter", "[", 
+       RowBox[{
+       "d", ",", "n", ",", "f", ",", "mid", ",", "cod", ",", "mod", ",", 
+        "oid", ",", "beta"}], "]"}], ",", "lackOfOIAndWDParameterList"}], 
+     "]"}]}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"settleRemainedParaxialParametersFinite", "[", 
+    RowBox[{
+    "d_", ",", "n_", ",", "f_", ",", "mid_", ",", "cod_", ",", "mod_", ",", 
+     "oid_", ",", "beta_"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{"settleRemainedParaxialForlackOfOIAndOD", "[", 
+     RowBox[{"d", ",", "n", ",", "f", ",", "mod", ",", "beta"}], "]"}], "/;", 
+    
+    RowBox[{"setEqualQ", "[", 
+     RowBox[{
+      RowBox[{"containedParameter", "[", 
+       RowBox[{
+       "d", ",", "n", ",", "f", ",", "mid", ",", "cod", ",", "mod", ",", 
+        "oid", ",", "beta"}], "]"}], ",", "lackOfOIAndODParameterList"}], 
+     "]"}]}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"settleRemainedParaxialParametersFinite", "[", "__", "]"}], ":=", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"Message", "[", 
+     RowBox[{"settleRemainedParaxialParameters", "::", "notimplemented"}], 
+     "]"}], ";", "$Failed"}], ")"}]}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{
+  3.802386873555629*^9, {3.802387097722561*^9, 3.80238721865067*^9}, {
+   3.802387316292594*^9, 3.80238734150317*^9}, {3.802387406282126*^9, 
+   3.8023874079122334`*^9}, {3.8023874421593723`*^9, 3.80238745933794*^9}, {
+   3.802387655776403*^9, 3.802387701003581*^9}, {3.80238783214321*^9, 
+   3.8023878322919893`*^9}, {3.802388113257142*^9, 3.802388115831911*^9}, {
+   3.802388154398273*^9, 3.802388272388563*^9}, {3.8023886801997147`*^9, 
+   3.802388680399159*^9}, {3.802389279101323*^9, 3.802389280832921*^9}, {
+   3.802389448312345*^9, 3.802389469025257*^9}, 3.802390225688574*^9, {
+   3.802908283200144*^9, 3.802908301771184*^9}, {3.802908413863914*^9, 
+   3.802908418058775*^9}, {3.803001134257469*^9, 3.8030011385667067`*^9}, {
+   3.803001750922277*^9, 3.8030017694301643`*^9}, {3.8030019099542027`*^9, 
+   3.803001943548274*^9}, 3.803011614046194*^9, 
+   3.803011645291061*^9},ExpressionUUID->"c2898d02-b853-4e44-ac79-\
+c898eca5b0c7"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["messages", "Subsection",
+ InitializationCell->True,
+ CellChangeTimes->{{3.802387026307518*^9, 
+  3.802387028960991*^9}},ExpressionUUID->"59952cc8-618b-4226-a20e-\
+5c2cc715eec9"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"settleRemainedParaxialParameters", "::", "tautology"}], "=", 
+   "\"\<distances are not consistent each other.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"settleRemainedParaxialParameters", "::", "meybepositive"}], "=", 
+   "\"\<a paraxial parameter `1` may be positive.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"settleRemainedParaxialParameters", "::", "inconsistent"}], "=", 
+   "\"\<paraxial parameter set is inconsistent.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"settleRemainedParaxialParameters", "::", "notenough"}], "=", 
+   "\"\<paraxial parameter set is insufficient to fix paraxial \
+condition.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"settleRemainedParaxialParameters", "::", "toomuch"}], "=", 
+   "\"\<paraxial parameter set is excessive and no solution.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"settleRemainedParaxialParameters", "::", "compalsory"}], "=", 
+   "\"\<numerical rule for `1` is needed for consistency between \
+parameters.\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"settleRemainedParaxialParameters", "::", "tautoloy"}], "=", 
+   "\"\<parameter set includes tautology.\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"settleRemainedParaxialParameters", "::", "notimplemented"}], "=", 
+   "\"\<sorry, a result for the parameter set is currently not implemented.\>\
+\""}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.802386451355589*^9, 3.8023865393891172`*^9}, {
+  3.802386578964856*^9, 3.802386598137472*^9}, {3.802386672770739*^9, 
+  3.802386697746421*^9}, {3.8023869555551434`*^9, 3.802386969099619*^9}, {
+  3.802387226932166*^9, 3.8023872489814672`*^9}, {3.802389326509479*^9, 
+  3.802389402874682*^9}, {3.803008905214747*^9, 3.80300896162258*^9}, {
+  3.803009037878496*^9, 3.803009038257967*^9}, {3.803072615877776*^9, 
+  3.8030726473227043`*^9}, {3.803074212054798*^9, 3.803074217140161*^9}, {
+  3.803074394028552*^9, 
+  3.803074430342942*^9}},ExpressionUUID->"8b6530d5-bacb-4773-abd7-\
+00ee9a1334e9"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["End of the package", "Section",
+ InitializationCell->True,
+ CellChangeTimes->{{3.802390881583077*^9, 
+  3.8023908914013*^9}},ExpressionUUID->"9ea855ee-c106-4765-9104-9359ce70554d"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"End", "[", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"EndPackage", "[", "]"}], ";"}]}], "Input",
+ AutoGeneratedPackage->Automatic,
+ InitializationCell->True,
+ InitializationGroup->True,
+ CellChangeTimes->{{3.797739178210627*^9, 
+  3.797739185814768*^9}},ExpressionUUID->"e475ecee-5654-4273-9aa2-\
+b8f3bd7c5020"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Example", "Title",
+ CellChangeTimes->{{3.8023909111585903`*^9, 
+  3.802390917108664*^9}},ExpressionUUID->"800554a7-d22b-4542-b406-\
+4b76e08dea04"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<AplanaticSinglet`SingletParaxialConsistency`\>\"",
+   "]"}]], "Input",
+ CellChangeTimes->{{3.8024028623312397`*^9, 3.8024028629609528`*^9}, 
+   3.818463053180216*^9},ExpressionUUID->"9b851fa4-be77-41cc-9492-\
+65a0df82800d"]
+}, Open  ]]
+},
+AutoGeneratedPackage->Automatic,
+WindowSize->{890, 911},
+WindowMargins->{{Automatic, 179}, {71, Automatic}},
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) \
+(2020\:5e746\:670822\:65e5)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"b7947c25-842c-43f5-8990-791a7d03160f"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 279, 5, 160, "Title",ExpressionUUID->"5dfc27f7-bef6-4e7a-bc4c-52539b55202a",
+ InitializationCell->True],
+Cell[862, 29, 335, 8, 83, "Author",ExpressionUUID->"65e19b3d-47f1-4117-92e3-c67c4d781956"],
+Cell[1200, 39, 424, 9, 46, "Input",ExpressionUUID->"51f4c54a-ced6-47a9-b189-4c45a2567079",
+ InitializationCell->True],
+Cell[1627, 50, 518, 11, 46, "Input",ExpressionUUID->"5fb096fc-e1e4-434b-8751-5c09f0d2b37b",
+ InitializationCell->True],
+Cell[2148, 63, 664, 13, 89, "Input",ExpressionUUID->"ad727e36-5519-4a52-8da3-a599c2d13e39",
+ InitializationCell->True],
+Cell[2815, 78, 503, 10, 46, "Input",ExpressionUUID->"c6660ebc-3787-487d-a027-641441ed80c0",
+ InitializationCell->True],
+Cell[CellGroupData[{
+Cell[3343, 92, 185, 4, 67, "Section",ExpressionUUID->"763447b7-1d30-4b33-a8ce-0854c3b664a3",
+ InitializationCell->True],
+Cell[3531, 98, 521, 11, 68, "Input",ExpressionUUID->"7322f463-e56e-488a-8f42-c5e2d65a8455",
+ InitializationCell->True],
+Cell[4055, 111, 2054, 50, 299, "Input",ExpressionUUID->"cf5b433c-c10e-4c70-b7d9-7e419577864e",
+ InitializationCell->True],
+Cell[6112, 163, 1945, 38, 404, "Input",ExpressionUUID->"6dc1fa91-83af-4ff6-9893-eeaac51c85c1",
+ InitializationCell->True],
+Cell[8060, 203, 452, 10, 89, "Input",ExpressionUUID->"9221fbeb-2ada-4b17-9708-7984c1fbdab8",
+ InitializationCell->True],
+Cell[8515, 215, 1006, 20, 152, "Input",ExpressionUUID->"b76c2b0f-8932-4b02-9d04-4b2f5c622540",
+ InitializationCell->True],
+Cell[9524, 237, 970, 19, 152, "Input",ExpressionUUID->"793cfef8-ea59-4e93-82e8-c8fa9b1f7ee4",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10531, 261, 198, 4, 67, "Section",ExpressionUUID->"abe23904-8ac3-48c3-b5bb-041ab8c8f7f9",
+ InitializationCell->True],
+Cell[10732, 267, 247, 6, 46, "Input",ExpressionUUID->"532fba33-c3e8-478e-9ceb-9ef40304ff1a",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11016, 278, 187, 4, 67, "Section",ExpressionUUID->"43eee07c-da14-468f-a2d8-e0b514e9e449",
+ InitializationCell->True],
+Cell[11206, 284, 726, 15, 110, "Input",ExpressionUUID->"8f219178-7639-4a16-aaf5-4fa3f487f815",
+ InitializationCell->True],
+Cell[11935, 301, 1845, 53, 110, "Input",ExpressionUUID->"f3ba6994-8075-4149-9fa3-55d43c774c5a",
+ InitializationCell->True],
+Cell[13783, 356, 411, 11, 46, "Input",ExpressionUUID->"cb57ba05-ed12-4c00-8395-765666f8f28c",
+ InitializationCell->True],
+Cell[14197, 369, 6567, 147, 614, "Input",ExpressionUUID->"689e73ad-62bc-49e4-9025-eae062b00331",
+ InitializationCell->True],
+Cell[20767, 518, 2429, 57, 341, "Input",ExpressionUUID->"fc31e929-a33e-4fdd-895b-014143c3142b",
+ InitializationCell->True],
+Cell[23199, 577, 1234, 31, 89, "Input",ExpressionUUID->"7e6dbfc7-777d-44ed-8502-439ae7df4f4f",
+ InitializationCell->True],
+Cell[24436, 610, 409, 12, 46, "Input",ExpressionUUID->"8310a0d8-7f72-4176-ac52-b30a7f2c3fb9",
+ InitializationCell->True],
+Cell[24848, 624, 2347, 68, 173, "Input",ExpressionUUID->"53b52dd6-6fde-4d8f-9a6a-d8377405c9be",
+ InitializationCell->True],
+Cell[27198, 694, 2481, 65, 278, "Input",ExpressionUUID->"5991b560-a55b-4c63-9d1e-a3caabdd686b",
+ InitializationCell->True],
+Cell[CellGroupData[{
+Cell[29704, 763, 196, 4, 54, "Subsection",ExpressionUUID->"86c70224-fa62-431a-a6a2-9a9f8a702a9f",
+ InitializationCell->True],
+Cell[29903, 769, 3038, 89, 194, "Input",ExpressionUUID->"b47f689e-46f7-4ac3-a5f8-f7db86cfa183",
+ InitializationCell->True],
+Cell[32944, 860, 11269, 301, 1055, "Input",ExpressionUUID->"cd2cb97f-389b-49d1-81f6-f15d84699151",
+ InitializationCell->True]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[44250, 1166, 197, 4, 38, "Subsection",ExpressionUUID->"cb869cd6-3a78-4d8f-91a9-41ba623d88de",
+ InitializationCell->True],
+Cell[44450, 1172, 27349, 712, 2231, "Input",ExpressionUUID->"ee6e4aec-2584-4db7-9569-3f7545b477a9",
+ InitializationCell->True],
+Cell[71802, 1886, 1393, 38, 68, "Input",ExpressionUUID->"d79327f7-ca5d-47f4-a70f-c922c756281c",
+ InitializationCell->True],
+Cell[73198, 1926, 5257, 139, 488, "Input",ExpressionUUID->"d27ba0c1-e563-40c7-a598-71da2fc09b4b",
+ InitializationCell->True],
+Cell[78458, 2067, 4743, 113, 362, "Input",ExpressionUUID->"899334b4-7021-4306-8d9a-3cf6da3afb14",
+ InitializationCell->True],
+Cell[83204, 2182, 8049, 197, 677, "Input",ExpressionUUID->"6c9b5964-a740-4934-b195-a5d1aa8f2197",
+ InitializationCell->True],
+Cell[91256, 2381, 5584, 130, 635, "Input",ExpressionUUID->"c2898d02-b853-4e44-ac79-c898eca5b0c7",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[96877, 2516, 183, 4, 54, "Subsection",ExpressionUUID->"59952cc8-618b-4226-a20e-5c2cc715eec9",
+ InitializationCell->True],
+Cell[97063, 2522, 2222, 51, 278, "Input",ExpressionUUID->"8b6530d5-bacb-4773-abd7-00ee9a1334e9",
+ InitializationCell->True]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[99334, 2579, 186, 3, 67, "Section",ExpressionUUID->"9ea855ee-c106-4765-9104-9359ce70554d",
+ InitializationCell->True],
+Cell[99523, 2584, 363, 10, 68, "Input",ExpressionUUID->"e475ecee-5654-4273-9aa2-b8f3bd7c5020",
+ InitializationCell->True,
+ InitializationGroup->True]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[99935, 2600, 152, 3, 98, "Title",ExpressionUUID->"800554a7-d22b-4542-b406-4b76e08dea04"],
+Cell[100090, 2605, 265, 5, 30, "Input",ExpressionUUID->"9b851fa4-be77-41cc-9492-65a0df82800d"]
+}, Open  ]]
+}
+]
+*)
+
