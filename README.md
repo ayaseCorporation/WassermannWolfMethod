@@ -89,7 +89,7 @@ with suitable file permissions.
 
 ## Execution example on Raspberry Pi
 
-A movie that shows demonstration of execution 'demonstration.nb' file on Mathematica bundled with Raspberry Pi OS will soon be aploaded.
+A movie that shows demonstration of execution 'demonstration.nb' file on Mathematica bundled with Raspberry Pi OS will soon be uploaded.
 
 <img src="demoMovieSnapShot1.jpg" alt="demoMovieSnapShot2" style="zoom:50%;" />
 
