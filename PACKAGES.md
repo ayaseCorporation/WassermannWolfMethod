@@ -47,7 +47,7 @@ The package files .m are automatically made from these notebook files by Mathema
 -rw-r--r--  1 yamada  staff   14824  9  8 18:03 SCHOTTextracted.AGF
 ```
 
-AGF files can be downloaded from each glass manufacturers. These two files are only for demonstration. "SCHOTTextracted.AGF" file is extracted from SCHOTT.AGF because the original file are very big.
+AGF files can be downloaded from each glass manufacturers. These two files are only for demonstration. "SCHOTTextracted.AGF" file is extracted from SCHOTT.AGF because the original file is very big.
 
 ## To show symbol descriptions in a package
 
@@ -65,7 +65,7 @@ and ask
 
 then all symbols are listed.
 
-To show a usage message about specific symbol ask
+To show a usage message about specific symbol, ask
 
 ```
 ?AplanaticSinglet`BiasphericAplanatSolver`designWavelength
@@ -75,7 +75,7 @@ or only clicking on a text in the list, then shows
 
 > designWavelength is a parameter for the solver specifying the wavelength to fix a refractive indices of materials.
 
-Some packages have "Example" section at the bottom of each files to show simple explanation of its usage.
+Some packages have "Example" section at the bottom of each file to show simple explanation of its usage.
 
 ## Simple description of each packages
 
@@ -97,7 +97,7 @@ GoldenSectionSearch package performs a simple golden-section search for one para
 
 #### BiasphericAplanatZemaxOutput.m
 
-BiasphericAplanatZemaxOutput package outouts a string that can be read in Zemax as a lens definition. But currently the package can not produce a *.zmx file because a file that is made by other app. but Zemax can not be read in Zemax. I don't know why.
+BiasphericAplanatZemaxOutput package outputs a string that can be read in Zemax as a lens definition. But currently the package can not produce a *.zmx file because a file that is made by other app. but Zemax can not be read in Zemax. However, it is currently not possible to create *.zmx files because Zemax cannot read files created by other applications.
 
 Therefore, to read in Zemax app.,
 
