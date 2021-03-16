@@ -74,7 +74,11 @@ atmosphere::usage="atmosphere is medium symbol for ideal vacuum, refractive inde
 
 
 (* ::Input::Initialization:: *)
-createMediumsFromAGFFile::usage="createMediumsFromAGFFile[path_String] read Zemax AGF format file and create mediums in the file and returns catalogName string. Medium symbols are all changed to lower case and '-' or '_' etc. to '$' character because symbols should follow the Mathematica input syntax.";
+createMediumsFromAGFFile::usage="createMediumsFromAGFFile[path_String] reads Zemax AGF format file and create mediums in the file and returns catalogName string. Medium symbols are all changed to lower case and '-' or '_' etc. to '$' character because symbols should follow the Mathematica input syntax.";
+
+
+(* ::Input::Initialization:: *)
+createMediumsFromAGFString::usage="createMediumsFromAGFString[agfString_String,catalogname_String] creates  mediums in the string and returns catalogName string. Medium symbols are all changed to lower case and '-' or '_' etc. to '$' character because symbols should follow the Mathematica input syntax.";
 
 
 (* ::Input::Initialization:: *)
@@ -373,12 +377,18 @@ StringReplace[sl,{"-"->"$","_"->"$"}]
 mediumCatalog[]={};
 Clear[createMediumsFromAGFFile];
 createMediumsFromAGFFile::cannotopen="can not open the path `1`";
-createMediumsFromAGFFile[path_String]:=Module[{catalogName,strs,lines,rlines,blck,ps},
+createMediumsFromAGFFile[path_String]:=Module[{catalogName(*,strs,lines,rlines,blck,ps*)},
 If[Not[StringMatchQ[FileExtension[path],"AGF",IgnoreCase->True]],Message[parseStringForDispersion::cannotopen,path];Return[$Failed]];
 strs=ReadList[path,String,RecordSeparators->{"\n","\r\n","\r"}];
 If[strs===$Failed,Message[parseStringForDispersion::cannotopen,path];Return[$Failed]];
-catalogName=FileBaseName[path];
-strs=Map[StringReplace[#,RegularExpression["[[:cntrl:]]"]:>""]&,strs];
+createMediumsFromAGFString[strs,FileBaseName[path]]
+]
+
+
+(* ::Input::Initialization:: *)
+createMediumsFromAGFString[agfstrs:{_String...},catalogName_String]:=Module[{strs,lines,rlines,blck,ps},
+(*catalogName=FileBaseName[catName];*)
+strs=Map[StringReplace[#,RegularExpression["[[:cntrl:]]"]:>""]&,agfstrs];
 lines=SequenceSplit[strs,{x_?(headerMatchQ[#,$nameHeader]&)}:>{x}];
 rlines=If[headerMatchQ[lines[[1,1]],$nameHeader],lines,Rest[lines]];
 blck=Map[Flatten,Partition[rlines,2]];
@@ -411,7 +421,7 @@ domainDefinedMarginalRayQ[ray[{_,_},{_,_},opt___]]:=MemberQ[{opt},domainDefinedM
 
 
 (* ::Input::Initialization:: *)
-setRefractiveIndexForRay[ray[p:{_,_},v:{_,_},opt___],index_]:=With[{len=Sqrt[v.v]},ray[p,Map[index/len*#&,v],opt]]
+setRefractiveIndexForRay[ray[p:{_,_},v:{_,_},opt___],index_]:=With[{len=Sqrt[v . v]},ray[p,Map[index/len*#&,v],opt]]
 
 
 (* ::Input::Initialization:: *)
@@ -441,7 +451,7 @@ offsetBackRay[stoppedRay[{y_,z_},a_],{yoff_,zoff_}]:=stoppedRay[{y+yoff,z+zoff},
 
 
 (* ::Input::Initialization:: *)
-refractiveIndexFromDirection[ray[_,dir_,___]]:=Sqrt[dir.dir]
+refractiveIndexFromDirection[ray[_,dir_,___]]:=Sqrt[dir . dir]
 
 
 (* ::Input::Initialization:: *)
@@ -454,7 +464,7 @@ raySegmentCount[raySequence[lambda_,rays_List]]:=Length[rays]
 
 
 (* ::Input::Initialization:: *)
-opticalPath[{p1:{_,z1_},p2:{_,z2_}},refInd_]:=With[{v=p1-p2},Sign[z2-z1]*Sqrt[v.v]refInd](*assumed rays go toward positive z direction*)
+opticalPath[{p1:{_,z1_},p2:{_,z2_}},refInd_]:=With[{v=p1-p2},Sign[z2-z1]*Sqrt[v . v]refInd](*assumed rays go toward positive z direction*)
 
 
 (* ::Input::Initialization:: *)
@@ -667,7 +677,7 @@ normalVector[plane[__],_]:={0.0,1.0}
 normalVector[s_spherical,h_]:=Module[{crv,v,sq},
 crv=curvature[s];
 v={-h*Sqrt[1.0-(crv*h)^2]/(1.0/crv-crv*h^2),1.0};
-sq=v.v;
+sq=v . v;
 v/Sqrt[sq]
 ]/;insideImplicitDomain[s][h]
 normalVector[s_spherical,h_]:=noNormalVector/;(! insideImplicitDomain[s][h])
@@ -678,7 +688,7 @@ normalVector[q_quadratic,h_]:=Module[{crv,con,v,sq},
 crv=curvature[q];
 con=conicConstant[q];
 v={-h*Sqrt[1.0-(1.0+con)(crv*h)^2]/(1.0/crv-(1.0+con)*crv*h^2),1.0};
-sq=v.v;
+sq=v . v;
 v/Sqrt[sq]
 ]/;insideImplicitDomain[q][h]
 normalVector[q_quadratic,h_]:=noNormalVector/;(! insideImplicitDomain[q][h])
@@ -686,7 +696,7 @@ normalVector[q_quadratic,h_]:=noNormalVector/;(! insideImplicitDomain[q][h])
 
 (* ::Input::Initialization:: *)
 normalVector[p_parametric,h_]:=
-With[{v={-shapeDerivativeFunction[p][h],1}},v/Sqrt[v.v]]/;insideImplicitDomain[p][h]
+With[{v={-shapeDerivativeFunction[p][h],1}},v/Sqrt[v . v]]/;insideImplicitDomain[p][h]
 normalVector[p_parametric,h_]:=
 noNormalVector/;(!insideImplicitDomain[p][h])
 
@@ -707,7 +717,7 @@ reflectedVector[perfectThinLens[{f_},__],{iind_,oind_},h_,r:{ry_,rz_}]:=With[{sq
 reflectedVector[s_?(MemberQ[{spherical,quadratic,parametric},Head[#]]&),{iind_,oind_},h_,r:{_,_}]:=Module[{v,sq,com,iprod},
 v=normalVector[s,h];
 If[v===noNormalVector,Return[noNormalVector]];
-iprod=r.v;
+iprod=r . v;
 sq=oind^2-iind^2+iprod^2;
 If[sq<0.0,Return[totalReflection]];
 com=Sqrt[sq]-iprod;

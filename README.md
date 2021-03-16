@@ -34,8 +34,8 @@ To solve the equation, Mathematica may not be necessarily required. Other symbol
 
 ## Descriptions of files
 
-There are two example files in the repository.
-#### demonstrations.nb file
+There are three example files in the repository.
+#### demonstrations.nb
 
 demonstrations.nb is a Mathematica notebook file and demonstrates designing aspherical aplanatic singlets.
 
@@ -96,4 +96,18 @@ A movie that shows demonstration of execution 'demonstration.nb' file on Mathema
 <img src="demoMovieSnapShot2.jpg" alt="demoMovieSnapShot2" style="zoom:50%;" />
 
 You can see the solver surely can work well on a Raspberry Pi.
+
+## AplanaticSingletDesigner.nb
+
+AplanaticSingletDesigner.nb file can work as demonstration notebook for "Wolfram Player", not Mathematica and shows infinite aspherical singlet lens shape for given parameters. The parameters are target N.A., lens thickness, CSF  (Coddington Shape Factor, the lens bending parameter), material of lens and wavelengrh.Its focal length is always fixed to 1.0.
+
+The graphics in its manipulate pane includes lens shape and traced rays. The number of rays is also included in the changeable parameters. When you change prameter values the graphics responds immediately.
+
+<img src="aplanaticSingletDesginer.png" alt="demoMovieSnapShot2" style="zoom:25%;" />
+
+The pane has "Fit aspherical coefficients" button that popups a small window showing fitted coefficients of aspherical formula for both surfaces.
+
+This demonstration notebook may not be executed on Raspberry Pi because it needs calculation performance. But "Wolfram Player" is free on several desktops such as macOS, Windows or Linux even on iOS.
+
+Let's try and have fun.
 

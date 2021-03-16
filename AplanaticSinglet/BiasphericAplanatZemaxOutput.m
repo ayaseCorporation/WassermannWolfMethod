@@ -20,7 +20,7 @@
 
 
 (* ::Input::Initialization:: *)
-BeginPackage["AplanaticSinglet`BiasphericAplanatZemaxOutput`",{"AplanaticSinglet`RayTrace2D`","AplanaticSinglet`BiasphericAplanatSolver`","AplanaticSinglet`AsphericalFittingForInterpolated`","AplanaticSinglet`SingletParaxialConsistency`"}];
+BeginPackage["AplanaticSinglet`BiasphericAplanatZemaxOutput`",{"AplanaticSinglet`RayTrace2D`","AplanaticSinglet`BiasphericAplanatSolver`","AplanaticSinglet`AsphericalFormulaFitting`","AplanaticSinglet`SingletParaxialConsistency`"}];
 
 
 (* ::Input::Initialization:: *)

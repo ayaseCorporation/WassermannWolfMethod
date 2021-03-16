@@ -424,8 +424,9 @@ Flatten[{frontSurfaceShapeFunction->Interpolation[mirroredData[Map[{#*(dc1/(nc1*
 
 
 (* ::Input::Initialization:: *)
-SolveInfinite[na_,n_,d_,m_,f_,opt___]:=Module[{x1,x2,t,sols},
-sols=Flatten[NDSolve[{x1'[t]==-((f*n*t*(-m+f*Sqrt[1-t^2]+x2[t]))/(Sqrt[1-t^2]*(-(d*n)+n*x1[t]-n*x2[t]+Sqrt[-((t^2*(-m+f*Sqrt[1-t^2]+x2[t])^2)/(-1+t^2))+(d-x1[t]+x2[t])^2]))),x2'[t]==(t*(m-x2[t])*(m*n-f*n*Sqrt[1-t^2]-n*x2[t]+Sqrt[1-t^2]*Sqrt[-((t^2*(-m+f*Sqrt[1-t^2]+x2[t])^2)/(-1+t^2))+(d-x1[t]+x2[t])^2]))/((-1+t^2)*(d*n-d*n*t^2-m*n*t^2+f*n*t^2*Sqrt[1-t^2]-n*x1[t]+n*t^2*x1[t]+n*x2[t]-Sqrt[1-t^2]*Sqrt[-((t^2*(-m+f*Sqrt[1-t^2]+x2[t])^2)/(-1+t^2))+(d-x1[t]+x2[t])^2])),x1[0]==0,x2[0]==0},{x1,x2},{t,0,na},opt]];
+SolveInfinite[na_,n_,d_,m_,f_,opt___]:=Module[{fn,x1,x2,t,sols},
+fn=f*n;
+sols=Flatten[NDSolve[{x1'[t]==-((fn*t*(-m+f*Sqrt[1-t^2]+x2[t]))/(Sqrt[1-t^2]*(-(d*n)+n*x1[t]-n*x2[t]+Sqrt[-((t^2*(-m+f*Sqrt[1-t^2]+x2[t])^2)/(-1+t^2))+(d-x1[t]+x2[t])^2]))),x2'[t]==(t*(m-x2[t])*(n(m-f*Sqrt[1-t^2]-x2[t])+Sqrt[1-t^2]*Sqrt[-((t^2*(-m+f*Sqrt[1-t^2]+x2[t])^2)/(-1+t^2))+(d-x1[t]+x2[t])^2]))/((-1+t^2)*(n*(d-d*t^2-m*t^2+f*t^2*Sqrt[1-t^2]+(-1+t^2)*x1[t]+x2[t])-Sqrt[1-t^2]*Sqrt[-((t^2*(-m+f*Sqrt[1-t^2]+x2[t])^2)/(-1+t^2))+(d-x1[t]+x2[t])^2])),x1[0]==0,x2[0]==0},{x1,x2},{t,0,na},opt]];
 {x1/.sols,x2/.sols}
 ]
 
