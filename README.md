@@ -26,7 +26,7 @@ If you are not familiar to Mathematica, it is better to visit its [tutorial](htt
 
 <u>***3. Arousing other applications using Wassermann-Wolf equation***</u>
 
-The classic equation is not limited for aplanatic singlet. An afocal singlet and a gaussian-to-tophat converter are taken up in the "Wasserman-WolfAndFurther.nb" as examples. These examples do not satisfy aplanatism, but can be handled and determined by Wassermann-Wolf equation. There may be many other applications of the equation.
+The classic equation is not limited for aplanatic singlet. An afocal singlet, a gaussian-to-tophat converter and pseudo-Bessel beam generator are taken up in the "Wasserman-WolfAndFurther.nb" as examples. These examples do not satisfy aplanatism, but can be handled and determined by Wassermann-Wolf equation. There may be many other applications of the equation.
 
 To solve the equation, Mathematica may not be necessarily required. Other symbol manipulation systems such as Maple, SymPy+SciPy can also handle the equation and perform its numerical integration. Furthermore, once a specific application is formulated, numerical computations can be written in a compiler language, which will increase execution efficiency.
 
@@ -54,7 +54,7 @@ In the file, you can perform in turn,
 
 Wassermann-WolfAndFurther.nb shows deriving Wassermann-Wolf equations from Snell's law. In the file,
 
-1. Wassermann-Wolf equations from Snell's law is derived
+1. Wassermann-Wolf equations from Snell's law are derived
 2. classic Schwarzschild reflective telescope solution is followed
 3. explicit equations for infinite conjugate singlet are derived
 4. explicit equations for infinite conjugate singlet with a cover glass are derived
@@ -64,7 +64,10 @@ Wassermann-WolfAndFurther.nb shows deriving Wassermann-Wolf equations from Snell
 8. explicit equations for finite conjugate singlet with cover glass in both spaces are derived
 9. explicit equations for afocal singlet are derived
 10. explicit equations for one-dimensional gaussian-to-tophat converter are derived
-11. Bessel beam generator is considered but it is not correct.
+11. explicit equations for pseudo-Bessel beam generator are derived.
+
+All explicit equations can lead thier numerical solutions on the notebook when requisite parameter values are given for each of the cases.
+
 
 ### Provided packages
 

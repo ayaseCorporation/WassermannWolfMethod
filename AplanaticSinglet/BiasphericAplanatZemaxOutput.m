@@ -20,11 +20,11 @@
 
 
 (* ::Input::Initialization:: *)
-BeginPackage["AplanaticSinglet`BiasphericAplanatZemaxOutput`",{"AplanaticSinglet`RayTrace2D`","AplanaticSinglet`BiasphericAplanatSolver`","AplanaticSinglet`AsphericalFormulaFitting`","AplanaticSinglet`SingletParaxialConsistency`"}];
+BeginPackage["AplanaticSinglet`BiasphericAplanatZemaxOutput`",{"AplanaticSinglet`RayTrace2D`","AplanaticSinglet`BiasphericAplanatSolver`","AplanaticSinglet`AsphericalFormulaFitting`","AplanaticSinglet`SingletParaxialConstraints`"}];
 
 
 (* ::Input::Initialization:: *)
-BiasphericAplanatZemaxOutputVersion="BiasphericAplanatZemaxOutput 0.1A by Takatoshi Yamada, Ayase corp.";
+BiasphericAplanatZemaxOutputVersion="BiasphericAplanatZemaxOutput 0.1A20201221 by Takatoshi Yamada, Ayase corp.";
 
 
 (* ::Input::Initialization:: *)

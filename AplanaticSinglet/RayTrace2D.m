@@ -24,7 +24,7 @@ BeginPackage["AplanaticSinglet`RayTrace2D`"];
 
 
 (* ::Input::Initialization:: *)
-RayTrace2DVersion="RayTrace2D 0.1A copyright by Takatoshi Yamada, Ayase corp.";
+RayTrace2DVersion="RayTrace2D 0.1A20210318 copyright by Takatoshi Yamada @Ayase corp.";
 
 
 (* ::Input::Initialization:: *)
@@ -95,6 +95,10 @@ stoppedRay::usage="stoppedRay is a container symbol a ray that can not be traced
 
 (* ::Input::Initialization:: *)
 raySet::usage="raySet[{y0_,z0_},{yd_,zd_},opt___] or raySet[{y0_,z0_},angleToAxis_?NumericQ,refractiveIndex_?NumericQ,opt___] create ray object. It can be called to create initial object.";
+
+
+(* ::Input::Initialization:: *)
+appendRayOption::usage="appendRayOption[ray[__],opt___] appends new option 'opt'to a ray.";
 
 
 (* ::Input::Initialization:: *)
@@ -408,6 +412,11 @@ raySet[{y0_,z0_},angleToAxis_?NumericQ,refractiveIndex_?NumericQ,opt___]:=ray[{y
 
 (* ::Input::Initialization:: *)
 appendRayOption[ray[p_,d_,o___],opt___]:=ray[p,d,o,opt]
+
+
+(* ::Input::Initialization:: *)
+objectSidePrincipalPointPosition[wl_,solverResult:{__Rule}]:=With[{n=(refractiveIndexValue[lensMediumSymbol/.solverResult][wl])},
+-((lensMediumThickness*frontSurfaceCurvature)/(lensMediumThickness*frontSurfaceCurvature*backSurfaceCurvature*(-1+n)+(frontSurfaceCurvature-backSurfaceCurvature)*n))/.solverResult]
 
 
 (* ::Input::Initialization:: *)

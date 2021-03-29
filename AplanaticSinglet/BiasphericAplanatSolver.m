@@ -20,11 +20,14 @@
 
 
 (* ::Input::Initialization:: *)
-BeginPackage["AplanaticSinglet`BiasphericAplanatSolver`",{"AplanaticSinglet`SingletParaxialConsistency`","AplanaticSinglet`RayTrace2D`"}];
+BeginPackage["AplanaticSinglet`BiasphericAplanatSolver`",{"AplanaticSinglet`SingletParaxialConstraints`","AplanaticSinglet`RayTrace2D`"}];
 
 
 (* ::Input::Initialization:: *)
-BiasphericAplanatSolverVersion::usage="BiasphericAplanatSolver ver.0.2A20200702";
+BiasphericAplanatSolverVersion::usage="BiasphericAplanatSolver ver.0.3A20210322 copyright by Takatoshi Yamada @Ayase corp.";
+
+
+(* ::Input::Initialization:: *)
 BiasphericAplanatSolverDescription="BiasphericAplanatSolver package fixes biaspheric aplanat (aspheric singlet lens) by numerical integration with given parameters. Conjugate condition (finite or infinite) is determined from the given parameter set. The parameter set can include cover glasses. If parameter set is consistent for paraxial condition, the numerical integration will be performed upto given numrical aperture value. The numerical integration may be interrupted by ";
 
 
@@ -149,6 +152,54 @@ tracingWavelength::usage="tracingWavelength is an option of setOpticsFor2DRayTra
 
 
 (* ::Input::Initialization:: *)
+buildRootOfRayCongruence::usage="buildRootOfRayCongruence[op_?opticsQ,solverResult:{__Rule},nRays_Integer,opt___] returns ray congruence with optics.";
+
+
+(* ::Input::Initialization:: *)
+focusOffset::usage="focusOffset is an option of buildRootOfRayCongruence and specifies position offset along apotical axis. Currently not implemented.";
+
+
+(* ::Input::Initialization:: *)
+fieldAngle::usage="fieldAngle is an option of buildRootOfRayCongruence and specifies field angle in radian for ray congruence.";
+
+
+(* ::Input::Initialization:: *)
+fieldImageHeight::usage="fieldImageHeight is an option of buildRootOfRayCongruence and specifies field image height for ray congruence.";
+
+
+(* ::Input::Initialization:: *)
+fieldObjectHeight::usage="fieldObjectHeight is an option of buildRootOfRayCongruence and specifies field object height for ray congruence. This option is ignored for infinite conjuget lens.";
+
+
+(* ::Input::Initialization:: *)
+coveringRatio::usage="coveringRatio is an option of buildRootOfRayCongruence and specifies covering ratio for entrance pupil. Its default value is 1.0.";
+
+
+(* ::Input::Initialization:: *)
+chiefRayAim::usage="chiefRayAim is an option of buildRootOfRayCongruence. The available values are frontPrincipalPoint, frontSurfaceApex and backSurfaceApex. Currently not implemented.";
+
+
+(* ::Input::Initialization:: *)
+frontPrincipalPoint::usage="frontPrincipalPoint is an option value for chiefRayAim of buildRootOfRayCongruence. Currently not implemented.";
+
+
+(* ::Input::Initialization:: *)
+centerOfFrontPupil::usage="centerOfFrontPupil is an option value for chiefRayAim of buildRootOfRayCongruence. Currently not implemented.";
+
+
+(* ::Input::Initialization:: *)
+frontSurfaceApex::usage="frontSurfaceApex is an option value for chiefRayAim of buildRootOfRayCongruence. Currently not implemented.";
+
+
+(* ::Input::Initialization:: *)
+backSurfaceApex::usage="backSurfaceApex is an option value for chiefRayAim of buildRootOfRayCongruence. Currently not implemented.";
+
+
+(* ::Input::Initialization:: *)
+runwayLength::usage="runwayLength is an option of buildRootOfRayCongruence and specifies starting offset along axis. The default value is -focalLength/3. The option isignored for finite conjugate lens.";
+
+
+(* ::Input::Initialization:: *)
 decenterBetweenAspherics::usage="decenterBetweenAspherics is an option of setOpticsFor2DRayTrace and specifies decenter length between two aspherical surfaces. Default value is 0.";
 
 
@@ -264,10 +315,30 @@ difod=If[ocQ,Check[differenceToParaxialCoverGlass[wl,{objectSideCoverGlassMedium
 pod=mechanicalObjectDistance/.parameters;
 poi=mechanicalObjectImageDistance/.parameters;
 paramp=Flatten[{parameters,lensMediumRefractiveIndex->n,If[NumericQ[pwd],paraxialWorkingDistance->pwd+difid,Nothing],If[NumericQ[pod],paraxialObjectDistance->pod+difod,Nothing],If[NumericQ[poi],paraxialObjectImageDistance->poi+difid+difod,Nothing]}];
-paraparm=Check[settleRemainedParaxialParameters[paramp],Return[$Failed]];
+paraparm=Check[fillParaxialParameters[paramp],Return[parameters]];
+If[!checkUnsupported[paraparm],Return[parameters]];
 remp={If[!NumericQ[pwd],mechanicalImageDistance->(paraxialWorkingDistance/.paraparm)-difid,Nothing],If[!(conjugateInfiniteness/.paraparm),{If[! NumericQ[pod],mechanicalObjectDistance->(paraxialObjectDistance/.paraparm)-difod,Nothing],If[! NumericQ[poi],mechanicalObjectImageDistance->(paraxialObjectImageDistance/.paraparm)-difid-difod,Nothing]},Nothing]};
 Apply[Sequence,Flatten[{paramp,coverGlassExistence->icQ,If[conjugateInfiniteness/.paraparm,Nothing,objectSideCoverGlassExistence->ocQ],remp,paraparm,Options[setupBiasphericAplanatParameters]}]]
 ]
+
+
+(* ::Input::Initialization:: *)
+checkUnsupported[paraxParams_List]:=Module[{f,d,w,m,b},
+f=focalLength/.paraxParams;
+d=lensMediumThickness/.paraxParams;
+w=mechanicalImageDistance/.paraxParams;
+m=mechanicalObjectDistance/.paraxParams;
+b=lateralMagnification/.paraxParams;
+If[f<0.0,Message[setupBiasphericAplanatParameters::unsuppoted,f,focalLength];Return[False]];
+If[w<0.0,Message[setupBiasphericAplanatParameters::unsuppoted,w,mechanicalImageDistance];Return[False]];
+If[m<0.0,Message[setupBiasphericAplanatParameters::unsuppoted,m,mechanicalObjectDistance];Return[False]];
+If[b>0.0,Message[setupBiasphericAplanatParameters::unsuppoted,b,lateralMagnification];Return[False]];
+True
+]
+
+
+(* ::Input::Initialization:: *)
+setupBiasphericAplanatParameters::unsuppoted
 
 
 (* ::Input::Initialization:: *)
@@ -288,10 +359,6 @@ nc=refractiveIndexValue[mc,wavelength];
 dc=cgt/.parameters;
 paraxialThickessDifferenceFromMechanical[nc,dc]
 ]
-
-
-(* ::Input::Initialization:: *)
-
 
 
 (* ::Input::Initialization:: *)
@@ -471,6 +538,52 @@ mirroredData[l:{{_,_}...}]:=Union[Join[Map[{-#[[1]],#[[2]]}&,l],l],SameTest->(Ab
 
 
 (* ::Input::Initialization:: *)
+rotateRay[theta_,at_][ray[{y0_,z0_},{yd_,zd_},opt___]]:=With[{rm=RotationMatrix[-theta]},
+ray[rm . {y0,z0+at}-{0.0,at},rm . {yd,zd},opt]]
+
+
+(* ::Input::Initialization:: *)
+{frontPrincipalPoint,frontSurfaceApex,backSurfaceApex};
+
+
+(* ::Input::Initialization:: *)
+Options[buildRootOfRayCongruence]={focusOffset->0,fieldImageHeight->0,fieldObjectHeight->0,fieldAngle->0,coveringRatio->1.0,chiefRayAim->frontPrincipalPoint,runwayLength->-focalLength/3,tracingWavelength->designWavelength};
+buildRootOfRayCongruence[op_?opticsQ,solverResult:{__Rule},nRays_Integer,opt___]:=Module[{wl},
+wl=tracingWavelength/.{opt}/.Options[buildRootOfRayCongruence]/.solverResult;
+If[conjugateInfiniteness/.solverResult,buildRootOfRayCongruenceInfinite[wl,op,solverResult,nRays,opt],buildRootOfRayCongruenceFinite[wl,op,solverResult,nRays,opt]]
+]
+
+
+(* ::Input::Initialization:: *)
+buildRootOfRayCongruenceInfinite[wl_Real,op_?opticsQ,solverResult:{__Rule},nRays_Integer,opt___]:=Module[{imh,fang,rw,hs,he,rs,zo,cv},
+imh=fieldImageHeight/.{opt}/.Options[buildRootOfRayCongruence];
+fang=If[imh!=0.0,imh/focalLength/.solverResult,
+fieldAngle/.{opt}/.Options[buildRootOfRayCongruence]];
+rw=runwayLength/.{opt}/.Options[buildRootOfRayCongruence]/.solverResult;
+cv=coveringRatio/.{opt}/.Options[buildRootOfRayCongruence];
+hs=-numericalAperture*focalLength*cv/.solverResult;
+he=numericalAperture*focalLength*cv/.solverResult;
+rs=Table[raySet[{h,rw},{0.0,1.0}],{h,hs,he,(he-hs)/nRays}];
+If[fang=!=0.0,zo=objectSidePrincipalPointPosition[wl,solverResult];Map[rotateRay[fang,zo],rs],rs]
+]
+
+
+(* ::Input::Initialization:: *)
+buildRootOfRayCongruenceFinite[wl_Real,op_?opticsQ,solverResult:{__Rule},nRays_Integer,opt___]:=Module[{imh,obh,od,ts,te,rs,sh,cv,zo},
+od=mechanicalObjectDistance/.solverResult;
+imh=fieldImageHeight/.{opt}/.Options[buildRootOfRayCongruence];
+obh=fieldObjectHeight/.{opt}/.Options[buildRootOfRayCongruence];
+fang=If[imh!=0.0,imh/focalLength/.solverResult,If[obh!=0.0,obh/focalLength*lateralMagnification/.solverResult,
+fieldAngle/.{opt}/.Options[buildRootOfRayCongruence]]];cv=coveringRatio/.{opt}/.Options[buildRootOfRayCongruence];
+ts=numericalAperture*lateralMagnification*cv/.solverResult;
+te=-numericalAperture*lateralMagnification*cv/.solverResult;
+sh=0.0;
+rs=Table[raySet[{sh,-od},{Sin[t],Cos[t]}],{t,ts,te,(te-ts)/nRays}];
+If[fang=!=0.0,zo=objectSidePrincipalPointPosition[wl,solverResult];Map[rotateRay[fang,zo],rs],rs]
+]
+
+
+(* ::Input::Initialization:: *)
 Options[setOpticsFor2DRayTrace]={tracingWavelength->designWavelength,decenterBetweenAspherics->0};
 
 
@@ -545,6 +658,7 @@ backAsphericalSurfacePosition[op_?opticsQ]:=positionOfAttributedSurface[op,solve
 biasphericAplanatSolve::usesetup="use 'setupBiasphericAplanatParameters' function to set parameter arguments.";
 setupBiasphericAplanatParameters::needslambda="design wavelength should be specified by 'designWavelength->x' with unit in milli meters.";
 setupBiasphericAplanatParameters::notmedium="`1` symbol for `2` is not a medium symbol.";
+setupBiasphericAplanatParameters::unsuppoted="value `1` for `2` is not supported.";
 
 
 (* ::Input::Initialization:: *)
