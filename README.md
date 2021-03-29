@@ -1,10 +1,4 @@
-# Aspherical aplanatic singlet design following Wassermann-Wolf equations
-
-Takatoshi Yamada, Ayase corporation
-
-e-mail: takatoshi.yamada@ayasecorporation.com
-
-web cite: https://www.ayasecorporation.com
+# Aspherical singlet design following Wassermann-Wolf equations
 
 <img src="examples.png" alt="header" style="zoom:50%;" />
 
@@ -116,4 +110,12 @@ The pane has "Fit aspherical coefficients" button that popups a small window sho
 This demonstration notebook may not be executed on Raspberry Pi because it needs calculation performance. But "Wolfram Player" is free on several desktops such as macOS, Windows or Linux even on iOS.
 
 Let's try and have fun.
+
+## contact infomation
+
+Takatoshi Yamada, Ayase corporation
+
+e-mail: takatoshi.yamada@ayasecorporation.com
+
+web cite: https://www.ayasecorporation.com
 
