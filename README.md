@@ -43,16 +43,16 @@ In the file, you can perform in turn,
 3. perform numerical integration to generate a solution of two aspherical surfaces as interpolation functions.
 4. show a lens shape solved and result of traced rays.
 5. show longitudinal aberrations, i.e., spherical aberration and OSC (Offense against the Sine Condition)
-6. fit the interpolation functions to aspherical formula.
-7. output text that can be read in Zemax as .zmx file.
-8. and other conditions, singlet with cover glass, finite conjugate, etc...
+6. find maxmimum tolerance for decenter between surfaces.
+7. fit the interpolation functions to aspherical formula.
+8. output text that can be read in Zemax as .zmx file.
+9. and other conditions, singlet with cover glass, finite conjugate, etc...
 
 #### Wassermann-WolfAndFurther.nb
 
 Wassermann-WolfAndFurther.nb shows deriving Wassermann-Wolf equations from Snell's law. In the file,
 
 1. Wassermann-Wolf equations from Snell's law are derived
-2. classic Schwarzschild reflective telescope solution is followed
 3. explicit equations for infinite conjugate singlet are derived
 4. explicit equations for infinite conjugate singlet with a cover glass are derived
 5. explicit equations for finite conjugate singlet without cover glasses are derived
