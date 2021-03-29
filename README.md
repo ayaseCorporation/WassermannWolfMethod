@@ -6,6 +6,9 @@ e-mail: takatoshi.yamada@ayasecorporation.com
 
 web cite: https://www.ayasecorporation.com
 
+<img src="examples.png" alt="header" style="zoom:50%;" />
+
+
 
 ## Aims of this repository
 
@@ -94,7 +97,7 @@ with suitable file permissions.
 
 A movie that shows demonstration of execution 'demonstration.nb' file on Mathematica bundled with Raspberry Pi OS will soon be uploaded.
 
-<img src="demoMovieSnapShot1.jpg" alt="demoMovieSnapShot2" style="zoom:50%;" />
+<img src="demoMovieSnapShot1.jpg" alt="demoMovieSnapShot1" style="zoom:50%;" />
 
 <img src="demoMovieSnapShot2.jpg" alt="demoMovieSnapShot2" style="zoom:50%;" />
 
@@ -106,7 +109,7 @@ AplanaticSingletDesigner.nb file can work as demonstration notebook for "Wolfram
 
 The graphics in its manipulate pane includes lens shape and traced rays. The number of rays is also included in the changeable parameters. When you change prameter values the graphics responds immediately.
 
-<img src="aplanaticSingletDesginer.png" alt="demoMovieSnapShot2" style="zoom:25%;" />
+<img src="aplanaticSingletDesginer.png" alt="aplanaticSingletDesginer" style="zoom:25%;" />
 
 The pane has "Fit aspherical coefficients" button that popups a small window showing fitted coefficients of aspherical formula for both surfaces.
 
