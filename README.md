@@ -121,3 +121,7 @@ e-mail: takatoshi.yamada@ayasecorporation.com
 
 web cite: https://www.ayasecorporation.com
 
+
+
+### additional infomation
+change visibility public at Jun7, 2021.
