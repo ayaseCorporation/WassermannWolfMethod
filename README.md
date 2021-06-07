@@ -115,6 +115,8 @@ Let's try and have fun.
 
 Takatoshi Yamada, Ayase corporation
 
+
+
 e-mail: takatoshi.yamada@ayasecorporation.com
 
 web cite: https://www.ayasecorporation.com
