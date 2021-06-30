@@ -97,6 +97,11 @@ A movie that shows demonstration of execution 'demonstration.nb' file on Mathema
 
 You can see the solver surely can work well on a Raspberry Pi.
 
+## Demonstration movie
+
+An example movie is now shown on [YouTube](https://youtu.be/IIygI683LsU).
+The demonstration file is executed on Raspberry Pi 4B+.
+
 ## AplanaticSingletDesigner.nb
 
 AplanaticSingletDesigner.nb file can work as demonstration notebook for "Wolfram Player", not Mathematica and shows infinite aspherical singlet lens shape for given parameters. The parameters are target N.A., lens thickness, CSF  (Coddington Shape Factor, the lens bending parameter), material of lens and wavelengrh.Its focal length is always fixed to 1.0.
