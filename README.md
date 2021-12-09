@@ -39,13 +39,21 @@ demonstrations.nb is a Mathematica notebook file and demonstrates designing asph
 In the file, you can perform in turn,
 
 1. import packages in AplanaticSinglet
+
 2. assign paraxial parameters for an infinite conjugate lens
+
 3. perform numerical integration to generate a solution of two aspherical surfaces as interpolation functions.
+
 4. show a lens shape solved and result of traced rays.
+
 5. show longitudinal aberrations, i.e., spherical aberration and OSC (Offense against the Sine Condition)
+
 6. find maxmimum tolerance for decenter between surfaces.
+
 7. fit the interpolation functions to aspherical formula.
-8. output text that can be read in Zemax as .zmx file.
+
+8. output text that can be read in Zemax as .zmx file.[^2]: You should copy and paste the text to suitable text editor and save as .zmx file with UTF-16LE for character encoding and CR-LF for newline (EOL) because Mathematica has no UTF-16 encoder.
+
 9. and other conditions, singlet with cover glass, finite conjugate, etc...
 
 #### Wassermann-WolfAndFurther.nb
