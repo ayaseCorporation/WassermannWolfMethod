@@ -519,7 +519,7 @@ Map[{#[[1]],#[[2]]-(fitf/.x->#[[1]])}&,ops]
 opticalPathDifference[rss:{_raySequence...}]:=opticalPathDifference[Map[opticalPathLengthForHeight,rss]]
 opticalPathDifference[rss:{__raySequence},op_?opticsQ]:=Module[{ppos,sn,ops,fitf,x},
 ppos=Flatten[positionOfAttributedSurface[op,pupilSurface,True]];
-If[ppos==={},Return[opticalPathDifference[rs]]];
+If[ppos==={},Return[opticalPathDifference[rss]]];
 sn=ppos[[1]]+1;
 ops=Map[opticalPathLengthForHeight[#,sn]&,rss];
 fitf=Fit[ops,{1,x,x^2},x];Map[{#[[1]],#[[2]]-(fitf/.x->#[[1]])}&,ops]

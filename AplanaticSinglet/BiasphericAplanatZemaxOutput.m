@@ -38,7 +38,10 @@ BiasphericAplanatZemaxOutputUsage="";
 
 
 (* ::Input::Initialization:: *)
-zmxStringFromSolvedBiasphericAplanat::usage="zmxStringFromSolvedBiasphericAplanat[op_?opticsQ,solverResult:{__Rule}] returns a string in Zemax file i.e., .zmx format. The first argument is an optics object from RayTrace2D package and the second argument is a list of the solver result. The output string can be burried in an existing zmx file. NOTE: A file named .zmx from the output string can not be read into Zemax. I don't know why.";
+zmxStringFromSolvedBiasphericAplanat::usage="zmxStringFromSolvedBiasphericAplanat[op_?opticsQ,solverResult:{__Rule}] returns a string in Zemax file i.e., .zmx format. The first argument is an optics object from RayTrace2D package and the second argument is a list of the solver result. NOTE: A file named .zmx from the output string can not be read into Zemax. It probably may be required in a string format with UTF-16LE for character encoding  and CR-LF for newline (EOL). Please copy and paste to a suitable text editor  and save with an adequate file format because Mathematica has no UTF-16 encoding converter.";
+
+
+(* ::Input::Initialization:: *)
 attachAsphericalFormulaToSurface::usage="attachAsphericalFormulaToSurface[op_?opticsQ,surfaceNumber_?IntegerQ,fitResult:{__Rule}] set coefficients of aspherical formula of a surface to optics object.  This function should be called before creating a Zemax string by zmxStringFromSolvedBiasphericAplanat.";
 
 
