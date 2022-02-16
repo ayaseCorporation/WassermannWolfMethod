@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    962731,      22468]
-NotebookOptionsPosition[    953046,      22279]
-NotebookOutlinePosition[    959123,      22404]
-CellTagsIndexPosition[    958433,      22382]
+NotebookDataLength[    962138,      22361]
+NotebookOptionsPosition[    952450,      22171]
+NotebookOutlinePosition[    958530,      22297]
+CellTagsIndexPosition[    957840,      22275]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -83,11 +83,10 @@ Cell[BoxData[{
   RowBox[{"canBeObjectSymbol", "[", "s", "]"}]}], "\n", 
  RowBox[{
   RowBox[{
-   RowBox[{"canBeObjectSymbol", "[", "_", "]"}], ":=", "False"}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"canBeObjectSymbol", "[", "_", "]"}], ":=", "False"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"mediumTypes", "=", 
    RowBox[{"{", 
@@ -232,11 +231,10 @@ Cell[BoxData[{
      "\[IndentingNewLine]", "mediumSymbol"}]}], "]"}]}], "\n", 
  RowBox[{
   RowBox[{
-   RowBox[{"mediumQ", "[", "_", "]"}], ":=", "False"}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"mediumQ", "[", "_", "]"}], ":=", "False"}], "\[IndentingNewLine]",
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"refractiveIndexValue", "[", 
@@ -245,18 +243,17 @@ Cell[BoxData[{
      RowBox[{"lambda_", "?", "NumberQ"}]}], "]"}], ":=", 
    RowBox[{
     RowBox[{"refractiveIndexValue", "[", "medium", "]"}], "[", "lambda", 
-    "]"}]}], "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    "]"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"createConstantMedium", "[", 
-    RowBox[{"atmosphere", ",", "1.0"}], "]"}], ";"}], "\n", 
+    RowBox[{"atmosphere", ",", "1.0"}], "]"}], ";"}], "\[IndentingNewLine]", 
   "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"sellmeierDispersion", "[", 
@@ -287,11 +284,10 @@ Cell[BoxData[{
             RowBox[{"a3", "/", 
              RowBox[{"(", 
               RowBox[{"lsq", "-", "b3"}], ")"}]}]}], ")"}], "lsq"}]}], 
-        "]"}]}], "]"}]}], "]"}]}], "\n", "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
+        "]"}]}], "]"}]}], "]"}]}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"schottDispersion", "[", 
@@ -322,10 +318,9 @@ Cell[BoxData[{
                  RowBox[{"a4", "+", 
                   RowBox[{"a5", "/", "lsq"}]}], ")"}], "/", "lsq"}]}], ")"}], 
              "/", "lsq"}]}], ")"}], "/", "lsq"}]}], "]"}]}], "]"}]}], "]"}]}],
-   "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"conradyDispersion", "[", 
@@ -341,11 +336,10 @@ Cell[BoxData[{
        RowBox[{"a", "+", 
         RowBox[{"b", "/", "l"}], "+", 
         RowBox[{"c", "/", 
-         RowBox[{"l", "^", "3.5"}]}]}]}], "]"}]}], "]"}]}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+         RowBox[{"l", "^", "3.5"}]}]}]}], "]"}]}], "]"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{
@@ -369,11 +363,10 @@ Cell[BoxData[{
         RowBox[{"Message", "[", 
          RowBox[{
           RowBox[{"interpretNumeric", "::", "cannotconvert"}], ",", "s"}], 
-         "]"}], ",", "n"}], "]"}]}], "]"}]}]}], "\n", "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
+         "]"}], ",", "n"}], "]"}]}], "]"}]}]}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"dispersionFunctionFromString", "[", 
@@ -398,21 +391,19 @@ Cell[BoxData[{
         RowBox[{"Map", "[", 
          RowBox[{"interpretNumeric", ",", 
           RowBox[{"Rest", "[", "sp", "]"}]}], "]"}]}], "]"}]}]}], "]"}]}], 
-  "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"$nameHeader", "=", "\"\<NM*\>\""}], ";"}], "\n", 
  RowBox[{
   RowBox[{"$disersionCoefficientHeader", "=", "\"\<CD*\>\""}], ";"}], "\n", 
  RowBox[{
   RowBox[{
-   RowBox[{"$lambdaRangeHeader", "=", "\"\<LD*\>\""}], ";"}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"$lambdaRangeHeader", "=", "\"\<LD*\>\""}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"Clear", "[", "dispersionModels", "]"}], ";"}], "\n", 
  RowBox[{
@@ -430,20 +421,18 @@ Cell[BoxData[{
   RowBox[{
    RowBox[{
     RowBox[{"dispersionModels", "[", "_", "]"}], ":=", "$Failed"}], ";"}], 
-  "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"headerMatchQ", "[", 
     RowBox[{"s_String", ",", "header_String"}], "]"}], ":=", 
    RowBox[{"StringMatchQ", "[", 
-    RowBox[{"s", ",", "header"}], "]"}]}], "\n", "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
+    RowBox[{"s", ",", "header"}], "]"}]}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"rangeFind", "[", 
    RowBox[{"{", "}"}], "]"}], ":=", "All"}], "\n", 
@@ -465,11 +454,10 @@ Cell[BoxData[{
        RowBox[{"0.001", 
         RowBox[{"interpretNumeric", "[", 
          RowBox[{"ws", "[", 
-          RowBox[{"[", "3", "]"}], "]"}], "]"}]}]}], "}"}]}], "]"}]}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+          RowBox[{"[", "3", "]"}], "]"}], "]"}]}]}], "}"}]}], "]"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"readDispersion", "[", 
@@ -527,10 +515,10 @@ Cell[BoxData[{
          RowBox[{"toMediumSymbol", "[", "name", "]"}], "]"}], ",", 
         RowBox[{"dispersionFunctionFromString", "[", 
          RowBox[{"dlin", ",", "dispf"}], "]"}], ",", "rlin"}], "}"}]}]}], 
-    "]"}]}], "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    "]"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"toMediumSymbol", "[", "s_String", "]"}], ":=", 
@@ -554,10 +542,10 @@ Cell[BoxData[{
          RowBox[{
           RowBox[{"\"\<-\>\"", "\[Rule]", "\"\<$\>\""}], ",", 
           RowBox[{"\"\<_\>\"", "\[Rule]", "\"\<$\>\""}]}], "}"}]}], "]"}]}]}],
-     "]"}]}], "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     "]"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"mediumCatalog", "[", "]"}], "=", 
@@ -614,10 +602,9 @@ Cell[BoxData[{
       RowBox[{"createMediumsFromAGFString", "[", 
        RowBox[{"strs", ",", 
         RowBox[{"FileBaseName", "[", "path", "]"}]}], "]"}]}]}], "]"}]}], 
-  "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"createMediumsFromAGFString", "[", 
@@ -719,10 +706,9 @@ Cell[BoxData[{
             RowBox[{"#", "[", 
              RowBox[{"[", "2", "]"}], "]"}]}], "]"}], "&"}], ",", "ps"}], 
         "]"}], "]"}], ";", "\[IndentingNewLine]", "catalogName"}]}], "]"}]}], 
-  "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"raySet", "[", 
    RowBox[{
@@ -754,10 +740,10 @@ Cell[BoxData[{
         RowBox[{"Sin", "[", "angleToAxis", "]"}]}], ",", 
        RowBox[{"refractiveIndex", "*", 
         RowBox[{"Cos", "[", "angleToAxis", "]"}]}]}], "}"}], ",", "opt"}], 
-    "]"}]}], "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    "]"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"appendRayOption", "[", 
@@ -765,18 +751,16 @@ Cell[BoxData[{
      RowBox[{"ray", "[", 
       RowBox[{"p_", ",", "d_", ",", "o___"}], "]"}], ",", "opt___"}], "]"}], ":=", 
    RowBox[{"ray", "[", 
-    RowBox[{"p", ",", "d", ",", "o", ",", "opt"}], "]"}]}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"p", ",", "d", ",", "o", ",", "opt"}], "]"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
-   RowBox[{"Clear", "[", "domainDefinedMarginalRay", "]"}], ";"}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"Clear", "[", "domainDefinedMarginalRay", "]"}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"markRayAsDomainDefinedMarginal", "[", "r_ray", "]"}], ":=", 
   RowBox[{"appendRayOption", "[", 
@@ -807,10 +791,9 @@ Cell[BoxData[{
    RowBox[{"MemberQ", "[", 
     RowBox[{
      RowBox[{"{", "opt", "}"}], ",", "domainDefinedMarginalRay"}], "]"}]}], 
-  "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"setRefractiveIndexForRay", "[", 
@@ -838,9 +821,10 @@ Cell[BoxData[{
           RowBox[{
            RowBox[{"index", "/", "len"}], "*", "#"}], "&"}], ",", "v"}], 
         "]"}], ",", "opt"}], "]"}]}], "]"}]}], "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\n", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}], "\n", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}], 
+  "\[IndentingNewLine]", 
   RowBox[{"(*", 
    RowBox[{"ray", "[", 
     RowBox[{
@@ -885,10 +869,9 @@ Cell[BoxData[{
       RowBox[{
        RowBox[{"y", "-", "yoff"}], ",", 
        RowBox[{"z", "-", "zoff"}]}], "}"}], ",", "dir", ",", "opt"}], "]"}]}],
-   "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"origin", "[", 
    RowBox[{"stoppedRay", "[", 
@@ -901,11 +884,10 @@ Cell[BoxData[{
   RowBox[{
    RowBox[{"origin", "[", 
     RowBox[{"stoppedRay", "[", "noIntersection", "]"}], "]"}], ":=", 
-   RowBox[{"Sequence", "[", "]"}]}], "\n", "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
+   RowBox[{"Sequence", "[", "]"}]}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"parallelToAxisQ", "[", 
@@ -917,13 +899,13 @@ Cell[BoxData[{
        RowBox[{"yd_", ",", "_"}], "}"}], ",", "___"}], "]"}], "]"}], ":=", 
    RowBox[{"(", 
     RowBox[{
-     RowBox[{"N", "[", "yd", "]"}], "===", "0.0"}], ")"}]}], "\n", 
+     RowBox[{"N", "[", "yd", "]"}], "===", "0.0"}], ")"}]}], 
+  "\[IndentingNewLine]", 
   RowBox[{"(*", 
    RowBox[{
     RowBox[{"declinationForHeight", "[", "r_ray", "]"}], ":=", 
     RowBox[{"Indeterminate", "/;", 
-     RowBox[{"parallelToAxisQ", "[", "r", "]"}]}]}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+     RowBox[{"parallelToAxisQ", "[", "r", "]"}]}]}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"declinationForHeight", "[", 
    RowBox[{"r", ":", 
@@ -945,11 +927,10 @@ Cell[BoxData[{
        RowBox[{"{", 
         RowBox[{"_", ",", "zd_"}], "}"}], ",", "___"}], "]"}]}], "]"}], ":=", 
    
-   RowBox[{"Sign", "[", "zd", "]"}]}], "\n", "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
+   RowBox[{"Sign", "[", "zd", "]"}]}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"offsetBackRay", "[", 
    RowBox[{
@@ -989,22 +970,20 @@ Cell[BoxData[{
      RowBox[{"{", 
       RowBox[{
        RowBox[{"y", "+", "yoff"}], ",", 
-       RowBox[{"z", "+", "zoff"}]}], "}"}], ",", "a"}], "]"}]}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"z", "+", "zoff"}]}], "}"}], ",", "a"}], "]"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"refractiveIndexFromDirection", "[", 
     RowBox[{"ray", "[", 
      RowBox[{"_", ",", "dir_", ",", "___"}], "]"}], "]"}], ":=", 
    RowBox[{"Sqrt", "[", 
-    RowBox[{"dir", ".", "dir"}], "]"}]}], "\n", "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
+    RowBox[{"dir", ".", "dir"}], "]"}]}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"axisCrossingPosition", "[", 
    RowBox[{"ray", "[", 
@@ -1033,20 +1012,18 @@ Cell[BoxData[{
            RowBox[{
             RowBox[{"N", "[", "#", "]"}], "===", "0.0"}], "&"}], ")"}]}], ",",
          "c_"}], "}"}], ",", "___"}], "]"}], "]"}], ":=", "Indeterminate"}], 
-  "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"raySegmentCount", "[", 
     RowBox[{"raySequence", "[", 
      RowBox[{"lambda_", ",", "rays_List"}], "]"}], "]"}], ":=", 
-   RowBox[{"Length", "[", "rays", "]"}]}], "\n", "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
+   RowBox[{"Length", "[", "rays", "]"}]}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"opticalPath", "[", 
@@ -1074,9 +1051,10 @@ Cell[BoxData[{
    RowBox[{
    "assumed", " ", "rays", " ", "go", " ", "toward", " ", "positive", " ", 
     "z", " ", "direction"}], "*)"}], "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\n", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}], "\n", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}], 
+  "\[IndentingNewLine]", 
   RowBox[{"(*", 
    RowBox[{"raySequence", "[", 
     RowBox[{"lambda_", ",", 
@@ -1096,11 +1074,10 @@ Cell[BoxData[{
      RowBox[{"lambda_", ",", "rays_List"}], "]"}], "]"}], ":=", 
    RowBox[{"Cases", "[", 
     RowBox[{"rays", ",", 
-     RowBox[{"Except", "[", "untraceableRay", "]"}]}], "]"}]}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"Except", "[", "untraceableRay", "]"}]}], "]"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"opticalPathLength", "[", "rs_raySequence", "]"}], ":=", 
   RowBox[{"Module", "[", 
@@ -1244,11 +1221,10 @@ Cell[BoxData[{
               RowBox[{"{", 
                RowBox[{"ps", ",", 
                 RowBox[{"RotateLeft", "[", "ps", "]"}]}], "}"}], "]"}], "]"}],
-             ",", "inds"}], "]"}], "]"}], "]"}]}], "}"}]}]}], "]"}]}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+             ",", "inds"}], "]"}], "]"}], "]"}]}], "}"}]}]}], "]"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"opticalPathDifference", "[", 
    RowBox[{"ops", ":", 
@@ -1362,11 +1338,10 @@ Cell[BoxData[{
               RowBox[{"x", "\[Rule]", 
                RowBox[{"#", "[", 
                 RowBox[{"[", "1", "]"}], "]"}]}]}], ")"}]}]}], "}"}], "&"}], 
-        ",", "ops"}], "]"}]}]}], "]"}]}], "\n", "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
+        ",", "ops"}], "]"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"logitudinalAberPositionReversed", "[", "rs_raySequence", "]"}], ":=", 
   RowBox[{"Module", "[", 
@@ -1407,11 +1382,10 @@ Cell[BoxData[{
       RowBox[{"{", 
        RowBox[{
         RowBox[{"axisCrossingPosition", "[", "e", "]"}], ",", 
-        RowBox[{"heightOfOrigin", "[", "s", "]"}]}], "}"}]}]}], "]"}]}], "\n",
-   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"heightOfOrigin", "[", "s", "]"}]}], "}"}]}]}], "]"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"longitudinalSphericalAberration", "[", 
@@ -1453,11 +1427,10 @@ Cell[BoxData[{
           RowBox[{"#", "[", 
            RowBox[{"[", 
             RowBox[{"-", "1"}], "]"}], "]"}], "\[GreaterEqual]", "0.0"}], 
-         "&"}]}], "]"}]}]}], "]"}]}], "\n", "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
+         "&"}]}], "]"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"oscValueReversed", "[", 
    RowBox[{"rs_raySequence", ",", "f_"}], "]"}], ":=", 
@@ -1525,11 +1498,10 @@ Cell[BoxData[{
           RowBox[{"dop", "*", "so"}]}], "}"}], ",", 
         RowBox[{"{", 
          RowBox[{"0.0", ",", 
-          RowBox[{"dop", "*", "so"}]}], "}"}]}], "]"}]}]}], "]"}]}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+          RowBox[{"dop", "*", "so"}]}], "}"}]}], "]"}]}]}], "]"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"offenceAgainstSineCondition", "[", 
    RowBox[{
@@ -1571,10 +1543,10 @@ Cell[BoxData[{
        RowBox[{"#", "[", 
         RowBox[{"[", 
          RowBox[{"-", "1"}], "]"}], "]"}], "\[GreaterEqual]", "0.0"}], 
-      "&"}]}], "]"}]}], "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      "&"}]}], "]"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"Clear", "[", "domainAll", "]"}], ";"}], "\n", 
  RowBox[{
@@ -1616,11 +1588,10 @@ Cell[BoxData[{
    RowBox[{"insideImplicitDomain", "[", 
     RowBox[{"s_", "?", "shapeQ"}], "]"}], ":=", 
    RowBox[{"Between", "[", 
-    RowBox[{"implicitDomain", "[", "s", "]"}], "]"}]}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"implicitDomain", "[", "s", "]"}], "]"}]}], "\[IndentingNewLine]",
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"copyShapeReplacingDomain", "[", 
@@ -1631,11 +1602,10 @@ Cell[BoxData[{
         RowBox[{"{", "___", "}"}]}], ",", "impdom_", ",", "dom_"}], "]"}], 
      ",", "newDom_"}], "]"}], ":=", 
    RowBox[{"s", "[", 
-    RowBox[{"p", ",", "impdom", ",", "newDom"}], "]"}]}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"p", ",", "impdom", ",", "newDom"}], "]"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"planeShape", "[", "]"}], ":=", 
   RowBox[{"plane", "[", 
@@ -1649,11 +1619,10 @@ Cell[BoxData[{
       RowBox[{"_", ",", "_"}], "}"}]}], "]"}], ":=", 
    RowBox[{"plane", "[", 
     RowBox[{
-     RowBox[{"{", "}"}], ",", "domainAll", ",", "dom"}], "]"}]}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"{", "}"}], ",", "domainAll", ",", "dom"}], "]"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"perfectThinLensShape", "[", 
    RowBox[{"f_", "?", 
@@ -1687,11 +1656,10 @@ Cell[BoxData[{
        RowBox[{"_", ",", "_"}], "}"}]}]}], "]"}], ":=", 
    RowBox[{"perfectThinLens", "[", 
     RowBox[{
-     RowBox[{"{", "f", "}"}], ",", "domainAll", ",", "dom"}], "]"}]}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"{", "f", "}"}], ",", "domainAll", ",", "dom"}], "]"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"quadraticImpicitDomain", "[", 
    RowBox[{
@@ -1734,10 +1702,9 @@ Cell[BoxData[{
         RowBox[{
          RowBox[{"N", "[", "#", "]"}], "<", 
          RowBox[{"-", "1.0"}]}], "&"}], ")"}]}]}], "]"}], ":=", "domainAll"}],
-   "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"sphericalShape", "[", 
    RowBox[{"curv_", "?", 
@@ -1792,11 +1759,10 @@ Cell[BoxData[{
       RowBox[{
        RowBox[{
         RowBox[{"-", "1.0"}], "/", "curv"}], ",", 
-       RowBox[{"1.0", "/", "curv"}]}], "}"}], ",", "dom"}], "]"}]}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"1.0", "/", "curv"}]}], "}"}], ",", "dom"}], "]"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"curvature", "[", 
    RowBox[{"spherical", "[", 
@@ -1809,11 +1775,10 @@ Cell[BoxData[{
     RowBox[{"spherical", "[", 
      RowBox[{
       RowBox[{"{", "curv_", "}"}], ",", "__"}], "]"}], "]"}], ":=", 
-   RowBox[{"1.0", "/", "curv"}]}], "\n", "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
+   RowBox[{"1.0", "/", "curv"}]}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"quadraticShape", "[", 
    RowBox[{
@@ -1877,11 +1842,10 @@ Cell[BoxData[{
      RowBox[{"{", 
       RowBox[{"curv", ",", "conic"}], "}"}], ",", 
      RowBox[{"quadraticImpicitDomain", "[", 
-      RowBox[{"curv", ",", "conic"}], "]"}], ",", "dom"}], "]"}]}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"curv", ",", "conic"}], "]"}], ",", "dom"}], "]"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"curvature", "[", 
    RowBox[{"quadratic", "[", 
@@ -1903,10 +1867,10 @@ Cell[BoxData[{
      RowBox[{
       RowBox[{"{", 
        RowBox[{"_", ",", "conic_"}], "}"}], ",", "___"}], "]"}], "]"}], ":=", 
-   "conic"}], "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "conic"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"parametricShape", "[", 
    RowBox[{"f_Function", ",", 
@@ -1949,10 +1913,9 @@ Cell[BoxData[{
          RowBox[{"Derivative", "[", "1", "]"}], "[", "f", "]"}], "]"}]}], 
       "}"}], ",", 
      RowBox[{"interpolationDomain", "[", "f", "]"}], ",", "dom"}], "]"}]}], 
-  "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"individualOffset", "[", 
    RowBox[{"parametric", "[", 
@@ -1962,11 +1925,10 @@ Cell[BoxData[{
   RowBox[{"f", "[", "0.0", "]"}]}], "\n", 
  RowBox[{
   RowBox[{
-   RowBox[{"individualOffset", "[", "_", "]"}], ":=", "0.0"}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"individualOffset", "[", "_", "]"}], ":=", "0.0"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"shapeFunction", "[", 
    RowBox[{"parametric", "[", 
@@ -1981,10 +1943,10 @@ Cell[BoxData[{
      RowBox[{
       RowBox[{"{", 
        RowBox[{"_", ",", "df_"}], "}"}], ",", "__"}], "]"}], "]"}], ":=", 
-   "df"}], "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "df"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"shapeQ", "[", "spherical", "]"}], ":=", "True"}], "\n", 
  RowBox[{
@@ -2013,11 +1975,10 @@ Cell[BoxData[{
    RowBox[{"parametric", "[", "___", "]"}], "]"}], ":=", "True"}], "\n", 
  RowBox[{
   RowBox[{
-   RowBox[{"shapeQ", "[", "_", "]"}], ":=", "False"}], "\n", 
+   RowBox[{"shapeQ", "[", "_", "]"}], ":=", "False"}], "\[IndentingNewLine]", 
   "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"shapeFunctionToDraw", "[", "s_plane", "]"}], "[", "h_", "]"}], ":=", 
@@ -2081,10 +2042,10 @@ Cell[BoxData[{
     RowBox[{
      RowBox[{
       RowBox[{"shapeFunction", "[", "s", "]"}], "[", "h", "]"}], ",", "h"}], 
-    "}"}]}], "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    "}"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"marginalPosition", "[", 
@@ -2092,40 +2053,36 @@ Cell[BoxData[{
    RowBox[{"Map", "[", 
     RowBox[{
      RowBox[{"shapeFunctionToDraw", "[", "s", "]"}], ",", 
-     RowBox[{"domain", "[", "s", "]"}]}], "]"}]}], "\n", 
+     RowBox[{"domain", "[", "s", "]"}]}], "]"}]}], "\[IndentingNewLine]", 
   "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
-   RowBox[{"Protect", "[", "noNormalVector", "]"}], ";"}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"Protect", "[", "noNormalVector", "]"}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"normalVector", "[", 
     RowBox[{
      RowBox[{"plane", "[", "__", "]"}], ",", "_"}], "]"}], ":=", 
    RowBox[{"{", 
-    RowBox[{"0.0", ",", "1.0"}], "}"}]}], "\n", "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
+    RowBox[{"0.0", ",", "1.0"}], "}"}]}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"\.10normalVector", "[", 
     RowBox[{
      RowBox[{"perfectThinLens", "[", "__", "]"}], ",", "_"}], "]"}], ":=", 
    RowBox[{"{", 
-    RowBox[{"0.0", ",", "1.0"}], "}"}]}], "\n", "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
+    RowBox[{"0.0", ",", "1.0"}], "}"}]}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"normalVector", "[", 
    RowBox[{"s_spherical", ",", "h_"}], "]"}], ":=", 
@@ -2170,10 +2127,10 @@ Cell[BoxData[{
      RowBox[{"!", 
       RowBox[{
        RowBox[{"insideImplicitDomain", "[", "s", "]"}], "[", "h", "]"}]}], 
-     ")"}]}]}], "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     ")"}]}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"normalVector", "[", 
    RowBox[{"q_quadratic", ",", "h_"}], "]"}], ":=", 
@@ -2226,10 +2183,10 @@ Cell[BoxData[{
      RowBox[{"!", 
       RowBox[{
        RowBox[{"insideImplicitDomain", "[", "q", "]"}], "[", "h", "]"}]}], 
-     ")"}]}]}], "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     ")"}]}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"normalVector", "[", 
    RowBox[{"p_parametric", ",", "h_"}], "]"}], ":=", 
@@ -2259,17 +2216,16 @@ Cell[BoxData[{
      RowBox[{"!", 
       RowBox[{
        RowBox[{"insideImplicitDomain", "[", "p", "]"}], "[", "h", "]"}]}], 
-     ")"}]}]}], "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     ")"}]}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
-   RowBox[{"Protect", "[", "totalReflection", "]"}], ";"}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"Protect", "[", "totalReflection", "]"}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"reflectedVector", "[", 
@@ -2293,11 +2249,10 @@ Cell[BoxData[{
        RowBox[{"sq", "<", "0.0"}], ",", "$Failed", ",", 
        RowBox[{"{", 
         RowBox[{"ry", ",", 
-         RowBox[{"Sqrt", "[", "sq", "]"}]}], "}"}]}], "]"}]}], "]"}]}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+         RowBox[{"Sqrt", "[", "sq", "]"}]}], "}"}]}], "]"}]}], "]"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"reflectedVector", "[", 
@@ -2329,11 +2284,10 @@ Cell[BoxData[{
         RowBox[{"(", 
          RowBox[{
           RowBox[{"f", "*", "ry"}], "-", "h"}], ")"}], "/", "sq"}], ",", 
-       RowBox[{"f", "/", "sq"}]}], "}"}]}], "]"}]}], "\n", 
+       RowBox[{"f", "/", "sq"}]}], "}"}]}], "]"}]}], "\[IndentingNewLine]", 
   "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"reflectedVector", "[", 
@@ -2463,7 +2417,7 @@ Cell[BoxData[{
         "\[IndentingNewLine]", 
         RowBox[{"r", "+", 
          RowBox[{"v", "*", "com"}]}]}]}], "]"}]}]}], "*)"}], 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", "\n", 
+  "\[IndentingNewLine]", "\n", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{"::", "Input", "::", "Initialization", "::"}], 
    "*)"}]}], "\[IndentingNewLine]", 
@@ -2495,10 +2449,9 @@ Cell[BoxData[{
         RowBox[{"yg", "-", 
          RowBox[{"yd", "*", 
           RowBox[{"zg", "/", "zd"}]}]}], ",", "0.0"}], "}"}]}]}], "]"}]}], 
-  "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"intersection", "[", 
@@ -2513,11 +2466,10 @@ Cell[BoxData[{
    RowBox[{"{", 
     RowBox[{
      RowBox[{"yg", "-", 
-      RowBox[{"zg", "*", "yd"}]}], ",", "0.0"}], "}"}]}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"zg", "*", "yd"}]}], ",", "0.0"}], "}"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"intersection", "[", 
@@ -2589,11 +2541,10 @@ Cell[BoxData[{
          RowBox[{"insideImplicitDomain", "[", "s", "]"}], "[", 
          RowBox[{"pos", "[", 
           RowBox[{"[", "1", "]"}], "]"}], "]"}], ",", "pos", ",", 
-        "noIntersection"}], "]"}]}]}], "]"}]}], "\n", "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
+        "noIntersection"}], "]"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"intersection", "[", 
@@ -2676,11 +2627,10 @@ Cell[BoxData[{
          RowBox[{"insideImplicitDomain", "[", "q", "]"}], "[", 
          RowBox[{"pos", "[", 
           RowBox[{"[", "1", "]"}], "]"}], "]"}], ",", "pos", ",", 
-        "noIntersection"}], "]"}]}]}], "]"}]}], "\n", "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
+        "noIntersection"}], "]"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"heightInDomain", "[", 
    RowBox[{"height_", ",", 
@@ -2704,11 +2654,10 @@ Cell[BoxData[{
      RowBox[{"{", 
       RowBox[{"hmin_", ",", "hmax_"}], "}"}]}], "]"}], ":=", 
    RowBox[{"hmax", "/;", 
-    RowBox[{"hmax", "<", "height"}]}]}], "\n", "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
+    RowBox[{"hmax", "<", "height"}]}]}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"intersection", "[", 
@@ -2762,10 +2711,10 @@ Cell[BoxData[{
         RowBox[{"{", 
          RowBox[{"hsol", ",", 
           RowBox[{"f", "[", "hsol", "]"}]}], "}"}], ",", "noIntersection"}], 
-       "]"}]}]}], "]"}]}], "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       "]"}]}]}], "]"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"surfaceQ", "[", "_", "]"}], ":=", "False"}], "\n", 
  RowBox[{
@@ -2843,21 +2792,19 @@ Cell[BoxData[{
      RowBox[{
       RowBox[{"surface", "[", "domain", "]"}], "[", 
       RowBox[{"[", 
-       RowBox[{"-", "1"}], "]"}], "]"}], "<", "height"}]}]}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"-", "1"}], "]"}], "]"}], "<", "height"}]}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"clearAperture", "[", 
     RowBox[{"surf_", "?", "surfaceQ"}], "]"}], ":=", 
    RowBox[{"domain", "[", 
-    RowBox[{"surf", "[", "shape", "]"}], "]"}]}], "\n", "\[IndentingNewLine]",
-   "\[IndentingNewLine]", 
+    RowBox[{"surf", "[", "shape", "]"}], "]"}]}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"surfacePosition", "[", 
@@ -2868,11 +2815,10 @@ Cell[BoxData[{
      RowBox[{"[", 
       RowBox[{"-", "1"}], "]"}], "]"}], "+", 
     RowBox[{"individualOffset", "[", 
-     RowBox[{"surf", "[", "shape", "]"}], "]"}]}]}], "\n", 
+     RowBox[{"surf", "[", "shape", "]"}], "]"}]}]}], "\[IndentingNewLine]", 
   "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"marginalPositionOfSurface", "[", 
@@ -2889,21 +2835,19 @@ Cell[BoxData[{
          RowBox[{"{", 
           RowBox[{"0", ",", "p"}], "}"}], "+", "#"}], "&"}], ",", 
        RowBox[{"marginalPosition", "[", 
-        RowBox[{"s", "[", "shape", "]"}], "]"}]}], "]"}]}], "]"}]}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"s", "[", "shape", "]"}], "]"}]}], "]"}]}], "]"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"surfaceShapeType", "[", 
     RowBox[{"surf_", "?", "surfaceQ"}], "]"}], ":=", 
    RowBox[{"Head", "[", 
-    RowBox[{"surf", "[", "shape", "]"}], "]"}]}], "\n", "\[IndentingNewLine]",
-   "\[IndentingNewLine]", 
+    RowBox[{"surf", "[", "shape", "]"}], "]"}]}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"attachAttributeToSurface", "[", 
@@ -2913,11 +2857,10 @@ Cell[BoxData[{
    RowBox[{"(", 
     RowBox[{
      RowBox[{"surfaceSymbol", "[", "attributeSymbol", "]"}], "=", 
-     "attributeValue"}], ")"}]}], "\n", "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
+     "attributeValue"}], ")"}]}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"setDomain", "[", 
@@ -2956,10 +2899,9 @@ Cell[BoxData[{
          RowBox[{"{", 
           RowBox[{
            RowBox[{"-", "h"}], ",", "h"}], "}"}]}], "]"}]}]}]}], "]"}]}], 
-  "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{
@@ -3013,11 +2955,10 @@ Cell[BoxData[{
           RowBox[{"pos", ",", "rv"}], "]"}], "]"}]}], "]"}], ";", 
       "\[IndentingNewLine]", 
       RowBox[{"ray", "[", 
-       RowBox[{"pos", ",", "rv", ",", "opt"}], "]"}]}]}], "]"}]}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"pos", ",", "rv", ",", "opt"}], "]"}]}]}], "]"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"opticsQ", "[", "_", "]"}], ":=", "False"}], "\n", 
  RowBox[{
@@ -3061,11 +3002,10 @@ Cell[BoxData[{
       "\[IndentingNewLine]", 
       RowBox[{
        RowBox[{"opticsSymbol", "[", "surfaces", "]"}], "=", "surfs"}], ";", 
-      "\[IndentingNewLine]", "opticsSymbol"}]}], "]"}]}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", "opticsSymbol"}]}], "]"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"positionOfAttributedSurface", "[", 
@@ -3080,11 +3020,10 @@ Cell[BoxData[{
        RowBox[{
         RowBox[{
          RowBox[{"#", "[", "attributeSymbol", "]"}], "===", 
-         "attributeValue"}], "&"}], ")"}]}]}], "]"}]}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+         "attributeValue"}], "&"}], ")"}]}]}], "]"}]}], "\[IndentingNewLine]",
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"setPupil", "::", "nosurface"}], "=", 
@@ -3136,10 +3075,10 @@ Cell[BoxData[{
          RowBox[{
           RowBox[{"setPupil", "::", "nosurface"}], ",", "surfaceSymbol"}], 
          "]"}]}], "]"}], ";", "\[IndentingNewLine]", "opticsSymbol"}]}], 
-    "]"}]}], "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    "]"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{
@@ -3189,11 +3128,10 @@ Cell[BoxData[{
         RowBox[{"traceOneRay", ",", "ir", ",", "args"}], "]"}]}], ";", 
       "\[IndentingNewLine]", 
       RowBox[{"raySequence", "[", 
-       RowBox[{"lambda", ",", "rays"}], "]"}]}]}], "]"}]}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"lambda", ",", "rays"}], "]"}]}]}], "]"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{
@@ -3208,10 +3146,9 @@ Cell[BoxData[{
       RowBox[{"surface", ",", 
        RowBox[{"{", 
         RowBox[{"inputIndex", ",", "outputIndex"}], "}"}]}], "}"}]}], "]"}]}],
-   "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"traceOneRay", "[", 
    RowBox[{"r_ray", ",", 
@@ -3260,8 +3197,7 @@ Cell[BoxData[{
     ":=", "untraceableRay"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
   "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}], 
-  "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}], "\n", 
   RowBox[{"(*", 
    RowBox[{
     RowBox[{"Protect", "[", "mediums", "]"}], ";", "\[IndentingNewLine]", 
@@ -3278,8 +3214,8 @@ Cell[BoxData[{
     RowBox[{"Protect", "[", "quadratic", "]"}], ";", "\[IndentingNewLine]", 
     RowBox[{"Protect", "[", "parametric", "]"}], ";", "\[IndentingNewLine]", 
     RowBox[{"Protect", "[", "stoppedRay", "]"}], ";", "\[IndentingNewLine]", 
-    RowBox[{"Protect", "[", "untraceableRay", "]"}], ";"}], "*)"}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"Protect", "[", "untraceableRay", "]"}], ";"}], "*)"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{"::", "Input", "::", "Initialization", "::"}], 
    "*)"}]}], "\[IndentingNewLine]", 
@@ -3308,31 +3244,28 @@ Cell[BoxData[{
               RowBox[{
                RowBox[{"-", "#"}], "&"}], ",", 
               RowBox[{"Rest", "[", "dompos", "]"}]}], "]"}], "]"}], ",", 
-           "dompos"}], "]"}]}], "]"}], "]"}], "]"}]}], "]"}]}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+           "dompos"}], "]"}]}], "]"}], "]"}], "]"}]}], "]"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"interpolationDomain", "[", "itf_InterpolatingFunction", "]"}], ":=", 
    RowBox[{"Flatten", "[", 
-    RowBox[{"itf", "[", "\"\<Domain\>\"", "]"}], "]"}]}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"itf", "[", "\"\<Domain\>\"", "]"}], "]"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{
    "interpolationSectionPoints", "[", "itf_InterpolatingFunction", "]"}], ":=", 
    RowBox[{"Flatten", "[", 
     RowBox[{"itf", "[", 
-     RowBox[{"[", "3", "]"}], "]"}], "]"}]}], "\n", "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
+     RowBox[{"[", "3", "]"}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"thinOut", "[", 
@@ -3344,10 +3277,10 @@ Cell[BoxData[{
        RowBox[{"Round", "[", 
         RowBox[{
          RowBox[{"Length", "[", "lis", "]"}], "/", "n"}], "]"}]}], "]"}]}], 
-    "]"}]}], "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    "]"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"thinOutFromBothSide", "[", 
@@ -3379,11 +3312,10 @@ Cell[BoxData[{
            RowBox[{"Reverse", "[", 
             RowBox[{"subs", "[", 
              RowBox[{"[", "2", "]"}], "]"}], "]"}], ",", "nhalf"}], "]"}], 
-         "]"}]}], "]"}]}]}], "]"}]}], "\n", "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
+         "]"}]}], "]"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"lineStyles", "=", 
@@ -3391,11 +3323,10 @@ Cell[BoxData[{
      RowBox[{
       RowBox[{"CapForm", "[", "\"\<Round\>\"", "]"}], ",", 
       RowBox[{"JoinForm", "[", "\"\<Round\>\"", "]"}], ",", "Black", ",", 
-      RowBox[{"AbsoluteThickness", "[", "1.6", "]"}]}], "}"}]}], ";"}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"AbsoluteThickness", "[", "1.6", "]"}]}], "}"}]}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"surfaceGraphics", "[", 
    RowBox[{"s_", "?", "surfaceQ"}], "]"}], ":=", 
@@ -3470,11 +3401,10 @@ Cell[BoxData[{
      RowBox[{"s_", "?", "surfaceQ"}], ",", "___"}], "]"}], ":=", 
    RowBox[{
     RowBox[{"Graphics", "[", "]"}], "/;", 
-    RowBox[{"hiddenQ", "[", "s", "]"}]}]}], "\n", "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
+    RowBox[{"hiddenQ", "[", "s", "]"}]}]}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"cornerPostion", "[", 
    RowBox[{
@@ -3515,11 +3445,10 @@ Cell[BoxData[{
     RowBox[{"{", 
      RowBox[{"p1", ",", 
       RowBox[{"cornerPostion", "[", 
-       RowBox[{"p1", ",", "p2"}], "]"}], ",", "p2"}], "}"}], "]"}]}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"p1", ",", "p2"}], "]"}], ",", "p2"}], "}"}], "]"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"marginalPosition", "[", 
@@ -3531,11 +3460,10 @@ Cell[BoxData[{
        RowBox[{"Reverse", "[", 
         RowBox[{"s", "[", "origin", "]"}], "]"}]}], "&"}], ",", 
      RowBox[{"marginalPosition", "[", 
-      RowBox[{"s", "[", "shape", "]"}], "]"}]}], "]"}]}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"s", "[", "shape", "]"}], "]"}]}], "]"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"edgeConnectingLines", "[", 
@@ -3565,10 +3493,9 @@ Cell[BoxData[{
            RowBox[{"[", "2", "]"}], "]"}], ",", 
           RowBox[{"p2", "[", 
            RowBox[{"[", "2", "]"}], "]"}]}], "]"}]}], "}"}]}]}], "]"}]}], 
-  "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"bulkLensGraphics", "[", 
@@ -3584,11 +3511,10 @@ Cell[BoxData[{
          RowBox[{"edgeConnectingLines", "[", 
           RowBox[{"s1", ",", "s2"}], "]"}], "}"}]}], "]"}], "]"}], ",", 
      RowBox[{"surfaceGraphics", "[", "s1", "]"}], ",", 
-     RowBox[{"surfaceGraphics", "[", "s2", "]"}]}], "]"}]}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"surfaceGraphics", "[", "s2", "]"}]}], "]"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"lensGraphics", "[", 
    RowBox[{
@@ -3620,10 +3546,10 @@ Cell[BoxData[{
      RowBox[{"s_", "?", "surfaceQ"}], ",", 
      RowBox[{"{", 
       RowBox[{"_", ",", "_"}], "}"}]}], "]"}], ":=", 
-   RowBox[{"{", "}"}]}], "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"{", "}"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"neighbouringPair", "[", "l_List", "]"}], ":=", 
@@ -3631,11 +3557,10 @@ Cell[BoxData[{
     RowBox[{"Transpose", "[", 
      RowBox[{"{", 
       RowBox[{"l", ",", 
-       RowBox[{"RotateLeft", "[", "l", "]"}]}], "}"}], "]"}], "]"}]}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"RotateLeft", "[", "l", "]"}]}], "}"}], "]"}], "]"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"positionToDifferent", "[", "l_List", "]"}], ":=", 
   RowBox[{"Position", "[", 
@@ -3664,11 +3589,10 @@ Cell[BoxData[{
        RowBox[{"Extract", "[", 
         RowBox[{"surfs", ",", "poss"}], "]"}], ",", 
        RowBox[{"Extract", "[", 
-        RowBox[{"meds", ",", "poss"}], "]"}]}], "}"}]}], "]"}]}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"meds", ",", "poss"}], "]"}]}], "}"}]}], "]"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"Options", "[", "opticsGraphics", "]"}], "=", 
@@ -3752,10 +3676,9 @@ Cell[BoxData[{
         RowBox[{"Thread", "[", 
          RowBox[{"singleSurfaceGraphics", "[", 
           RowBox[{"surs", ",", "mpair"}], "]"}], "]"}]}], "]"}]}]}], "]"}]}], 
-  "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"reflectedPointsToDraw", "[", "rs_raySequence", "]"}], ":=", 
   RowBox[{"Map", "[", 
@@ -3786,11 +3709,10 @@ Cell[BoxData[{
      RowBox[{
       RowBox[{"reflectedPointsToDraw", "[", "rs", "]"}], ",", 
       RowBox[{"{", 
-       RowBox[{"from", ",", "upto"}], "}"}]}], "]"}], "]"}]}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"from", ",", "upto"}], "}"}]}], "]"}], "]"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"Clear", "[", "rayCongruenceGraphics", "]"}], ";"}], "\n", 
  RowBox[{
@@ -3864,14 +3786,14 @@ Cell[BoxData[{
         "mechanicalObjectImageDistance", ",", "objectSideCoverGlassExistence",
          ",", "objectSideCoverGlassMediumSymbol", ",", 
         "objectSideCoverGlassThickness", ",", "marginRatio"}], "}"}], ",", 
-      "singletParaxialParameterSymbols"}], "]"}]}], ";"}], 
-  "\[IndentingNewLine]", "\n", "\[IndentingNewLine]", 
+      "singletParaxialParameterSymbols"}], "]"}]}], ";"}], "\n", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{"::", "Input", "::", "Initialization", "::"}], 
    "*)"}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
-   RowBox[{"$marginRatio", "=", "1.02"}], ";"}], "\[IndentingNewLine]", "\n", 
+   RowBox[{"$marginRatio", "=", "1.02"}], ";"}], "\n", "\[IndentingNewLine]", 
   "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{"::", "Input", "::", "Initialization", "::"}], 
@@ -3908,8 +3830,8 @@ Cell[BoxData[{
          RowBox[{"setDefaultMarginRatio", "::", "notnumeric"}], ",", 
          "mratio"}], "]"}], ";", "False"}]}], "]"}]}], ":=", 
    RowBox[{"(", 
-    RowBox[{"$marginRatio", "=", "mratio"}], ")"}]}], "\[IndentingNewLine]", 
-  "\n", "\[IndentingNewLine]", 
+    RowBox[{"$marginRatio", "=", "mratio"}], ")"}]}], "\n", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{"::", "Input", "::", "Initialization", "::"}], 
    "*)"}]}], "\[IndentingNewLine]", 
@@ -3927,7 +3849,7 @@ Cell[BoxData[{
    RowBox[{"setupBiasphericAplanatParameters", "[", "parameters__Rule", "]"}],
     ":=", 
    RowBox[{"setupBiasphericAplanatParameters", "[", 
-    RowBox[{"{", "parameters", "}"}], "]"}]}], "\[IndentingNewLine]", "\n", 
+    RowBox[{"{", "parameters", "}"}], "]"}]}], "\n", "\[IndentingNewLine]", 
   "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{"::", "Input", "::", "Initialization", "::"}], 
@@ -4098,7 +4020,7 @@ Cell[BoxData[{
             "]"}], ",", "remp", ",", "paraparm", ",", 
            RowBox[{
            "Options", "[", "setupBiasphericAplanatParameters", "]"}]}], "}"}],
-          "]"}]}], "]"}]}]}], "]"}]}], "\[IndentingNewLine]", "\n", 
+          "]"}]}], "]"}]}]}], "]"}]}], "\n", "\[IndentingNewLine]", 
   "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{"::", "Input", "::", "Initialization", "::"}], 
@@ -4136,8 +4058,8 @@ Cell[BoxData[{
           RowBox[{"N", "[", 
            RowBox[{"(", 
             RowBox[{"coverGlassThickness", "/.", "parameters"}], ")"}], "]"}],
-           ">", "0.0"}], ")"}]}], ",", "False"}], "]"}]}], "]"}]}], 
-  "\[IndentingNewLine]", "\n", "\[IndentingNewLine]", 
+           ">", "0.0"}], ")"}]}], ",", "False"}], "]"}]}], "]"}]}], "\n", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{"::", "Input", "::", "Initialization", "::"}], 
    "*)"}]}], "\[IndentingNewLine]", 
@@ -4177,7 +4099,7 @@ Cell[BoxData[{
            RowBox[{"(", 
             RowBox[{"objectSideCoverGlassThickness", "/.", "parameters"}], 
             ")"}], "]"}], ">", "0.0"}], ")"}]}], ",", "False"}], "]"}]}], 
-    "]"}]}], "\[IndentingNewLine]", "\n", "\[IndentingNewLine]", 
+    "]"}]}], "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{"::", "Input", "::", "Initialization", "::"}], 
    "*)"}]}], "\[IndentingNewLine]", 
@@ -4218,7 +4140,7 @@ Cell[BoxData[{
   "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}], 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", "\n", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{"::", "Input", "::", "Initialization", "::"}], 
    "*)"}]}], "\[IndentingNewLine]", 
@@ -4301,7 +4223,7 @@ Cell[BoxData[{
        "]"}], ";", "\[IndentingNewLine]", 
       RowBox[{"branchSolver", "[", 
        RowBox[{"iconj", ",", "cgi", ",", "cgo", ",", "parameters"}], 
-       "]"}]}]}], "]"}]}], "\[IndentingNewLine]", "\n", "\[IndentingNewLine]", 
+       "]"}]}]}], "]"}]}], "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{"::", "Input", "::", "Initialization", "::"}], 
    "*)"}]}], "\[IndentingNewLine]", 
@@ -4339,7 +4261,7 @@ Cell[BoxData[{
       RowBox[{"False", ",", "True", ",", "True"}], "}"}], ",", 
      RowBox[{
      "biasphericAplanatSolveFiniteWithBothImageAndObjectCoverGlass", "[", 
-      "parameters", "]"}]}], "]"}]}], "\[IndentingNewLine]", "\n", 
+      "parameters", "]"}]}], "]"}]}], "\n", "\[IndentingNewLine]", 
   "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{"::", "Input", "::", "Initialization", "::"}], 
@@ -4358,7 +4280,7 @@ Cell[BoxData[{
       RowBox[{"refractiveIndexValue", "[", 
        RowBox[{"lensMediumSymbol", ",", "designWavelength"}], "]"}], ",", 
       "lensMediumThickness", ",", "mechanicalImageDistance"}], "}"}], "/.", 
-    "parameters"}]}], "\[IndentingNewLine]", "\n", "\[IndentingNewLine]", 
+    "parameters"}]}], "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{"::", "Input", "::", "Initialization", "::"}], 
    "*)"}]}], "\[IndentingNewLine]", 
@@ -4371,8 +4293,8 @@ Cell[BoxData[{
     RowBox[{"Sequence", ",", 
      RowBox[{"FilterRules", "[", 
       RowBox[{"parameters", ",", 
-       RowBox[{"Options", "[", "NDSolve", "]"}]}], "]"}]}], "]"}]}], 
-  "\[IndentingNewLine]", "\n", "\[IndentingNewLine]", 
+       RowBox[{"Options", "[", "NDSolve", "]"}]}], "]"}]}], "]"}]}], "\n", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{"::", "Input", "::", "Initialization", "::"}], 
    "*)"}]}], "\[IndentingNewLine]", 
@@ -4447,7 +4369,7 @@ Cell[BoxData[{
                   RowBox[{"x2", "[", "#", "]"}], "+", "d"}]}], "}"}], "&"}], 
               ",", "secpnts"}], "]"}], "]"}], "]"}]}], ",", 
          RowBox[{"numericalAperture", "\[Rule]", "ana"}], ",", "parameters"}],
-         "}"}], "]"}]}]}], "]"}]}], "\[IndentingNewLine]", "\n", 
+         "}"}], "]"}]}]}], "]"}]}], "\n", "\[IndentingNewLine]", 
   "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{"::", "Input", "::", "Initialization", "::"}], 
@@ -4552,7 +4474,7 @@ Cell[BoxData[{
                   RowBox[{"x2", "[", "#", "]"}]}]}], "}"}], "&"}], ",", 
               "secpnts"}], "]"}], "]"}], "]"}]}], ",", 
          RowBox[{"numericalAperture", "\[Rule]", "ana"}], ",", "parameters"}],
-         "}"}], "]"}]}]}], "]"}]}], "\[IndentingNewLine]", "\n", 
+         "}"}], "]"}]}]}], "]"}]}], "\n", "\[IndentingNewLine]", 
   "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{"::", "Input", "::", "Initialization", "::"}], 
@@ -4656,7 +4578,7 @@ Cell[BoxData[{
                   RowBox[{"x2", "[", "#", "]"}]}]}], "}"}], "&"}], ",", 
               "secpnts"}], "]"}], "]"}], "]"}]}], ",", 
          RowBox[{"numericalAperture", "\[Rule]", "ana"}], ",", "parameters"}],
-         "}"}], "]"}]}]}], "]"}]}], "\[IndentingNewLine]", "\n", 
+         "}"}], "]"}]}]}], "]"}]}], "\n", "\[IndentingNewLine]", 
   "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{"::", "Input", "::", "Initialization", "::"}], 
@@ -4788,7 +4710,7 @@ Cell[BoxData[{
                   RowBox[{"x2", "[", "#", "]"}]}]}], "}"}], "&"}], ",", 
               "secpnts"}], "]"}], "]"}], "]"}]}], ",", 
          RowBox[{"numericalAperture", "\[Rule]", "ana"}], ",", "parameters"}],
-         "}"}], "]"}]}]}], "]"}]}], "\[IndentingNewLine]", "\n", 
+         "}"}], "]"}]}]}], "]"}]}], "\n", "\[IndentingNewLine]", 
   "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{"::", "Input", "::", "Initialization", "::"}], 
@@ -4919,7 +4841,7 @@ Cell[BoxData[{
   "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}], 
-  "\[IndentingNewLine]"}], "\n", 
+  "\n"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{
@@ -5073,11 +4995,10 @@ Cell[BoxData[{
                   RowBox[{"x2", "[", "#", "]"}]}]}], "}"}], "&"}], ",", 
               "secpnts"}], "]"}], "]"}], "]"}]}], ",", 
          RowBox[{"numericalAperture", "\[Rule]", "ana"}], ",", "parameters"}],
-         "}"}], "]"}]}]}], "]"}]}], "\n", "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
+         "}"}], "]"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"SolveInfinite", "[", 
@@ -5279,10 +5200,10 @@ Cell[BoxData[{
        RowBox[{
         RowBox[{"x1", "/.", "sols"}], ",", 
         RowBox[{"x2", "/.", "sols"}]}], "}"}]}]}], "\[IndentingNewLine]", 
-    "]"}]}], "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    "]"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"SolveInfiniteWithCoverGlass", "[", 
@@ -5577,11 +5498,10 @@ Cell[BoxData[{
       RowBox[{"{", 
        RowBox[{
         RowBox[{"x1", "/.", "sols"}], ",", 
-        RowBox[{"x2", "/.", "sols"}]}], "}"}]}]}], "]"}]}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"x2", "/.", "sols"}]}], "}"}]}]}], "]"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"SolveFinite", "[", 
@@ -6046,11 +5966,10 @@ Cell[BoxData[{
       RowBox[{"{", 
        RowBox[{
         RowBox[{"x1", "/.", "sols"}], ",", 
-        RowBox[{"x2", "/.", "sols"}]}], "}"}]}]}], "]"}]}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"x2", "/.", "sols"}]}], "}"}]}]}], "]"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"SolveFiniteWithCoverGlass", "[", 
@@ -6684,11 +6603,10 @@ Cell[BoxData[{
       RowBox[{"{", 
        RowBox[{
         RowBox[{"x1", "/.", "sols"}], ",", 
-        RowBox[{"x2", "/.", "sols"}]}], "}"}]}]}], "]"}]}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"x2", "/.", "sols"}]}], "}"}]}]}], "]"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"SolveFiniteWithObjectSpaceCoverGlass", "[", 
@@ -7277,11 +7195,10 @@ Cell[BoxData[{
       RowBox[{"{", 
        RowBox[{
         RowBox[{"x1", "/.", "sols"}], ",", 
-        RowBox[{"x2", "/.", "sols"}]}], "}"}]}]}], "]"}]}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"x2", "/.", "sols"}]}], "}"}]}]}], "]"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"SolveFiniteWithBothSpaceCoverGlass", "[", 
@@ -8054,11 +7971,10 @@ Cell[BoxData[{
       RowBox[{"{", 
        RowBox[{
         RowBox[{"x1", "/.", "sols"}], ",", 
-        RowBox[{"x2", "/.", "sols"}]}], "}"}]}]}], "]"}]}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"x2", "/.", "sols"}]}], "}"}]}]}], "]"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"mirroredData", "[", 
@@ -8093,11 +8009,10 @@ Cell[BoxData[{
            RowBox[{"#2", "[", 
             RowBox[{"[", "1", "]"}], "]"}]}], "]"}], "<", 
          RowBox[{"10", "^", 
-          RowBox[{"-", "10"}]}]}], "&"}], ")"}]}]}], "]"}]}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+          RowBox[{"-", "10"}]}]}], "&"}], ")"}]}]}], "]"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{
@@ -8106,10 +8021,9 @@ Cell[BoxData[{
      RowBox[{
       RowBox[{"tracingWavelength", "\[Rule]", "designWavelength"}], ",", 
       RowBox[{"decenterBetweenAspherics", "\[Rule]", "0"}]}], "}"}]}], ";"}], 
-  "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"setOpticsFor2DRayTrace", "[", 
@@ -8122,11 +8036,10 @@ Cell[BoxData[{
      RowBox[{"setOpticsFor2DRayTraceInfinite", "[", 
       RowBox[{"op", ",", "solverResult", ",", "opt"}], "]"}], ",", 
      RowBox[{"setOpticsFor2DRayTraceFinite", "[", 
-      RowBox[{"op", ",", "solverResult", ",", "opt"}], "]"}]}], "]"}]}], "\n",
-   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"op", ",", "solverResult", ",", "opt"}], "]"}]}], "]"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"setOpticsFor2DRayTraceInfinite", "[", 
@@ -8284,10 +8197,10 @@ Cell[BoxData[{
        "]"}], ";", "\[IndentingNewLine]", 
       RowBox[{"setPupil", "[", 
        RowBox[{"op", ",", "pup"}], "]"}], ";", "\[IndentingNewLine]", 
-      "op"}]}], "]"}]}], "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      "op"}]}], "]"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"setOpticsFor2DRayTraceFinite", "[", 
    RowBox[{"op_Symbol", ",", 
@@ -8523,11 +8436,10 @@ Cell[BoxData[{
     RowBox[{"positionOfAttributedSurface", "[", 
      RowBox[{
      "op", ",", "solverAsphericalSurface", ",", 
-      "backSolverAsphericalSurface"}], "]"}]}], ";"}], "\n", 
+      "backSolverAsphericalSurface"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
   "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"biasphericAplanatSolve", "::", "usesetup"}], "=", 
@@ -8555,11 +8467,10 @@ unit in milli meters.\>\""}], ";"}], "\n",
       "lensMediumThickness", ",", "coddingtonShapeFactor", ",", 
       "paraxialWorkingDistance", ",", "paraxialObjectDistance", ",", 
       "paraxialObjectImageDistance", ",", "lateralMagnification", ",", 
-      "conjugateInfiniteness"}], "}"}]}], ";"}], "\n", "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
+      "conjugateInfiniteness"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"paraxialThickessDifferenceFromMechanical", "[", 
@@ -8602,10 +8513,10 @@ unit in milli meters.\>\""}], ";"}], "\n",
         RowBox[{
          RowBox[{"(", 
           RowBox[{"ncg", "-", "1.0"}], ")"}], "/", "ncg"}], "*", "dcg"}]}]}], 
-     "]"}]}], ";"}], "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     "]"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"setEqualQ", "[", 
@@ -8613,11 +8524,10 @@ unit in milli meters.\>\""}], ";"}], "\n",
    RowBox[{"(", 
     RowBox[{
      RowBox[{"Sort", "[", "a", "]"}], "===", 
-     RowBox[{"Sort", "[", "b", "]"}]}], ")"}]}], "\n", "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
+     RowBox[{"Sort", "[", "b", "]"}]}], ")"}]}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"Clear", "[", 
    RowBox[{
@@ -8743,7 +8653,7 @@ unit in milli meters.\>\""}], ";"}], "\n",
           RowBox[{
           "d", ",", "n", ",", "f", ",", "i", ",", "c", ",", "o", ",", 
            "\[Beta]"}], "]"}]}], "}"}], "]"}]}]}], "]"}]}], 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", "\n", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\n", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{"::", "Input", "::", "Initialization", "::"}], 
    "*)"}]}], "\[IndentingNewLine]", 
@@ -8773,10 +8683,10 @@ unit in milli meters.\>\""}], ";"}], "\n",
       RowBox[{
       "lensMediumThickness", ",", "lensMediumSymbol", ",", "focalLength", ",",
         "paraxialWorkingDistance", ",", "coddingtonShapeFactor"}], "}"}]}], 
-    "]"}]}], "\n", "\[IndentingNewLine]", 
+    "]"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", 
    RowBox[{"for", " ", "finite", " ", "conjugate", " ", "case"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"absentParameter", "[", 
@@ -8794,11 +8704,10 @@ unit in milli meters.\>\""}], ";"}], "\n",
       "lensMediumThickness", ",", "lensMediumSymbol", ",", "focalLength", ",",
         "paraxialWorkingDistance", ",", "coddingtonShapeFactor", ",", 
        "paraxialObjectDistance", ",", "paraxialObjectImageDistance", ",", 
-       "lateralMagnification"}], "}"}]}], "]"}]}], "\n", 
+       "lateralMagnification"}], "}"}]}], "]"}]}], "\[IndentingNewLine]", 
   "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"infiniteParameterSetQ", "[", 
@@ -8821,11 +8730,10 @@ unit in milli meters.\>\""}], ";"}], "\n",
       RowBox[{"SubsetQ", "[", 
        RowBox[{"absents", ",", 
         RowBox[{"{", 
-         RowBox[{"oParm", ",", "bParm"}], "}"}]}], "]"}]}]}], "]"}]}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+         RowBox[{"oParm", ",", "bParm"}], "}"}]}], "]"}]}]}], "]"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"CSF", "[", 
@@ -8834,11 +8742,10 @@ unit in milli meters.\>\""}], ";"}], "\n",
     RowBox[{"(", 
      RowBox[{"c1", "+", "c2"}], ")"}], "/", 
     RowBox[{"(", 
-     RowBox[{"c1", "-", "c2"}], ")"}]}]}], "\n", "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
+     RowBox[{"c1", "-", "c2"}], ")"}]}]}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"frontParaxialCurvature", "[", 
    RowBox[{
@@ -8897,11 +8804,10 @@ unit in milli meters.\>\""}], ";"}], "\n",
        RowBox[{"smsq", "<", "0.0"}], ",", 
        RowBox[{"Message", "[", 
         RowBox[{"setupBiasphericAplanatParameters", "::", "inconsistent"}], 
-        "]"}], ",", "0.0"}], "]"}]}], "]"}]}], "\n", "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
+        "]"}], ",", "0.0"}], "]"}]}], "]"}]}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"Clear", "[", "checkNumeric", "]"}], ";"}], "\n", 
  RowBox[{
@@ -8927,10 +8833,10 @@ unit in milli meters.\>\""}], ";"}], "\n",
      RowBox[{"{", 
       RowBox[{
       "dParm", ",", "nParm", ",", "fParm", ",", "iParm", ",", "cParm"}], 
-      "}"}]}], "]"}]}], "\n", 
+      "}"}]}], "]"}]}], "\[IndentingNewLine]", 
   RowBox[{"(*", 
    RowBox[{"for", " ", "finite", " ", "conjugate", " ", "case"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"allParametersForFinite", "=", 
    RowBox[{"{", 
@@ -8959,11 +8865,10 @@ unit in milli meters.\>\""}], ";"}], "\n",
      RowBox[{"absentParameter", "[", 
       RowBox[{
       "d", ",", "n", ",", "f", ",", "mid", ",", "cod", ",", "mod", ",", "oid",
-        ",", "beta"}], "]"}]}], "]"}]}], "\n", "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
+        ",", "beta"}], "]"}]}], "]"}]}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"Clear", "[", "curvaturesInfinite", "]"}], ";"}], "\n", 
  RowBox[{
@@ -9042,11 +8947,10 @@ unit in milli meters.\>\""}], ";"}], "\n",
         RowBox[{
          RowBox[{"(", 
           RowBox[{"n", "-", "1"}], ")"}], "d", "*", "m"}], ")"}]}]}], ",", 
-     RowBox[{"conjugateInfiniteness", "\[Rule]", "True"}]}], "}"}]}], "\n", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"conjugateInfiniteness", "\[Rule]", "True"}]}], "}"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"Clear", "[", "settleRemainedParaxialParametersInfinite", "]"}], 
@@ -9082,7 +8986,7 @@ unit in milli meters.\>\""}], ";"}], "\n",
          RowBox[{"curvaturesInfinite", "[", 
           RowBox[{"d", ",", "n", ",", "f", ",", "m", ",", "cod"}], "]"}], ",", 
          RowBox[{"paraxialWorkingDistance", "\[Rule]", "m"}]}], "}"}], 
-       "]"}]}], "]"}]}]}], "\n"}], "\[IndentingNewLine]", 
+       "]"}]}], "]"}]}]}], "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"settleRemainedParaxialParametersInfinite", "[", 
@@ -9097,7 +9001,7 @@ unit in milli meters.\>\""}], ";"}], "\n",
      RowBox[{"Length", "[", 
       RowBox[{"absentParameter", "[", 
        RowBox[{"d", ",", "n", ",", "f", ",", "m", ",", "cod"}], "]"}], "]"}], 
-     "\[GreaterEqual]", "2"}]}]}], "\n"}], "\[IndentingNewLine]", 
+     "\[GreaterEqual]", "2"}]}]}], "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"settleRemainedParaxialParametersInfinite", "[", 
@@ -9112,7 +9016,7 @@ unit in milli meters.\>\""}], ";"}], "\n",
     RowBox[{
      RowBox[{"absentParameter", "[", 
       RowBox[{"d", ",", "n", ",", "f", ",", "m", ",", "cod"}], "]"}], "===", 
-     RowBox[{"{", "nParm", "}"}]}]}]}], "\n"}], "\[IndentingNewLine]", 
+     RowBox[{"{", "nParm", "}"}]}]}]}], "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"settleRemainedParaxialParametersInfinite", "[", 
@@ -9133,7 +9037,7 @@ unit in milli meters.\>\""}], ";"}], "\n",
       RowBox[{
        RowBox[{"Abs", "[", 
         RowBox[{"N", "[", "cod", "]"}], "]"}], "===", "1.0"}], ")"}]}]}]}], 
-  "\n"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"settleRemainedParaxialParametersInfinite", "[", 
@@ -9182,7 +9086,7 @@ unit in milli meters.\>\""}], ";"}], "\n",
       RowBox[{
        RowBox[{"Abs", "[", 
         RowBox[{"N", "[", "cod", "]"}], "]"}], "=!=", "1.0"}], ")"}]}]}]}], 
-  "\n"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"settleRemainedParaxialParametersInfinite", "[", 
@@ -9250,7 +9154,7 @@ unit in milli meters.\>\""}], ";"}], "\n",
     RowBox[{
      RowBox[{"absentParameter", "[", 
       RowBox[{"d", ",", "n", ",", "f", ",", "m", ",", "cod"}], "]"}], "===", 
-     RowBox[{"{", "fParm", "}"}]}]}]}], "\n"}], "\[IndentingNewLine]", 
+     RowBox[{"{", "fParm", "}"}]}]}]}], "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"settleRemainedParaxialParametersInfinite", "[", 
@@ -9307,7 +9211,7 @@ unit in milli meters.\>\""}], ";"}], "\n",
     RowBox[{
      RowBox[{"absentParameter", "[", 
       RowBox[{"d", ",", "n", ",", "f", ",", "m", ",", "cod"}], "]"}], "===", 
-     RowBox[{"{", "iParm", "}"}]}]}]}], "\n"}], "\[IndentingNewLine]", 
+     RowBox[{"{", "iParm", "}"}]}]}]}], "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"settleRemainedParaxialParametersInfinite", "[", 
@@ -9334,7 +9238,7 @@ unit in milli meters.\>\""}], ";"}], "\n",
      RowBox[{"absentParameter", "[", 
       RowBox[{"d", ",", "n", ",", "f", ",", "m", ",", "cod"}], "]"}], "===", 
      RowBox[{"{", "cParm", "}"}]}]}]}], "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", "\n", 
+  "\[IndentingNewLine]", "\n", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{"::", "Input", "::", "Initialization", "::"}], 
    "*)"}]}], "\[IndentingNewLine]", 
@@ -9362,7 +9266,7 @@ unit in milli meters.\>\""}], ";"}], "\n",
    RowBox[{"Apply", "[", 
     RowBox[{"Plus", ",", 
      RowBox[{"numericCount", "[", "params", "]"}]}], "]"}]}], 
-  "\n"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"additionalTermsOfPricipals", "[", 
@@ -9379,7 +9283,7 @@ unit in milli meters.\>\""}], ";"}], "\n",
       RowBox[{"mid", "-", 
        RowBox[{"imagePrincipalPlanePosition", "[", 
         RowBox[{"c1", ",", "c2", ",", "n", ",", "d"}], "]"}]}]}]}], "}"}]}], 
-  "\n"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"settleRemainedParaxialParametersFinite", "[", 
@@ -9423,7 +9327,7 @@ unit in milli meters.\>\""}], ";"}], "\n",
           RowBox[{
           "d", ",", "n", ",", "f", ",", "mid", ",", "cod", ",", "mod", ",", 
            "beta"}], "]"}]}], "}"}], "]"}]}]}], "]"}]}], 
-  "\n"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"fixRemainedParaxialParametersFinite", "[", 
@@ -9484,7 +9388,7 @@ unit in milli meters.\>\""}], ";"}], "\n",
         RowBox[{"additionalTermsOfPricipals", "[", 
          RowBox[{
          "d", ",", "n", ",", "c1", ",", "c2", ",", "mid", ",", "mod"}], 
-         "]"}]}], "}"}], "]"}]}], "]"}]}], "\n"}], "\[IndentingNewLine]", 
+         "]"}]}], "}"}], "]"}]}], "]"}]}], "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"fixRemainedParaxialParametersFinite", "[", 
@@ -9549,7 +9453,7 @@ unit in milli meters.\>\""}], ";"}], "\n",
         RowBox[{"additionalTermsOfPricipals", "[", 
          RowBox[{
          "d", ",", "n", ",", "c1", ",", "c2", ",", "mid", ",", "mod"}], 
-         "]"}]}], "}"}], "]"}]}], "]"}]}], "\n"}], "\[IndentingNewLine]", 
+         "]"}]}], "}"}], "]"}]}], "]"}]}], "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"fixRemainedParaxialParametersFinite", "[", 
@@ -9620,7 +9524,7 @@ unit in milli meters.\>\""}], ";"}], "\n",
         RowBox[{"additionalTermsOfPricipals", "[", 
          RowBox[{
          "d", ",", "n", ",", "c1", ",", "c2", ",", "mid", ",", "mod"}], 
-         "]"}]}], "}"}], "]"}]}], "]"}]}], "\n"}], "\[IndentingNewLine]", 
+         "]"}]}], "}"}], "]"}]}], "]"}]}], "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"fixRemainedParaxialParametersFinite", "[", 
@@ -9723,7 +9627,7 @@ unit in milli meters.\>\""}], ";"}], "\n",
          RowBox[{"additionalTermsOfPricipals", "[", 
           RowBox[{
           "d", ",", "n", ",", "c1", ",", "c2", ",", "mid", ",", "mod"}], 
-          "]"}]}], "}"}], "]"}]}]}], "]"}]}], "\n"}], "\[IndentingNewLine]", 
+          "]"}]}], "}"}], "]"}]}]}], "]"}]}], "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"fixRemainedParaxialParametersFinite", "[", 
@@ -9828,7 +9732,7 @@ unit in milli meters.\>\""}], ";"}], "\n",
          RowBox[{"additionalTermsOfPricipals", "[", 
           RowBox[{
           "d", ",", "n", ",", "c1", ",", "c2", ",", "mid", ",", "mod"}], 
-          "]"}]}], "}"}], "]"}]}]}], "]"}]}], "\n"}], "\[IndentingNewLine]", 
+          "]"}]}], "}"}], "]"}]}]}], "]"}]}], "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"fixRemainedParaxialParametersFinite", "[", 
@@ -9911,7 +9815,7 @@ unit in milli meters.\>\""}], ";"}], "\n",
          RowBox[{"additionalTermsOfPricipals", "[", 
           RowBox[{
           "d", ",", "n", ",", "c1", ",", "c2", ",", "mid", ",", "mod"}], 
-          "]"}]}], "}"}], "]"}]}]}], "]"}]}], "\n"}], "\[IndentingNewLine]", 
+          "]"}]}], "}"}], "]"}]}]}], "]"}]}], "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"fixRemainedParaxialParametersFinite", "[", 
@@ -9997,7 +9901,7 @@ unit in milli meters.\>\""}], ";"}], "\n",
          RowBox[{"additionalTermsOfPricipals", "[", 
           RowBox[{
           "d", ",", "n", ",", "c1", ",", "c2", ",", "mid", ",", "mod"}], 
-          "]"}]}], "}"}], "]"}]}]}], "]"}]}], "\n"}], "\[IndentingNewLine]", 
+          "]"}]}], "}"}], "]"}]}]}], "]"}]}], "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"fixRemainedParaxialParametersFinite", "[", "__", "]"}], ":=", 
@@ -10005,11 +9909,10 @@ unit in milli meters.\>\""}], ";"}], "\n",
     RowBox[{
      RowBox[{"Message", "[", 
       RowBox[{"settleRemainedParaxialParameters", "::", "notimplemented"}], 
-      "]"}], ";", "$Failed"}], ")"}]}], "\n", "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
+      "]"}], ";", "$Failed"}], ")"}]}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"objectPrincipalPlanePosition", "[", 
    RowBox[{"c1_", ",", "c2_", ",", "n_", ",", "d_"}], "]"}], ":=", 
@@ -10039,11 +9942,10 @@ unit in milli meters.\>\""}], ";"}], "\n",
           RowBox[{"c2", "*", "d", 
            RowBox[{"(", 
             RowBox[{"n", "-", "1"}], ")"}]}], "+", "n"}], ")"}]}], "-", 
-       RowBox[{"n", "*", "c2"}]}], ")"}]}]}]}], "\n", "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
+       RowBox[{"n", "*", "c2"}]}], ")"}]}]}]}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"tautologyCheck", "[", 
    RowBox[{
@@ -10130,7 +10032,7 @@ unit in milli meters.\>\""}], ";"}], "\n",
  RowBox[{
   RowBox[{
    RowBox[{"tautologyCheck", "[", "__", "]"}], ":=", 
-   RowBox[{"Sequence", "[", "]"}]}], "\n"}], "\[IndentingNewLine]", 
+   RowBox[{"Sequence", "[", "]"}]}], "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{"tautologyParameterList", "=", 
    RowBox[{"{", 
@@ -10151,7 +10053,7 @@ unit in milli meters.\>\""}], ";"}], "\n",
         "d", ",", "n", ",", "f", ",", "mid", ",", "cod", ",", "mod", ",", 
          "oid", ",", "beta"}], "]"}], ",", "tautologyParameterList"}], "]"}], 
      "===", 
-     RowBox[{"{", "}"}]}], ")"}]}], "\n"}], "\[IndentingNewLine]", 
+     RowBox[{"{", "}"}]}], ")"}]}], "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"tooMuchConstraintsQ", "[", 
@@ -10166,11 +10068,10 @@ unit in milli meters.\>\""}], ";"}], "\n",
        "d", ",", "n", ",", "f", ",", "mid", ",", "cod", ",", "mod", ",", 
         "oid", ",", "beta"}], "]"}]}], "&&", 
      RowBox[{"(", "False", ")"}]}], ")"}]}], 
-  RowBox[{"(*", "testing", "*)"}], "\n", "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
+  RowBox[{"(*", "testing", "*)"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"mostProbableParameterList", "=", 
    RowBox[{"{", 
@@ -10268,10 +10169,10 @@ unit in milli meters.\>\""}], ";"}], "\n",
           RowBox[{"imagePrincipalPlanePosition", "[", 
            RowBox[{"c1", ",", "c2", ",", "n", ",", "d"}], "]"}]}]}], ",", 
         RowBox[{"conjugateInfiniteness", "\[Rule]", "False"}]}], "}"}]}]}], 
-    "]"}]}], "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    "]"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"fixedFocalLengthParameterList", "=", 
    RowBox[{"{", 
@@ -10350,7 +10251,7 @@ unit in milli meters.\>\""}], ";"}], "\n",
          RowBox[{"paraxialWorkingDistance", "\[Rule]", "mid"}], ",", 
          RowBox[{"settleRemainedParaxialForMostProbableParameters", "[", 
           RowBox[{"d", ",", "n", ",", "mid", ",", "oid", ",", "beta"}], 
-          "]"}]}], "}"}], "]"}]}]}], "]"}]}], "\n"}], "\[IndentingNewLine]", 
+          "]"}]}], "}"}], "]"}]}]}], "]"}]}], "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{"lackOfOIAndWDParameterList", "=", 
    RowBox[{"{", 
@@ -10396,7 +10297,7 @@ unit in milli meters.\>\""}], ";"}], "\n",
          RowBox[{"paraxialObjectImageDistance", "\[Rule]", "oid"}], ",", 
          RowBox[{"settleRemainedParaxialForMostProbableParameters", "[", 
           RowBox[{"d", ",", "n", ",", "mid", ",", "oid", ",", "beta"}], 
-          "]"}]}], "}"}], "]"}]}]}], "]"}]}], "\n"}], "\[IndentingNewLine]", 
+          "]"}]}], "}"}], "]"}]}]}], "]"}]}], "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{"lackOfOIAndODParameterList", "=", 
    RowBox[{"{", 
@@ -10442,11 +10343,10 @@ unit in milli meters.\>\""}], ";"}], "\n",
          RowBox[{"paraxialObjectImageDistance", "\[Rule]", "oid"}], ",", 
          RowBox[{"settleRemainedParaxialForMostProbableParameters", "[", 
           RowBox[{"d", ",", "n", ",", "mid", ",", "oid", ",", "beta"}], 
-          "]"}]}], "}"}], "]"}]}]}], "]"}]}], "\n", "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
+          "]"}]}], "}"}], "]"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"settleRemainedParaxialParametersFinite", "[", 
@@ -10469,7 +10369,7 @@ unit in milli meters.\>\""}], ";"}], "\n",
     RowBox[{"tautologyParametersMatchQ", "[", 
      RowBox[{
      "d", ",", "n", ",", "f", ",", "mid", ",", "cod", ",", "mod", ",", "oid", 
-      ",", "beta"}], "]"}]}]}], "\n"}], "\[IndentingNewLine]", 
+      ",", "beta"}], "]"}]}]}], "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"settleRemainedParaxialParametersFinite", "[", 
@@ -10484,7 +10384,7 @@ unit in milli meters.\>\""}], ";"}], "\n",
     RowBox[{
      RowBox[{"absentParameter", "[", 
       RowBox[{"d", ",", "n", ",", "f", ",", "m", ",", "cod"}], "]"}], "===", 
-     RowBox[{"{", "nParm", "}"}]}]}]}], "\n"}], "\[IndentingNewLine]", 
+     RowBox[{"{", "nParm", "}"}]}]}]}], "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"settleRemainedParaxialParametersFinite", "[", 
@@ -10500,7 +10400,7 @@ unit in milli meters.\>\""}], ";"}], "\n",
        RowBox[{
        "d", ",", "n", ",", "f", ",", "mid", ",", "cod", ",", "mod", ",", 
         "oid", ",", "beta"}], "]"}], ",", "mostProbableParameterList"}], 
-     "]"}]}]}], "\n"}], "\[IndentingNewLine]", 
+     "]"}]}]}], "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"settleRemainedParaxialParametersFinite", "[", 
@@ -10517,7 +10417,7 @@ unit in milli meters.\>\""}], ";"}], "\n",
        RowBox[{
        "d", ",", "n", ",", "f", ",", "mid", ",", "cod", ",", "mod", ",", 
         "oid", ",", "beta"}], "]"}], ",", "fixedFocalLengthParameterList"}], 
-     "]"}]}]}], "\n"}], "\[IndentingNewLine]", 
+     "]"}]}]}], "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"settleRemainedParaxialParametersFinite", "[", 
@@ -10534,7 +10434,7 @@ unit in milli meters.\>\""}], ";"}], "\n",
        RowBox[{
        "d", ",", "n", ",", "f", ",", "mid", ",", "cod", ",", "mod", ",", 
         "oid", ",", "beta"}], "]"}], ",", "lackOfOIAndWDParameterList"}], 
-     "]"}]}]}], "\n"}], "\[IndentingNewLine]", 
+     "]"}]}]}], "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"settleRemainedParaxialParametersFinite", "[", 
@@ -10551,7 +10451,7 @@ unit in milli meters.\>\""}], ";"}], "\n",
        RowBox[{
        "d", ",", "n", ",", "f", ",", "mid", ",", "cod", ",", "mod", ",", 
         "oid", ",", "beta"}], "]"}], ",", "lackOfOIAndODParameterList"}], 
-     "]"}]}]}], "\n"}], "\[IndentingNewLine]", 
+     "]"}]}]}], "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"settleRemainedParaxialParametersFinite", "[", "__", "]"}], ":=", 
@@ -10559,11 +10459,10 @@ unit in milli meters.\>\""}], ";"}], "\n",
     RowBox[{
      RowBox[{"Message", "[", 
       RowBox[{"settleRemainedParaxialParameters", "::", "notimplemented"}], 
-      "]"}], ";", "$Failed"}], ")"}]}], "\n", "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
+      "]"}], ";", "$Failed"}], ")"}]}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"settleRemainedParaxialParameters", "::", "tautology"}], "=", 
@@ -10601,7 +10500,7 @@ parameters.\>\""}], ";"}], "\n",
     RowBox[{"settleRemainedParaxialParameters", "::", "notimplemented"}], 
     "=", "\"\<sorry, a result for the parameter set is currently not \
 implemented.\>\""}], ";"}], "\[IndentingNewLine]", 
-  "\[IndentingNewLine]"}], "\n", 
+  "\n"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"(*", " ", 
    RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}], 
@@ -10609,36 +10508,38 @@ implemented.\>\""}], ";"}], "\[IndentingNewLine]",
    RowBox[{
    "AsphericalFittingForInterpolatedVersion", "=", 
     "\"\<AsphericalFittingForInterpolated 0.1A by Takatoshi Yamada, Ayase \
-corp.\>\""}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
+corp.\>\""}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", "\n", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{
    "AsphericalFittingForInterpolatedDescrciption", "=", 
     "\"\<AsphericalFittingForInterpolatedVersion package for converting a \
 lens shape expressed by interpolation function into a function in aspherical \
-formula.\>\""}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
+formula.\>\""}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", "\n", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{
    "AsphericalFittingForInterpolatedVersion", "=", "\"\<version0.1A\>\""}], 
-   ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", "\n", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{
    "AsphericalFittingForInterpolatedUsage", "=", 
     "\"\<type '?fitAsphericalFomura' and '?elliminateConstantOffset' to show \
 usage texts.\>\""}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
+  "\n", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{
@@ -10651,52 +10552,56 @@ fitted coefficients.\nfitAsphericalFormula[fittedResult:{_Rule...}][y_] \
 returns a Mathematica function for variable 'y' to give a result of fitted \
 coefficients.\nfitAsphericalFormula[\\\"formula\\\"][y_] returns aspherical \
 formula for variable y.\>\""}], ";"}], "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\n", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{
     RowBox[{"forceParabolic", "::", "usage"}], "=", 
     "\"\<forceParabolic is an option of fitAsphericalFormula. Fitting will be \
 tried using conic constant = -1.\>\""}], ";"}], "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\n", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{
     RowBox[{"conicSuggestion", "::", "usage"}], "=", 
     "\"\<conicSuggestion is an option of fitAsphericalFormula. It specifies \
 initial value for conic constant. The default value is 0.0.\>\""}], ";"}], 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\n", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{
     RowBox[{"outputMathematicaFunction", "::", "usage"}], "=", 
     "\"\<outputMathematicaFunction is an option of fitAsphericalFormula. If \
 it is specified True, fitAsphericalFormula returns Mathematica \
-Function.\>\""}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
+Function.\>\""}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", "\n", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{
     RowBox[{"elliminateConstantOffset", "::", "usage"}], "=", 
     "\"\<fitAsphericalFomura[elliminateConstantOffset[fittedResult]][y_] \
 returns a Mathematica function without constant offset value.\>\""}], ";"}], 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\n", 
   RowBox[{"(*", " ", 
-   RowBox[{"::", "Input", "::", "Initialization", "::"}], "*)"}]}], "\n", 
+   RowBox[{"::", "Input", "::", "Initialization", "::"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{
     RowBox[{"asphericalFormulaFitting", "::", "usage"}], "=", 
     "\"\<asphericalFormulaFitting is a tag for surface attribute.\>\""}], 
-   ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", "\n", 
+   ";"}], "\[IndentingNewLine]", "\n", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{"::", "Input", "::", "Initialization", "::"}], 
    "*)"}]}], "\[IndentingNewLine]", 
@@ -10706,7 +10611,7 @@ returns a Mathematica function without constant offset value.\>\""}], ";"}],
     RowBox[{
     "constantOffset", ",", "curvature", ",", "conicConstant", ",", 
      "powerSeriesCoefficients", ",", "normalizationRadius"}], "}"}], ";"}], 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", "\n", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\n", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{"::", "Input", "::", "Initialization", "::"}], 
    "*)"}]}], "\[IndentingNewLine]", 
@@ -10758,7 +10663,7 @@ returns a Mathematica function without constant offset value.\>\""}], ";"}],
        
        RowBox[{"{", 
         RowBox[{"coef", ",", "ival"}], "}"}]}], "]"}]}], "]"}]}], 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", "\n", 
+  "\[IndentingNewLine]", "\n", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{"::", "Input", "::", "Initialization", "::"}], 
    "*)"}]}], "\[IndentingNewLine]", 
@@ -10803,8 +10708,8 @@ returns a Mathematica function without constant offset value.\>\""}], ";"}],
    RowBox[{
     RowBox[{"fitAsphericalFormula", "::", "cantfindk"}], "=", 
     "\"\<can not find proper conic constant value. Try to specify \
-suggestions.\>\""}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
-  "\n", 
+suggestions.\>\""}], ";"}], "\[IndentingNewLine]", "\n", 
+  "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{"::", "Input", "::", "Initialization", "::"}], 
    "*)"}]}], "\[IndentingNewLine]", 
@@ -10939,7 +10844,7 @@ suggestions.\>\""}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]",
      RowBox[{
       RowBox[{"Map", "[", 
        RowBox[{"First", ",", "fittedResult"}], "]"}], ",", 
-      "normalizationRadius"}], "]"}]}]}], "\n"}], "\[IndentingNewLine]", 
+      "normalizationRadius"}], "]"}]}]}], "\[IndentingNewLine]"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{"fitAsphericalFormula", "[", 
@@ -11126,8 +11031,8 @@ suggestions.\>\""}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]",
         RowBox[{
          RowBox[{
           RowBox[{"fitAsphericalFormula", "[", "ret", "]"}], "[", "#", "]"}], 
-         "&"}], ",", "ret"}], "]"}]}]}], "]"}]}], "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", "\n", 
+         "&"}], ",", "ret"}], "]"}]}]}], "]"}]}], "\[IndentingNewLine]", "\n",
+   "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{"::", "Input", "::", "Initialization", "::"}], 
    "*)"}]}], "\[IndentingNewLine]", 
@@ -11151,7 +11056,7 @@ suggestions.\>\""}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]",
           RowBox[{"[", "1", "]"}], "]"}], "/", "rad"}], ",", 
         RowBox[{"#", "[", 
          RowBox[{"[", "2", "]"}], "]"}]}], "}"}], "&"}], ",", "pnts"}], 
-    "]"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", "\n", 
+    "]"}]}], "\[IndentingNewLine]", "\n", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{"::", "Input", "::", "Initialization", "::"}], 
    "*)"}]}], "\[IndentingNewLine]", 
@@ -11164,7 +11069,7 @@ suggestions.\>\""}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]",
    RowBox[{"Prepend", "[", 
     RowBox[{"result", ",", 
      RowBox[{"constantOffset", "\[Rule]", "0"}]}], "]"}]}], 
-  "\[IndentingNewLine]", "\[IndentingNewLine]"}], "\n", 
+  "\[IndentingNewLine]", "\n"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
   "SCHOTTOExtracted", "=", 
@@ -11895,52 +11800,44 @@ $CellContext`hideUselessSurface -> True],
               
               ReplaceAll[$CellContext`thk$$ + \
 $CellContext`paraxialWorkingDistance, $CellContext`result], 0.}]}, 
-           Text[
-            StringJoin["N.A.= ", 
-             ToString[
+           Text["N.A.= " <> ToString[
               
               ReplaceAll[$CellContext`numericalAperture, \
-$CellContext`result]], 
-             If[
+$CellContext`result]] <> If[
               
               ReplaceAll[$CellContext`numericalApertureTarget > \
 $CellContext`numericalAperture, $CellContext`result], "\nis maximum", 
-              ""]], {$CellContext`thk$$ + 0.1, 
+              ""], {$CellContext`thk$$ + 0.1, 
              
              ReplaceAll[$CellContext`numericalAperture - 
               0.05, $CellContext`result]}, {-1, 0}], 
            Text[
-            StringJoin["Thickness= ", 
-             ToString[$CellContext`thk$$]], {$CellContext`thk$$ 0.5, 
+           "Thickness= " <> 
+            ToString[$CellContext`thk$$], {$CellContext`thk$$ 0.5, 
+             
              ReplaceAll[$CellContext`numericalAperture + 
               0.05, $CellContext`result]}], 
-           Text[
-            StringJoin[" R1= ", 
-             ToString[
+           Text[" R1= " <> ToString[
               ReplaceAll[
                NumberForm[
                1/$CellContext`frontSurfaceCurvature, 
-                3], $CellContext`result]]], {0., 
+                3], $CellContext`result]], {0., 
              
              ReplaceAll[-$CellContext`numericalAperture - 
               0.05, $CellContext`result]}, {-1, 0}], 
-           Text[
-            StringJoin[" R2= ", 
-             ToString[
+           Text[" R2= " <> ToString[
               ReplaceAll[
                NumberForm[
                1/$CellContext`backSurfaceCurvature, 
-                3], $CellContext`result]]], {$CellContext`thk$$, 
+                3], $CellContext`result]], {$CellContext`thk$$, 
              
              ReplaceAll[-$CellContext`numericalAperture + 
               0.05, $CellContext`result]}, {-1, 0}], 
-           Text[
-            StringJoin["W.D.= ", 
-             ToString[
+           Text["W.D.= " <> ToString[
               ReplaceAll[
                
                NumberForm[$CellContext`paraxialWorkingDistance, 
-                3], $CellContext`result]]], {
+                3], $CellContext`result]], {
              
              ReplaceAll[$CellContext`thk$$ + 
               0.5 $CellContext`paraxialWorkingDistance, $CellContext`result], 
@@ -12063,7 +11960,7 @@ $CellContext`lensMediumThickness -> 0.79, $CellContext`coddingtonShapeFactor ->
              1000000 $CellContext`lambda$^2))]]], \
 $CellContext`n$bk7[$CellContext`lambdaDomain] = {0.00030000000000000003`, 
         0.0025}, $CellContext`n$bk7[$CellContext`lastIndex] = 
-       Sqrt[1 + 1000000 $CellContext`lambda$^2 (
+       Sqrt[1 + (1000000 $CellContext`lambda$^2) (
            1.01046945/(-103.56065299999999` + 1000000 $CellContext`lambda$^2) + 
            0.231792344/(-0.0200179144 + 1000000 $CellContext`lambda$^2) + 
            1.03961212/(-0.00600069867 + 
@@ -12161,6 +12058,7 @@ $CellContext`objectSideCoverGlassThickness}, $CellContext`parameters],
              Return[$CellContext`parameters]], 0.]; $CellContext`pod = 
           ReplaceAll[$CellContext`mechanicalObjectDistance, \
 $CellContext`parameters]; $CellContext`poi = 
+          
           ReplaceAll[$CellContext`mechanicalObjectImageDistance, \
 $CellContext`parameters]; $CellContext`paramp = 
           Flatten[{$CellContext`parameters, \
@@ -12535,7 +12433,6 @@ $CellContext`f, $CellContext`m, $CellContext`cod]] >=
           Blank[]]] := Condition[Message[
            
            MessageName[$CellContext`settleRemainedParaxialParameters, 
-            
             "compalsory"], $CellContext`lensMediumSymbol]; $Failed, \
 $CellContext`absentParameter[$CellContext`d, $CellContext`n, $CellContext`f, \
 $CellContext`m, $CellContext`cod] === {$CellContext`nParm}], \
@@ -12626,7 +12523,6 @@ $CellContext`settleRemainedParaxialParametersInfinite[
          Module[{$CellContext`sm, $CellContext`mdep}, $CellContext`sm = \
 ($CellContext`n $CellContext`f) ($CellContext`n $CellContext`f + \
 ($CellContext`cod^2 - 1.) $CellContext`d); If[$CellContext`sm < 0., Message[
-              
               MessageName[$CellContext`settleRemainedParaxialParameters, 
                "inconsistent"]]; Return[$Failed]]; $CellContext`mdep = 
            If[N[$CellContext`cod] =!= 
@@ -12768,7 +12664,6 @@ $CellContext`mod], $CellContext`tautologyCheck[
            Blank[]], NumericQ]] := Condition[Message[
            
            MessageName[$CellContext`settleRemainedParaxialParameters, 
-            
             "tautology"]]; $Failed, $CellContext`oid =!= $CellContext`d + \
 $CellContext`mid + $CellContext`mod], $CellContext`tautologyCheck[
          PatternTest[
@@ -13107,9 +13002,8 @@ $CellContext`mod]}]], $CellContext`fixRemainedParaxialParametersFinite[
        With[{$CellContext`c1 = ($CellContext`beta $CellContext`d + ((
                1. - $CellContext`beta) $CellContext`n) $CellContext`f + \
 ($CellContext`beta $CellContext`n) $CellContext`mod)/((($CellContext`d \
-($CellContext`n - 
-              1.)) ($CellContext`beta $CellContext`f + $CellContext`mod)) \
-$CellContext`d), $CellContext`c2 = (((
+($CellContext`n - 1.)) ($CellContext`beta $CellContext`f + $CellContext`mod)) 
+           $CellContext`d), $CellContext`c2 = (((
                1. - $CellContext`beta) $CellContext`f) $CellContext`n - \
 $CellContext`n $CellContext`mod - $CellContext`d)/((($CellContext`n - 
              1.) ($CellContext`beta $CellContext`f + $CellContext`mod)) \
@@ -13188,9 +13082,9 @@ $CellContext`n) $CellContext`f; If[$CellContext`s < 0., Message[
              
              MessageName[$CellContext`settleRemainedParaxialParameters, 
               "inconsistent"]]; Return[$Failed]]; $CellContext`sq = 
-          
           Sqrt[$CellContext`s]; $CellContext`c1 = ($CellContext`sq - \
 $CellContext`n $CellContext`f)/(((($CellContext`cod - 1.) ($CellContext`n - 
+              
               1.)) $CellContext`d) $CellContext`f); $CellContext`c2 = \
 ($CellContext`sq - $CellContext`n $CellContext`f)/(((($CellContext`cod + 
               1.) ($CellContext`n - 
@@ -13229,7 +13123,6 @@ $CellContext`mod]}]], $CellContext`fixRemainedParaxialParametersFinite[
          Blank[]] := 
        Module[{$CellContext`s, $CellContext`sq, $CellContext`c1, \
 $CellContext`c2}, $CellContext`s = ($CellContext`d $CellContext`f)^2 + ((((
-                
                 2. $CellContext`d) $CellContext`f) $CellContext`n) \
 $CellContext`mid) $CellContext`mod + (($CellContext`n^2 $CellContext`mid) \
 $CellContext`mod) ($CellContext`mid $CellContext`mod - 4. $CellContext`f^2); 
@@ -13687,7 +13580,6 @@ $CellContext`commonParameters[$CellContext`parameters]; $CellContext`f =
 $CellContext`dc = 
           ReplaceAll[$CellContext`coverGlassThickness, \
 $CellContext`parameters]; $CellContext`mc = 
-          
           ReplaceAll[$CellContext`coverGlassMediumSymbol, \
 $CellContext`parameters]; $CellContext`nc = \
 $CellContext`refractiveIndexValue[$CellContext`mc, 
@@ -13742,6 +13634,7 @@ $CellContext`n) $CellContext`t) (-$CellContext`f + ($CellContext`m - \
 $CellContext`dc)/Sqrt[1 - $CellContext`t^2] + $CellContext`dc/(
                   Sqrt[1 - $CellContext`t^2/$CellContext`nc^2] \
 $CellContext`nc) - $CellContext`x2[$CellContext`t]/Sqrt[
+                 
                  1 - $CellContext`t^2]))/(-($CellContext`n ($CellContext`d - \
 $CellContext`x1[$CellContext`t] + $CellContext`x2[$CellContext`t])) + 
                Sqrt[($CellContext`d - $CellContext`x1[$CellContext`t] + \
@@ -13779,6 +13672,7 @@ $CellContext`x2[$CellContext`t])) + (($CellContext`n $CellContext`t^2) \
                     Sqrt[1 - $CellContext`t^2/$CellContext`nc^2] \
 $CellContext`nc) - $CellContext`x2[$CellContext`t]/Sqrt[
                    1 - $CellContext`t^2]))/Sqrt[1 - $CellContext`t^2] + 
+                
                 Sqrt[($CellContext`d - $CellContext`x1[$CellContext`t] + \
 $CellContext`x2[$CellContext`t])^2 + $CellContext`t^2 ($CellContext`f + \
 (-$CellContext`m + $CellContext`dc)/Sqrt[
@@ -13935,8 +13829,7 @@ $CellContext`x2[$CellContext`t])^2 + (($CellContext`t $CellContext`m1)/Sqrt[
 $CellContext`beta) + ($CellContext`t $CellContext`x1[$CellContext`t])/Sqrt[
                     1 - $CellContext`t^2] + ($CellContext`t \
 $CellContext`x2[$CellContext`t])/(
-                    Sqrt[
-                    1 - $CellContext`t^2/$CellContext`beta^2] \
+                    Sqrt[1 - $CellContext`t^2/$CellContext`beta^2] \
 $CellContext`beta))^2]/Sqrt[
                   1 - $CellContext`t^2/$CellContext`beta^2]))), \
 $CellContext`x1[0] == 0, $CellContext`x2[0] == 
@@ -14106,7 +13999,8 @@ $CellContext`x2[$CellContext`t])^2 + (($CellContext`t $CellContext`m1)/Sqrt[
 $CellContext`m2))/(Sqrt[
                     1 - $CellContext`t^2/$CellContext`beta^2] \
 $CellContext`beta) - ($CellContext`t $CellContext`dc)/(($CellContext`beta 
-                    Sqrt[1 - $CellContext`t^2/($CellContext`beta^2 \
+                    Sqrt[
+                    1 - $CellContext`t^2/($CellContext`beta^2 \
 $CellContext`nc^2)]) $CellContext`nc) + ($CellContext`t \
 $CellContext`x1[$CellContext`t])/Sqrt[
                     1 - $CellContext`t^2] + ($CellContext`t \
@@ -14235,6 +14129,7 @@ $CellContext`t^2)/($CellContext`nc^3 (
                     2)) + $CellContext`dc/($CellContext`nc 
                    Sqrt[1 - $CellContext`t^2/$CellContext`nc^2]) + \
 $CellContext`x1[$CellContext`t]/(1 - $CellContext`t^2)^(3/
+                    
                     2)) ((((-$CellContext`dc + $CellContext`m1) \
 $CellContext`n) $CellContext`t)/Sqrt[
                    1 - $CellContext`t^2] - (($CellContext`m2 $CellContext`n) \
@@ -14307,8 +14202,7 @@ $CellContext`t)/Sqrt[
 $CellContext`t)/($CellContext`beta 
                     Sqrt[1 - $CellContext`t^2/$CellContext`beta^2]) + \
 ($CellContext`dc $CellContext`t)/($CellContext`nc 
-                    Sqrt[
-                    1 - $CellContext`t^2/$CellContext`nc^2]) + \
+                    Sqrt[1 - $CellContext`t^2/$CellContext`nc^2]) + \
 ($CellContext`t $CellContext`x1[$CellContext`t])/Sqrt[
                     1 - $CellContext`t^2] + ($CellContext`t \
 $CellContext`x2[$CellContext`t])/($CellContext`beta 
@@ -14473,8 +14367,7 @@ $CellContext`m1))/Sqrt[
 $CellContext`beta) - ($CellContext`t $CellContext`dc1)/(
                     Sqrt[1 - $CellContext`t^2/$CellContext`nc1^2] \
 $CellContext`nc1) + ($CellContext`t $CellContext`dc2)/(($CellContext`beta 
-                    Sqrt[
-                    1 - $CellContext`t^2/($CellContext`beta^2 \
+                    Sqrt[1 - $CellContext`t^2/($CellContext`beta^2 \
 $CellContext`nc2^2)]) $CellContext`nc2) - ($CellContext`t \
 $CellContext`x1[$CellContext`t])/Sqrt[
                     1 - $CellContext`t^2] - ($CellContext`t \
@@ -14626,11 +14519,10 @@ $CellContext`mediumCatalog[] = {
              1000000 $CellContext`lambda$^2))]]], \
 $CellContext`bafn10[$CellContext`lambdaDomain] = {0.00033400000000000004`, 
         0.0023250000000000002`}, $CellContext`bafn10[$CellContext`lastIndex] = 
-       Sqrt[1 + 1000000 $CellContext`lambda$^2 (
+       Sqrt[1 + (1000000 $CellContext`lambda$^2) (
            1.0727052/(-108.53942700000002` + 1000000 $CellContext`lambda$^2) + 
            0.123762468/(-0.0451639792 + 1000000 $CellContext`lambda$^2) + 
            1.60477289/(-0.00947021617 + 
-            
             1000000 $CellContext`lambda$^2))], \
 $CellContext`bafn10[$CellContext`lastLambda] = $CellContext`lambda$, \
 $CellContext`bafn10[$CellContext`mediumName] = 
@@ -14658,7 +14550,7 @@ $CellContext`bafn10[$CellContext`refractiveIndex] =
              1000000 $CellContext`lambda$^2))]]], \
 $CellContext`n$bak4[$CellContext`lambdaDomain] = {0.00033400000000000004`, 
         0.0025}, $CellContext`n$bak4[$CellContext`lastIndex] = 
-       Sqrt[1 + 1000000 $CellContext`lambda$^2 (
+       Sqrt[1 + (1000000 $CellContext`lambda$^2) (
            0.9453953730000001/(-105.96587500000001` + 
             1000000 $CellContext`lambda$^2) + 
            0.132817724/(-0.0315631177 + 1000000 $CellContext`lambda$^2) + 
@@ -14691,7 +14583,7 @@ $CellContext`n$bak4[$CellContext`refractiveIndex] =
              1000000 $CellContext`lambda$^2))]]], \
 $CellContext`n$k5[$CellContext`lambdaDomain] = {0.00031000000000000005`, 
         0.0025}, $CellContext`n$k5[$CellContext`lastIndex] = 
-       Sqrt[1 + 1000000 $CellContext`lambda$^2 (
+       Sqrt[1 + (1000000 $CellContext`lambda$^2) (
            0.9305116630000001/(-111.98277699999998` + 
             1000000 $CellContext`lambda$^2) + 
            0.19956200500000001`/(-0.024110866 + 
@@ -14725,7 +14617,7 @@ $CellContext`n$k5[$CellContext`refractiveIndex] =
              1000000 $CellContext`lambda$^2))]]], \
 $CellContext`n$lasf9[$CellContext`lambdaDomain] = {0.000365, 
         0.0025}, $CellContext`n$lasf9[$CellContext`lastIndex] = 
-       Sqrt[1 + 1000000 $CellContext`lambda$^2 (
+       Sqrt[1 + (1000000 $CellContext`lambda$^2) (
            1.80691843/(-156.53082899999998` + 1000000 $CellContext`lambda$^2) + 
            0.298926886/(-0.053873623600000003` + 
             1000000 $CellContext`lambda$^2) + 
@@ -14757,7 +14649,7 @@ $CellContext`n$lasf9[$CellContext`refractiveIndex] =
              1000000 $CellContext`lambda$^2))]]], \
 $CellContext`n$sf10[$CellContext`lambdaDomain] = {0.00038, 
         0.0025}, $CellContext`n$sf10[$CellContext`lastIndex] = 
-       Sqrt[1 + 1000000 $CellContext`lambda$^2 (
+       Sqrt[1 + (1000000 $CellContext`lambda$^2) (
            1.64447552/(-147.468793 + 1000000 $CellContext`lambda$^2) + 
            0.25628784200000004`/(-0.059573677500000005` + 
             1000000 $CellContext`lambda$^2) + 
@@ -14788,7 +14680,7 @@ $CellContext`n$sf10[$CellContext`refractiveIndex] =
              1000000 $CellContext`lambda$^2))]]], \
 $CellContext`n$sf11[$CellContext`lambdaDomain] = {0.00037000000000000005`, 
         0.0025}, $CellContext`n$sf11[$CellContext`lastIndex] = 
-       Sqrt[1 + 1000000 $CellContext`lambda$^2 (
+       Sqrt[1 + (1000000 $CellContext`lambda$^2) (
            1.89878101/(-155.23629 + 1000000 $CellContext`lambda$^2) + 
            0.313747346/(-0.0623068142 + 1000000 $CellContext`lambda$^2) + 
            1.73759695/(-0.013188707 + 
@@ -14818,7 +14710,7 @@ $CellContext`n$sf11[$CellContext`refractiveIndex] =
              1000000 $CellContext`lambda$^2))]]], \
 $CellContext`n$sf15[$CellContext`lambdaDomain] = {0.00037000000000000005`, 
         0.0025}, $CellContext`n$sf15[$CellContext`lastIndex] = 
-       Sqrt[1 + 1000000 $CellContext`lambda$^2 (
+       Sqrt[1 + (1000000 $CellContext`lambda$^2) (
            1.50824017/(-132.709339 + 1000000 $CellContext`lambda$^2) + 
            0.21898709400000002`/(-0.059785689700000005` + 
             1000000 $CellContext`lambda$^2) + 
@@ -14850,7 +14742,7 @@ $CellContext`n$sf15[$CellContext`refractiveIndex] =
              1000000 $CellContext`lambda$^2))]]], \
 $CellContext`n$sf5[$CellContext`lambdaDomain] = {0.00037000000000000005`, 
         0.0025}, $CellContext`n$sf5[$CellContext`lastIndex] = 
-       Sqrt[1 + 1000000 $CellContext`lambda$^2 (
+       Sqrt[1 + (1000000 $CellContext`lambda$^2) (
            1.42729015/(-129.141675 + 1000000 $CellContext`lambda$^2) + 
            0.18708552700000003`/(-0.0588995392 + 
             1000000 $CellContext`lambda$^2) + 
@@ -14882,7 +14774,7 @@ $CellContext`n$sf5[$CellContext`refractiveIndex] =
              1000000 $CellContext`lambda$^2))]]], \
 $CellContext`n$sk2[$CellContext`lambdaDomain] = {0.00031000000000000005`, 
         0.0025}, $CellContext`n$sk2[$CellContext`lastIndex] = 
-       Sqrt[1 + 1000000 $CellContext`lambda$^2 (
+       Sqrt[1 + (1000000 $CellContext`lambda$^2) (
            0.96818604/(-110.377773 + 1000000 $CellContext`lambda$^2) + 
            0.257738258/(-0.024282352700000003` + 
             1000000 $CellContext`lambda$^2) + 
@@ -15014,7 +14906,8 @@ $CellContext`s1$1212742[$CellContext`surfaceComment] =
        UpSet[
         $CellContext`surfaceQ[$CellContext`pup$1212742], 
         True], $CellContext`pup$1212742[$CellContext`origin] = {
-        0, 0.43771357208936196`}, \
+        0, 
+         0.43771357208936196`}, \
 $CellContext`pup$1212742[$CellContext`pupilSurface] = 
        True, $CellContext`pup$1212742[$CellContext`shape] = \
 $CellContext`plane[{}, $CellContext`domainAll, {-0.6408422035132865, 
@@ -15660,6 +15553,7 @@ $CellContext`a {$CellContext`yd, $CellContext`zd}; If[
            $CellContext`insideImplicitDomain[$CellContext`s][
             
             Part[$CellContext`pos, 
+             
              1]], $CellContext`pos, $CellContext`noIntersection]], \
 $CellContext`intersection[
          Pattern[$CellContext`q, 
@@ -15850,6 +15744,7 @@ $CellContext`iprod}, $CellContext`v = \
 $CellContext`normalVector[$CellContext`s, $CellContext`h]; 
          If[$CellContext`v === $CellContext`noNormalVector, 
            Return[$CellContext`noNormalVector]]; $CellContext`iprod = 
+          
           Dot[$CellContext`r, $CellContext`v]; $CellContext`sq = \
 $CellContext`oind^2 - $CellContext`iind^2 + $CellContext`iprod^2; 
          If[$CellContext`sq < 0., 
@@ -16777,8 +16672,8 @@ $CellContext`result], 10, $CellContext`conicSuggestion -> 1.];
              Right, Baseline}]]], $CellContext`fitAsphericalFormula["formula"][
          Pattern[$CellContext`y, 
           Blank[]]] = ($CellContext`curvature $CellContext`y^2)/(1 + 
-         Sqrt[1 - (
-            1 + $CellContext`conicConstant) $CellContext`curvature^2 \
+         Sqrt[1 - ((
+             1 + $CellContext`conicConstant) $CellContext`curvature^2) \
 $CellContext`y^2]) + $CellContext`y^4 $CellContext`powerSeriesCoefficients[
           4] + $CellContext`y^6 $CellContext`powerSeriesCoefficients[
           6] + $CellContext`y^8 $CellContext`powerSeriesCoefficients[
@@ -16792,8 +16687,8 @@ $CellContext`y^2]) + $CellContext`y^4 $CellContext`powerSeriesCoefficients[
          Module[{$CellContext`orders, $CellContext`quad, $CellContext`pw}, \
 $CellContext`quad = 
            ReplaceAll[($CellContext`curvature $CellContext`y^2)/(1 + 
-             Sqrt[1 - $CellContext`curvature^2 (
-                1 + $CellContext`conicConstant) $CellContext`y^2]), \
+             Sqrt[1 - ($CellContext`curvature^2 (
+                 1 + $CellContext`conicConstant)) $CellContext`y^2]), \
 $CellContext`fittedResult]; $CellContext`orders = Cases[
              Map[
              First, $CellContext`fittedResult], \
@@ -16821,8 +16716,8 @@ $CellContext`rad}, $CellContext`rad =
            ReplaceAll[$CellContext`normalizationRadius, \
 $CellContext`fittedResult]; $CellContext`quad = 
            ReplaceAll[($CellContext`curvature $CellContext`y^2)/(1 + 
-             Sqrt[1 - $CellContext`curvature^2 (
-                1 + $CellContext`conicConstant) $CellContext`y^2]), \
+             Sqrt[1 - ($CellContext`curvature^2 (
+                 1 + $CellContext`conicConstant)) $CellContext`y^2]), \
 $CellContext`fittedResult]; $CellContext`orders = Cases[
              Map[
              First, $CellContext`fittedResult], \
@@ -16865,8 +16760,8 @@ $CellContext`ret}, $CellContext`csug = ReplaceAll[
             
             Options[$CellContext`fitAsphericalFormula]]; $CellContext`quad = \
 ($CellContext`explicitCurvature $CellContext`y^2)/(1 + 
-           Sqrt[1 - $CellContext`explicitCurvature^2 (
-              1 + $CellContext`k) $CellContext`y^2]); $CellContext`orgv = \
+           Sqrt[1 - ($CellContext`explicitCurvature^2 (
+               1 + $CellContext`k)) $CellContext`y^2]); $CellContext`orgv = \
 $CellContext`if[0]; $CellContext`surfpnts = 
           Map[{#, $CellContext`if[#] - $CellContext`orgv}& , 
             $CellContext`interpolationSectionPoints[$CellContext`if]]; \
@@ -17147,53 +17042,44 @@ $CellContext`hideUselessSurface -> True],
               
               ReplaceAll[$CellContext`thk$$ + \
 $CellContext`paraxialWorkingDistance, $CellContext`result], 0.}]}, 
-           Text[
-            StringJoin[
-             If[
+           Text[If[
               
               ReplaceAll[$CellContext`numericalApertureTarget > \
 $CellContext`numericalAperture, $CellContext`result], " Maximum N.A.= ", 
-              "N.A.= "], 
-             ToString[
+              "N.A.= "] <> ToString[
               
               ReplaceAll[$CellContext`numericalAperture, \
-$CellContext`result]]], {$CellContext`thk$$ + 0.1, 
+$CellContext`result]], {$CellContext`thk$$ + 0.1, 
              
              ReplaceAll[$CellContext`numericalAperture + 
               0.05, $CellContext`result]}], 
            Text[
-            StringJoin["Thickness= ", 
-             ToString[$CellContext`thk$$]], {$CellContext`thk$$ 0.5, 
+           "Thickness= " <> 
+            ToString[$CellContext`thk$$], {$CellContext`thk$$ 0.5, 
              
              ReplaceAll[$CellContext`numericalAperture + 
               0.05, $CellContext`result]}], 
-           Text[
-            StringJoin[" R1= ", 
-             ToString[
+           Text[" R1= " <> ToString[
               ReplaceAll[
                NumberForm[
                1/$CellContext`frontSurfaceCurvature, 
-                3], $CellContext`result]]], {0., 
+                3], $CellContext`result]], {0., 
              
              ReplaceAll[-$CellContext`numericalAperture - 
               0.05, $CellContext`result]}, {-1, 0}], 
-           Text[
-            StringJoin[" R2= ", 
-             ToString[
+           Text[" R2= " <> ToString[
               ReplaceAll[
                NumberForm[
                1/$CellContext`backSurfaceCurvature, 
-                3], $CellContext`result]]], {$CellContext`thk$$, 
+                3], $CellContext`result]], {$CellContext`thk$$, 
              
              ReplaceAll[-$CellContext`numericalAperture - 
               0.05, $CellContext`result]}, {-1, 0}], 
-           Text[
-            StringJoin["W.D.= ", 
-             ToString[
+           Text["W.D.= " <> ToString[
               ReplaceAll[
                
                NumberForm[$CellContext`paraxialWorkingDistance, 
-                3], $CellContext`result]]], {
+                3], $CellContext`result]], {
              
              ReplaceAll[$CellContext`thk$$ + 
               0.5 $CellContext`paraxialWorkingDistance, $CellContext`result], 
@@ -17755,7 +17641,6 @@ $CellContext`settleRemainedParaxialParametersInfinite[
           Blank[]], 
          Pattern[$CellContext`cod, 
           Blank[]]] := Condition[Message[
-           
            MessageName[$CellContext`settleRemainedParaxialParameters, 
             "notenough"]]; $Failed, Length[
            $CellContext`absentParameter[$CellContext`d, $CellContext`n, \
@@ -18088,6 +17973,7 @@ $CellContext`ba}, $CellContext`nc = \
 $CellContext`boundingConditionCount[{$CellContext`f, $CellContext`mid, \
 $CellContext`cod, $CellContext`mod, $CellContext`beta}]; 
          If[$CellContext`nc <= 2, Message[
+             
              MessageName[$CellContext`settleRemainedParaxialParameters, 
               "notenough"]]; Return[$Failed], 
            If[$CellContext`nc >= 4, Message[
@@ -18584,6 +18470,7 @@ $CellContext`c1 = ($CellContext`beta $CellContext`d + $CellContext`n \
               1.)) $CellContext`d) $CellContext`mod); $CellContext`c2 = \
 (-($CellContext`d + $CellContext`n ($CellContext`beta $CellContext`mod + \
 $CellContext`mid)))/((($CellContext`n - 
+             
              1.) $CellContext`d) $CellContext`mid); $CellContext`f = \
 (((-$CellContext`beta) $CellContext`n) $CellContext`mid) \
 ($CellContext`mod/($CellContext`n $CellContext`mid + $CellContext`beta \
@@ -18868,8 +18755,7 @@ $CellContext`n - ($CellContext`f $CellContext`n)
 $CellContext`x2[$CellContext`t] + 
                  Sqrt[1 - $CellContext`t^2] 
                   Sqrt[-(($CellContext`t^2 (-$CellContext`m + $CellContext`f 
-                    Sqrt[
-                    1 - $CellContext`t^2] + \
+                    Sqrt[1 - $CellContext`t^2] + \
 $CellContext`x2[$CellContext`t])^2)/(-1 + $CellContext`t^2)) + \
 ($CellContext`d - $CellContext`x1[$CellContext`t] + \
 $CellContext`x2[$CellContext`t])^2]))/((-1 + $CellContext`t^2) \
@@ -18992,13 +18878,13 @@ $CellContext`nc) + $CellContext`x2[$CellContext`t]/Sqrt[
                     2) $CellContext`nc^3) + $CellContext`dc/(
                     Sqrt[1 - $CellContext`t^2/$CellContext`nc^2] \
 $CellContext`nc) - $CellContext`x2[$CellContext`t]/(1 - $CellContext`t^2)^(3/
-                    
                     2))) ($CellContext`f $CellContext`n + ($CellContext`n \
 (-$CellContext`m + $CellContext`dc))/Sqrt[
                    1 - $CellContext`t^2] - ($CellContext`n $CellContext`dc)/(
                   Sqrt[1 - $CellContext`t^2/$CellContext`nc^2] \
 $CellContext`nc) + ($CellContext`n $CellContext`x2[$CellContext`t])/Sqrt[
                    1 - $CellContext`t^2] - 
+                  
                   Sqrt[($CellContext`d - $CellContext`x1[$CellContext`t] + \
 $CellContext`x2[$CellContext`t])^2 + $CellContext`t^2 ($CellContext`f + \
 (-$CellContext`m + $CellContext`dc)/Sqrt[
@@ -19036,6 +18922,7 @@ $CellContext`m2, $CellContext`oi, $CellContext`beta, $CellContext`shps, \
 $CellContext`secpnts, $CellContext`ana}, {$CellContext`mr, $CellContext`na, \
 $CellContext`n, $CellContext`d, $CellContext`m2} = \
 $CellContext`commonParameters[$CellContext`parameters]; $CellContext`oi = 
+          
           ReplaceAll[$CellContext`mechanicalObjectImageDistance, \
 $CellContext`parameters]; $CellContext`m1 = If[
             
@@ -19122,7 +19009,8 @@ $CellContext`beta)))/Sqrt[1 - $CellContext`t^2] +
                  Sqrt[($CellContext`d - $CellContext`x1[$CellContext`t] + \
 $CellContext`x2[$CellContext`t])^2 + (($CellContext`t $CellContext`m1)/Sqrt[
                     1 - $CellContext`t^2] - ($CellContext`t $CellContext`m2)/(
-                    Sqrt[1 - $CellContext`t^2/$CellContext`beta^2] \
+                    Sqrt[
+                    1 - $CellContext`t^2/$CellContext`beta^2] \
 $CellContext`beta) + ($CellContext`t $CellContext`x1[$CellContext`t])/Sqrt[
                     1 - $CellContext`t^2] + ($CellContext`t \
 $CellContext`x2[$CellContext`t])/(
@@ -19200,6 +19088,7 @@ $CellContext`parameters]]; $CellContext`beta =
 $CellContext`parameters]; $CellContext`dc = 
           ReplaceAll[$CellContext`coverGlassThickness, \
 $CellContext`parameters]; $CellContext`mc = 
+          
           ReplaceAll[$CellContext`coverGlassMediumSymbol, \
 $CellContext`parameters]; $CellContext`nc = \
 $CellContext`refractiveIndexValue[$CellContext`mc, 
@@ -19403,6 +19292,7 @@ $CellContext`d,
 $CellContext`parameters]]; $CellContext`beta = 
           ReplaceAll[-$CellContext`lateralMagnification, \
 $CellContext`parameters]; $CellContext`dc = 
+          
           ReplaceAll[$CellContext`objectSideCoverGlassThickness, \
 $CellContext`parameters]; $CellContext`mc = 
           ReplaceAll[$CellContext`objectSideCoverGlassMediumSymbol, \
@@ -19571,6 +19461,7 @@ $CellContext`t)/($CellContext`beta
 ($CellContext`dc $CellContext`t)/($CellContext`nc 
                     Sqrt[1 - $CellContext`t^2/$CellContext`nc^2]) + \
 ($CellContext`t $CellContext`x1[$CellContext`t])/Sqrt[
+                    
                     1 - $CellContext`t^2] + ($CellContext`t \
 $CellContext`x2[$CellContext`t])/($CellContext`beta 
                     Sqrt[1 - $CellContext`t^2/$CellContext`beta^2]))^2]/Sqrt[
@@ -19610,6 +19501,7 @@ $CellContext`refractiveIndexValue[$CellContext`mc2,
             
             ReplaceAll[$CellContext`designWavelength, \
 $CellContext`parameters]]; $CellContext`dc1 = 
+          
           ReplaceAll[$CellContext`objectSideCoverGlassThickness, \
 $CellContext`parameters]; $CellContext`mc1 = 
           ReplaceAll[$CellContext`objectSideCoverGlassMediumSymbol, \
@@ -19696,6 +19588,7 @@ $CellContext`x1[$CellContext`t])/Sqrt[
 $CellContext`x2[$CellContext`t])/(
                    Sqrt[1 - $CellContext`t^2/$CellContext`beta^2] \
 $CellContext`beta) + $CellContext`t 
+                   
                    Sqrt[($CellContext`d - $CellContext`x1[$CellContext`t] + \
 $CellContext`x2[$CellContext`t])^2 + (($CellContext`t ($CellContext`dc1 - \
 $CellContext`m1))/Sqrt[
@@ -19770,7 +19663,6 @@ $CellContext`x1[$CellContext`t])/Sqrt[
 $CellContext`x2[$CellContext`t])/(
                    Sqrt[1 - $CellContext`t^2/$CellContext`beta^2] \
 $CellContext`beta) - ($CellContext`t 
-                   
                    Sqrt[($CellContext`d - $CellContext`x1[$CellContext`t] + \
 $CellContext`x2[$CellContext`t])^2 + (($CellContext`t ($CellContext`dc1 - \
 $CellContext`m1))/Sqrt[
@@ -19894,6 +19786,7 @@ $CellContext`n$bak4[$CellContext`lambdaDomain] = {0.00033400000000000004`,
             1000000 $CellContext`lambda$^2) + 
            0.132817724/(-0.0315631177 + 1000000 $CellContext`lambda$^2) + 
            1.28834642/(-0.007799806260000001 + 
+            
             1000000 $CellContext`lambda$^2))], \
 $CellContext`n$bak4[$CellContext`lastLambda] = $CellContext`lambda$, \
 $CellContext`n$bak4[$CellContext`mediumName] = 
@@ -20315,9 +20208,9 @@ $CellContext`img$38733606[$CellContext`surfaceComment] = "surfaceComment",
        UpSet[
         $CellContext`surfaceQ[$CellContext`ref$38733606], 
         True], $CellContext`ref$38733606[$CellContext`origin] = {
-        0, 0.42324653988392896`}, \
-$CellContext`ref$38733606[$CellContext`shape] = $CellContext`spherical[{
-         1.}, {-1., 1.}, {-0.30000021779025793`, 
+        0, 
+         0.42324653988392896`}, $CellContext`ref$38733606[$CellContext`shape] = \
+$CellContext`spherical[{1.}, {-1., 1.}, {-0.30000021779025793`, 
          0.30000021779025793`}], \
 $CellContext`ref$38733606[$CellContext`surfaceComment] = 
        "surfaceComment", $CellContext`setOpticsFor2DRayTraceInfinite[
@@ -20662,8 +20555,7 @@ $CellContext`surfs; $CellContext`opticsSymbol], $CellContext`surfs = \
        UpSet[
         $CellContext`surfaceQ[$CellContext`pup$22072622], 
         True], $CellContext`pup$22072622[$CellContext`origin] = {
-        0, 
-         0.6789312459185386}, \
+        0, 0.6789312459185386}, \
 $CellContext`pup$22072622[$CellContext`pupilSurface] = 
        False, $CellContext`pup$22072622[$CellContext`shape] = \
 $CellContext`plane[{}, $CellContext`domainAll, {-0.7556119515754723, 
@@ -22268,11 +22160,11 @@ other than Demonstrations authors, please see the detailed ",
   "Authoring \
 Information",ExpressionUUID->"c2736cdb-c24c-4dd4-9a22-5bbef1a7a20a"],
 
-Cell["Contributed by: Takatoshi Yamada @Ayase corporation", "Author",
+Cell["Contributed by: Takatoshi Yamada @Ayase Co.,Ltd.", "Author",
  CellChangeTimes->{
   3.35696210375764*^9, {3.432333043774981*^9, 3.432333045441087*^9}, {
-   3.823286774351448*^9, 
-   3.823286783881792*^9}},ExpressionUUID->"e6a077c9-f528-4852-97e7-\
+   3.823286774351448*^9, 3.823286783881792*^9}, {3.853965416456547*^9, 
+   3.853965418233911*^9}},ExpressionUUID->"e6a077c9-f528-4852-97e7-\
 764f2f3a1895"]
 }, Open  ]]
 }, Open  ]]
@@ -22312,7 +22204,8 @@ Documents\\jaywstasks\\BlogTools\\Blogs\\", "ChatNotebookID" ->
     "Snapshots" -> CellObject[26321], "Details" -> None, "Related Links" -> 
     None, "Search Terms" -> None, "Control Suggestions" -> None, "Thumbnail" -> 
     None, "Authoring Information" -> None}},
-FrontEndVersion->"12.2 for Mac OS X x86 (64-bit) (2021\:5e742\:67082\:65e5)",
+FrontEndVersion->"13.0 for Mac OS X x86 (64-bit) \
+(2021\:5e7412\:67082\:65e5)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "Demonstration.nb", 
   CharacterEncoding -> "UTF-8"],
 ExpressionUUID->"fc218b87-1837-4198-a7bd-ae5dcd9d6e24"
@@ -22327,78 +22220,78 @@ CellTagsIndex->{
    InitializationCell->False,
    CellTags->"Initialization Code"]},
  "Manipulate"->{
-  Cell[443270, 11500, 1524, 30, 68, "ManipulateSection",ExpressionUUID->"b7acceb9-ca4b-4965-b319-bd8a6214a587",
+  Cell[442872, 11405, 1524, 30, 68, "ManipulateSection",ExpressionUUID->"b7acceb9-ca4b-4965-b319-bd8a6214a587",
    CellTags->"Manipulate"]},
  "Caption"->{
-  Cell[705281, 17012, 1138, 24, 68, "ManipulateCaptionSection",ExpressionUUID->"3ed78bfd-4459-4d2a-906f-3e9e6aba33a4",
+  Cell[704734, 16907, 1138, 24, 68, "ManipulateCaptionSection",ExpressionUUID->"3ed78bfd-4459-4d2a-906f-3e9e6aba33a4",
    CellTags->"Caption"]},
  "Thumbnail"->{
-  Cell[707381, 17058, 1016, 23, 68, "ThumbnailSection",ExpressionUUID->"401cc3c4-8319-4e19-82e7-df5fcb711a42",
+  Cell[706834, 16953, 1016, 23, 68, "ThumbnailSection",ExpressionUUID->"401cc3c4-8319-4e19-82e7-df5fcb711a42",
    CellTags->"Thumbnail"]},
  "Snapshots"->{
-  Cell[938239, 21906, 1018, 22, 68, "SnapshotsSection",ExpressionUUID->"96bb7a68-4496-4362-86d3-c2a0812907f2",
+  Cell[937600, 21798, 1018, 22, 68, "SnapshotsSection",ExpressionUUID->"96bb7a68-4496-4362-86d3-c2a0812907f2",
    CellTags->"Snapshots"]},
  "Details"->{
-  Cell[939282, 21932, 1796, 36, 68, "DetailsSection",ExpressionUUID->"b9971572-9357-4ce2-a011-62ff9eede7fa",
+  Cell[938643, 21824, 1796, 36, 68, "DetailsSection",ExpressionUUID->"b9971572-9357-4ce2-a011-62ff9eede7fa",
    CellTags->"Details"]},
  "Control Suggestions"->{
-  Cell[941770, 21985, 1131, 28, 68, "ControlSuggestionsSection",ExpressionUUID->"af8a4061-fdd4-44d0-82cc-9fec786547ab",
+  Cell[941131, 21877, 1131, 28, 68, "ControlSuggestionsSection",ExpressionUUID->"af8a4061-fdd4-44d0-82cc-9fec786547ab",
    CellTags->"Control Suggestions"]},
  "ResizeImages"->{
-  Cell[942904, 22015, 410, 10, 29, "ControlSuggestions",ExpressionUUID->"ac542041-3d26-42bf-920d-b54a74785eef",
+  Cell[942265, 21907, 410, 10, 28, "ControlSuggestions",ExpressionUUID->"ac542041-3d26-42bf-920d-b54a74785eef",
    CellTags->"ResizeImages"]},
  "RotateAndZoomIn3D"->{
-  Cell[943317, 22027, 783, 19, 29, "ControlSuggestions",ExpressionUUID->"e14e98ed-7514-4081-99ea-c2ffb624df9b",
+  Cell[942678, 21919, 783, 19, 28, "ControlSuggestions",ExpressionUUID->"e14e98ed-7514-4081-99ea-c2ffb624df9b",
    CellTags->"RotateAndZoomIn3D"]},
  "DragLocators"->{
-  Cell[944103, 22048, 438, 13, 29, "ControlSuggestions",ExpressionUUID->"384b79dc-c11a-492d-87e1-2c4b84403891",
+  Cell[943464, 21940, 438, 13, 28, "ControlSuggestions",ExpressionUUID->"384b79dc-c11a-492d-87e1-2c4b84403891",
    CellTags->"DragLocators"]},
  "CreateAndDeleteLocators"->{
-  Cell[944544, 22063, 739, 18, 29, "ControlSuggestions",ExpressionUUID->"98a81657-e34e-4dab-ac86-717d7eff050a",
+  Cell[943905, 21955, 739, 18, 28, "ControlSuggestions",ExpressionUUID->"98a81657-e34e-4dab-ac86-717d7eff050a",
    CellTags->"CreateAndDeleteLocators"]},
  "SliderZoom"->{
-  Cell[945286, 22083, 944, 23, 29, "ControlSuggestions",ExpressionUUID->"b84ac2ce-e422-4d4d-953e-073d63c15a9e",
+  Cell[944647, 21975, 944, 23, 28, "ControlSuggestions",ExpressionUUID->"b84ac2ce-e422-4d4d-953e-073d63c15a9e",
    CellTags->"SliderZoom"]},
  "GamepadControls"->{
-  Cell[946233, 22108, 469, 11, 29, "ControlSuggestions",ExpressionUUID->"b4dbde82-29d9-4853-88cd-e053ae8d181c",
+  Cell[945594, 22000, 469, 11, 28, "ControlSuggestions",ExpressionUUID->"b4dbde82-29d9-4853-88cd-e053ae8d181c",
    CellTags->"GamepadControls"]},
  "AutomaticAnimation"->{
-  Cell[946705, 22121, 1564, 33, 29, "ControlSuggestions",ExpressionUUID->"6e84bbe0-7d8e-44ab-aac1-048973c18d4f",
+  Cell[946066, 22013, 1564, 33, 28, "ControlSuggestions",ExpressionUUID->"6e84bbe0-7d8e-44ab-aac1-048973c18d4f",
    CellTags->"AutomaticAnimation"]},
  "BookmarkAnimation"->{
-  Cell[948272, 22156, 1008, 23, 29, "ControlSuggestions",ExpressionUUID->"0cf5a50d-6c0e-4089-a29f-941bc4ca8891",
+  Cell[947633, 22048, 1008, 23, 28, "ControlSuggestions",ExpressionUUID->"0cf5a50d-6c0e-4089-a29f-941bc4ca8891",
    CellTags->"BookmarkAnimation"]},
  "Search Terms"->{
-  Cell[949295, 22182, 1073, 24, 68, "SearchTermsSection",ExpressionUUID->"a3a3a6a7-7876-4115-a51a-6d092bee139b",
+  Cell[948656, 22074, 1073, 24, 68, "SearchTermsSection",ExpressionUUID->"a3a3a6a7-7876-4115-a51a-6d092bee139b",
    CellTags->"Search Terms"]},
  "Related Links"->{
-  Cell[950371, 22208, 1191, 28, 68, "RelatedLinksSection",ExpressionUUID->"83b0243b-b7e3-4afb-8a4e-185fec8161fe",
+  Cell[949732, 22100, 1191, 28, 68, "RelatedLinksSection",ExpressionUUID->"83b0243b-b7e3-4afb-8a4e-185fec8161fe",
    CellTags->"Related Links"]},
  "Authoring Information"->{
-  Cell[951587, 22240, 1158, 28, 68, "AuthorSection",ExpressionUUID->"c2736cdb-c24c-4dd4-9a22-5bbef1a7a20a",
+  Cell[950948, 22132, 1158, 28, 68, "AuthorSection",ExpressionUUID->"c2736cdb-c24c-4dd4-9a22-5bbef1a7a20a",
    CellTags->"Authoring Information"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"Initialization Code", 955413, 22324},
- {"Manipulate", 955608, 22328},
- {"Caption", 955763, 22331},
- {"Thumbnail", 955924, 22334},
- {"Snapshots", 956079, 22337},
- {"Details", 956232, 22340},
- {"Control Suggestions", 956393, 22343},
- {"ResizeImages", 956570, 22346},
- {"RotateAndZoomIn3D", 956737, 22349},
- {"DragLocators", 956904, 22352},
- {"CreateAndDeleteLocators", 957077, 22355},
- {"SliderZoom", 957248, 22358},
- {"GamepadControls", 957411, 22361},
- {"AutomaticAnimation", 957582, 22364},
- {"BookmarkAnimation", 957756, 22367},
- {"Search Terms", 957924, 22370},
- {"Related Links", 958088, 22373},
- {"Authoring Information", 958262, 22376}
+ {"Initialization Code", 954820, 22217},
+ {"Manipulate", 955015, 22221},
+ {"Caption", 955170, 22224},
+ {"Thumbnail", 955331, 22227},
+ {"Snapshots", 955486, 22230},
+ {"Details", 955639, 22233},
+ {"Control Suggestions", 955800, 22236},
+ {"ResizeImages", 955977, 22239},
+ {"RotateAndZoomIn3D", 956144, 22242},
+ {"DragLocators", 956311, 22245},
+ {"CreateAndDeleteLocators", 956484, 22248},
+ {"SliderZoom", 956655, 22251},
+ {"GamepadControls", 956818, 22254},
+ {"AutomaticAnimation", 956989, 22257},
+ {"BookmarkAnimation", 957163, 22260},
+ {"Search Terms", 957331, 22263},
+ {"Related Links", 957495, 22266},
+ {"Authoring Information", 957669, 22269}
  }
 *)
 (*NotebookFileOutline
@@ -22409,65 +22302,65 @@ Cell[CellGroupData[{
 Cell[885, 30, 1861, 40, 68, "InitializationSection",ExpressionUUID->"1d34a731-8c48-4189-8b6f-89ef5777db9f",
  InitializationCell->False,
  CellTags->"Initialization Code"],
-Cell[2749, 72, 440484, 11423, 40365, "Input",ExpressionUUID->"1d643925-280d-4678-bc58-4ccd4eb56561",
+Cell[2749, 72, 440086, 11328, 40365, "Input",ExpressionUUID->"1d643925-280d-4678-bc58-4ccd4eb56561",
  CellID->2066746197]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[443270, 11500, 1524, 30, 68, "ManipulateSection",ExpressionUUID->"b7acceb9-ca4b-4965-b319-bd8a6214a587",
+Cell[442872, 11405, 1524, 30, 68, "ManipulateSection",ExpressionUUID->"b7acceb9-ca4b-4965-b319-bd8a6214a587",
  CellTags->"Manipulate"],
 Cell[CellGroupData[{
-Cell[444819, 11534, 12599, 291, 636, "Input",ExpressionUUID->"1c8a51fe-61b3-446f-b3f3-b27c622b6763"],
-Cell[457421, 11827, 247814, 5179, 480, "Output",ExpressionUUID->"6c6c93ff-cf83-4c1d-beb3-e30e5d47d61a",
+Cell[444421, 11439, 12599, 291, 636, "Input",ExpressionUUID->"1c8a51fe-61b3-446f-b3f3-b27c622b6763"],
+Cell[457023, 11732, 247665, 5169, 480, "Output",ExpressionUUID->"6c6c93ff-cf83-4c1d-beb3-e30e5d47d61a",
  CellID->1990220094]
 }, {2}]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[705281, 17012, 1138, 24, 68, "ManipulateCaptionSection",ExpressionUUID->"3ed78bfd-4459-4d2a-906f-3e9e6aba33a4",
+Cell[704734, 16907, 1138, 24, 68, "ManipulateCaptionSection",ExpressionUUID->"3ed78bfd-4459-4d2a-906f-3e9e6aba33a4",
  CellTags->"Caption"],
-Cell[706422, 17038, 922, 15, 39, "ManipulateCaption",ExpressionUUID->"71921e4e-c8c2-4f05-96e3-4e3047349e9a"]
+Cell[705875, 16933, 922, 15, 39, "ManipulateCaption",ExpressionUUID->"71921e4e-c8c2-4f05-96e3-4e3047349e9a"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[707381, 17058, 1016, 23, 68, "ThumbnailSection",ExpressionUUID->"401cc3c4-8319-4e19-82e7-df5fcb711a42",
+Cell[706834, 16953, 1016, 23, 68, "ThumbnailSection",ExpressionUUID->"401cc3c4-8319-4e19-82e7-df5fcb711a42",
  CellTags->"Thumbnail"],
-Cell[708400, 17083, 229824, 4820, 464, "Output",ExpressionUUID->"145468c3-7467-4d7c-bed7-502158105c63",
+Cell[707853, 16978, 229732, 4817, 464, "Output",ExpressionUUID->"145468c3-7467-4d7c-bed7-502158105c63",
  CellID->190746835]
 }, Open  ]],
-Cell[938239, 21906, 1018, 22, 68, "SnapshotsSection",ExpressionUUID->"96bb7a68-4496-4362-86d3-c2a0812907f2",
+Cell[937600, 21798, 1018, 22, 68, "SnapshotsSection",ExpressionUUID->"96bb7a68-4496-4362-86d3-c2a0812907f2",
  CellTags->"Snapshots"],
 Cell[CellGroupData[{
-Cell[939282, 21932, 1796, 36, 68, "DetailsSection",ExpressionUUID->"b9971572-9357-4ce2-a011-62ff9eede7fa",
+Cell[938643, 21824, 1796, 36, 68, "DetailsSection",ExpressionUUID->"b9971572-9357-4ce2-a011-62ff9eede7fa",
  CellTags->"Details"],
-Cell[941081, 21970, 652, 10, 71, "DetailNotes",ExpressionUUID->"1e20170b-6fe4-40dc-a374-ea331b3e0ed8",
+Cell[940442, 21862, 652, 10, 71, "DetailNotes",ExpressionUUID->"1e20170b-6fe4-40dc-a374-ea331b3e0ed8",
  CellID->1986929129]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[941770, 21985, 1131, 28, 68, "ControlSuggestionsSection",ExpressionUUID->"af8a4061-fdd4-44d0-82cc-9fec786547ab",
+Cell[941131, 21877, 1131, 28, 68, "ControlSuggestionsSection",ExpressionUUID->"af8a4061-fdd4-44d0-82cc-9fec786547ab",
  CellTags->"Control Suggestions"],
-Cell[942904, 22015, 410, 10, 29, "ControlSuggestions",ExpressionUUID->"ac542041-3d26-42bf-920d-b54a74785eef",
+Cell[942265, 21907, 410, 10, 28, "ControlSuggestions",ExpressionUUID->"ac542041-3d26-42bf-920d-b54a74785eef",
  CellTags->"ResizeImages"],
-Cell[943317, 22027, 783, 19, 29, "ControlSuggestions",ExpressionUUID->"e14e98ed-7514-4081-99ea-c2ffb624df9b",
+Cell[942678, 21919, 783, 19, 28, "ControlSuggestions",ExpressionUUID->"e14e98ed-7514-4081-99ea-c2ffb624df9b",
  CellTags->"RotateAndZoomIn3D"],
-Cell[944103, 22048, 438, 13, 29, "ControlSuggestions",ExpressionUUID->"384b79dc-c11a-492d-87e1-2c4b84403891",
+Cell[943464, 21940, 438, 13, 28, "ControlSuggestions",ExpressionUUID->"384b79dc-c11a-492d-87e1-2c4b84403891",
  CellTags->"DragLocators"],
-Cell[944544, 22063, 739, 18, 29, "ControlSuggestions",ExpressionUUID->"98a81657-e34e-4dab-ac86-717d7eff050a",
+Cell[943905, 21955, 739, 18, 28, "ControlSuggestions",ExpressionUUID->"98a81657-e34e-4dab-ac86-717d7eff050a",
  CellTags->"CreateAndDeleteLocators"],
-Cell[945286, 22083, 944, 23, 29, "ControlSuggestions",ExpressionUUID->"b84ac2ce-e422-4d4d-953e-073d63c15a9e",
+Cell[944647, 21975, 944, 23, 28, "ControlSuggestions",ExpressionUUID->"b84ac2ce-e422-4d4d-953e-073d63c15a9e",
  CellTags->"SliderZoom"],
-Cell[946233, 22108, 469, 11, 29, "ControlSuggestions",ExpressionUUID->"b4dbde82-29d9-4853-88cd-e053ae8d181c",
+Cell[945594, 22000, 469, 11, 28, "ControlSuggestions",ExpressionUUID->"b4dbde82-29d9-4853-88cd-e053ae8d181c",
  CellTags->"GamepadControls"],
-Cell[946705, 22121, 1564, 33, 29, "ControlSuggestions",ExpressionUUID->"6e84bbe0-7d8e-44ab-aac1-048973c18d4f",
+Cell[946066, 22013, 1564, 33, 28, "ControlSuggestions",ExpressionUUID->"6e84bbe0-7d8e-44ab-aac1-048973c18d4f",
  CellTags->"AutomaticAnimation"],
-Cell[948272, 22156, 1008, 23, 29, "ControlSuggestions",ExpressionUUID->"0cf5a50d-6c0e-4089-a29f-941bc4ca8891",
+Cell[947633, 22048, 1008, 23, 28, "ControlSuggestions",ExpressionUUID->"0cf5a50d-6c0e-4089-a29f-941bc4ca8891",
  CellTags->"BookmarkAnimation"]
 }, Open  ]],
-Cell[949295, 22182, 1073, 24, 68, "SearchTermsSection",ExpressionUUID->"a3a3a6a7-7876-4115-a51a-6d092bee139b",
+Cell[948656, 22074, 1073, 24, 68, "SearchTermsSection",ExpressionUUID->"a3a3a6a7-7876-4115-a51a-6d092bee139b",
  CellTags->"Search Terms"],
-Cell[950371, 22208, 1191, 28, 68, "RelatedLinksSection",ExpressionUUID->"83b0243b-b7e3-4afb-8a4e-185fec8161fe",
+Cell[949732, 22100, 1191, 28, 68, "RelatedLinksSection",ExpressionUUID->"83b0243b-b7e3-4afb-8a4e-185fec8161fe",
  CellTags->"Related Links"],
 Cell[CellGroupData[{
-Cell[951587, 22240, 1158, 28, 68, "AuthorSection",ExpressionUUID->"c2736cdb-c24c-4dd4-9a22-5bbef1a7a20a",
+Cell[950948, 22132, 1158, 28, 68, "AuthorSection",ExpressionUUID->"c2736cdb-c24c-4dd4-9a22-5bbef1a7a20a",
  CellTags->"Authoring Information"],
-Cell[952748, 22270, 270, 5, 23, "Author",ExpressionUUID->"e6a077c9-f528-4852-97e7-764f2f3a1895"]
+Cell[952109, 22162, 313, 5, 23, "Author",ExpressionUUID->"e6a077c9-f528-4852-97e7-764f2f3a1895"]
 }, Open  ]]
 }, Open  ]]
 }

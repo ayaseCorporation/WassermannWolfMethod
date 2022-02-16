@@ -119,7 +119,7 @@ Let's try and have fun.
 
 ## contact infomation
 
-Takatoshi Yamada, Ayase corporation
+Takatoshi Yamada, Ayase Co.,Ltd.
 
 
 
