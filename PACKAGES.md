@@ -1,6 +1,6 @@
 # Files in a folder AplanaticSinglet
 
-Takatoshi Yamada @Ayase Co.,Ltd.
+Takatoshi Yamada @AYASE Co.,Ltd.
 
 e-mail: takatoshi.yamada@ayasecorporation.com
 

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    962138,      22361]
-NotebookOptionsPosition[    952450,      22171]
-NotebookOutlinePosition[    958530,      22297]
-CellTagsIndexPosition[    957840,      22275]
+NotebookDataLength[    962192,      22362]
+NotebookOptionsPosition[    952504,      22172]
+NotebookOutlinePosition[    958584,      22298]
+CellTagsIndexPosition[    957894,      22276]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -22160,11 +22160,12 @@ other than Demonstrations authors, please see the detailed ",
   "Authoring \
 Information",ExpressionUUID->"c2736cdb-c24c-4dd4-9a22-5bbef1a7a20a"],
 
-Cell["Contributed by: Takatoshi Yamada @Ayase Co.,Ltd.", "Author",
+Cell["Contributed by: Takatoshi Yamada @AYASE Co.,Ltd.", "Author",
  CellChangeTimes->{
   3.35696210375764*^9, {3.432333043774981*^9, 3.432333045441087*^9}, {
    3.823286774351448*^9, 3.823286783881792*^9}, {3.853965416456547*^9, 
-   3.853965418233911*^9}},ExpressionUUID->"e6a077c9-f528-4852-97e7-\
+   3.853965418233911*^9}, {3.8541451693542624`*^9, 
+   3.8541451703750143`*^9}},ExpressionUUID->"e6a077c9-f528-4852-97e7-\
 764f2f3a1895"]
 }, Open  ]]
 }, Open  ]]
@@ -22274,24 +22275,24 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"Initialization Code", 954820, 22217},
- {"Manipulate", 955015, 22221},
- {"Caption", 955170, 22224},
- {"Thumbnail", 955331, 22227},
- {"Snapshots", 955486, 22230},
- {"Details", 955639, 22233},
- {"Control Suggestions", 955800, 22236},
- {"ResizeImages", 955977, 22239},
- {"RotateAndZoomIn3D", 956144, 22242},
- {"DragLocators", 956311, 22245},
- {"CreateAndDeleteLocators", 956484, 22248},
- {"SliderZoom", 956655, 22251},
- {"GamepadControls", 956818, 22254},
- {"AutomaticAnimation", 956989, 22257},
- {"BookmarkAnimation", 957163, 22260},
- {"Search Terms", 957331, 22263},
- {"Related Links", 957495, 22266},
- {"Authoring Information", 957669, 22269}
+ {"Initialization Code", 954874, 22218},
+ {"Manipulate", 955069, 22222},
+ {"Caption", 955224, 22225},
+ {"Thumbnail", 955385, 22228},
+ {"Snapshots", 955540, 22231},
+ {"Details", 955693, 22234},
+ {"Control Suggestions", 955854, 22237},
+ {"ResizeImages", 956031, 22240},
+ {"RotateAndZoomIn3D", 956198, 22243},
+ {"DragLocators", 956365, 22246},
+ {"CreateAndDeleteLocators", 956538, 22249},
+ {"SliderZoom", 956709, 22252},
+ {"GamepadControls", 956872, 22255},
+ {"AutomaticAnimation", 957043, 22258},
+ {"BookmarkAnimation", 957217, 22261},
+ {"Search Terms", 957385, 22264},
+ {"Related Links", 957549, 22267},
+ {"Authoring Information", 957723, 22270}
  }
 *)
 (*NotebookFileOutline
@@ -22360,7 +22361,7 @@ Cell[949732, 22100, 1191, 28, 68, "RelatedLinksSection",ExpressionUUID->"83b0243
 Cell[CellGroupData[{
 Cell[950948, 22132, 1158, 28, 68, "AuthorSection",ExpressionUUID->"c2736cdb-c24c-4dd4-9a22-5bbef1a7a20a",
  CellTags->"Authoring Information"],
-Cell[952109, 22162, 313, 5, 23, "Author",ExpressionUUID->"e6a077c9-f528-4852-97e7-764f2f3a1895"]
+Cell[952109, 22162, 367, 6, 23, "Author",ExpressionUUID->"e6a077c9-f528-4852-97e7-764f2f3a1895"]
 }, Open  ]]
 }, Open  ]]
 }
