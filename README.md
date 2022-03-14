@@ -127,7 +127,7 @@ e-mail: takatoshi.yamada@ayasecorporation.com
 
 web cite: https://www.ayasecorporation.com
 
-##Now the original paper is available on line:
+## Now the original paper is available on line:
 
 https://doi.org/10.1016/j.ijleo.2022.168725
 
